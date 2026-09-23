@@ -9,15 +9,6 @@ import {
   getEspnTeams,
   getEspnToday,
 } from "@/lib/api/espn";
-import {
-  getElGames,
-  getElLeaders,
-  getElRecent,
-  getElStandings,
-  getElTeamDetail,
-  getElTeams,
-  getElToday,
-} from "@/lib/api/euroleague";
 import { fetchRss } from "@/lib/api/rss";
 import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
@@ -41,37 +32,27 @@ import type {
  * d'API tierce : le navigateur ne voit que /api/*.
  */
 
-export const getTeams = (league: LeagueId): Promise<Team[]> =>
-  league === "euroleague" ? getElTeams() : getEspnTeams(league);
+export const getTeams = (league: LeagueId): Promise<Team[]> => getEspnTeams(league);
 
-export const getStandings = (league: LeagueId): Promise<Standings> =>
-  league === "euroleague" ? getElStandings() : getEspnStandings(league);
+export const getStandings = (league: LeagueId): Promise<Standings> => getEspnStandings(league);
 
 export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promise<GamesResponse> =>
-  league === "euroleague" ? getElGames(view) : getEspnGames(league, view);
+  getEspnGames(league, view);
 
-export const getLeaders = (league: LeagueId): Promise<LeadersResponse> =>
-  league === "euroleague" ? getElLeaders() : getEspnLeaders(league);
+export const getLeaders = (league: LeagueId): Promise<LeadersResponse> => getEspnLeaders(league);
 
 /**
- * Actualités : médias francophones en priorité (BasketUSA, BasketEurope),
- * complétés par des sources anglophones (ESPN, Eurohoops). Chaque source est
- * indépendante : si l'une tombe, les autres restent affichées.
+ * Actualités : média francophone en priorité (BasketUSA), complété par ESPN.
+ * Chaque source est indépendante : si l'une tombe, l'autre reste affichée.
  */
 export async function getNews(league: LeagueId): Promise<NewsItem[]> {
-  const sources: Promise<NewsItem[]>[] =
-    league === "euroleague"
-      ? [
-          fetchRss(env.newsEuroleagueFr, "BasketEurope", "fr", REVALIDATE.news),
-          fetchRss(env.newsEuroleagueEn, "Eurohoops", "en", REVALIDATE.news),
-        ]
-      : [
-          // Chaque article BasketUSA commence par sa rubrique : « NBA – … », « WNBA – … », « Sneakers – … ».
-          fetchRss(env.newsBasketUsa, "BasketUSA", "fr", REVALIDATE.news).then((items) =>
-            items.filter((n) => (league === "wnba" ? /^WNBA\b/ : /^NBA\b/).test(n.description ?? "")),
-          ),
-          getEspnNews(league),
-        ];
+  const sources: Promise<NewsItem[]>[] = [
+    // Chaque article BasketUSA commence par sa rubrique : « NBA – … », « WNBA – … », « Sneakers – … ».
+    fetchRss(env.newsBasketUsa, "BasketUSA", "fr", REVALIDATE.news).then((items) =>
+      items.filter((n) => (league === "wnba" ? /^WNBA\b/ : /^NBA\b/).test(n.description ?? "")),
+    ),
+    getEspnNews(league),
+  ];
   const settled = await Promise.allSettled(sources);
   const items = settled.flatMap((s) => (s.status === "fulfilled" ? s.value : []));
   if (items.length === 0 && settled.every((s) => s.status === "rejected")) throw new Error("news unavailable");
@@ -83,17 +64,16 @@ export async function getNews(league: LeagueId): Promise<NewsItem[]> {
     .slice(0, 24);
 }
 
-export const getRecent = (league: LeagueId, id: string): Promise<Game[]> =>
-  league === "euroleague" ? getElRecent(id) : getEspnRecent(league, id);
+export const getRecent = (league: LeagueId, id: string): Promise<Game[]> => getEspnRecent(league, id);
 
 export async function getTeamDetail(league: LeagueId, id: string): Promise<TeamDetail> {
   const [detail, standings] = await Promise.all([
-    league === "euroleague" ? getElTeamDetail(id) : getEspnTeamDetail(league, id),
+    getEspnTeamDetail(league, id),
     getStandings(league).catch(() => null),
   ]);
   const row = standings?.groups.flatMap((g) => g.rows.map((r) => ({ r, g: g.name }))).find((x) => x.r.team.id === id);
   if (row) {
-    const where = league === "euroleague" ? "au classement" : `de la conférence ${row.g}`;
+    const where = `de la conférence ${row.g}`;
     detail.standingSummary = `${row.r.rank}${row.r.rank === 1 ? "er" : "e"} ${where} · ${row.r.wins}-${row.r.losses}${
       standings?.isPreviousSeason ? ` (saison ${standings.season})` : ""
     }`;
@@ -112,9 +92,7 @@ function nextSlate(games: Game[]): Game[] {
 
 /** Vue agrégée « aujourd'hui » pour l'accueil. */
 export async function getToday(): Promise<TodayResponse> {
-  const settled = await Promise.allSettled(
-    LEAGUE_IDS.map((l) => (l === "euroleague" ? getElToday() : getEspnToday(l))),
-  );
+  const settled = await Promise.allSettled(LEAGUE_IDS.map((l) => getEspnToday(l)));
   const leagues: TodayLeague[] = settled.map((s, i) =>
     s.status === "fulfilled" ? s.value : { league: LEAGUE_IDS[i], games: [] },
   );
