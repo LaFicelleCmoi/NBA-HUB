@@ -13,6 +13,7 @@ import type {
   StandingRow,
   Team,
   TeamStat,
+  TeamStatGroup,
 } from "@/types";
 
 /* ------------------------------------------------------------------ */
@@ -36,6 +37,9 @@ export interface RawEspnTeam {
   logos?: RawLogo[];
   isActive?: boolean;
   standingSummary?: string;
+  franchise?: {
+    venue?: { fullName?: string; address?: { city?: string; state?: string } };
+  };
 }
 
 interface RawStatus {
@@ -195,6 +199,54 @@ function statMap(stats: { name: string; value?: number; displayValue?: string }[
   return m;
 }
 
+/**
+ * Bilans et moyennes détaillés d'une ligne de classement. ESPN nomme ces
+ * entrées en anglais et en clair (« vs. Conf. », « Last Ten Games ») : on les
+ * traduit ici, dans l'ordre d'affichage voulu.
+ */
+const ROW_DETAIL: [string, string, ("streak" | "pct")?][] = [
+  ["overall", "Bilan général"],
+  ["Home", "À domicile"],
+  ["Road", "À l'extérieur"],
+  ["vs. Conf.", "Dans la conférence"],
+  ["vs. Div.", "Dans la division"],
+  ["Last Ten Games", "10 derniers matchs"],
+  ["streak", "Série en cours", "streak"],
+  ["avgPointsFor", "Points marqués / match"],
+  ["avgPointsAgainst", "Points encaissés / match"],
+  ["differential", "Différence / match"],
+  ["pointDifferential", "Différence totale"],
+  ["pointsFor", "Points marqués"],
+  ["pointsAgainst", "Points encaissés"],
+  ["gamesBehind", "Matchs de retard"],
+  ["winPercent", "% de victoires", "pct"],
+  ["leagueWinPercent", "% de victoires (ligue)", "pct"],
+  ["divisionWinPercent", "% de victoires (division)", "pct"],
+];
+
+function rowDetail(m: Map<string, { value?: number; displayValue?: string }>): TeamStat[] {
+  const out: TeamStat[] = [];
+  for (const [key, label, format] of ROW_DETAIL) {
+    const entry = m.get(key);
+    const raw = entry?.displayValue;
+    // ESPN met « - » quand la valeur n'a pas de sens (aucun retard, par exemple).
+    if (!raw || raw === "-") continue;
+    if (format === "streak") {
+      // « W3 » / « L1 » → « 3 victoires » / « 1 défaite ».
+      const n = Number(raw.slice(1)) || 0;
+      const win = raw.startsWith("W");
+      out.push({ label, value: `${n} ${win ? "victoire" : "défaite"}${n > 1 ? "s" : ""}` });
+    } else if (format === "pct") {
+      // ESPN livre un ratio (« .561 », « 0.519 ») sous un libellé en pourcentage.
+      const n = entry?.value ?? Number(raw);
+      out.push({ label, value: Number.isFinite(n) ? `${(n * 100).toFixed(1)} %` : raw });
+    } else {
+      out.push({ label, value: raw });
+    }
+  }
+  return out;
+}
+
 export function normalizeStandings(root: RawStandingsNode, league: LeagueId) {
   const groups: StandingGroup[] = [];
   let points = 0;
@@ -217,6 +269,7 @@ export function normalizeStandings(root: RawStandingsNode, league: LeagueId) {
         diff: Number(s.get("pointDifferential")?.value ?? 0),
         streak: s.get("streak")?.displayValue?.replace(/^W/, "V").replace(/^L/, "D"),
         seed: Number(s.get("playoffSeed")?.value ?? 0),
+        detail: rowDetail(s),
       };
     });
     rows.sort((a, b) => (a.seed && b.seed ? a.seed - b.seed : b.winPct - a.winPct || b.diff - a.diff));
@@ -336,24 +389,64 @@ export interface RawEspnRoster {
     weight?: number;
     age?: number;
     headshot?: { href?: string };
-    birthPlace?: { country?: string };
+    birthPlace?: { city?: string; state?: string; country?: string };
+    college?: { name?: string; shortName?: string };
+    experience?: { years?: number };
+    status?: { name?: string; type?: string };
+    injuries?: { status?: string; details?: { type?: string } }[];
+    contract?: { salary?: number };
   }[];
   coach?: { firstName?: string; lastName?: string }[];
 }
 
+/** Statuts de joueur renvoyés par ESPN, en français. */
+const PLAYER_STATUS_FR: Record<string, string> = {
+  active: "Actif",
+  injured: "Blessé",
+  "day-to-day": "Incertain",
+  out: "Forfait",
+  suspension: "Suspendu",
+  inactive: "Inactif",
+};
+
+/** Statuts de blessure renvoyés par ESPN (`injuries[].status`), en français. */
+const INJURY_FR: Record<string, string> = {
+  "day-to-day": "Incertain",
+  out: "Forfait",
+  doubtful: "Très incertain",
+  questionable: "Incertain",
+  probable: "Probable",
+  "out for season": "Forfait saison",
+  suspension: "Suspendu",
+};
+
+const frInjury = (v?: string) => (v ? (INJURY_FR[v.toLowerCase()] ?? v) : undefined);
+
 export function normalizeRoster(raw: RawEspnRoster): { roster: Player[]; coach?: string } {
-  const roster: Player[] = (raw.athletes ?? []).map((a) => ({
-    id: a.id,
-    name: a.displayName,
-    jersey: a.jersey,
-    position: a.position?.abbreviation,
-    height: a.height ? `${Math.round(a.height * 2.54)} cm` : a.displayHeight,
-    weight: a.weight ? `${Math.round(a.weight * 0.4536)} kg` : a.displayWeight,
-    age: a.age,
-    country: a.birthPlace?.country,
-    headshot: a.headshot?.href,
-  }));
-  roster.sort((a, b) => Number(a.jersey ?? 999) - Number(b.jersey ?? 999));
+  const roster: Player[] = (raw.athletes ?? []).map((a) => {
+    const injury = a.injuries?.[0];
+    const place = [a.birthPlace?.city, a.birthPlace?.state, a.birthPlace?.country].filter(Boolean).join(", ");
+    return {
+      id: a.id,
+      name: a.displayName,
+      jersey: a.jersey,
+      position: a.position?.abbreviation,
+      height: a.height ? `${Math.round(a.height * 2.54)} cm` : a.displayHeight,
+      weight: a.weight ? `${Math.round(a.weight * 0.4536)} kg` : a.displayWeight,
+      age: a.age,
+      country: a.birthPlace?.country,
+      headshot: a.headshot?.href,
+      birthPlace: place || undefined,
+      experience: a.experience?.years,
+      college: a.college?.name ?? a.college?.shortName,
+      status: a.status?.type ? (PLAYER_STATUS_FR[a.status.type] ?? a.status.name) : undefined,
+      injury: frInjury(injury?.details?.type ?? injury?.status),
+      salary: a.contract?.salary || undefined,
+    };
+  });
+  // Les numéros sont des chaînes (« 00 », « 7 ») : tri numérique, sans numéro en dernier.
+  const num = (j?: string) => (j === undefined || j === "" ? Number.POSITIVE_INFINITY : Number(j));
+  roster.sort((a, b) => num(a.jersey) - num(b.jersey) || a.name.localeCompare(b.name, "fr"));
   const c = raw.coach?.[0];
   return { roster, coach: c ? `${c.firstName ?? ""} ${c.lastName ?? ""}`.trim() : undefined };
 }
@@ -362,28 +455,109 @@ export function normalizeRoster(raw: RawEspnRoster): { roster: Player[]; coach?:
 
 export interface RawEspnTeamStats {
   results?: {
-    stats?: { categories?: { stats?: { name: string; displayValue?: string }[] }[] };
+    stats?: { categories?: { name?: string; stats?: { name: string; displayValue?: string }[] }[] };
   };
 }
 
-const TEAM_STATS: [string, string][] = [
-  ["avgPoints", "Points / match"],
-  ["avgRebounds", "Rebonds / match"],
-  ["avgAssists", "Passes / match"],
-  ["avgSteals", "Interceptions / match"],
-  ["avgBlocks", "Contres / match"],
-  ["avgTurnovers", "Balles perdues / match"],
-  ["fieldGoalPct", "% aux tirs"],
-  ["threePointFieldGoalPct", "% à 3 points"],
-  ["freeThrowPct", "% aux lancers francs"],
+/**
+ * Toutes les statistiques d'équipe publiées par ESPN, traduites et rangées
+ * par thème. L'ordre de ce tableau est celui de l'affichage ; `pct` ajoute
+ * le signe « % » à la valeur.
+ */
+const TEAM_STAT_GROUPS: { label: string; stats: [string, string, boolean?][] }[] = [
+  {
+    label: "Général",
+    stats: [
+      ["gamesPlayed", "Matchs joués"],
+      ["avgPoints", "Points / match"],
+      ["avgRebounds", "Rebonds / match"],
+      ["avgAssists", "Passes / match"],
+      ["avgTurnovers", "Balles perdues / match"],
+      ["avgFouls", "Fautes / match"],
+      ["assistTurnoverRatio", "Passes par balle perdue"],
+    ],
+  },
+  {
+    label: "Attaque",
+    stats: [
+      ["fieldGoalPct", "% aux tirs", true],
+      ["avgFieldGoalsMade", "Tirs réussis / match"],
+      ["avgFieldGoalsAttempted", "Tirs tentés / match"],
+      ["twoPointFieldGoalPct", "% à 2 points", true],
+      ["avgTwoPointFieldGoalsMade", "Tirs à 2 pts réussis / match"],
+      ["avgTwoPointFieldGoalsAttempted", "Tirs à 2 pts tentés / match"],
+      ["threePointFieldGoalPct", "% à 3 points", true],
+      ["avgThreePointFieldGoalsMade", "Tirs à 3 pts réussis / match"],
+      ["avgThreePointFieldGoalsAttempted", "Tirs à 3 pts tentés / match"],
+      ["freeThrowPct", "% aux lancers francs", true],
+      ["avgFreeThrowsMade", "Lancers francs réussis / match"],
+      ["avgFreeThrowsAttempted", "Lancers francs tentés / match"],
+      ["avgOffensiveRebounds", "Rebonds offensifs / match"],
+      ["scoringEfficiency", "Efficacité au scoring"],
+      ["shootingEfficiency", "Efficacité au tir"],
+    ],
+  },
+  {
+    label: "Défense",
+    stats: [
+      ["avgDefensiveRebounds", "Rebonds défensifs / match"],
+      ["avgSteals", "Interceptions / match"],
+      ["avgBlocks", "Contres / match"],
+    ],
+  },
+  {
+    label: "Totaux de la saison",
+    stats: [
+      ["points", "Points marqués"],
+      ["rebounds", "Rebonds"],
+      ["offensiveRebounds", "Rebonds offensifs"],
+      ["defensiveRebounds", "Rebonds défensifs"],
+      ["assists", "Passes décisives"],
+      ["steals", "Interceptions"],
+      ["blocks", "Contres"],
+      ["turnovers", "Balles perdues"],
+      ["fieldGoalsMade", "Tirs réussis"],
+      ["fieldGoalsAttempted", "Tirs tentés"],
+      ["twoPointFieldGoalsMade", "Tirs à 2 pts réussis"],
+      ["twoPointFieldGoalsAttempted", "Tirs à 2 pts tentés"],
+      ["threePointFieldGoalsMade", "Tirs à 3 pts réussis"],
+      ["threePointFieldGoalsAttempted", "Tirs à 3 pts tentés"],
+      ["freeThrowsMade", "Lancers francs réussis"],
+      ["freeThrowsAttempted", "Lancers francs tentés"],
+    ],
+  },
 ];
 
-export function normalizeTeamStats(raw: RawEspnTeamStats): TeamStat[] {
+/**
+ * ESPN renvoie ces champs au niveau de l'équipe mais ne les alimente jamais
+ * (toujours 0) : les afficher laisserait croire à une saison sans minutes
+ * jouée. `totalRebounds` et `threePointPct` sont par ailleurs des doublons
+ * exacts de `rebounds` et `threePointFieldGoalPct`.
+ */
+const TEAM_STATS_IGNORED = new Set(["gamesStarted", "minutes", "avgMinutes", "totalRebounds", "threePointPct"]);
+
+export function normalizeTeamStats(raw: RawEspnTeamStats): TeamStatGroup[] {
   const all = new Map<string, string>();
   for (const c of raw.results?.stats?.categories ?? [])
-    for (const s of c.stats ?? []) if (!all.has(s.name) && s.displayValue) all.set(s.name, s.displayValue);
-  return TEAM_STATS.filter(([k]) => all.has(k)).map(([k, label]) => ({
-    label,
-    value: label.startsWith("%") ? `${all.get(k)} %` : all.get(k)!,
-  }));
+    for (const s of c.stats ?? [])
+      if (!all.has(s.name) && s.displayValue && !TEAM_STATS_IGNORED.has(s.name)) all.set(s.name, s.displayValue);
+
+  const groups = TEAM_STAT_GROUPS.map((g) => ({
+    label: g.label,
+    stats: g.stats
+      .filter(([key]) => all.has(key))
+      .map(([key, label, pct]) => {
+        const raw = all.get(key)!;
+        if (pct) return { label, value: `${raw} %` };
+        // ESPN renvoie certains totaux en décimal (« 2374.0 ») : ce sont des entiers.
+        return { label, value: g.label === "Totaux de la saison" ? raw.replace(/\.0$/, "") : raw };
+      }),
+  })).filter((g) => g.stats.length > 0);
+
+  // Filet de sécurité : si ESPN ajoute une statistique, elle apparaît quand
+  // même plutôt que d'être silencieusement perdue.
+  const known = new Set(TEAM_STAT_GROUPS.flatMap((g) => g.stats.map(([k]) => k)));
+  const extra = [...all.entries()].filter(([k]) => !known.has(k)).map(([k, v]) => ({ label: k, value: v }));
+  if (extra.length) groups.push({ label: "Autres", stats: extra });
+  return groups;
 }
