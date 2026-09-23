@@ -9,6 +9,12 @@ function str(name: string, fallback: string): string {
   return v && v.trim() ? v.trim().replace(/\/+$/, "") : fallback;
 }
 
+/** URL conservée telle quelle (les flux RSS WordPress exigent le « / » final). */
+function exact(name: string, fallback: string): string {
+  const v = process.env[name];
+  return v && v.trim() ? v.trim() : fallback;
+}
+
 function int(name: string, fallback: number): number {
   const v = Number.parseInt(process.env[name] ?? "", 10);
   return Number.isFinite(v) && v > 0 ? v : fallback;
@@ -22,6 +28,11 @@ export const env = {
   euroleagueLiveApi: str("EUROLEAGUE_LIVE_API", "https://live.euroleague.net/api"),
   euroleagueCompetition: str("EUROLEAGUE_COMPETITION", "E"),
   upstreamTimeoutMs: int("UPSTREAM_TIMEOUT_MS", 8000),
+  // Flux RSS d'actualités (français en priorité, anglais en complément)
+  // BasketUSA publie un fil unique : les articles sont triés NBA / WNBA par leur rubrique.
+  newsBasketUsa: exact("NEWS_BASKETUSA_RSS", "https://www.basketusa.com/feed/"),
+  newsEuroleagueFr: exact("NEWS_EUROLEAGUE_FR_RSS", "https://www.basketeurope.com/category/euroleague/feed/"),
+  newsEuroleagueEn: exact("NEWS_EUROLEAGUE_EN_RSS", "https://www.eurohoops.net/en/category/euroleague/feed/"),
 } as const;
 
 /** Durées de cache (secondes). */
