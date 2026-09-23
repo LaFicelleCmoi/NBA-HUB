@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="EuroLeague">
-  <circle cx="50" cy="50" r="46" fill="#0b1f4a"/>
-  <g fill="none" stroke="#f36c21" stroke-width="3.5">
-    <circle cx="50" cy="50" r="46"/>
-    <path d="M4 50h92M50 4v92"/>
-    <path d="M18 17c14 10 14 56 0 66M82 17c-14 10-14 56 0 66"/>
-  </g>
-  <text x="50" y="61" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="30" fill="#ffffff">EL</text>
-</svg>
