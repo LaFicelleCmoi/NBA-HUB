@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useFavorite } from "@/lib/client/favorite";
+import { useIsFavorite } from "@/lib/client/favorite";
 import { LEAGUES } from "@/lib/leagues";
 import { formatShortDay, formatTime } from "@/lib/time";
 import { Logo } from "@/components/ui/Logo";
@@ -131,9 +131,8 @@ export function GameCard({
   showLeague?: boolean;
   showDate?: boolean;
 }) {
-  const { isFavorite } = useFavorite();
-  const favHome = isFavorite(game.league, game.home.team.id);
-  const favAway = isFavorite(game.league, game.away.team.id);
+  const favHome = useIsFavorite(game.league, game.home.team.id);
+  const favAway = useIsFavorite(game.league, game.away.team.id);
   const fav = favHome || favAway;
   const league = LEAGUES[game.league];
 
