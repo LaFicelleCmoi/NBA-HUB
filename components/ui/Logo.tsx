@@ -25,10 +25,13 @@ export function Logo({ logo, alt, size = 32, className = "", priority }: Props) 
       </span>
     );
   }
+  // Pas de `sizes` : les logos ont une taille fixe. Avec `sizes`, next/image
+  // bascule sur le srcset « responsive » complet et pointe `src` sur la plus
+  // grande variante (w=3840) — une image de 3840 px pour un logo de 24 px.
+  // Sans lui, on obtient le couple 1x/2x attendu.
   const common = {
     width: size,
     height: size,
-    sizes: `${size}px`,
     priority,
     unoptimized: logo.light.endsWith(".svg"),
   } as const;
