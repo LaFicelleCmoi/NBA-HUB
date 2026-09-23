@@ -18,6 +18,8 @@ import {
   getElTeams,
   getElToday,
 } from "@/lib/api/euroleague";
+import { fetchRss } from "@/lib/api/rss";
+import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
 import { parisDayKey } from "@/lib/time";
 import type {
@@ -51,9 +53,35 @@ export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promis
 export const getLeaders = (league: LeagueId): Promise<LeadersResponse> =>
   league === "euroleague" ? getElLeaders() : getEspnLeaders(league);
 
-/** L'API EuroLeague n'expose pas d'actualités (voir README). */
-export const getNews = (league: LeagueId): Promise<NewsItem[]> =>
-  league === "euroleague" ? Promise.resolve([]) : getEspnNews(league);
+/**
+ * Actualités : médias francophones en priorité (BasketUSA, BasketEurope),
+ * complétés par des sources anglophones (ESPN, Eurohoops). Chaque source est
+ * indépendante : si l'une tombe, les autres restent affichées.
+ */
+export async function getNews(league: LeagueId): Promise<NewsItem[]> {
+  const sources: Promise<NewsItem[]>[] =
+    league === "euroleague"
+      ? [
+          fetchRss(env.newsEuroleagueFr, "BasketEurope", "fr", REVALIDATE.news),
+          fetchRss(env.newsEuroleagueEn, "Eurohoops", "en", REVALIDATE.news),
+        ]
+      : [
+          // Chaque article BasketUSA commence par sa rubrique : « NBA – … », « WNBA – … », « Sneakers – … ».
+          fetchRss(env.newsBasketUsa, "BasketUSA", "fr", REVALIDATE.news).then((items) =>
+            items.filter((n) => (league === "wnba" ? /^WNBA\b/ : /^NBA\b/).test(n.description ?? "")),
+          ),
+          getEspnNews(league),
+        ];
+  const settled = await Promise.allSettled(sources);
+  const items = settled.flatMap((s) => (s.status === "fulfilled" ? s.value : []));
+  if (items.length === 0 && settled.every((s) => s.status === "rejected")) throw new Error("news unavailable");
+  const seen = new Set<string>();
+  return items
+    .filter((n) => (seen.has(n.url) ? false : (seen.add(n.url), true)))
+    // Site francophone : articles en français d'abord, puis les plus récents.
+    .sort((a, b) => (a.lang === b.lang ? b.published.localeCompare(a.published) : a.lang === "fr" ? -1 : 1))
+    .slice(0, 24);
+}
 
 export const getRecent = (league: LeagueId, id: string): Promise<Game[]> =>
   league === "euroleague" ? getElRecent(id) : getEspnRecent(league, id);
@@ -74,6 +102,14 @@ export async function getTeamDetail(league: LeagueId, id: string): Promise<TeamD
   return detail;
 }
 
+/** Prochaine journée complète (8 matchs max), complétée jusqu'à 6 matchs si elle est courte. */
+function nextSlate(games: Game[]): Game[] {
+  if (!games.length) return [];
+  const day = parisDayKey(games[0].date);
+  const slate = games.filter((g) => parisDayKey(g.date) === day);
+  return (slate.length >= 6 ? slate : games.slice(0, 6)).slice(0, 8);
+}
+
 /** Vue agrégée « aujourd'hui » pour l'accueil. */
 export async function getToday(): Promise<TodayResponse> {
   const settled = await Promise.allSettled(
@@ -81,6 +117,17 @@ export async function getToday(): Promise<TodayResponse> {
   );
   const leagues: TodayLeague[] = settled.map((s, i) =>
     s.status === "fulfilled" ? s.value : { league: LEAGUE_IDS[i], games: [] },
+  );
+
+  // Pas de match aujourd'hui (inter-saison, jour de repos) : on montre quand même
+  // la dernière journée jouée et la prochaine journée programmée.
+  await Promise.all(
+    leagues.map(async (l) => {
+      if (l.games.length > 0) return;
+      const [results, upcoming] = await Promise.allSettled([getGames(l.league, "results"), getGames(l.league, "upcoming")]);
+      if (results.status === "fulfilled") l.lastGames = results.value.games.slice(0, 6);
+      if (upcoming.status === "fulfilled") l.nextGames = nextSlate(upcoming.value.games);
+    }),
   );
 
   const [teams, standings] = await Promise.all([
