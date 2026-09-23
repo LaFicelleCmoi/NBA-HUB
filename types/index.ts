@@ -1,17 +1,17 @@
 /**
  * Modèle de données commun à toutes les ligues.
  * Tout ce qui sort de lib/normalize respecte ces types : les composants
- * n'ont jamais à connaître la forme des réponses ESPN ou EuroLeague.
+ * n'ont jamais à connaître la forme des réponses ESPN.
  */
 
-export type LeagueId = "nba" | "wnba" | "euroleague";
+export type LeagueId = "nba" | "wnba";
 
 export interface League {
   id: LeagueId;
   name: string;
   shortName: string;
   region: string;
-  /** Nom des conférences (NBA/WNBA) ; vide pour un tableau unique. */
+  /** Nom des conférences. */
   conferences: string[];
   logo: Logo;
   accent: string;
