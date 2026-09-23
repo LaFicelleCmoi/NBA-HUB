@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* Tokens — thème clair par défaut dans :root, sombre sous .dark       */
+/* (la classe .dark est posée avant le premier rendu, sombre par défaut) */
+/* ------------------------------------------------------------------ */
+:root {
+  --bg: #f4f6fb;
+  --bg-2: #e9edf5;
+  --surface: rgb(255 255 255 / 0.72);
+  --surface-strong: rgb(255 255 255 / 0.92);
+  /* Fond opaque des colonnes sticky, proche du rendu « verre » */
+  --sticky: #fbfcfe;
+  --border: rgb(15 23 42 / 0.1);
+  --border-strong: rgb(15 23 42 / 0.18);
+  --text: #0b1220;
+  --muted: #4a5568;
+  --faint: #556173;
+
+  --nba: #1d4ed8;
+  --nba-2: #c8102e;
+  --wnba: #c2410c;
+  --wnba-2: #fb923c;
+  --euroleague: #c2410c;
+  --euroleague-2: #0b1f4a;
+
+  --direct: #047857;
+  --direct-bg: rgb(16 185 129 / 0.12);
+  --playin: #b45309;
+  --playin-bg: rgb(245 158 11 / 0.14);
+  --live: #dc2626;
+  --fav: #b45309;
+  --fav-bg: rgb(250 204 21 / 0.16);
+  --focus: #2563eb;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #070a12;
+  --bg-2: #0d1320;
+  --surface: rgb(20 27 43 / 0.55);
+  --surface-strong: rgb(20 27 43 / 0.9);
+  --sticky: #0f1522;
+  --border: rgb(255 255 255 / 0.08);
+  --border-strong: rgb(255 255 255 / 0.16);
+  --text: #eef2f8;
+  --muted: #a7b1c2;
+  --faint: #8a95a8;
+
+  --nba: #4f8cff;
+  --nba-2: #ff4d5e;
+  --wnba: #ff7a1a;
+  --wnba-2: #ffb36b;
+  --euroleague: #ff8a3d;
+  --euroleague-2: #7aa2ff;
+
+  --direct: #34d399;
+  --direct-bg: rgb(52 211 153 / 0.12);
+  --playin: #fbbf24;
+  --playin-bg: rgb(251 191 36 / 0.12);
+  --live: #ff4d4f;
+  --fav: #facc15;
+  --fav-bg: rgb(250 204 21 / 0.1);
+  --focus: #7cb2ff;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-nba: var(--nba);
+  --color-nba-2: var(--nba-2);
+  --color-wnba: var(--wnba);
+  --color-wnba-2: var(--wnba-2);
+  --color-euroleague: var(--euroleague);
+  --color-euroleague-2: var(--euroleague-2);
+  --color-direct: var(--direct);
+  --color-direct-bg: var(--direct-bg);
+  --color-playin: var(--playin);
+  --color-playin-bg: var(--playin-bg);
+  --color-live: var(--live);
+  --color-fav: var(--fav);
+  --color-fav-bg: var(--fav-bg);
+  --font-display: var(--font-barlow), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+/* Halo d'ambiance derrière le contenu */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vh -10vw auto;
+  height: 80vh;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 15% 30%, color-mix(in srgb, var(--nba) 18%, transparent), transparent 70%),
+    radial-gradient(35% 45% at 85% 20%, color-mix(in srgb, var(--wnba) 16%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 55% 60%, color-mix(in srgb, var(--euroleague-2) 14%, transparent), transparent 70%);
+  filter: blur(20px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--border) 0%, var(--border-strong) 50%, var(--border) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.live-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
