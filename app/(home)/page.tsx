@@ -13,7 +13,7 @@ import type { LeagueId, Standings, Team, TodayResponse } from "@/types";
 const EMPTY_TODAY: TodayResponse = {
   date: new Date().toISOString().slice(0, 10),
   leagues: LEAGUE_IDS.map((league) => ({ league, games: [] })),
-  stats: { leagues: 3, teams: 0, gamesToday: 0, pointsToday: 0, seasonPoints: 0, seasonGames: 0, avgPerGame: 0 },
+  stats: { leagues: LEAGUE_IDS.length, teams: 0, gamesToday: 0, pointsToday: 0, seasonPoints: 0, seasonGames: 0, avgPerGame: 0 },
 };
 
 export default async function HomePage() {
@@ -38,7 +38,7 @@ export default async function HomePage() {
       </Reveal>
 
       <section aria-labelledby="leagues-title" className="mt-20">
-        <SectionHeading id="leagues-title" kicker="3 ligues" title="Choisir un championnat" />
+        <SectionHeading id="leagues-title" kicker={`${LEAGUE_IDS.length} ligues`} title="Choisir un championnat" />
         <LeagueCards teamCounts={counts} />
       </section>
 
