@@ -16,7 +16,17 @@ import {
   type RawElStandingRow,
 } from "@/lib/normalize/euroleague";
 import { parisDayKey } from "@/lib/time";
-import type { Game, GamesResponse, LeadersResponse, Standings, Team, TeamDetail, TeamStat, TodayLeague } from "@/types";
+import type {
+  Game,
+  GamesResponse,
+  LeadersResponse,
+  Standings,
+  Team,
+  TeamDetail,
+  TeamStat,
+  TeamStatGroup,
+  TodayLeague,
+} from "@/types";
 
 const comp = () => `${env.euroleagueApi}/v2/competitions/${env.euroleagueCompetition}`;
 
@@ -199,8 +209,13 @@ export async function getElRecent(code: string): Promise<Game[]> {
   return recent.slice(0, 5).map((g) => normalizeElGame(g));
 }
 
-function computeStats(code: string, games: RawElGame[]): TeamStat[] {
-  if (!games.length) return [];
+/**
+ * L'API EuroLeague n'expose pas de statistiques d'équipe : on les recalcule
+ * à partir des matchs joués. Les bilans (général, domicile, extérieur) sont
+ * renvoyés à part, pour être affichés comme les bilans ESPN.
+ */
+function computeStats(code: string, games: RawElGame[]): { records: TeamStat[]; stats: TeamStatGroup[] } {
+  if (!games.length) return { records: [], stats: [] };
   let w = 0,
     pf = 0,
     pa = 0,
@@ -223,14 +238,29 @@ function computeStats(code: string, games: RawElGame[]): TeamStat[] {
     else al++;
   }
   const n = games.length;
-  return [
-    { label: "Bilan", value: `${w}-${n - w}` },
-    { label: "Points marqués / match", value: (pf / n).toFixed(1) },
-    { label: "Points encaissés / match", value: (pa / n).toFixed(1) },
-    { label: "Différence / match", value: `${pf - pa >= 0 ? "+" : ""}${((pf - pa) / n).toFixed(1)}` },
-    { label: "À domicile", value: `${hw}-${hl}` },
-    { label: "À l'extérieur", value: `${aw}-${al}` },
-  ];
+  const signed = (v: number) => `${v >= 0 ? "+" : ""}${v.toFixed(1)}`;
+  return {
+    records: [
+      { label: "Bilan général", value: `${w}-${n - w}` },
+      { label: "À domicile", value: `${hw}-${hl}` },
+      { label: "À l'extérieur", value: `${aw}-${al}` },
+      { label: "% de victoires", value: (w / n).toFixed(3).replace(/^0/, "") },
+      { label: "Points marqués / match", value: (pf / n).toFixed(1) },
+      { label: "Points encaissés / match", value: (pa / n).toFixed(1) },
+      { label: "Différence / match", value: signed((pf - pa) / n) },
+    ],
+    stats: [
+      {
+        label: "Totaux de la saison",
+        stats: [
+          { label: "Matchs joués", value: String(n) },
+          { label: "Points marqués", value: String(pf) },
+          { label: "Points encaissés", value: String(pa) },
+          { label: "Différence totale", value: signed(pf - pa).replace(".0", "") },
+        ],
+      },
+    ],
+  };
 }
 
 export async function getElTeamDetail(code: string): Promise<TeamDetail> {
@@ -260,13 +290,15 @@ export async function getElTeamDetail(code: string): Promise<TeamDetail> {
       : null);
   if (!team) throw new Error("unknown club");
 
+  const computed = computeStats(code, schedule.recent);
   return {
     team,
     season: seasonLabel(schedule.recentSeason),
     coach,
+    records: computed.records,
     roster,
     recent: schedule.recent.slice(0, 10).map((g) => normalizeElGame(g)),
     upcoming: await withLive(schedule.upcoming.slice(0, 10)),
-    stats: computeStats(code, schedule.recent),
+    stats: computed.stats,
   };
 }
