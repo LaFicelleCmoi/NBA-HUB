@@ -1,0 +1,833 @@
+{
+  "nba": [
+    {
+      "id": "1",
+      "league": "nba",
+      "name": "Atlanta Hawks",
+      "shortName": "Hawks",
+      "abbreviation": "ATL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png"
+      },
+      "color": "#c8102e",
+      "location": "Atlanta"
+    },
+    {
+      "id": "2",
+      "league": "nba",
+      "name": "Boston Celtics",
+      "shortName": "Celtics",
+      "abbreviation": "BOS",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png"
+      },
+      "color": "#008348",
+      "location": "Boston"
+    },
+    {
+      "id": "17",
+      "league": "nba",
+      "name": "Brooklyn Nets",
+      "shortName": "Nets",
+      "abbreviation": "BKN",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png"
+      },
+      "color": "#000000",
+      "location": "Brooklyn"
+    },
+    {
+      "id": "30",
+      "league": "nba",
+      "name": "Charlotte Hornets",
+      "shortName": "Hornets",
+      "abbreviation": "CHA",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png"
+      },
+      "color": "#008ca8",
+      "location": "Charlotte"
+    },
+    {
+      "id": "4",
+      "league": "nba",
+      "name": "Chicago Bulls",
+      "shortName": "Bulls",
+      "abbreviation": "CHI",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png"
+      },
+      "color": "#ce1141",
+      "location": "Chicago"
+    },
+    {
+      "id": "5",
+      "league": "nba",
+      "name": "Cleveland Cavaliers",
+      "shortName": "Cavaliers",
+      "abbreviation": "CLE",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+      },
+      "color": "#860038",
+      "location": "Cleveland"
+    },
+    {
+      "id": "6",
+      "league": "nba",
+      "name": "Dallas Mavericks",
+      "shortName": "Mavericks",
+      "abbreviation": "DAL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/dal.png"
+      },
+      "color": "#0064b1",
+      "location": "Dallas"
+    },
+    {
+      "id": "7",
+      "league": "nba",
+      "name": "Denver Nuggets",
+      "shortName": "Nuggets",
+      "abbreviation": "DEN",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+      },
+      "color": "#0e2240",
+      "location": "Denver"
+    },
+    {
+      "id": "8",
+      "league": "nba",
+      "name": "Detroit Pistons",
+      "shortName": "Pistons",
+      "abbreviation": "DET",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png"
+      },
+      "color": "#1d428a",
+      "location": "Detroit"
+    },
+    {
+      "id": "9",
+      "league": "nba",
+      "name": "Golden State Warriors",
+      "shortName": "Warriors",
+      "abbreviation": "GS",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png"
+      },
+      "color": "#fdb927",
+      "location": "Golden State"
+    },
+    {
+      "id": "10",
+      "league": "nba",
+      "name": "Houston Rockets",
+      "shortName": "Rockets",
+      "abbreviation": "HOU",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png"
+      },
+      "color": "#ce0e2d",
+      "location": "Houston"
+    },
+    {
+      "id": "11",
+      "league": "nba",
+      "name": "Indiana Pacers",
+      "shortName": "Pacers",
+      "abbreviation": "IND",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png"
+      },
+      "color": "#0c2340",
+      "location": "Indiana"
+    },
+    {
+      "id": "12",
+      "league": "nba",
+      "name": "LA Clippers",
+      "shortName": "Clippers",
+      "abbreviation": "LAC",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png"
+      },
+      "color": "#12173f",
+      "location": "LA"
+    },
+    {
+      "id": "13",
+      "league": "nba",
+      "name": "Los Angeles Lakers",
+      "shortName": "Lakers",
+      "abbreviation": "LAL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+      },
+      "color": "#552583",
+      "location": "Los Angeles"
+    },
+    {
+      "id": "29",
+      "league": "nba",
+      "name": "Memphis Grizzlies",
+      "shortName": "Grizzlies",
+      "abbreviation": "MEM",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png"
+      },
+      "color": "#5d76a9",
+      "location": "Memphis"
+    },
+    {
+      "id": "14",
+      "league": "nba",
+      "name": "Miami Heat",
+      "shortName": "Heat",
+      "abbreviation": "MIA",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png"
+      },
+      "color": "#98002e",
+      "location": "Miami"
+    },
+    {
+      "id": "15",
+      "league": "nba",
+      "name": "Milwaukee Bucks",
+      "shortName": "Bucks",
+      "abbreviation": "MIL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png"
+      },
+      "color": "#00471b",
+      "location": "Milwaukee"
+    },
+    {
+      "id": "16",
+      "league": "nba",
+      "name": "Minnesota Timberwolves",
+      "shortName": "Timberwolves",
+      "abbreviation": "MIN",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+      },
+      "color": "#266092",
+      "location": "Minnesota"
+    },
+    {
+      "id": "3",
+      "league": "nba",
+      "name": "New Orleans Pelicans",
+      "shortName": "Pelicans",
+      "abbreviation": "NO",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/no.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png"
+      },
+      "color": "#0a2240",
+      "location": "New Orleans"
+    },
+    {
+      "id": "18",
+      "league": "nba",
+      "name": "New York Knicks",
+      "shortName": "Knicks",
+      "abbreviation": "NY",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png"
+      },
+      "color": "#1d428a",
+      "location": "New York"
+    },
+    {
+      "id": "25",
+      "league": "nba",
+      "name": "Oklahoma City Thunder",
+      "shortName": "Thunder",
+      "abbreviation": "OKC",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png"
+      },
+      "color": "#007ac1",
+      "location": "Oklahoma City"
+    },
+    {
+      "id": "19",
+      "league": "nba",
+      "name": "Orlando Magic",
+      "shortName": "Magic",
+      "abbreviation": "ORL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png"
+      },
+      "color": "#0150b5",
+      "location": "Orlando"
+    },
+    {
+      "id": "20",
+      "league": "nba",
+      "name": "Philadelphia 76ers",
+      "shortName": "76ers",
+      "abbreviation": "PHI",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png"
+      },
+      "color": "#1d428a",
+      "location": "Philadelphia"
+    },
+    {
+      "id": "21",
+      "league": "nba",
+      "name": "Phoenix Suns",
+      "shortName": "Suns",
+      "abbreviation": "PHX",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png"
+      },
+      "color": "#29127a",
+      "location": "Phoenix"
+    },
+    {
+      "id": "22",
+      "league": "nba",
+      "name": "Portland Trail Blazers",
+      "shortName": "Trail Blazers",
+      "abbreviation": "POR",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png"
+      },
+      "color": "#e03a3e",
+      "location": "Portland"
+    },
+    {
+      "id": "23",
+      "league": "nba",
+      "name": "Sacramento Kings",
+      "shortName": "Kings",
+      "abbreviation": "SAC",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sac.png"
+      },
+      "color": "#5a2d81",
+      "location": "Sacramento"
+    },
+    {
+      "id": "24",
+      "league": "nba",
+      "name": "San Antonio Spurs",
+      "shortName": "Spurs",
+      "abbreviation": "SA",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png"
+      },
+      "color": "#000000",
+      "location": "San Antonio"
+    },
+    {
+      "id": "28",
+      "league": "nba",
+      "name": "Toronto Raptors",
+      "shortName": "Raptors",
+      "abbreviation": "TOR",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png"
+      },
+      "color": "#d91244",
+      "location": "Toronto"
+    },
+    {
+      "id": "26",
+      "league": "nba",
+      "name": "Utah Jazz",
+      "shortName": "Jazz",
+      "abbreviation": "UTAH",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png"
+      },
+      "color": "#4e008e",
+      "location": "Utah"
+    },
+    {
+      "id": "27",
+      "league": "nba",
+      "name": "Washington Wizards",
+      "shortName": "Wizards",
+      "abbreviation": "WSH",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/wsh.png"
+      },
+      "color": "#e31837",
+      "location": "Washington"
+    }
+  ],
+  "wnba": [
+    {
+      "id": "20",
+      "league": "wnba",
+      "name": "Atlanta Dream",
+      "shortName": "Dream",
+      "abbreviation": "ATL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+      },
+      "color": "#e31837",
+      "location": "Atlanta"
+    },
+    {
+      "id": "19",
+      "league": "wnba",
+      "name": "Chicago Sky",
+      "shortName": "Sky",
+      "abbreviation": "CHI",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/chi.png"
+      },
+      "color": "#5091cd",
+      "location": "Chicago"
+    },
+    {
+      "id": "18",
+      "league": "wnba",
+      "name": "Connecticut Sun",
+      "shortName": "Sun",
+      "abbreviation": "CON",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/con.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/con.png"
+      },
+      "color": "#f05023",
+      "location": "Connecticut"
+    },
+    {
+      "id": "3",
+      "league": "wnba",
+      "name": "Dallas Wings",
+      "shortName": "Wings",
+      "abbreviation": "DAL",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+      },
+      "color": "#002b5c",
+      "location": "Dallas"
+    },
+    {
+      "id": "129689",
+      "league": "wnba",
+      "name": "Golden State Valkyries",
+      "shortName": "Valkyries",
+      "abbreviation": "GS",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+      },
+      "color": "#b38fcf",
+      "location": "Golden State"
+    },
+    {
+      "id": "5",
+      "league": "wnba",
+      "name": "Indiana Fever",
+      "shortName": "Fever",
+      "abbreviation": "IND",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+      },
+      "color": "#002d62",
+      "location": "Indiana"
+    },
+    {
+      "id": "17",
+      "league": "wnba",
+      "name": "Las Vegas Aces",
+      "shortName": "Aces",
+      "abbreviation": "LV",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+      },
+      "color": "#a7a8aa",
+      "location": "Las Vegas"
+    },
+    {
+      "id": "6",
+      "league": "wnba",
+      "name": "Los Angeles Sparks",
+      "shortName": "Sparks",
+      "abbreviation": "LA",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+      },
+      "color": "#552583",
+      "location": "Los Angeles"
+    },
+    {
+      "id": "8",
+      "league": "wnba",
+      "name": "Minnesota Lynx",
+      "shortName": "Lynx",
+      "abbreviation": "MIN",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+      },
+      "color": "#266092",
+      "location": "Minnesota"
+    },
+    {
+      "id": "9",
+      "league": "wnba",
+      "name": "New York Liberty",
+      "shortName": "Liberty",
+      "abbreviation": "NY",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+      },
+      "color": "#86cebc",
+      "location": "New York"
+    },
+    {
+      "id": "11",
+      "league": "wnba",
+      "name": "Phoenix Mercury",
+      "shortName": "Mercury",
+      "abbreviation": "PHX",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+      },
+      "color": "#3c286e",
+      "location": "Phoenix"
+    },
+    {
+      "id": "132052",
+      "league": "wnba",
+      "name": "Portland Fire",
+      "shortName": "Fire",
+      "abbreviation": "POR",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/por.png"
+      },
+      "color": "#cee5eb",
+      "location": "Portland"
+    },
+    {
+      "id": "14",
+      "league": "wnba",
+      "name": "Seattle Storm",
+      "shortName": "Storm",
+      "abbreviation": "SEA",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/sea.png"
+      },
+      "color": "#2c5235",
+      "location": "Seattle"
+    },
+    {
+      "id": "131935",
+      "league": "wnba",
+      "name": "Toronto Tempo",
+      "shortName": "Tempo",
+      "abbreviation": "TOR",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/tor.png"
+      },
+      "color": "#33476D",
+      "location": "Toronto"
+    },
+    {
+      "id": "16",
+      "league": "wnba",
+      "name": "Washington Mystics",
+      "shortName": "Mystics",
+      "abbreviation": "WSH",
+      "logo": {
+        "light": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+        "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/wsh.png"
+      },
+      "color": "#e03a3e",
+      "location": "Washington"
+    }
+  ],
+  "euroleague": [
+    {
+      "id": "IST",
+      "league": "euroleague",
+      "name": "Anadolu Efes Istanbul",
+      "shortName": "Efes",
+      "abbreviation": "EFS",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png"
+      },
+      "location": "Istanbul, Turkiye"
+    },
+    {
+      "id": "MIL",
+      "league": "euroleague",
+      "name": "Armani Olimpia Milan",
+      "shortName": "Milan",
+      "abbreviation": "MIL",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png"
+      },
+      "location": "Milan, Italy"
+    },
+    {
+      "id": "BES",
+      "league": "euroleague",
+      "name": "Besiktas Istanbul",
+      "shortName": "Besiktas",
+      "abbreviation": "BJK",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/b05e3c54-e672-4b31-9f86-c91e9de7715c.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/b05e3c54-e672-4b31-9f86-c91e9de7715c.png"
+      },
+      "location": "Istanbul, Turkiye"
+    },
+    {
+      "id": "RED",
+      "league": "euroleague",
+      "name": "Crvena Zvezda Meridianbet Belgrade",
+      "shortName": "Crvena",
+      "abbreviation": "CZV",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+        "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+      },
+      "location": "Belgrade, Serbia"
+    },
+    {
+      "id": "DUB",
+      "league": "euroleague",
+      "name": "Dubai Basketball",
+      "shortName": "Dubai",
+      "abbreviation": "DUB",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+        "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+      },
+      "location": "Dubai, United Arab Emirates"
+    },
+    {
+      "id": "BAR",
+      "league": "euroleague",
+      "name": "FC Barcelona",
+      "shortName": "Barca",
+      "abbreviation": "BAR",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png",
+        "dark": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png"
+      },
+      "location": "Barcelona, Spain"
+    },
+    {
+      "id": "MUN",
+      "league": "euroleague",
+      "name": "FC Bayern Munich",
+      "shortName": "Bayern",
+      "abbreviation": "BAY",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/817b0e58-d595-4b09-ab0b-1e7cc26249ff.png",
+        "dark": "https://media-cdn.incrowdsports.com/817b0e58-d595-4b09-ab0b-1e7cc26249ff.png"
+      },
+      "location": "Munich, Germany"
+    },
+    {
+      "id": "ULK",
+      "league": "euroleague",
+      "name": "Fenerbahce Tarfin Istanbul",
+      "shortName": "Fenerbahce",
+      "abbreviation": "FBT",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+      },
+      "location": "Istanbul, Turkiye"
+    },
+    {
+      "id": "HTA",
+      "league": "euroleague",
+      "name": "Hapoel IBI Tel Aviv",
+      "shortName": "Hapoel",
+      "abbreviation": "HTA",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
+        "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
+      },
+      "location": "Tel Aviv, Israel"
+    },
+    {
+      "id": "BAS",
+      "league": "euroleague",
+      "name": "Kosner Baskonia Vitoria-Gasteiz",
+      "shortName": "Baskonia",
+      "abbreviation": "KBA",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
+        "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+      },
+      "location": "Vitoria-Gasteiz, Spain"
+    },
+    {
+      "id": "ASV",
+      "league": "euroleague",
+      "name": "LDLC ASVEL Villeurbanne",
+      "shortName": "ASVEL",
+      "abbreviation": "ASV",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+        "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+      },
+      "location": "Lyon, France"
+    },
+    {
+      "id": "TEL",
+      "league": "euroleague",
+      "name": "Maccabi Rapyd Tel Aviv",
+      "shortName": "Maccabi",
+      "abbreviation": "MTA",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+        "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+      },
+      "location": "Tel Aviv, Israel"
+    },
+    {
+      "id": "OLY",
+      "league": "euroleague",
+      "name": "Olympiacos Piraeus",
+      "shortName": "Olympiacos",
+      "abbreviation": "OLY",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+        "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+      },
+      "location": "Piraeus, Greece"
+    },
+    {
+      "id": "PAN",
+      "league": "euroleague",
+      "name": "Panathinaikos AKTOR Athens",
+      "shortName": "Panathinaikos",
+      "abbreviation": "PAO",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+        "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+      },
+      "location": "Athens, Greece"
+    },
+    {
+      "id": "PRS",
+      "league": "euroleague",
+      "name": "Paris Basketball",
+      "shortName": "Paris",
+      "abbreviation": "PBB",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+        "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+      },
+      "location": "Paris, France"
+    },
+    {
+      "id": "PAR",
+      "league": "euroleague",
+      "name": "Partizan Mozzart Bet Belgrade",
+      "shortName": "Partizan",
+      "abbreviation": "PAR",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png",
+        "dark": "https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png"
+      },
+      "location": "Belgrade, Serbia"
+    },
+    {
+      "id": "MAD",
+      "league": "euroleague",
+      "name": "Real Madrid",
+      "shortName": "Real",
+      "abbreviation": "RMB",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+        "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+      },
+      "location": "Madrid, Spain"
+    },
+    {
+      "id": "PAM",
+      "league": "euroleague",
+      "name": "Valencia Basket",
+      "shortName": "Valencia",
+      "abbreviation": "VBC",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png"
+      },
+      "location": "Valencia, Spain"
+    },
+    {
+      "id": "VIR",
+      "league": "euroleague",
+      "name": "Virtus Bologna",
+      "shortName": "Virtus",
+      "abbreviation": "VIR",
+      "logo": {
+        "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png",
+        "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png"
+      },
+      "location": "Bologna, Italy"
+    },
+    {
+      "id": "ZAL",
+      "league": "euroleague",
+      "name": "Zalgiris Kaunas",
+      "shortName": "Zalgiris",
+      "abbreviation": "ZAL",
+      "logo": {
+        "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+        "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+      },
+      "location": "Kaunas, Lithuania"
+    }
+  ]
+}
