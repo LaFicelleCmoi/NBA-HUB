@@ -150,12 +150,19 @@ export interface NewsItem {
   published: string;
   image?: string;
   url: string;
+  /** Média d'origine (ESPN, BasketUSA…) */
+  source: string;
+  lang: "fr" | "en";
 }
 
 export interface TodayLeague {
   league: LeagueId;
   games: Game[];
   nextGame?: Game;
+  /** Dernière journée jouée (affichée quand il n'y a pas de match aujourd'hui). */
+  lastGames?: Game[];
+  /** Prochaine journée programmée. */
+  nextGames?: Game[];
 }
 
 export interface TodayResponse {
