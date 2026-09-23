@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useFavorite } from "@/lib/client/favorite";
+import { isFavoriteTeam, useFavoriteTeam } from "@/lib/client/favorite";
 import { LEAGUE_IDS, LEAGUES } from "@/lib/leagues";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/ui/Reveal";
@@ -13,7 +13,7 @@ import type { LeagueId, Team } from "@/types";
  * masquée derrière un onglet. Chaque ligue forme une section repérable.
  */
 function LeagueSection({ id, teams, onOpen }: { id: LeagueId; teams: Team[]; onOpen: (t: Team) => void }) {
-  const { isFavorite } = useFavorite();
+  const favorite = useFavoriteTeam();
   const l = LEAGUES[id];
   return (
     <section aria-labelledby={`teams-${id}`}>
@@ -37,7 +37,7 @@ function LeagueSection({ id, teams, onOpen }: { id: LeagueId; teams: Team[]; onO
       ) : (
         <ul className="grid grid-cols-3 gap-2 sm:grid-cols-5 sm:gap-3 lg:grid-cols-8">
           {teams.map((t, i) => {
-            const fav = isFavorite(t.league, t.id);
+            const fav = isFavoriteTeam(favorite, t.league, t.id);
             return (
               <Reveal as="li" key={t.id} delay={Math.min(i, 8) * 0.02}>
                 <button
