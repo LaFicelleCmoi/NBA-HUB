@@ -215,6 +215,14 @@ export async function getEspnRecent(league: EspnLeague, id: string): Promise<Gam
   return recent.slice(0, 5);
 }
 
+/** Salle du club : « State Farm Arena — Atlanta, GA ». Absente en WNBA. */
+function venueOf(team: RawEspnTeam): string | undefined {
+  const v = team.franchise?.venue;
+  if (!v?.fullName) return undefined;
+  const place = [v.address?.city, v.address?.state].filter(Boolean).join(", ");
+  return place ? `${v.fullName} — ${place}` : v.fullName;
+}
+
 export async function getEspnTeamDetail(league: EspnLeague, id: string): Promise<TeamDetail> {
   const [info, roster, schedule, stats] = await Promise.all([
     fetchJson<{ team: RawEspnTeam }>(`${site(league)}/teams/${id}`, REVALIDATE.teams),
@@ -228,6 +236,8 @@ export async function getEspnTeamDetail(league: EspnLeague, id: string): Promise
     season: schedule.season,
     standingSummary: info.team.standingSummary,
     coach: r.coach,
+    venue: venueOf(info.team),
+    records: [],
     roster: r.roster,
     recent: schedule.recent.slice(0, 10),
     upcoming: schedule.upcoming.slice(0, 10),
