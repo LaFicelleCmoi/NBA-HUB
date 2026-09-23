@@ -15,7 +15,18 @@ export function useApi<T>(path: string | null, opts: { refreshMs?: number; initi
     error: null,
     loading: path !== null && initial === null,
   });
-  const skipFirst = useRef(initial !== null);
+  // Chemin auquel `initial` correspond : tant qu'il n'est pas « consommé », le
+  // premier effet ne refait pas l'appel que le serveur a déjà fait.
+  const initialPath = useRef(initial !== null ? path : null);
+  const [shownPath, setShownPath] = useState(path);
+
+  // Changement de ressource : on repart de zéro. Sans cela, `data` garde la
+  // réponse du chemin précédent et le consommateur affiche les données d'une
+  // autre entité (ex. les matchs de l'équipe ouverte juste avant).
+  if (shownPath !== path) {
+    setShownPath(path);
+    setState({ data: null, error: null, loading: path !== null });
+  }
 
   useEffect(() => {
     if (!path || !path.startsWith("/api/")) return;
@@ -40,7 +51,7 @@ export function useApi<T>(path: string | null, opts: { refreshMs?: number; initi
       }
     };
 
-    if (skipFirst.current) skipFirst.current = false;
+    if (initialPath.current === path) initialPath.current = null;
     else {
       setState((s) => ({ ...s, loading: s.data === null }));
       void load();
