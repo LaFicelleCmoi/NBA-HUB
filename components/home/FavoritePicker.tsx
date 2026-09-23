@@ -1,19 +1,19 @@
 "use client";
 
-import { useFavorite } from "@/lib/client/favorite";
+import { setFavoriteTeam, useFavoriteTeam } from "@/lib/client/favorite";
 import { LEAGUE_IDS, LEAGUES } from "@/lib/leagues";
 import { Logo } from "@/components/ui/Logo";
 import type { LeagueId, Team } from "@/types";
 
 export function FavoritePicker({ teams }: { teams: Record<LeagueId, Team[]> }) {
-  const { favorite, setFavorite } = useFavorite();
+  const favorite = useFavoriteTeam();
   const value = favorite ? `${favorite.league}:${favorite.id}` : "";
 
   const onChange = (v: string) => {
-    if (!v) return setFavorite(null);
+    if (!v) return setFavoriteTeam(null);
     const [league, id] = v.split(":") as [LeagueId, string];
     const t = teams[league]?.find((x) => x.id === id);
-    if (t) setFavorite({ league, id: t.id, name: t.name, logo: t.logo });
+    if (t) setFavoriteTeam({ league, id: t.id, name: t.name, logo: t.logo });
   };
 
   return (
@@ -60,7 +60,7 @@ export function FavoritePicker({ teams }: { teams: Record<LeagueId, Team[]> }) {
         {favorite && (
           <button
             type="button"
-            onClick={() => setFavorite(null)}
+            onClick={() => setFavoriteTeam(null)}
             className="shrink-0 rounded-xl border border-line-strong px-3 py-2.5 text-sm font-semibold text-muted hover:text-fg"
           >
             Retirer
