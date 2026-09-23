@@ -77,7 +77,7 @@ export function TodayGames({ today }: { today: TodayResponse }) {
       </p>
       {total === 0 && (
         <p className="glass rounded-2xl px-4 py-3 text-center font-display text-lg font-bold uppercase tracking-wide">
-          Aucun match aujourd’hui en NBA ni en WNBA
+          Aucun match aujourd’hui dans les 3 ligues
           <span className="block font-sans text-sm font-normal normal-case tracking-normal text-muted">
             Voici les derniers résultats et les prochaines rencontres.
           </span>
