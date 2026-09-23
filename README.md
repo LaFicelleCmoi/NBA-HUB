@@ -1,6 +1,6 @@
 # HoopsHub 🏀
 
-**La NBA et la WNBA au même endroit** : scores en direct avec quart-temps et prolongations, classements avec zones de qualification, résultats, calendrier, leaders statistiques, actualités et pages équipe. Le concept reprend [LeagueHub](https://league-hub-teal.vercel.app/), adapté au basket. Tout le site est en français et affiche les horaires à l'heure de Paris.
+**NBA, WNBA et EuroLeague au même endroit** : scores en direct avec quart-temps et prolongations, classements avec zones de qualification, résultats, calendrier, leaders statistiques, actualités et pages équipe. Le concept reprend [LeagueHub](https://league-hub-teal.vercel.app/), adapté au basket. Tout le site est en français et affiche les horaires à l'heure de Paris.
 
 - **Stack** : Next.js 16 (App Router) · React 19 · TypeScript 6 · Tailwind CSS 4.3 · Framer Motion 13 (animations uniquement)
 - **Node.js** : 26.10.0 en local (dernière version, fichier `.nvmrc`), ≥ 20.9 requis
@@ -56,9 +56,14 @@ Toutes sont optionnelles (voir `.env.example`).
 | `ESPN_SITE_API` | serveur | `https://site.api.espn.com/apis/site/v2/sports/basketball` | scoreboard, équipes, effectifs, calendriers, actualités |
 | `ESPN_STANDINGS_API` | serveur | `https://site.api.espn.com/apis/v2/sports/basketball` | classements |
 | `ESPN_WEB_API` | serveur | `https://site.web.api.espn.com/apis/site/v3/sports/basketball` | leaders |
+| `EUROLEAGUE_API` | serveur | `https://api-live.euroleague.net` | API officielle EuroLeague |
+| `EUROLEAGUE_LIVE_API` | serveur | `https://live.euroleague.net/api` | score en direct EuroLeague |
+| `EUROLEAGUE_COMPETITION` | serveur | `E` | code de compétition (`U` = EuroCup) |
 | `UPSTREAM_TIMEOUT_MS` | serveur | `8000` | timeout des appels amont |
 | `RATE_LIMIT_MAX` / `RATE_LIMIT_WINDOW_MS` | serveur | `60` / `60000` | limite de requêtes sur `/api` |
 | `NEWS_BASKETUSA_RSS` | serveur | `https://www.basketusa.com/feed/` | actualités NBA et WNBA en français |
+| `NEWS_EUROLEAGUE_FR_RSS` | serveur | `https://www.basketeurope.com/category/euroleague/feed/` | actualités EuroLeague en français |
+| `NEWS_EUROLEAGUE_EN_RSS` | serveur | `https://www.eurohoops.net/en/category/euroleague/feed/` | actualités EuroLeague en anglais |
 | `NEXT_PUBLIC_SITE_URL` | public | `http://localhost:3000` | URL canonique (Open Graph) |
 | `NEXT_PUBLIC_TRACKER_URL` / `NEXT_PUBLIC_TRACKER_LABEL` | public | `https://www.nba.com/stats` / `Stats` | lien externe du header |
 
@@ -72,7 +77,7 @@ Seules les variables préfixées `NEXT_PUBLIC_` arrivent dans le bundle client. 
 app/
   layout.tsx                 # polices, script de thème (avec nonce CSP), header, footer
   (home)/page.tsx            # accueil (+ loading.tsx)
-  [league]/page.tsx          # /nba, /wnba (onglets)
+  [league]/page.tsx          # /nba, /wnba, /euroleague (onglets)
   [league]/equipe/[teamId]/  # page équipe
   api/                       # Route Handlers = proxy serveur
     today/                                 GET  matchs du jour + compteurs
@@ -85,7 +90,7 @@ app/
     [league]/news/                         GET  actualités
 components/                  # UI (home/, league/, team/, games/, standings/, layout/, ui/)
 lib/
-  api/        # clients amont (espn.ts, rss.ts), fetch + cache (http.ts), réponse d'API (respond.ts)
+  api/        # clients amont (espn.ts, euroleague.ts, rss.ts), fetch + cache (http.ts), réponse d'API (respond.ts)
   normalize/  # conversion des réponses amont vers le modèle commun
   data/       # service unique utilisé par les Route Handlers ET les Server Components
   client/     # hooks navigateur : useApi (appelle /api uniquement), favori, thème
@@ -97,20 +102,20 @@ proxy.ts      # CSP avec nonce + rate limiting /api (ex-middleware, renommé en 
 ### Flux de données
 
 ```
-Navigateur ──► /api/* (Route Handlers) ──► lib/data ──► lib/api/espn ──► API ESPN
+Navigateur ──► /api/* (Route Handlers) ──► lib/data ──► lib/api/{espn,euroleague} ──► API tierces
                                               │
 Server Components (rendu initial) ────────────┘   (même service, même cache, même normalisation)
 ```
 
 - **Le navigateur ne contacte jamais une API tierce.** Les composants client (rafraîchissement du direct, onglets, panneau équipe) passent tous par `useApi()`, qui refuse toute URL ne commençant pas par `/api/`.
 - Les Server Components appellent directement `lib/data`, c'est-à-dire la même couche que celle derrière `/api`. Passer par HTTP vers soi-même côté serveur serait un anti-pattern Next.js : cela ajouterait de la latence et demanderait une URL absolue. Les appels tiers restent donc tous côté serveur.
-- **Modèle commun** (`types/index.ts`) : toute réponse amont est normalisée dans `lib/normalize/*`. Les composants ignorent tout de la forme des réponses ESPN.
+- **Modèle commun** (`types/index.ts`) : toute réponse amont est normalisée dans `lib/normalize/*`. Les composants ignorent tout de la forme des réponses ESPN ou EuroLeague.
 
 ### Cache et revalidation
 
 | Donnée | Revalidation |
 | --- | --- |
-| Scores du jour, matchs en cours | **30 s** (et rafraîchissement client toutes les 30 s, suspendu quand l'onglet est masqué) |
+| Scores du jour, matchs en cours, score live EuroLeague | **30 s** (et rafraîchissement client toutes les 30 s, suspendu quand l'onglet est masqué) |
 | Classements, calendriers, actualités | **10 min** |
 | Effectifs, équipes, leaders, statistiques | **1 h** |
 
@@ -141,6 +146,25 @@ Chaque endpoint a été vérifié avec `curl` le 23/09/2026. Voici ce qui foncti
 
 Logos : `a.espncdn.com/i/teamlogos/{ligue}/500/{abbr}.png` pour la variante claire et `…/500-dark/…` pour la sombre. Le composant `Logo` affiche les deux, et la variante est choisie en CSS selon le thème.
 
+### EuroLeague : API officielle (choix retenu)
+
+L'API officielle **`api-live.euroleague.net` est accessible** sans clé. ESPN **ne couvre pas** l'EuroLeague : `mens-euroleague/scoreboard` renvoie 400, `teams` renvoie 404 et `standings` est vide. Le choix s'impose donc.
+
+| Endpoint | Statut | Usage |
+| --- | --- | --- |
+| `/v2/competitions/E/seasons/E{année}/games` | ✅ | Tous les matchs de la saison, avec les `partials` (quarts-temps et `extraPeriods` pour les prolongations). |
+| `/v2/competitions/E/seasons/E{année}/clubs` | ✅ | Clubs (liste blanche des IDs). |
+| `/v2/competitions/E/seasons/E{année}/clubs/{code}/people` | ✅ | Effectif et staff. |
+| `/v3/competitions/E/seasons/E{année}/rounds/{n}/basicstandings` | ✅ | Classement après la journée n. |
+| `/v3/competitions/E/statistics/players/leaders?seasonMode=Single&seasonCode=…&statisticMode=PerGame` | ✅ | Leaders. |
+| `live.euroleague.net/api/Header?gamecode=…&seasoncode=…` | ✅ | Score en direct, quart-temps en cours et temps restant. |
+| Actualités / flux RSS (`euroleaguebasketball.net`) | ❌ | Protégé par un « Vercel Security Checkpoint » (429). Remplacé par BasketEurope et Eurohoops (voir ci-dessous). |
+
+**Limites de l'EuroLeague :**
+- Le statut « en direct » est déduit de la fenêtre horaire du match (jusqu'à 3 h après le début). Pendant cette fenêtre, on interroge le flux `Header`, qui donne des scores cumulés par quart-temps, convertis ensuite en scores par période.
+- Les statistiques d'équipe sont **calculées** à partir des matchs joués (bilan, points pour et contre, bilans domicile et extérieur). Il n'existe pas d'endpoint dédié accessible.
+- L'API n'est pas documentée publiquement et peut évoluer sans préavis.
+
 ### Actualités (flux RSS)
 
 L'actualité passe par des flux RSS publics, lus côté serveur par un petit parseur sans dépendance (`lib/api/rss.ts`). Les médias francophones sont affichés en premier :
@@ -149,10 +173,11 @@ L'actualité passe par des flux RSS publics, lus côté serveur par un petit par
 | --- | --- | --- |
 | NBA | BasketUSA (rubrique « NBA – ») | ESPN |
 | WNBA | BasketUSA (rubrique « WNBA – ») | ESPN |
+| EuroLeague | BasketEurope (catégorie EuroLeague) | Eurohoops |
 
 - BasketUSA publie un fil unique : ses URL de catégorie renvoient le même contenu. Les articles sont donc classés d'après leur rubrique, qui ouvre chaque description.
 - Seuls les liens `https` sont conservés. Les images ne sont gardées que si leur hôte figure dans la liste blanche, identique aux `remotePatterns` de `next.config.ts`. Le texte est réduit à du texte brut, jamais injecté comme HTML.
-- Chaque source est indépendante : si l'une tombe, l'autre reste affichée.
+- Chaque source est indépendante : si l'une tombe, les autres restent affichées.
 - Chaque carte indique la source et la langue, et l'attribut `lang` est posé pour les lecteurs d'écran.
 
 ### Gestion de l'inter-saison
@@ -173,7 +198,8 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
 | Ligue | Tableau | Zones |
 | --- | --- | --- |
 | NBA | Est / Ouest | 1–6 qualifiés directs, 7–10 play-in |
-| WNBA | Est / Ouest | 1–8 en playoffs, **sur la ligue entière** (le top 8 WNBA ne dépend pas de la conférence). ESPN renvoie un `playoffSeed` par conférence, inutilisable comme rang de ligue : il n'est retenu que s'il est unique sur toute la ligue, sinon le rang est recalculé au pourcentage de victoires. |
+| WNBA | Est / Ouest | 1–8 en playoffs, **sur la ligue entière** (le top 8 WNBA ne dépend pas de la conférence : on utilise le `playoffSeed` d'ESPN) |
+| EuroLeague | tableau unique | 1–6 qualifiés directs, 7–10 play-in |
 
 ---
 
@@ -181,8 +207,8 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
 
 - **Proxy serveur** : toutes les API tierces sont appelées depuis des Route Handlers ou Server Components. Aucune URL amont ni configuration n'est exposée au client (`lib/env.ts` est marqué `server-only`).
 - **Validation stricte** (`lib/validation.ts`) :
-  - ligues en liste blanche (`nba`, `wnba`) ;
-  - identifiants d'équipe vérifiés **par format** (`^\d{1,7}$`) **puis par appartenance** à la liste des équipes de la ligue ;
+  - ligues en liste blanche (`nba`, `wnba`, `euroleague`) ;
+  - identifiants d'équipe vérifiés **par format** (`^\d{1,7}$` pour ESPN, `^[A-Z]{2,4}$` pour l'EuroLeague) **puis par appartenance** à la liste des équipes de la ligue ;
   - paramètres de requête non prévus refusés (400) ;
   - seul `GET` est accepté sur `/api` (405 sinon).
 - **Rate limiting** sur `/api` (`proxy.ts`) : 60 requêtes par minute et par IP par défaut, avec réponse 429 et `Retry-After`.
@@ -215,8 +241,10 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
 
 ## Limites
 
-- Les données ESPN proviennent d'API **non officiellement documentées**. Leur format peut changer, et la normalisation est défensive (champs optionnels, replis).
-- Les actualités dépendent de flux RSS tiers (BasketUSA) qui peuvent changer de format. Le français est prioritaire, mais une partie des articles reste en anglais.
+- Les données ESPN et EuroLeague proviennent d'API **non officiellement documentées**. Leur format peut changer, et la normalisation est défensive (champs optionnels, replis).
+- Les actualités dépendent de flux RSS tiers (BasketUSA, BasketEurope, Eurohoops) qui peuvent changer de format. Le français est prioritaire, mais une partie des articles reste en anglais.
 - La WNBA a moins d'articles en français, car BasketUSA la couvre moins que la NBA.
 - Les calendriers de team schedule ESPN ne contiennent pas les quarts-temps. Les cartes des pages équipe NBA et WNBA n'ont donc pas de détail par période ; les onglets Résultats et Matchs du jour l'affichent.
-- Site non officiel, sans lien avec la NBA, la WNBA ou ESPN.
+- Le logo EuroLeague est un pictogramme générique (`public/leagues/`), pas le logo officiel.
+- Les noms de pays des effectifs EuroLeague sont fournis en anglais par l'API.
+- Site non officiel, sans lien avec la NBA, la WNBA, l'EuroLeague ou ESPN.
