@@ -26,7 +26,13 @@ const isTab = (v: string): v is TabKey => TABS.some((t) => t.key === v);
 // synchronisé avec les boutons précédent/suivant du navigateur.
 const subscribeHash = (cb: () => void) => {
   window.addEventListener("hashchange", cb);
-  return () => window.removeEventListener("hashchange", cb);
+  // « popstate » est indispensable : c'est le seul événement émis quand on
+  // revient sur une entrée d'historique poussée par history.pushState.
+  window.addEventListener("popstate", cb);
+  return () => {
+    window.removeEventListener("hashchange", cb);
+    window.removeEventListener("popstate", cb);
+  };
 };
 const readHash = (): TabKey => {
   const h = window.location.hash.slice(1);
@@ -120,7 +126,10 @@ function NewsPanel({ league }: { league: LeagueId }) {
 export function LeagueTabs({ league, initialStandings }: { league: LeagueId; initialStandings: Standings | null }) {
   const tab = useSyncExternalStore(subscribeHash, readHash, () => "classement" as TabKey);
   const change = (k: TabKey) => {
-    history.replaceState(null, "", `#${k}`);
+    if (k === tab) return;
+    // pushState (et non replaceState) : chaque onglet devient une entrée
+    // d'historique, donc « précédent » ramène bien à l'onglet précédent.
+    history.pushState(null, "", `#${k}`);
     window.dispatchEvent(new HashChangeEvent("hashchange"));
   };
 
