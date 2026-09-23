@@ -29,6 +29,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "a.espncdn.com", pathname: "/combiner/**" },
       { protocol: "https", hostname: "media-cdn.incrowdsports.com", pathname: "/**" },
       { protocol: "https", hostname: "media-cdn.cortextech.io", pathname: "/**" },
+      // Images des actualités (liste identique à IMAGE_HOSTS dans lib/api/rss.ts)
+      { protocol: "https", hostname: "storage.ghost.io", pathname: "/**" },
+      { protocol: "https", hostname: "www.basketusa.com", pathname: "/**" },
     ],
   },
   async headers() {
