@@ -37,6 +37,22 @@ export const env = {
   newsEuroleagueEn: exact("NEWS_EUROLEAGUE_EN_RSS", "https://www.eurohoops.net/en/category/euroleague/feed/"),
 } as const;
 
+/**
+ * Trace des bases réellement utilisées, écrite une fois au démarrage du
+ * serveur. Une variable d'environnement mal renseignée en production écrase
+ * silencieusement la valeur par défaut et ne casse qu'un fournisseur : sans
+ * cette ligne, le symptôme (une ligue vide) ne désigne pas sa cause.
+ * Rien de sensible ici — ce sont des API publiques, et ce journal reste côté
+ * serveur.
+ */
+const OVERRIDDEN = ["ESPN_SITE_API", "ESPN_STANDINGS_API", "ESPN_WEB_API", "EUROLEAGUE_API", "EUROLEAGUE_LIVE_API"]
+  .filter((n) => process.env[n]?.trim());
+console.info(
+  "[config] bases amont :",
+  { espn: env.espnSiteApi, classements: env.espnStandingsApi, leaders: env.espnWebApi, euroleague: env.euroleagueApi },
+  OVERRIDDEN.length ? `— redéfinies par l'environnement : ${OVERRIDDEN.join(", ")}` : "— valeurs par défaut",
+);
+
 /** Durées de cache (secondes). */
 export const REVALIDATE = {
   live: 30,
