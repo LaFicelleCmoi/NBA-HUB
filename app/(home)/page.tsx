@@ -13,7 +13,7 @@ import type { LeagueId, Standings, Team, TodayResponse } from "@/types";
 const EMPTY_TODAY: TodayResponse = {
   date: new Date().toISOString().slice(0, 10),
   leagues: LEAGUE_IDS.map((league) => ({ league, games: [] })),
-  stats: { leagues: LEAGUE_IDS.length, teams: 0, gamesToday: 0, pointsToday: 0, seasonPoints: 0, seasonGames: 0, avgPerGame: 0 },
+  stats: { leagues: 3, teams: 0, gamesToday: 0, pointsToday: 0, seasonPoints: 0, seasonGames: 0, avgPerGame: 0 },
 };
 
 export default async function HomePage() {
@@ -45,7 +45,9 @@ export default async function HomePage() {
       <section aria-labelledby="teams-title" className="mt-20">
         <Reveal from="left">
           <SectionHeading id="teams-title" kicker="Toutes les équipes" title="Les équipes">
-            <p className="text-sm text-muted">Cliquez sur un logo pour voir ses 5 derniers matchs.</p>
+            <p className="text-sm text-muted">
+              Toutes les équipes des {LEAGUE_IDS.length} ligues. Cliquez sur un logo pour voir ses 5 derniers matchs.
+            </p>
           </SectionHeading>
         </Reveal>
         <TeamGrid teams={teams} />
@@ -65,7 +67,7 @@ export default async function HomePage() {
       <section aria-labelledby="standings-title" className="mt-20">
         <Reveal from="left">
           <SectionHeading id="standings-title" kicker="Saison régulière" title="Classements">
-            <p className="text-sm text-muted">Faites défiler horizontalement →</p>
+            <p className="text-sm text-muted">Classements complets : toutes les conférences, toutes les équipes.</p>
           </SectionHeading>
         </Reveal>
         <StandingsOverview standings={standings} />
