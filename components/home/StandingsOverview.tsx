@@ -56,7 +56,7 @@ export function StandingsOverview({ standings }: { standings: Standings[] }) {
     <div
       className="scrollbar-thin relative -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6"
       role="region"
-      aria-label="Classements des trois ligues (défilement horizontal)"
+      aria-label="Classements par championnat (défilement horizontal)"
       tabIndex={0}
     >
       {standings.map((s) => (
