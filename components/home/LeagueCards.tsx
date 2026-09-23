@@ -7,11 +7,12 @@ import type { LeagueId } from "@/types";
 const TAGLINES: Record<LeagueId, string> = {
   nba: "30 franchises, conférences Est et Ouest, play-in puis playoffs.",
   wnba: "Le championnat féminin nord-américain, top 8 qualifié en playoffs.",
+  euroleague: "Les 20 meilleurs clubs d’Europe, play-in puis Final Four.",
 };
 
 export function LeagueCards({ teamCounts }: { teamCounts: Record<LeagueId, number> }) {
   return (
-    <ul className="grid gap-4 md:grid-cols-2">
+    <ul className="grid gap-4 md:grid-cols-3">
       {LEAGUE_IDS.map((id, i) => {
         const l = LEAGUES[id];
         return (
