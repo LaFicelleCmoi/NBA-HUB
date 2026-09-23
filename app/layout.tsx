@@ -17,9 +17,9 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swa
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: { default: "HoopsHub — NBA et WNBA", template: "%s · HoopsHub" },
+  title: { default: "HoopsHub — NBA, WNBA et EuroLeague", template: "%s · HoopsHub" },
   description:
-    "Scores en direct, classements, résultats, calendriers, leaders et actualités de la NBA et de la WNBA, réunis au même endroit.",
+    "Scores en direct, classements, résultats, calendriers, leaders et actualités de la NBA, de la WNBA et de l'EuroLeague, réunis au même endroit.",
   openGraph: { type: "website", locale: "fr_FR", siteName: "HoopsHub" },
 };
 
