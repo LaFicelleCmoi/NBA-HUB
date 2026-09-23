@@ -18,6 +18,7 @@ import {
   getElTeams,
   getElToday,
 } from "@/lib/api/euroleague";
+import { withFallback } from "@/lib/api/fallback";
 import { fetchRss } from "@/lib/api/rss";
 import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
@@ -42,23 +43,28 @@ import type {
  */
 
 export const getTeams = (league: LeagueId): Promise<Team[]> =>
-  league === "euroleague" ? getElTeams() : getEspnTeams(league);
+  withFallback(`teams:${league}`, () => (league === "euroleague" ? getElTeams() : getEspnTeams(league)));
 
 export const getStandings = (league: LeagueId): Promise<Standings> =>
-  league === "euroleague" ? getElStandings() : getEspnStandings(league);
+  withFallback(`standings:${league}`, () => (league === "euroleague" ? getElStandings() : getEspnStandings(league)));
 
 export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promise<GamesResponse> =>
-  league === "euroleague" ? getElGames(view) : getEspnGames(league, view);
+  withFallback(`games:${league}:${view}`, () =>
+    league === "euroleague" ? getElGames(view) : getEspnGames(league, view),
+  );
 
 export const getLeaders = (league: LeagueId): Promise<LeadersResponse> =>
-  league === "euroleague" ? getElLeaders() : getEspnLeaders(league);
+  withFallback(`leaders:${league}`, () => (league === "euroleague" ? getElLeaders() : getEspnLeaders(league)));
 
 /**
  * Actualités : médias francophones en priorité (BasketUSA, BasketEurope),
  * complétés par des sources anglophones (ESPN, Eurohoops). Chaque source est
  * indépendante : si l'une tombe, les autres restent affichées.
  */
-export async function getNews(league: LeagueId): Promise<NewsItem[]> {
+export const getNews = (league: LeagueId): Promise<NewsItem[]> =>
+  withFallback(`news:${league}`, () => fetchNews(league));
+
+async function fetchNews(league: LeagueId): Promise<NewsItem[]> {
   const sources: Promise<NewsItem[]>[] =
     league === "euroleague"
       ? [
@@ -84,9 +90,14 @@ export async function getNews(league: LeagueId): Promise<NewsItem[]> {
 }
 
 export const getRecent = (league: LeagueId, id: string): Promise<Game[]> =>
-  league === "euroleague" ? getElRecent(id) : getEspnRecent(league, id);
+  withFallback(`recent:${league}:${id}`, () =>
+    league === "euroleague" ? getElRecent(id) : getEspnRecent(league, id),
+  );
 
-export async function getTeamDetail(league: LeagueId, id: string): Promise<TeamDetail> {
+export const getTeamDetail = (league: LeagueId, id: string): Promise<TeamDetail> =>
+  withFallback(`team:${league}:${id}`, () => fetchTeamDetail(league, id));
+
+async function fetchTeamDetail(league: LeagueId, id: string): Promise<TeamDetail> {
   const [detail, standings] = await Promise.all([
     league === "euroleague" ? getElTeamDetail(id) : getEspnTeamDetail(league, id),
     getStandings(league).catch(() => null),
@@ -114,7 +125,9 @@ function nextSlate(games: Game[]): Game[] {
 }
 
 /** Vue agrégée « aujourd'hui » pour l'accueil. */
-export async function getToday(): Promise<TodayResponse> {
+export const getToday = (): Promise<TodayResponse> => withFallback("today", fetchToday);
+
+async function fetchToday(): Promise<TodayResponse> {
   const settled = await Promise.allSettled(
     LEAGUE_IDS.map((l) => (l === "euroleague" ? getElToday() : getEspnToday(l))),
   );
