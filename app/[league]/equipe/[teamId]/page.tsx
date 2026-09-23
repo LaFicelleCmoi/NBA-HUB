@@ -150,7 +150,13 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
               ))}
             </ul>
           ) : (
-            <EmptyState title="Aucun résultat" />
+            <EmptyState title="Aucun match joué" icon="🆕">
+              <p>
+                {detail.upcoming.length
+                  ? "Pas encore de match officiel pour cette équipe : ses résultats apparaîtront dès sa première rencontre."
+                  : "Aucun résultat disponible pour le moment."}
+              </p>
+            </EmptyState>
           )}
         </Reveal>
 
@@ -166,7 +172,11 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
             </ul>
           ) : (
             <EmptyState title="Aucun match programmé" icon="📅">
-              <p>Le calendrier sera affiché dès sa publication.</p>
+              <p>
+                {detail.recent.length
+                  ? "Saison terminée pour cette équipe. Le calendrier de la prochaine saison sera affiché dès sa publication."
+                  : "Le calendrier sera affiché dès sa publication."}
+              </p>
             </EmptyState>
           )}
         </Reveal>
@@ -184,7 +194,9 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
             ))}
           </dl>
         ) : (
-          <EmptyState title="Statistiques indisponibles" icon="📊" />
+          <EmptyState title="Statistiques à venir" icon="📊">
+            <p>Les statistiques de l’équipe apparaîtront après son premier match de la saison.</p>
+          </EmptyState>
         )}
       </Reveal>
 
