@@ -98,6 +98,9 @@ export async function getTeamDetail(league: LeagueId, id: string): Promise<TeamD
       standings?.isPreviousSeason ? ` (saison ${standings.season})` : ""
     }`;
     detail.team.conference = row.r.team.conference;
+    // Bilans détaillés (domicile, extérieur, conférence, 10 derniers…) : ESPN
+    // ne les publie que dans le classement, pas sur la fiche d'équipe.
+    if (row.r.detail?.length) detail.records = row.r.detail;
   }
   return detail;
 }
