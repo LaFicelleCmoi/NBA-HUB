@@ -8,6 +8,7 @@ import type { TodayResponse } from "@/types";
 const WORDS = [
   { text: "NBA", color: "var(--nba)" },
   { text: "WNBA", color: "var(--wnba)" },
+  { text: "EuroLeague", color: "var(--euroleague)" },
 ];
 
 const fmt1 = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 });
@@ -49,7 +50,7 @@ export function Hero({ stats }: { stats: TodayResponse["stats"] }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          Les 2 grandes ligues
+          Les 3 grandes ligues
         </motion.span>
         <motion.span
           className="block"
@@ -76,8 +77,8 @@ export function Hero({ stats }: { stats: TodayResponse["stats"] }) {
         </span>
       </h1>
       <p className="mt-5 max-w-2xl text-base text-muted sm:text-lg">
-        Scores en direct, classements, résultats, calendriers, leaders et actualités de la NBA et de la WNBA,
-        réunis au même endroit — horaires à l’heure de Paris.
+        Scores en direct, classements, résultats, calendriers, leaders et actualités de la NBA, de la WNBA et de
+        l’EuroLeague, réunis au même endroit — horaires à l’heure de Paris.
       </p>
 
       <dl className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-5">
