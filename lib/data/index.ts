@@ -20,6 +20,9 @@ import {
 } from "@/lib/api/euroleague";
 import { withFallback } from "@/lib/api/fallback";
 import bundledTeams from "@/lib/data/teams.json";
+import bundledStandings from "@/lib/data/standings.json";
+import bundledLeaders from "@/lib/data/leaders.json";
+import bundledDetails from "@/lib/data/team-details.json";
 import { fetchRss } from "@/lib/api/rss";
 import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
@@ -44,6 +47,25 @@ import type {
  */
 
 /**
+ * Ossature relevée chez les fournisseurs et versionnée dans le dépôt
+ * (`scripts/snapshot.mjs`). Elle ne remplace jamais une réponse amont réussie :
+ * elle prend le relais quand l'amont se tait, pour que le site montre des
+ * données réelles plutôt qu'une page d'erreur.
+ */
+const bundled = {
+  teams: bundledTeams as Record<LeagueId, Team[]>,
+  standings: bundledStandings as unknown as Record<LeagueId, Standings>,
+  leaders: bundledLeaders as unknown as Record<LeagueId, LeadersResponse>,
+  details: bundledDetails as unknown as Record<LeagueId, Record<string, Omit<TeamDetail, "recent" | "upcoming">>>,
+};
+
+/** Journalise pourquoi on bascule sur le dépôt, sans masquer la cause. */
+function logBundled(what: string, err: unknown) {
+  const cause = err instanceof Error ? err.message : "réponse vide";
+  console.warn(`[repli-depot] ${what} : ${cause} — données du dépôt servies.`);
+}
+
+/**
  * Liste des équipes : c'est l'ossature du site (grille de l'accueil, sélecteur
  * d'équipe favorite, liste blanche de validation des identifiants). Elle ne
  * change qu'une fois par an, alors qu'une API muette la faisait disparaître
@@ -57,18 +79,24 @@ export const getTeams = (league: LeagueId): Promise<Team[]> =>
     try {
       const live = league === "euroleague" ? await getElTeams() : await getEspnTeams(league);
       if (live.length > 0) return live;
-      console.warn(`[equipes] ${league} : l'amont a répondu une liste vide, repli sur la liste du dépôt.`);
+      logBundled(`equipes ${league}`, null);
     } catch (err) {
-      console.warn(
-        `[equipes] ${league} : amont indisponible (${err instanceof Error ? err.message : "erreur inconnue"}), ` +
-          "repli sur la liste du dépôt.",
-      );
+      logBundled(`equipes ${league}`, err);
     }
-    return bundledTeams[league] as Team[];
+    return bundled.teams[league];
   });
 
 export const getStandings = (league: LeagueId): Promise<Standings> =>
-  withFallback(`standings:${league}`, () => (league === "euroleague" ? getElStandings() : getEspnStandings(league)));
+  withFallback(`standings:${league}`, async () => {
+    try {
+      const live = league === "euroleague" ? await getElStandings() : await getEspnStandings(league);
+      if (live.groups.some((g) => g.rows.length > 0)) return live;
+      logBundled(`classement ${league}`, null);
+    } catch (err) {
+      logBundled(`classement ${league}`, err);
+    }
+    return bundled.standings[league];
+  });
 
 export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promise<GamesResponse> =>
   withFallback(`games:${league}:${view}`, () =>
@@ -76,7 +104,16 @@ export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promis
   );
 
 export const getLeaders = (league: LeagueId): Promise<LeadersResponse> =>
-  withFallback(`leaders:${league}`, () => (league === "euroleague" ? getElLeaders() : getEspnLeaders(league)));
+  withFallback(`leaders:${league}`, async () => {
+    try {
+      const live = league === "euroleague" ? await getElLeaders() : await getEspnLeaders(league);
+      if (live.leaders.some((l) => l.entries.length > 0)) return live;
+      logBundled(`leaders ${league}`, null);
+    } catch (err) {
+      logBundled(`leaders ${league}`, err);
+    }
+    return bundled.leaders[league];
+  });
 
 /**
  * Actualités : médias francophones en priorité (BasketUSA, BasketEurope),
@@ -117,7 +154,18 @@ export const getRecent = (league: LeagueId, id: string): Promise<Game[]> =>
   );
 
 export const getTeamDetail = (league: LeagueId, id: string): Promise<TeamDetail> =>
-  withFallback(`team:${league}:${id}`, () => fetchTeamDetail(league, id));
+  withFallback(`team:${league}:${id}`, async () => {
+    try {
+      return await fetchTeamDetail(league, id);
+    } catch (err) {
+      const durable = bundled.details[league]?.[id];
+      if (!durable) throw err;
+      logBundled(`equipe ${league}/${id}`, err);
+      // Les matchs ne sont pas versionnés (ils se périment en quelques heures) :
+      // la page affiche ses messages « aucun match » plutôt qu'une affiche fausse.
+      return { ...durable, recent: [], upcoming: [] };
+    }
+  });
 
 async function fetchTeamDetail(league: LeagueId, id: string): Promise<TeamDetail> {
   const [detail, standings] = await Promise.all([
