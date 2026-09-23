@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useFavorite } from "@/lib/client/favorite";
+import { isFavoriteTeam, useFavoriteTeam } from "@/lib/client/favorite";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/ui/Reveal";
 import type { LeadersResponse } from "@/types";
@@ -32,7 +32,7 @@ function Headshot({ src, name }: { src?: string; name: string }) {
 }
 
 export function LeadersView({ data }: { data: LeadersResponse }) {
-  const { isFavorite } = useFavorite();
+  const favorite = useFavoriteTeam();
   return (
     <div>
       <p className="mb-4 text-sm text-muted">
@@ -50,7 +50,7 @@ export function LeadersView({ data }: { data: LeadersResponse }) {
               ) : (
                 <ol className="space-y-1">
                   {cat.entries.map((e) => {
-                    const fav = e.team ? isFavorite(e.team.league, e.team.id) : false;
+                    const fav = e.team ? isFavoriteTeam(favorite, e.team.league, e.team.id) : false;
                     return (
                       <li
                         key={e.playerId}
