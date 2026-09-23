@@ -1,0 +1,4649 @@
+{
+  "nba": {
+    "league": "nba",
+    "isPreviousSeason": true,
+    "groups": [
+      {
+        "name": "Est",
+        "rows": [
+          {
+            "team": {
+              "id": "8",
+              "league": "nba",
+              "name": "Detroit Pistons",
+              "shortName": "Pistons",
+              "abbreviation": "DET",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png"
+              },
+              "location": "Detroit",
+              "conference": "Est"
+            },
+            "rank": 1,
+            "played": 82,
+            "wins": 60,
+            "losses": 22,
+            "winPct": 0.73170733,
+            "diff": 669,
+            "streak": "V3",
+            "seed": 1,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "60-22"
+              },
+              {
+                "label": "À domicile",
+                "value": "31-9"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "28-13"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "39-13"
+              },
+              {
+                "label": "Dans la division",
+                "value": "12-4"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "3 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "117.8"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "109.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+8.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+669"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9657"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "8988"
+              },
+              {
+                "label": "% de victoires",
+                "value": "73.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "75.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "75.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "2",
+              "league": "nba",
+              "name": "Boston Celtics",
+              "shortName": "Celtics",
+              "abbreviation": "BOS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png"
+              },
+              "location": "Boston",
+              "conference": "Est"
+            },
+            "rank": 2,
+            "played": 82,
+            "wins": 56,
+            "losses": 26,
+            "winPct": 0.68292683,
+            "diff": 631,
+            "streak": "V2",
+            "seed": 2,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "56-26"
+              },
+              {
+                "label": "À domicile",
+                "value": "30-11"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "26-15"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "36-16"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-6"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "114.9"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "107.2"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+7.7"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+631"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9418"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "8787"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "4"
+              },
+              {
+                "label": "% de victoires",
+                "value": "68.3 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "69.2 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "62.5 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "18",
+              "league": "nba",
+              "name": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png"
+              },
+              "location": "New York",
+              "conference": "Est"
+            },
+            "rank": 3,
+            "played": 82,
+            "wins": 53,
+            "losses": 29,
+            "winPct": 0.64634144,
+            "diff": 519,
+            "streak": "D1",
+            "seed": 3,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "53-29"
+              },
+              {
+                "label": "À domicile",
+                "value": "30-10"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "22-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "35-17"
+              },
+              {
+                "label": "Dans la division",
+                "value": "14-3"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "116.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "110.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+6.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+519"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9549"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9030"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "7"
+              },
+              {
+                "label": "% de victoires",
+                "value": "64.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "67.3 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "82.4 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "5",
+              "league": "nba",
+              "name": "Cleveland Cavaliers",
+              "shortName": "Cavaliers",
+              "abbreviation": "CLE",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+              },
+              "location": "Cleveland",
+              "conference": "Est"
+            },
+            "rank": 4,
+            "played": 82,
+            "wins": 52,
+            "losses": 30,
+            "winPct": 0.63414633,
+            "diff": 336,
+            "streak": "V1",
+            "seed": 4,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "52-30"
+              },
+              {
+                "label": "À domicile",
+                "value": "27-14"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "25-16"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "33-19"
+              },
+              {
+                "label": "Dans la division",
+                "value": "11-5"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "119.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "115.4"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+4.1"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+336"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9800"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9464"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "8"
+              },
+              {
+                "label": "% de victoires",
+                "value": "63.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "63.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "68.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "28",
+              "league": "nba",
+              "name": "Toronto Raptors",
+              "shortName": "Raptors",
+              "abbreviation": "TOR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png"
+              },
+              "location": "Toronto",
+              "conference": "Est"
+            },
+            "rank": 5,
+            "played": 82,
+            "wins": 46,
+            "losses": 36,
+            "winPct": 0.5609756,
+            "diff": 232,
+            "streak": "V1",
+            "seed": 5,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "46-36"
+              },
+              {
+                "label": "À domicile",
+                "value": "24-17"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "22-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "33-19"
+              },
+              {
+                "label": "Dans la division",
+                "value": "5-12"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "114.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "111.8"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+2.8"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+232"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9400"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9168"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "14"
+              },
+              {
+                "label": "% de victoires",
+                "value": "56.1 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "63.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "29.4 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "1",
+              "league": "nba",
+              "name": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png"
+              },
+              "location": "Atlanta",
+              "conference": "Est"
+            },
+            "rank": 6,
+            "played": 82,
+            "wins": 46,
+            "losses": 36,
+            "winPct": 0.5609756,
+            "diff": 198,
+            "streak": "D1",
+            "seed": 6,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "46-36"
+              },
+              {
+                "label": "À domicile",
+                "value": "24-17"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "22-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "27-25"
+              },
+              {
+                "label": "Dans la division",
+                "value": "9-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "118.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "116.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+2.5"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+198"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9714"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9516"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "14"
+              },
+              {
+                "label": "% de victoires",
+                "value": "56.1 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "51.9 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "56.3 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "20",
+              "league": "nba",
+              "name": "Philadelphia 76ers",
+              "shortName": "76ers",
+              "abbreviation": "PHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png"
+              },
+              "location": "Philadelphia",
+              "conference": "Est"
+            },
+            "rank": 7,
+            "played": 82,
+            "wins": 45,
+            "losses": 37,
+            "winPct": 0.5487805,
+            "diff": -15,
+            "streak": "V2",
+            "seed": 7,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "45-37"
+              },
+              {
+                "label": "À domicile",
+                "value": "23-18"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "22-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "27-25"
+              },
+              {
+                "label": "Dans la division",
+                "value": "9-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "115.9"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "116.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-0.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-15"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9502"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9517"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "15"
+              },
+              {
+                "label": "% de victoires",
+                "value": "54.9 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "51.9 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "56.3 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "19",
+              "league": "nba",
+              "name": "Orlando Magic",
+              "shortName": "Magic",
+              "abbreviation": "ORL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png"
+              },
+              "location": "Orlando",
+              "conference": "Est"
+            },
+            "rank": 8,
+            "played": 82,
+            "wins": 45,
+            "losses": 37,
+            "winPct": 0.5487805,
+            "diff": 52,
+            "streak": "D1",
+            "seed": 8,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "45-37"
+              },
+              {
+                "label": "À domicile",
+                "value": "25-15"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "19-20"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "26-26"
+              },
+              {
+                "label": "Dans la division",
+                "value": "9-8"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "115.7"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "115.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+0.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+52"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9491"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9439"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "15"
+              },
+              {
+                "label": "% de victoires",
+                "value": "54.9 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "50.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "52.9 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "30",
+              "league": "nba",
+              "name": "Charlotte Hornets",
+              "shortName": "Hornets",
+              "abbreviation": "CHA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png"
+              },
+              "location": "Charlotte",
+              "conference": "Est"
+            },
+            "rank": 9,
+            "played": 82,
+            "wins": 44,
+            "losses": 38,
+            "winPct": 0.5365854,
+            "diff": 396,
+            "streak": "V1",
+            "seed": 9,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "44-38"
+              },
+              {
+                "label": "À domicile",
+                "value": "21-20"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "23-18"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "26-26"
+              },
+              {
+                "label": "Dans la division",
+                "value": "11-5"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "116.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "111.2"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+4.8"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+396"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9513"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9117"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "16"
+              },
+              {
+                "label": "% de victoires",
+                "value": "53.7 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "50.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "68.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "14",
+              "league": "nba",
+              "name": "Miami Heat",
+              "shortName": "Heat",
+              "abbreviation": "MIA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png"
+              },
+              "location": "Miami",
+              "conference": "Est"
+            },
+            "rank": 10,
+            "played": 82,
+            "wins": 43,
+            "losses": 39,
+            "winPct": 0.5243902,
+            "diff": 191,
+            "streak": "V2",
+            "seed": 10,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "43-39"
+              },
+              {
+                "label": "À domicile",
+                "value": "26-15"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "17-24"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "27-25"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "5-5"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "120.9"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "118.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+2.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+191"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9911"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9720"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "17"
+              },
+              {
+                "label": "% de victoires",
+                "value": "52.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "51.9 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "58.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "15",
+              "league": "nba",
+              "name": "Milwaukee Bucks",
+              "shortName": "Bucks",
+              "abbreviation": "MIL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png"
+              },
+              "location": "Milwaukee",
+              "conference": "Est"
+            },
+            "rank": 11,
+            "played": 82,
+            "wins": 32,
+            "losses": 50,
+            "winPct": 0.3902439,
+            "diff": -509,
+            "streak": "D1",
+            "seed": 11,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "32-50"
+              },
+              {
+                "label": "À domicile",
+                "value": "19-22"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "13-28"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "21-31"
+              },
+              {
+                "label": "Dans la division",
+                "value": "9-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "110.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "116.8"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-6.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-509"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9072"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9581"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "28"
+              },
+              {
+                "label": "% de victoires",
+                "value": "39.0 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "40.4 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "56.3 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "4",
+              "league": "nba",
+              "name": "Chicago Bulls",
+              "shortName": "Bulls",
+              "abbreviation": "CHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png"
+              },
+              "location": "Chicago",
+              "conference": "Est"
+            },
+            "rank": 12,
+            "played": 82,
+            "wins": 31,
+            "losses": 51,
+            "winPct": 0.37804878,
+            "diff": -427,
+            "streak": "D2",
+            "seed": 12,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "31-51"
+              },
+              {
+                "label": "À domicile",
+                "value": "18-23"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "13-28"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "19-32"
+              },
+              {
+                "label": "Dans la division",
+                "value": "4-12"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "2-8"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "116.3"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "121.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-5.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-427"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9537"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9964"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "29"
+              },
+              {
+                "label": "% de victoires",
+                "value": "37.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "37.3 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "25.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "17",
+              "league": "nba",
+              "name": "Brooklyn Nets",
+              "shortName": "Nets",
+              "abbreviation": "BKN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png"
+              },
+              "location": "Brooklyn",
+              "conference": "Est"
+            },
+            "rank": 13,
+            "played": 82,
+            "wins": 20,
+            "losses": 62,
+            "winPct": 0.24390244,
+            "diff": -819,
+            "streak": "D3",
+            "seed": 13,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "20-62"
+              },
+              {
+                "label": "À domicile",
+                "value": "12-29"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "8-33"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-37"
+              },
+              {
+                "label": "Dans la division",
+                "value": "3-13"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "3 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "105.9"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "115.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-10.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-819"
+              },
+              {
+                "label": "Points marqués",
+                "value": "8686"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9505"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "40"
+              },
+              {
+                "label": "% de victoires",
+                "value": "24.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "27.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "18.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "11",
+              "league": "nba",
+              "name": "Indiana Pacers",
+              "shortName": "Pacers",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png"
+              },
+              "location": "Indiana",
+              "conference": "Est"
+            },
+            "rank": 14,
+            "played": 82,
+            "wins": 19,
+            "losses": 63,
+            "winPct": 0.23170732,
+            "diff": -655,
+            "streak": "D2",
+            "seed": 14,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "19-63"
+              },
+              {
+                "label": "À domicile",
+                "value": "11-30"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "8-33"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "15-37"
+              },
+              {
+                "label": "Dans la division",
+                "value": "4-12"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "112.4"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "120.4"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-8.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-655"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9219"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9874"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "41"
+              },
+              {
+                "label": "% de victoires",
+                "value": "23.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "28.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "25.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "27",
+              "league": "nba",
+              "name": "Washington Wizards",
+              "shortName": "Wizards",
+              "abbreviation": "WSH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/wsh.png"
+              },
+              "location": "Washington",
+              "conference": "Est"
+            },
+            "rank": 15,
+            "played": 82,
+            "wins": 17,
+            "losses": 65,
+            "winPct": 0.20731707,
+            "diff": -982,
+            "streak": "D10",
+            "seed": 15,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "17-65"
+              },
+              {
+                "label": "À domicile",
+                "value": "11-30"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "6-35"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "11-41"
+              },
+              {
+                "label": "Dans la division",
+                "value": "2-14"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "0-10"
+              },
+              {
+                "label": "Série en cours",
+                "value": "10 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "112.9"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "124.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-12.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-982"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9258"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "10240"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "43"
+              },
+              {
+                "label": "% de victoires",
+                "value": "20.7 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "21.2 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "12.5 %"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ouest",
+        "rows": [
+          {
+            "team": {
+              "id": "25",
+              "league": "nba",
+              "name": "Oklahoma City Thunder",
+              "shortName": "Thunder",
+              "abbreviation": "OKC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png"
+              },
+              "location": "Oklahoma City",
+              "conference": "Ouest"
+            },
+            "rank": 1,
+            "played": 82,
+            "wins": 64,
+            "losses": 18,
+            "winPct": 0.7804878,
+            "diff": 914,
+            "streak": "D2",
+            "seed": 1,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "64-18"
+              },
+              {
+                "label": "À domicile",
+                "value": "34-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "30-10"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "41-11"
+              },
+              {
+                "label": "Dans la division",
+                "value": "12-4"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "119.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "107.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+11.1"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+914"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9760"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "8846"
+              },
+              {
+                "label": "% de victoires",
+                "value": "78.0 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "78.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "75.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "24",
+              "league": "nba",
+              "name": "San Antonio Spurs",
+              "shortName": "Spurs",
+              "abbreviation": "SA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png"
+              },
+              "location": "San Antonio",
+              "conference": "Ouest"
+            },
+            "rank": 2,
+            "played": 82,
+            "wins": 62,
+            "losses": 20,
+            "winPct": 0.75609756,
+            "diff": 681,
+            "streak": "D1",
+            "seed": 2,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "62-20"
+              },
+              {
+                "label": "À domicile",
+                "value": "32-8"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "29-12"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "36-16"
+              },
+              {
+                "label": "Dans la division",
+                "value": "13-3"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "119.8"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "111.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+8.3"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+681"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9826"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9145"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "2"
+              },
+              {
+                "label": "% de victoires",
+                "value": "75.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "69.2 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "81.3 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "7",
+              "league": "nba",
+              "name": "Denver Nuggets",
+              "shortName": "Nuggets",
+              "abbreviation": "DEN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+              },
+              "location": "Denver",
+              "conference": "Ouest"
+            },
+            "rank": 3,
+            "played": 82,
+            "wins": 54,
+            "losses": 28,
+            "winPct": 0.6585366,
+            "diff": 423,
+            "streak": "V12",
+            "seed": 3,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "54-28"
+              },
+              {
+                "label": "À domicile",
+                "value": "28-13"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "26-15"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "36-16"
+              },
+              {
+                "label": "Dans la division",
+                "value": "11-5"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "10-0"
+              },
+              {
+                "label": "Série en cours",
+                "value": "12 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "122.1"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "116.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+5.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+423"
+              },
+              {
+                "label": "Points marqués",
+                "value": "10010"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9587"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "10"
+              },
+              {
+                "label": "% de victoires",
+                "value": "65.9 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "69.2 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "68.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "13",
+              "league": "nba",
+              "name": "Los Angeles Lakers",
+              "shortName": "Lakers",
+              "abbreviation": "LAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+              },
+              "location": "Los Angeles",
+              "conference": "Ouest"
+            },
+            "rank": 4,
+            "played": 82,
+            "wins": 53,
+            "losses": 29,
+            "winPct": 0.64634144,
+            "diff": 145,
+            "streak": "V3",
+            "seed": 4,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "53-29"
+              },
+              {
+                "label": "À domicile",
+                "value": "28-13"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "25-16"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "33-19"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "3 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "116.3"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "114.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+1.7"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+145"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9540"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9395"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "11"
+              },
+              {
+                "label": "% de victoires",
+                "value": "64.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "63.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "58.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "10",
+              "league": "nba",
+              "name": "Houston Rockets",
+              "shortName": "Rockets",
+              "abbreviation": "HOU",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png"
+              },
+              "location": "Houston",
+              "conference": "Ouest"
+            },
+            "rank": 5,
+            "played": 82,
+            "wins": 52,
+            "losses": 30,
+            "winPct": 0.63414633,
+            "diff": 428,
+            "streak": "V1",
+            "seed": 5,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "52-30"
+              },
+              {
+                "label": "À domicile",
+                "value": "30-11"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "22-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "29-23"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-6"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "9-1"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "115.2"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "110.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+5.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+428"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9449"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9021"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "12"
+              },
+              {
+                "label": "% de victoires",
+                "value": "63.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "55.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "62.5 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "16",
+              "league": "nba",
+              "name": "Minnesota Timberwolves",
+              "shortName": "Timberwolves",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+              },
+              "location": "Minnesota",
+              "conference": "Ouest"
+            },
+            "rank": 6,
+            "played": 82,
+            "wins": 49,
+            "losses": 33,
+            "winPct": 0.597561,
+            "diff": 275,
+            "streak": "V2",
+            "seed": 6,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "49-33"
+              },
+              {
+                "label": "À domicile",
+                "value": "26-15"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "23-18"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "31-21"
+              },
+              {
+                "label": "Dans la division",
+                "value": "9-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "5-5"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "118.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "114.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+3.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+275"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9676"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9401"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "15"
+              },
+              {
+                "label": "% de victoires",
+                "value": "59.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "59.6 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "56.3 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "22",
+              "league": "nba",
+              "name": "Portland Trail Blazers",
+              "shortName": "Trail Blazers",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png"
+              },
+              "location": "Portland",
+              "conference": "Ouest"
+            },
+            "rank": 7,
+            "played": 82,
+            "wins": 42,
+            "losses": 40,
+            "winPct": 0.5121951,
+            "diff": -24,
+            "streak": "V2",
+            "seed": 7,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "42-40"
+              },
+              {
+                "label": "À domicile",
+                "value": "24-17"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "18-23"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "29-23"
+              },
+              {
+                "label": "Dans la division",
+                "value": "7-9"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "115.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "115.8"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-0.3"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-24"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9469"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9493"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "22"
+              },
+              {
+                "label": "% de victoires",
+                "value": "51.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "55.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "43.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "21",
+              "league": "nba",
+              "name": "Phoenix Suns",
+              "shortName": "Suns",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png"
+              },
+              "location": "Phoenix",
+              "conference": "Ouest"
+            },
+            "rank": 8,
+            "played": 82,
+            "wins": 45,
+            "losses": 37,
+            "winPct": 0.5487805,
+            "diff": 120,
+            "streak": "V1",
+            "seed": 8,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "45-37"
+              },
+              {
+                "label": "À domicile",
+                "value": "25-16"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "20-21"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "29-23"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-7"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "5-5"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "112.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "111.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+1.5"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+120"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9232"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9112"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "19"
+              },
+              {
+                "label": "% de victoires",
+                "value": "54.9 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "55.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "58.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "12",
+              "league": "nba",
+              "name": "LA Clippers",
+              "shortName": "Clippers",
+              "abbreviation": "LAC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png"
+              },
+              "location": "LA",
+              "conference": "Ouest"
+            },
+            "rank": 9,
+            "played": 82,
+            "wins": 42,
+            "losses": 40,
+            "winPct": 0.5121951,
+            "diff": 93,
+            "streak": "V1",
+            "seed": 9,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "42-40"
+              },
+              {
+                "label": "À domicile",
+                "value": "23-18"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "19-22"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "25-27"
+              },
+              {
+                "label": "Dans la division",
+                "value": "10-6"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "113.8"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "112.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+1.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+93"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9329"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9236"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "22"
+              },
+              {
+                "label": "% de victoires",
+                "value": "51.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "48.1 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "62.5 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "9",
+              "league": "nba",
+              "name": "Golden State Warriors",
+              "shortName": "Warriors",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png"
+              },
+              "location": "Golden State",
+              "conference": "Ouest"
+            },
+            "rank": 10,
+            "played": 82,
+            "wins": 37,
+            "losses": 45,
+            "winPct": 0.4512195,
+            "diff": -46,
+            "streak": "D3",
+            "seed": 10,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "37-45"
+              },
+              {
+                "label": "À domicile",
+                "value": "22-19"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "15-26"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "24-28"
+              },
+              {
+                "label": "Dans la division",
+                "value": "7-9"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "3 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "114.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "115.2"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-0.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-46"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9398"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9444"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "27"
+              },
+              {
+                "label": "% de victoires",
+                "value": "45.1 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "46.2 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "43.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "3",
+              "league": "nba",
+              "name": "New Orleans Pelicans",
+              "shortName": "Pelicans",
+              "abbreviation": "NO",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/no.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png"
+              },
+              "location": "New Orleans",
+              "conference": "Ouest"
+            },
+            "rank": 11,
+            "played": 82,
+            "wins": 26,
+            "losses": 56,
+            "winPct": 0.31707317,
+            "diff": -369,
+            "streak": "D2",
+            "seed": 11,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "26-56"
+              },
+              {
+                "label": "À domicile",
+                "value": "17-24"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "9-32"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "17-34"
+              },
+              {
+                "label": "Dans la division",
+                "value": "7-9"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "1-9"
+              },
+              {
+                "label": "Série en cours",
+                "value": "2 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "115.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "120.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-4.5"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-369"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9473"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9842"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "38"
+              },
+              {
+                "label": "% de victoires",
+                "value": "31.7 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "33.3 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "43.8 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "6",
+              "league": "nba",
+              "name": "Dallas Mavericks",
+              "shortName": "Mavericks",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/dal.png"
+              },
+              "location": "Dallas",
+              "conference": "Ouest"
+            },
+            "rank": 12,
+            "played": 82,
+            "wins": 26,
+            "losses": 56,
+            "winPct": 0.31707317,
+            "diff": -452,
+            "streak": "V1",
+            "seed": 12,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "26-56"
+              },
+              {
+                "label": "À domicile",
+                "value": "16-25"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "10-30"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-37"
+              },
+              {
+                "label": "Dans la division",
+                "value": "4-12"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "114.1"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "119.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-5.5"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-452"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9358"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9810"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "38"
+              },
+              {
+                "label": "% de victoires",
+                "value": "31.7 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "27.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "25.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "29",
+              "league": "nba",
+              "name": "Memphis Grizzlies",
+              "shortName": "Grizzlies",
+              "abbreviation": "MEM",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png"
+              },
+              "location": "Memphis",
+              "conference": "Ouest"
+            },
+            "rank": 13,
+            "played": 82,
+            "wins": 25,
+            "losses": 57,
+            "winPct": 0.30487806,
+            "diff": -493,
+            "streak": "D8",
+            "seed": 13,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "25-57"
+              },
+              {
+                "label": "À domicile",
+                "value": "13-27"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "11-29"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "19-33"
+              },
+              {
+                "label": "Dans la division",
+                "value": "6-10"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "1-9"
+              },
+              {
+                "label": "Série en cours",
+                "value": "8 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "114.7"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "120.7"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-6.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-493"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9403"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9896"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "39"
+              },
+              {
+                "label": "% de victoires",
+                "value": "30.5 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "36.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "37.5 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "23",
+              "league": "nba",
+              "name": "Sacramento Kings",
+              "shortName": "Kings",
+              "abbreviation": "SAC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sac.png"
+              },
+              "location": "Sacramento",
+              "conference": "Ouest"
+            },
+            "rank": 14,
+            "played": 82,
+            "wins": 22,
+            "losses": 60,
+            "winPct": 0.2682927,
+            "diff": -820,
+            "streak": "D1",
+            "seed": 14,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "22-60"
+              },
+              {
+                "label": "À domicile",
+                "value": "15-26"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "7-34"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-38"
+              },
+              {
+                "label": "Dans la division",
+                "value": "4-12"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "111.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "121.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-10.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-820"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9102"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "9922"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "42"
+              },
+              {
+                "label": "% de victoires",
+                "value": "26.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "26.9 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "25.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "26",
+              "league": "nba",
+              "name": "Utah Jazz",
+              "shortName": "Jazz",
+              "abbreviation": "UTAH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png"
+              },
+              "location": "Utah",
+              "conference": "Ouest"
+            },
+            "rank": 15,
+            "played": 82,
+            "wins": 22,
+            "losses": 60,
+            "winPct": 0.2682927,
+            "diff": -692,
+            "streak": "D1",
+            "seed": 15,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "22-60"
+              },
+              {
+                "label": "À domicile",
+                "value": "14-27"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "8-33"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "12-40"
+              },
+              {
+                "label": "Dans la division",
+                "value": "1-15"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "1-9"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "117.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "126.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-8.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-692"
+              },
+              {
+                "label": "Points marqués",
+                "value": "9641"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "10333"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "42"
+              },
+              {
+                "label": "% de victoires",
+                "value": "26.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "23.1 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "6.3 %"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "season": "2025-26",
+    "totals": {
+      "games": 1230,
+      "points": 284393
+    }
+  },
+  "wnba": {
+    "league": "wnba",
+    "isPreviousSeason": false,
+    "groups": [
+      {
+        "name": "Est",
+        "rows": [
+          {
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "location": "Atlanta",
+              "conference": "Est"
+            },
+            "rank": 1,
+            "played": 43,
+            "wins": 29,
+            "losses": 14,
+            "winPct": 0.6744186,
+            "diff": 284,
+            "streak": "V4",
+            "seed": 4,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "29-14"
+              },
+              {
+                "label": "À domicile",
+                "value": "15-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "14-7"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-5"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "4 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "91.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "84.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+6.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+284"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3936"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3652"
+              },
+              {
+                "label": "% de victoires",
+                "value": "67.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "73.7 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "location": "Indiana",
+              "conference": "Est"
+            },
+            "rank": 2,
+            "played": 43,
+            "wins": 28,
+            "losses": 15,
+            "winPct": 0.6511628,
+            "diff": 263,
+            "streak": "V1",
+            "seed": 5,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "28-15"
+              },
+              {
+                "label": "À domicile",
+                "value": "15-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "13-8"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-6"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "96.7"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "90.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+6.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+263"
+              },
+              {
+                "label": "Points marqués",
+                "value": "4156"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3893"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "1"
+              },
+              {
+                "label": "% de victoires",
+                "value": "65.1 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "70.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "16",
+              "league": "wnba",
+              "name": "Washington Mystics",
+              "shortName": "Mystics",
+              "abbreviation": "WSH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/wsh.png"
+              },
+              "location": "Washington",
+              "conference": "Est"
+            },
+            "rank": 3,
+            "played": 43,
+            "wins": 27,
+            "losses": 16,
+            "winPct": 0.627907,
+            "diff": 48,
+            "streak": "V3",
+            "seed": 6,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "27-16"
+              },
+              {
+                "label": "À domicile",
+                "value": "14-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "13-9"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-5"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "3 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "83.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "82.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+1.1"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+48"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3595"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3547"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "2"
+              },
+              {
+                "label": "% de victoires",
+                "value": "62.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "73.7 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "9",
+              "league": "wnba",
+              "name": "New York Liberty",
+              "shortName": "Liberty",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+              },
+              "location": "New York",
+              "conference": "Est"
+            },
+            "rank": 4,
+            "played": 43,
+            "wins": 26,
+            "losses": 17,
+            "winPct": 0.60465115,
+            "diff": 157,
+            "streak": "D1",
+            "seed": 8,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "26-17"
+              },
+              {
+                "label": "À domicile",
+                "value": "14-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "12-10"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "13-6"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "90.1"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "86.5"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+3.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+157"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3876"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3719"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "3"
+              },
+              {
+                "label": "% de victoires",
+                "value": "60.5 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "68.4 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "19",
+              "league": "wnba",
+              "name": "Chicago Sky",
+              "shortName": "Sky",
+              "abbreviation": "CHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/chi.png"
+              },
+              "location": "Chicago",
+              "conference": "Est"
+            },
+            "rank": 5,
+            "played": 43,
+            "wins": 16,
+            "losses": 27,
+            "winPct": 0.37209302,
+            "diff": -163,
+            "streak": "V1",
+            "seed": 11,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "16-27"
+              },
+              {
+                "label": "À domicile",
+                "value": "11-11"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "5-16"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "4-15"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "4-6"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "86.6"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "90.4"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-3.8"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-163"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3725"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3888"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "13"
+              },
+              {
+                "label": "% de victoires",
+                "value": "37.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "21.1 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "131935",
+              "league": "wnba",
+              "name": "Toronto Tempo",
+              "shortName": "Tempo",
+              "abbreviation": "TOR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/tor.png"
+              },
+              "location": "Toronto",
+              "conference": "Est"
+            },
+            "rank": 6,
+            "played": 43,
+            "wins": 11,
+            "losses": 32,
+            "winPct": 0.25581396,
+            "diff": -369,
+            "streak": "D7",
+            "seed": 13,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "11-32"
+              },
+              {
+                "label": "À domicile",
+                "value": "7-15"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "4-17"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "5-14"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "1-9"
+              },
+              {
+                "label": "Série en cours",
+                "value": "7 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "85.8"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "94.3"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-8.5"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-369"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3688"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "4057"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "18"
+              },
+              {
+                "label": "% de victoires",
+                "value": "25.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "26.3 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "18",
+              "league": "wnba",
+              "name": "Connecticut Sun",
+              "shortName": "Sun",
+              "abbreviation": "CON",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/con.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/con.png"
+              },
+              "location": "Connecticut",
+              "conference": "Est"
+            },
+            "rank": 7,
+            "played": 43,
+            "wins": 10,
+            "losses": 33,
+            "winPct": 0.23255815,
+            "diff": -419,
+            "streak": "D6",
+            "seed": 14,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "10-33"
+              },
+              {
+                "label": "À domicile",
+                "value": "7-14"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "3-19"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "3-16"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "2-8"
+              },
+              {
+                "label": "Série en cours",
+                "value": "6 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "78.5"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "88.2"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-9.7"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-419"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3375"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3794"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "19"
+              },
+              {
+                "label": "% de victoires",
+                "value": "23.3 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "15.8 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Ouest",
+        "rows": [
+          {
+            "team": {
+              "id": "8",
+              "league": "wnba",
+              "name": "Minnesota Lynx",
+              "shortName": "Lynx",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+              },
+              "location": "Minnesota",
+              "conference": "Ouest"
+            },
+            "rank": 1,
+            "played": 43,
+            "wins": 32,
+            "losses": 11,
+            "winPct": 0.74418604,
+            "diff": 296,
+            "streak": "D1",
+            "seed": 1,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "32-11"
+              },
+              {
+                "label": "À domicile",
+                "value": "14-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "18-4"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "20-3"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "91.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "84.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+6.9"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+296"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3911"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3615"
+              },
+              {
+                "label": "% de victoires",
+                "value": "74.4 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "87.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "129689",
+              "league": "wnba",
+              "name": "Golden State Valkyries",
+              "shortName": "Valkyries",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+              },
+              "location": "Golden State",
+              "conference": "Ouest"
+            },
+            "rank": 2,
+            "played": 43,
+            "wins": 31,
+            "losses": 12,
+            "winPct": 0.7209302,
+            "diff": 309,
+            "streak": "D1",
+            "seed": 2,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "31-12"
+              },
+              {
+                "label": "À domicile",
+                "value": "17-5"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "14-7"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-8"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "82.3"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "75.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+7.2"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+309"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3539"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3230"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "1"
+              },
+              {
+                "label": "% de victoires",
+                "value": "72.1 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "63.6 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "location": "Las Vegas",
+              "conference": "Ouest"
+            },
+            "rank": 3,
+            "played": 43,
+            "wins": 30,
+            "losses": 13,
+            "winPct": 0.6976744,
+            "diff": 231,
+            "streak": "V6",
+            "seed": 3,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "30-13"
+              },
+              {
+                "label": "À domicile",
+                "value": "15-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "15-6"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "16-6"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "8-2"
+              },
+              {
+                "label": "Série en cours",
+                "value": "6 victoires"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "91.3"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "85.9"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+5.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+231"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3925"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3694"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "2"
+              },
+              {
+                "label": "% de victoires",
+                "value": "69.8 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "72.7 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "3",
+              "league": "wnba",
+              "name": "Dallas Wings",
+              "shortName": "Wings",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+              },
+              "location": "Dallas",
+              "conference": "Ouest"
+            },
+            "rank": 4,
+            "played": 43,
+            "wins": 26,
+            "losses": 17,
+            "winPct": 0.60465115,
+            "diff": 170,
+            "streak": "D1",
+            "seed": 7,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "26-17"
+              },
+              {
+                "label": "À domicile",
+                "value": "16-6"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "10-11"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "12-10"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "7-3"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "89.1"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "85.1"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+4.0"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+170"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3830"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3660"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "6"
+              },
+              {
+                "label": "% de victoires",
+                "value": "60.5 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "54.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "132052",
+              "league": "wnba",
+              "name": "Portland Fire",
+              "shortName": "Fire",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/por.png"
+              },
+              "location": "Portland",
+              "conference": "Ouest"
+            },
+            "rank": 5,
+            "played": 44,
+            "wins": 17,
+            "losses": 27,
+            "winPct": 0.38636363,
+            "diff": -211,
+            "streak": "V1",
+            "seed": 9,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "17-27"
+              },
+              {
+                "label": "À domicile",
+                "value": "9-13"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "8-14"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "7-16"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "3-7"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "86.2"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "91.0"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-4.8"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-211"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3794"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "4005"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "15.5"
+              },
+              {
+                "label": "% de victoires",
+                "value": "38.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "30.4 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "6",
+              "league": "wnba",
+              "name": "Los Angeles Sparks",
+              "shortName": "Sparks",
+              "abbreviation": "LA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+              },
+              "location": "Los Angeles",
+              "conference": "Ouest"
+            },
+            "rank": 6,
+            "played": 43,
+            "wins": 16,
+            "losses": 27,
+            "winPct": 0.37209302,
+            "diff": -187,
+            "streak": "D1",
+            "seed": 12,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "16-27"
+              },
+              {
+                "label": "À domicile",
+                "value": "8-13"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "8-14"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "9-13"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "4-6"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "87.3"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "91.7"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-4.4"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-187"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3755"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3942"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "16"
+              },
+              {
+                "label": "% de victoires",
+                "value": "37.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "40.9 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "11",
+              "league": "wnba",
+              "name": "Phoenix Mercury",
+              "shortName": "Mercury",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+              },
+              "location": "Phoenix",
+              "conference": "Ouest"
+            },
+            "rank": 7,
+            "played": 43,
+            "wins": 16,
+            "losses": 27,
+            "winPct": 0.37209302,
+            "diff": -124,
+            "streak": "V1",
+            "seed": 10,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "16-27"
+              },
+              {
+                "label": "À domicile",
+                "value": "7-14"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "9-13"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "10-12"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "4-6"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 victoire"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "84.4"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "87.3"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-2.9"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-124"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3630"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3754"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "16"
+              },
+              {
+                "label": "% de victoires",
+                "value": "37.2 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "45.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "14",
+              "league": "wnba",
+              "name": "Seattle Storm",
+              "shortName": "Storm",
+              "abbreviation": "SEA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/sea.png"
+              },
+              "location": "Seattle",
+              "conference": "Ouest"
+            },
+            "rank": 8,
+            "played": 43,
+            "wins": 8,
+            "losses": 35,
+            "winPct": 0.18604651,
+            "diff": -285,
+            "streak": "D4",
+            "seed": 15,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "8-35"
+              },
+              {
+                "label": "À domicile",
+                "value": "6-15"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "2-20"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "1-21"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "2-8"
+              },
+              {
+                "label": "Série en cours",
+                "value": "4 défaites"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "82.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "88.6"
+              },
+              {
+                "label": "Différence / match",
+                "value": "-6.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "-285"
+              },
+              {
+                "label": "Points marqués",
+                "value": "3525"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3810"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "24"
+              },
+              {
+                "label": "% de victoires",
+                "value": "18.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "4.5 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "season": "2026",
+    "totals": {
+      "games": 323,
+      "points": 56260
+    }
+  },
+  "euroleague": {
+    "league": "euroleague",
+    "season": "2025-26",
+    "isPreviousSeason": true,
+    "groups": [
+      {
+        "name": "Saison régulière",
+        "rows": [
+          {
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              }
+            },
+            "rank": 1,
+            "seed": 1,
+            "played": 38,
+            "wins": 26,
+            "losses": 12,
+            "winPct": 0.6842105263157895,
+            "diff": 262,
+            "streak": "DVVVV"
+          },
+          {
+            "team": {
+              "id": "PAM",
+              "league": "euroleague",
+              "name": "Valencia Basket",
+              "shortName": "Valencia",
+              "abbreviation": "VBC",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png"
+              }
+            },
+            "rank": 2,
+            "seed": 2,
+            "played": 38,
+            "wins": 25,
+            "losses": 13,
+            "winPct": 0.6578947368421053,
+            "diff": 175,
+            "streak": "DVVVV"
+          },
+          {
+            "team": {
+              "id": "MAD",
+              "league": "euroleague",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+              }
+            },
+            "rank": 3,
+            "seed": 3,
+            "played": 38,
+            "wins": 24,
+            "losses": 14,
+            "winPct": 0.631578947368421,
+            "diff": 186,
+            "streak": "VDDVV"
+          },
+          {
+            "team": {
+              "id": "ULK",
+              "league": "euroleague",
+              "name": "Fenerbahce Beko Istanbul",
+              "shortName": "Fenerbahce",
+              "abbreviation": "FBB",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+              }
+            },
+            "rank": 4,
+            "seed": 4,
+            "played": 38,
+            "wins": 24,
+            "losses": 14,
+            "winPct": 0.631578947368421,
+            "diff": 53,
+            "streak": "DDDDV"
+          },
+          {
+            "team": {
+              "id": "ZAL",
+              "league": "euroleague",
+              "name": "Zalgiris Kaunas",
+              "shortName": "Zalgiris",
+              "abbreviation": "ZAL",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+                "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+              }
+            },
+            "rank": 5,
+            "seed": 5,
+            "played": 38,
+            "wins": 23,
+            "losses": 15,
+            "winPct": 0.6052631578947368,
+            "diff": 179,
+            "streak": "VVDVV"
+          },
+          {
+            "team": {
+              "id": "HTA",
+              "league": "euroleague",
+              "name": "Hapoel IBI Tel Aviv",
+              "shortName": "Hapoel Tel Aviv",
+              "abbreviation": "HTA",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
+                "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
+              }
+            },
+            "rank": 6,
+            "seed": 6,
+            "played": 38,
+            "wins": 23,
+            "losses": 15,
+            "winPct": 0.6052631578947368,
+            "diff": 118,
+            "streak": "VVDVD"
+          },
+          {
+            "team": {
+              "id": "PAN",
+              "league": "euroleague",
+              "name": "Panathinaikos AKTOR Athens",
+              "shortName": "Panathinaikos",
+              "abbreviation": "PAO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+              }
+            },
+            "rank": 7,
+            "seed": 7,
+            "played": 38,
+            "wins": 22,
+            "losses": 16,
+            "winPct": 0.5789473684210527,
+            "diff": 86,
+            "streak": "VDVDV"
+          },
+          {
+            "team": {
+              "id": "MCO",
+              "league": "euroleague",
+              "name": "AS Monaco",
+              "shortName": "Monaco",
+              "abbreviation": "ASM",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
+                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
+              }
+            },
+            "rank": 8,
+            "seed": 8,
+            "played": 38,
+            "wins": 22,
+            "losses": 16,
+            "winPct": 0.5789473684210527,
+            "diff": 135,
+            "streak": "DDVVV"
+          },
+          {
+            "team": {
+              "id": "BAR",
+              "league": "euroleague",
+              "name": "FC Barcelona",
+              "shortName": "Barcelona",
+              "abbreviation": "BAR",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png",
+                "dark": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png"
+              }
+            },
+            "rank": 9,
+            "seed": 9,
+            "played": 38,
+            "wins": 21,
+            "losses": 17,
+            "winPct": 0.5526315789473685,
+            "diff": 20,
+            "streak": "VDDDV"
+          },
+          {
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena Zvezda",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              }
+            },
+            "rank": 10,
+            "seed": 10,
+            "played": 38,
+            "wins": 21,
+            "losses": 17,
+            "winPct": 0.5526315789473685,
+            "diff": 42,
+            "streak": "DDVVD"
+          },
+          {
+            "team": {
+              "id": "DUB",
+              "league": "euroleague",
+              "name": "Dubai Basketball",
+              "shortName": "Dubai",
+              "abbreviation": "DUB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+              }
+            },
+            "rank": 11,
+            "seed": 11,
+            "played": 38,
+            "wins": 19,
+            "losses": 19,
+            "winPct": 0.5,
+            "diff": -1,
+            "streak": "DVVDD"
+          },
+          {
+            "team": {
+              "id": "TEL",
+              "league": "euroleague",
+              "name": "Maccabi Rapyd Tel Aviv",
+              "shortName": "Maccabi",
+              "abbreviation": "MTA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+              }
+            },
+            "rank": 12,
+            "seed": 12,
+            "played": 38,
+            "wins": 18,
+            "losses": 20,
+            "winPct": 0.47368421052631576,
+            "diff": -100,
+            "streak": "VDDDD"
+          },
+          {
+            "team": {
+              "id": "MUN",
+              "league": "euroleague",
+              "name": "FC Bayern Munich",
+              "shortName": "Bayern",
+              "abbreviation": "BAY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/817b0e58-d595-4b09-ab0b-1e7cc26249ff.png",
+                "dark": "https://media-cdn.incrowdsports.com/817b0e58-d595-4b09-ab0b-1e7cc26249ff.png"
+              }
+            },
+            "rank": 13,
+            "seed": 13,
+            "played": 38,
+            "wins": 17,
+            "losses": 21,
+            "winPct": 0.4473684210526316,
+            "diff": -105,
+            "streak": "VVVVD"
+          },
+          {
+            "team": {
+              "id": "MIL",
+              "league": "euroleague",
+              "name": "EA7 Emporio Armani Milan",
+              "shortName": "Milan",
+              "abbreviation": "EA7",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png"
+              }
+            },
+            "rank": 14,
+            "seed": 14,
+            "played": 38,
+            "wins": 17,
+            "losses": 21,
+            "winPct": 0.4473684210526316,
+            "diff": -48,
+            "streak": "VDDDD"
+          },
+          {
+            "team": {
+              "id": "PAR",
+              "league": "euroleague",
+              "name": "Partizan Mozzart Bet Belgrade",
+              "shortName": "Partizan",
+              "abbreviation": "PAR",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png",
+                "dark": "https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png"
+              }
+            },
+            "rank": 15,
+            "seed": 15,
+            "played": 38,
+            "wins": 16,
+            "losses": 22,
+            "winPct": 0.42105263157894735,
+            "diff": -190,
+            "streak": "VVDDV"
+          },
+          {
+            "team": {
+              "id": "PRS",
+              "league": "euroleague",
+              "name": "Paris Basketball",
+              "shortName": "Paris",
+              "abbreviation": "PBB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+              }
+            },
+            "rank": 16,
+            "seed": 16,
+            "played": 38,
+            "wins": 15,
+            "losses": 23,
+            "winPct": 0.39473684210526316,
+            "diff": -34,
+            "streak": "VVDVD"
+          },
+          {
+            "team": {
+              "id": "VIR",
+              "league": "euroleague",
+              "name": "Virtus Bologna",
+              "shortName": "Virtus",
+              "abbreviation": "VIR",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png"
+              }
+            },
+            "rank": 17,
+            "seed": 17,
+            "played": 38,
+            "wins": 14,
+            "losses": 24,
+            "winPct": 0.3684210526315789,
+            "diff": -175,
+            "streak": "DDDDV"
+          },
+          {
+            "team": {
+              "id": "BAS",
+              "league": "euroleague",
+              "name": "Kosner Baskonia Vitoria-Gasteiz",
+              "shortName": "Baskonia",
+              "abbreviation": "KBA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
+                "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+              }
+            },
+            "rank": 18,
+            "seed": 18,
+            "played": 38,
+            "wins": 13,
+            "losses": 25,
+            "winPct": 0.34210526315789475,
+            "diff": -162,
+            "streak": "VVVVD"
+          },
+          {
+            "team": {
+              "id": "IST",
+              "league": "euroleague",
+              "name": "Anadolu Efes Istanbul",
+              "shortName": "Efes",
+              "abbreviation": "EFS",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png"
+              }
+            },
+            "rank": 19,
+            "seed": 19,
+            "played": 38,
+            "wins": 12,
+            "losses": 26,
+            "winPct": 0.3157894736842105,
+            "diff": -160,
+            "streak": "DDVVD"
+          },
+          {
+            "team": {
+              "id": "ASV",
+              "league": "euroleague",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+              }
+            },
+            "rank": 20,
+            "seed": 20,
+            "played": 38,
+            "wins": 8,
+            "losses": 30,
+            "winPct": 0.21052631578947367,
+            "diff": -281,
+            "streak": "DDDDD"
+          }
+        ]
+      }
+    ],
+    "totals": {
+      "games": 380,
+      "points": 65002
+    }
+  }
+}
