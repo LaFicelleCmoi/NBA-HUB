@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useApi } from "@/lib/client/useApi";
 import { GameList } from "@/components/games/GameList";
 import { StandingsTables, ZoneLegend } from "@/components/standings/StandingsTable";
@@ -21,6 +21,17 @@ const TABS = [
 ] as const;
 type TabKey = (typeof TABS)[number]["key"];
 const isTab = (v: string): v is TabKey => TABS.some((t) => t.key === v);
+
+// L'onglet actif vit dans l'ancre d'URL (#resultats, #leaders…) : partageable, et
+// synchronisé avec les boutons précédent/suivant du navigateur.
+const subscribeHash = (cb: () => void) => {
+  window.addEventListener("hashchange", cb);
+  return () => window.removeEventListener("hashchange", cb);
+};
+const readHash = (): TabKey => {
+  const h = window.location.hash.slice(1);
+  return isTab(h) ? h : "classement";
+};
 
 function Note({ children }: { children: React.ReactNode }) {
   return (
@@ -100,38 +111,17 @@ function NewsPanel({ league }: { league: LeagueId }) {
   if (data.length === 0)
     return (
       <EmptyState title="Pas d’actualités disponibles" icon="📰">
-        {league === "euroleague" ? (
-          <p>
-            L’API officielle de l’EuroLeague ne publie pas de flux d’actualités.{" "}
-            <a
-              className="font-semibold text-fg underline"
-              href="https://www.euroleaguebasketball.net/euroleague/news/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Lire les actualités sur le site officiel
-            </a>
-            .
-          </p>
-        ) : (
-          <p>Aucun article pour le moment.</p>
-        )}
+        <p>Aucun article pour le moment. Réessayez dans quelques minutes.</p>
       </EmptyState>
     );
   return <NewsGrid items={data} />;
 }
 
 export function LeagueTabs({ league, initialStandings }: { league: LeagueId; initialStandings: Standings | null }) {
-  const [tab, setTab] = useState<TabKey>("classement");
-
-  // Onglet partageable via l'ancre (#resultats, #leaders…).
-  useEffect(() => {
-    const h = window.location.hash.slice(1);
-    if (isTab(h)) setTab(h);
-  }, []);
+  const tab = useSyncExternalStore(subscribeHash, readHash, () => "classement" as TabKey);
   const change = (k: TabKey) => {
-    setTab(k);
     history.replaceState(null, "", `#${k}`);
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
   };
 
   return (
