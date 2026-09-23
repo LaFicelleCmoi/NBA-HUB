@@ -1,0 +1,3155 @@
+{
+  "nba": {
+    "league": "nba",
+    "season": "2025-26",
+    "leaders": [
+      {
+        "category": "points",
+        "label": "Points",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "3945274",
+            "name": "Luka Doncic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3945274.png",
+            "team": {
+              "id": "13",
+              "league": "nba",
+              "name": "Los Angeles Lakers",
+              "shortName": "Lakers",
+              "abbreviation": "LAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+              },
+              "color": "#552583"
+            },
+            "value": 33.484375,
+            "displayValue": "33.5"
+          },
+          {
+            "rank": 2,
+            "playerId": "4278073",
+            "name": "Shai Gilgeous-Alexander",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278073.png",
+            "team": {
+              "id": "25",
+              "league": "nba",
+              "name": "Oklahoma City Thunder",
+              "shortName": "Thunder",
+              "abbreviation": "OKC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png"
+              },
+              "color": "#007ac1"
+            },
+            "value": 31.132352828979492,
+            "displayValue": "31.1"
+          },
+          {
+            "rank": 3,
+            "playerId": "4594268",
+            "name": "Anthony Edwards",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4594268.png",
+            "team": {
+              "id": "16",
+              "league": "nba",
+              "name": "Minnesota Timberwolves",
+              "shortName": "Timberwolves",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 28.80327796936035,
+            "displayValue": "28.8"
+          },
+          {
+            "rank": 4,
+            "playerId": "3917376",
+            "name": "Jaylen Brown",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3917376.png",
+            "team": {
+              "id": "2",
+              "league": "nba",
+              "name": "Boston Celtics",
+              "shortName": "Celtics",
+              "abbreviation": "BOS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png"
+              },
+              "color": "#008348"
+            },
+            "value": 28.704225540161133,
+            "displayValue": "28.7"
+          },
+          {
+            "rank": 5,
+            "playerId": "4431678",
+            "name": "Tyrese Maxey",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
+            "team": {
+              "id": "20",
+              "league": "nba",
+              "name": "Philadelphia 76ers",
+              "shortName": "76ers",
+              "abbreviation": "PHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 28.285715103149414,
+            "displayValue": "28.3"
+          },
+          {
+            "rank": 6,
+            "playerId": "6450",
+            "name": "Kawhi Leonard",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6450.png",
+            "team": {
+              "id": "12",
+              "league": "nba",
+              "name": "LA Clippers",
+              "shortName": "Clippers",
+              "abbreviation": "LAC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png"
+              },
+              "color": "#12173f"
+            },
+            "value": 27.89230728149414,
+            "displayValue": "27.9"
+          },
+          {
+            "rank": 7,
+            "playerId": "3908809",
+            "name": "Donovan Mitchell",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3908809.png",
+            "team": {
+              "id": "5",
+              "league": "nba",
+              "name": "Cleveland Cavaliers",
+              "shortName": "Cavaliers",
+              "abbreviation": "CLE",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+              },
+              "color": "#860038"
+            },
+            "value": 27.885713577270508,
+            "displayValue": "27.9"
+          },
+          {
+            "rank": 8,
+            "playerId": "3112335",
+            "name": "Nikola Jokic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3112335.png",
+            "team": {
+              "id": "7",
+              "league": "nba",
+              "name": "Denver Nuggets",
+              "shortName": "Nuggets",
+              "abbreviation": "DEN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+              },
+              "color": "#0e2240"
+            },
+            "value": 27.676923751831055,
+            "displayValue": "27.7"
+          },
+          {
+            "rank": 9,
+            "playerId": "3136193",
+            "name": "Devin Booker",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3136193.png",
+            "team": {
+              "id": "21",
+              "league": "nba",
+              "name": "Phoenix Suns",
+              "shortName": "Suns",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png"
+              },
+              "color": "#29127a"
+            },
+            "value": 26.0625,
+            "displayValue": "26.1"
+          },
+          {
+            "rank": 10,
+            "playerId": "3934672",
+            "name": "Jalen Brunson",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934672.png",
+            "team": {
+              "id": "18",
+              "league": "nba",
+              "name": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 26.04054069519043,
+            "displayValue": "26.0"
+          }
+        ]
+      },
+      {
+        "category": "rebounds",
+        "label": "Rebonds",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "3112335",
+            "name": "Nikola Jokic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3112335.png",
+            "team": {
+              "id": "7",
+              "league": "nba",
+              "name": "Denver Nuggets",
+              "shortName": "Nuggets",
+              "abbreviation": "DEN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+              },
+              "color": "#0e2240"
+            },
+            "value": 12.861538887023926,
+            "displayValue": "12.9"
+          },
+          {
+            "rank": 2,
+            "playerId": "3136195",
+            "name": "Karl-Anthony Towns",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3136195.png",
+            "team": {
+              "id": "18",
+              "league": "nba",
+              "name": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 11.853333473205566,
+            "displayValue": "11.9"
+          },
+          {
+            "rank": 3,
+            "playerId": "5105565",
+            "name": "Donovan Clingan",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105565.png",
+            "team": {
+              "id": "22",
+              "league": "nba",
+              "name": "Portland Trail Blazers",
+              "shortName": "Trail Blazers",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png"
+              },
+              "color": "#e03a3e"
+            },
+            "value": 11.584415435791016,
+            "displayValue": "11.6"
+          },
+          {
+            "rank": 4,
+            "playerId": "5104157",
+            "name": "Victor Wembanyama",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5104157.png",
+            "team": {
+              "id": "24",
+              "league": "nba",
+              "name": "San Antonio Spurs",
+              "shortName": "Spurs",
+              "abbreviation": "SA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png"
+              },
+              "color": "#000000"
+            },
+            "value": 11.5,
+            "displayValue": "11.5"
+          },
+          {
+            "rank": 5,
+            "playerId": "3032976",
+            "name": "Rudy Gobert",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032976.png",
+            "team": {
+              "id": "16",
+              "league": "nba",
+              "name": "Minnesota Timberwolves",
+              "shortName": "Timberwolves",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 11.473684310913086,
+            "displayValue": "11.5"
+          },
+          {
+            "rank": 6,
+            "playerId": "4433621",
+            "name": "Jalen Duren",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433621.png",
+            "team": {
+              "id": "8",
+              "league": "nba",
+              "name": "Detroit Pistons",
+              "shortName": "Pistons",
+              "abbreviation": "DET",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 10.528571128845215,
+            "displayValue": "10.5"
+          },
+          {
+            "rank": 7,
+            "playerId": "4701230",
+            "name": "Jalen Johnson",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701230.png",
+            "team": {
+              "id": "1",
+              "league": "nba",
+              "name": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png"
+              },
+              "color": "#c8102e"
+            },
+            "value": 10.277777671813965,
+            "displayValue": "10.3"
+          },
+          {
+            "rank": 8,
+            "playerId": "4066261",
+            "name": "Bam Adebayo",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4066261.png",
+            "team": {
+              "id": "14",
+              "league": "nba",
+              "name": "Miami Heat",
+              "shortName": "Heat",
+              "abbreviation": "MIA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png"
+              },
+              "color": "#98002e"
+            },
+            "value": 10.027397155761719,
+            "displayValue": "10.0"
+          },
+          {
+            "rank": 9,
+            "playerId": "4432158",
+            "name": "Evan Mobley",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432158.png",
+            "team": {
+              "id": "5",
+              "league": "nba",
+              "name": "Cleveland Cavaliers",
+              "shortName": "Cavaliers",
+              "abbreviation": "CLE",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+              },
+              "color": "#860038"
+            },
+            "value": 9.015384674072266,
+            "displayValue": "9.0"
+          },
+          {
+            "rank": 10,
+            "playerId": "5105623",
+            "name": "Kel'el Ware",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105623.png",
+            "team": {
+              "id": "15",
+              "league": "nba",
+              "name": "Milwaukee Bucks",
+              "shortName": "Bucks",
+              "abbreviation": "MIL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png"
+              },
+              "color": "#00471b"
+            },
+            "value": 9.01298713684082,
+            "displayValue": "9.0"
+          }
+        ]
+      },
+      {
+        "category": "assists",
+        "label": "Passes décisives",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "3112335",
+            "name": "Nikola Jokic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3112335.png",
+            "team": {
+              "id": "7",
+              "league": "nba",
+              "name": "Denver Nuggets",
+              "shortName": "Nuggets",
+              "abbreviation": "DEN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+              },
+              "color": "#0e2240"
+            },
+            "value": 10.723076820373535,
+            "displayValue": "10.7"
+          },
+          {
+            "rank": 2,
+            "playerId": "4432166",
+            "name": "Cade Cunningham",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432166.png",
+            "team": {
+              "id": "8",
+              "league": "nba",
+              "name": "Detroit Pistons",
+              "shortName": "Pistons",
+              "abbreviation": "DET",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 9.90625,
+            "displayValue": "9.9"
+          },
+          {
+            "rank": 3,
+            "playerId": "3945274",
+            "name": "Luka Doncic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3945274.png",
+            "team": {
+              "id": "13",
+              "league": "nba",
+              "name": "Los Angeles Lakers",
+              "shortName": "Lakers",
+              "abbreviation": "LAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+              },
+              "color": "#552583"
+            },
+            "value": 8.28125,
+            "displayValue": "8.3"
+          },
+          {
+            "rank": 4,
+            "playerId": "3992",
+            "name": "James Harden",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3992.png",
+            "team": {
+              "id": "5",
+              "league": "nba",
+              "name": "Cleveland Cavaliers",
+              "shortName": "Cavaliers",
+              "abbreviation": "CLE",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+              },
+              "color": "#860038"
+            },
+            "value": 7.9571428298950195,
+            "displayValue": "8.0"
+          },
+          {
+            "rank": 5,
+            "playerId": "4701230",
+            "name": "Jalen Johnson",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701230.png",
+            "team": {
+              "id": "1",
+              "league": "nba",
+              "name": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png"
+              },
+              "color": "#c8102e"
+            },
+            "value": 7.861111164093018,
+            "displayValue": "7.9"
+          },
+          {
+            "rank": 6,
+            "playerId": "4845367",
+            "name": "Stephon Castle",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4845367.png",
+            "team": {
+              "id": "24",
+              "league": "nba",
+              "name": "San Antonio Spurs",
+              "shortName": "Spurs",
+              "abbreviation": "SA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png"
+              },
+              "color": "#000000"
+            },
+            "value": 7.382352828979492,
+            "displayValue": "7.4"
+          },
+          {
+            "rank": 7,
+            "playerId": "1966",
+            "name": "LeBron James",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/1966.png",
+            "team": {
+              "id": "13",
+              "league": "nba",
+              "name": "Los Angeles Lakers",
+              "shortName": "Lakers",
+              "abbreviation": "LAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+              },
+              "color": "#552583"
+            },
+            "value": 7.199999809265137,
+            "displayValue": "7.2"
+          },
+          {
+            "rank": 8,
+            "playerId": "4683766",
+            "name": "Isaiah Collier",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683766.png",
+            "team": {
+              "id": "26",
+              "league": "nba",
+              "name": "Utah Jazz",
+              "shortName": "Jazz",
+              "abbreviation": "UTAH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png"
+              },
+              "color": "#4e008e"
+            },
+            "value": 7.169491291046143,
+            "displayValue": "7.2"
+          },
+          {
+            "rank": 9,
+            "playerId": "4432816",
+            "name": "LaMelo Ball",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432816.png",
+            "team": {
+              "id": "16",
+              "league": "nba",
+              "name": "Minnesota Timberwolves",
+              "shortName": "Timberwolves",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 7.138888835906982,
+            "displayValue": "7.1"
+          },
+          {
+            "rank": 10,
+            "playerId": "3936299",
+            "name": "Jamal Murray",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3936299.png",
+            "team": {
+              "id": "7",
+              "league": "nba",
+              "name": "Denver Nuggets",
+              "shortName": "Nuggets",
+              "abbreviation": "DEN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png"
+              },
+              "color": "#0e2240"
+            },
+            "value": 7.133333206176758,
+            "displayValue": "7.1"
+          }
+        ]
+      },
+      {
+        "category": "steals",
+        "label": "Interceptions",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "4684742",
+            "name": "Ausar Thompson",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684742.png",
+            "team": {
+              "id": "8",
+              "league": "nba",
+              "name": "Detroit Pistons",
+              "shortName": "Pistons",
+              "abbreviation": "DET",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 2,
+            "displayValue": "2.0"
+          },
+          {
+            "rank": 2,
+            "playerId": "4869342",
+            "name": "Dyson Daniels",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4869342.png",
+            "team": {
+              "id": "1",
+              "league": "nba",
+              "name": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png"
+              },
+              "color": "#c8102e"
+            },
+            "value": 1.9605263471603394,
+            "displayValue": "2.0"
+          },
+          {
+            "rank": 3,
+            "playerId": "4683692",
+            "name": "Cason Wallace",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4683692.png",
+            "team": {
+              "id": "25",
+              "league": "nba",
+              "name": "Oklahoma City Thunder",
+              "shortName": "Thunder",
+              "abbreviation": "OKC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png"
+              },
+              "color": "#007ac1"
+            },
+            "value": 1.948051929473877,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 4,
+            "playerId": "6450",
+            "name": "Kawhi Leonard",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/6450.png",
+            "team": {
+              "id": "12",
+              "league": "nba",
+              "name": "LA Clippers",
+              "shortName": "Clippers",
+              "abbreviation": "LAC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png"
+              },
+              "color": "#12173f"
+            },
+            "value": 1.8769230842590332,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 5,
+            "playerId": "4431678",
+            "name": "Tyrese Maxey",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431678.png",
+            "team": {
+              "id": "20",
+              "league": "nba",
+              "name": "Philadelphia 76ers",
+              "shortName": "76ers",
+              "abbreviation": "PHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 1.8571428060531616,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 6,
+            "playerId": "3945274",
+            "name": "Luka Doncic",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3945274.png",
+            "team": {
+              "id": "13",
+              "league": "nba",
+              "name": "Los Angeles Lakers",
+              "shortName": "Lakers",
+              "abbreviation": "LAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png"
+              },
+              "color": "#552583"
+            },
+            "value": 1.640625,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 7,
+            "playerId": "2991139",
+            "name": "Kris Dunn",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2991139.png",
+            "team": {
+              "id": "12",
+              "league": "nba",
+              "name": "LA Clippers",
+              "shortName": "Clippers",
+              "abbreviation": "LAC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png"
+              },
+              "color": "#12173f"
+            },
+            "value": 1.597561001777649,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 8,
+            "playerId": "3934719",
+            "name": "OG Anunoby",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3934719.png",
+            "team": {
+              "id": "18",
+              "league": "nba",
+              "name": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png"
+              },
+              "color": "#1d428a"
+            },
+            "value": 1.5522388219833374,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 9,
+            "playerId": "4278402",
+            "name": "Jordan Goodwin",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278402.png",
+            "team": {
+              "id": "21",
+              "league": "nba",
+              "name": "Phoenix Suns",
+              "shortName": "Suns",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png"
+              },
+              "color": "#29127a"
+            },
+            "value": 1.514285683631897,
+            "displayValue": "1.5"
+          },
+          {
+            "rank": 10,
+            "playerId": "4684740",
+            "name": "Amen Thompson",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4684740.png",
+            "team": {
+              "id": "10",
+              "league": "nba",
+              "name": "Houston Rockets",
+              "shortName": "Rockets",
+              "abbreviation": "HOU",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png"
+              },
+              "color": "#ce1141"
+            },
+            "value": 1.50632905960083,
+            "displayValue": "1.5"
+          }
+        ]
+      },
+      {
+        "category": "blocks",
+        "label": "Contres",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "5104157",
+            "name": "Victor Wembanyama",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5104157.png",
+            "team": {
+              "id": "24",
+              "league": "nba",
+              "name": "San Antonio Spurs",
+              "shortName": "Spurs",
+              "abbreviation": "SA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png"
+              },
+              "color": "#000000"
+            },
+            "value": 3.078125,
+            "displayValue": "3.1"
+          },
+          {
+            "rank": 2,
+            "playerId": "4433255",
+            "name": "Chet Holmgren",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433255.png",
+            "team": {
+              "id": "25",
+              "league": "nba",
+              "name": "Oklahoma City Thunder",
+              "shortName": "Thunder",
+              "abbreviation": "OKC",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png"
+              },
+              "color": "#007ac1"
+            },
+            "value": 1.8985507488250732,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 3,
+            "playerId": "4065731",
+            "name": "Jay Huff",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4065731.png",
+            "team": {
+              "id": "11",
+              "league": "nba",
+              "name": "Indiana Pacers",
+              "shortName": "Pacers",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png"
+              },
+              "color": "#0c2340"
+            },
+            "value": 1.8658536672592163,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 4,
+            "playerId": "4432158",
+            "name": "Evan Mobley",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432158.png",
+            "team": {
+              "id": "5",
+              "league": "nba",
+              "name": "Cleveland Cavaliers",
+              "shortName": "Cavaliers",
+              "abbreviation": "CLE",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png"
+              },
+              "color": "#860038"
+            },
+            "value": 1.7384614944458008,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 5,
+            "playerId": "5105565",
+            "name": "Donovan Clingan",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105565.png",
+            "team": {
+              "id": "22",
+              "league": "nba",
+              "name": "Portland Trail Blazers",
+              "shortName": "Trail Blazers",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png"
+              },
+              "color": "#e03a3e"
+            },
+            "value": 1.6883116960525513,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 6,
+            "playerId": "3032976",
+            "name": "Rudy Gobert",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3032976.png",
+            "team": {
+              "id": "16",
+              "league": "nba",
+              "name": "Minnesota Timberwolves",
+              "shortName": "Timberwolves",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 1.6315789222717285,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 7,
+            "playerId": "3133628",
+            "name": "Myles Turner",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3133628.png",
+            "team": {
+              "id": "15",
+              "league": "nba",
+              "name": "Milwaukee Bucks",
+              "shortName": "Bucks",
+              "abbreviation": "MIL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png"
+              },
+              "color": "#00471b"
+            },
+            "value": 1.619718313217163,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 8,
+            "playerId": "4432810",
+            "name": "Isaiah Stewart",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4432810.png",
+            "team": {
+              "id": "29",
+              "league": "nba",
+              "name": "Memphis Grizzlies",
+              "shortName": "Grizzlies",
+              "abbreviation": "MEM",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png"
+              },
+              "color": "#5d76a9"
+            },
+            "value": 1.6034482717514038,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 9,
+            "playerId": "5061589",
+            "name": "Yves Missi",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5061589.png",
+            "team": {
+              "id": "3",
+              "league": "nba",
+              "name": "New Orleans Pelicans",
+              "shortName": "Pelicans",
+              "abbreviation": "NO",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/no.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png"
+              },
+              "color": "#0a2240"
+            },
+            "value": 1.5303030014038086,
+            "displayValue": "1.5"
+          },
+          {
+            "rank": 10,
+            "playerId": "4711294",
+            "name": "Matas Buzelis",
+            "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4711294.png",
+            "team": {
+              "id": "4",
+              "league": "nba",
+              "name": "Chicago Bulls",
+              "shortName": "Bulls",
+              "abbreviation": "CHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png"
+              },
+              "color": "#ce1141"
+            },
+            "value": 1.5064934492111206,
+            "displayValue": "1.5"
+          }
+        ]
+      }
+    ]
+  },
+  "wnba": {
+    "league": "wnba",
+    "season": "2026",
+    "leaders": [
+      {
+        "category": "points",
+        "label": "Points",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "3149391",
+            "name": "A'ja Wilson",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3149391.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 25.975000381469727,
+            "displayValue": "26.0"
+          },
+          {
+            "rank": 2,
+            "playerId": "3142191",
+            "name": "Kelsey Mitchell",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3142191.png",
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "color": "#002d62"
+            },
+            "value": 25.023256301879883,
+            "displayValue": "25.0"
+          },
+          {
+            "rank": 3,
+            "playerId": "4433403",
+            "name": "Caitlin Clark",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433403.png",
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "color": "#002d62"
+            },
+            "value": 22.794872283935547,
+            "displayValue": "22.8"
+          },
+          {
+            "rank": 4,
+            "playerId": "2998938",
+            "name": "Kahleah Copper",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2998938.png",
+            "team": {
+              "id": "11",
+              "league": "wnba",
+              "name": "Phoenix Mercury",
+              "shortName": "Mercury",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+              },
+              "color": "#3c286e"
+            },
+            "value": 21.564102172851562,
+            "displayValue": "21.6"
+          },
+          {
+            "rank": 5,
+            "playerId": "3904576",
+            "name": "Marina Mabrey",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3904576.png",
+            "team": {
+              "id": "131935",
+              "league": "wnba",
+              "name": "Toronto Tempo",
+              "shortName": "Tempo",
+              "abbreviation": "TOR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/tor.png"
+              },
+              "color": "#33476D"
+            },
+            "value": 20.84375,
+            "displayValue": "20.8"
+          },
+          {
+            "rank": 6,
+            "playerId": "2998928",
+            "name": "Breanna Stewart",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2998928.png",
+            "team": {
+              "id": "9",
+              "league": "wnba",
+              "name": "New York Liberty",
+              "shortName": "Liberty",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+              },
+              "color": "#86cebc"
+            },
+            "value": 20.83333396911621,
+            "displayValue": "20.8"
+          },
+          {
+            "rank": 7,
+            "playerId": "4433730",
+            "name": "Paige Bueckers",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png",
+            "team": {
+              "id": "3",
+              "league": "wnba",
+              "name": "Dallas Wings",
+              "shortName": "Wings",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+              },
+              "color": "#002b5c"
+            },
+            "value": 20.80487823486328,
+            "displayValue": "20.8"
+          },
+          {
+            "rank": 8,
+            "playerId": "4433791",
+            "name": "Olivia Miles",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433791.png",
+            "team": {
+              "id": "8",
+              "league": "wnba",
+              "name": "Minnesota Lynx",
+              "shortName": "Lynx",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 19.75,
+            "displayValue": "19.8"
+          },
+          {
+            "rank": 9,
+            "playerId": "4065870",
+            "name": "Jackie Young",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4065870.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 19.261905670166016,
+            "displayValue": "19.3"
+          },
+          {
+            "rank": 10,
+            "playerId": "3058901",
+            "name": "Allisha Gray",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3058901.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 18.9069766998291,
+            "displayValue": "18.9"
+          }
+        ]
+      },
+      {
+        "category": "rebounds",
+        "label": "Rebonds",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "4433402",
+            "name": "Angel Reese",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433402.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 12.2619047164917,
+            "displayValue": "12.3"
+          },
+          {
+            "rank": 2,
+            "playerId": "3906949",
+            "name": "Jessica Shepard",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png",
+            "team": {
+              "id": "3",
+              "league": "wnba",
+              "name": "Dallas Wings",
+              "shortName": "Wings",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+              },
+              "color": "#002b5c"
+            },
+            "value": 11.12195110321045,
+            "displayValue": "11.1"
+          },
+          {
+            "rank": 3,
+            "playerId": "4898384",
+            "name": "Kiki Iriafen",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4898384.png",
+            "team": {
+              "id": "16",
+              "league": "wnba",
+              "name": "Washington Mystics",
+              "shortName": "Mystics",
+              "abbreviation": "WSH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/wsh.png"
+              },
+              "color": "#e03a3e"
+            },
+            "value": 9.475000381469727,
+            "displayValue": "9.5"
+          },
+          {
+            "rank": 4,
+            "playerId": "4398911",
+            "name": "Shakira Austin",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398911.png",
+            "team": {
+              "id": "16",
+              "league": "wnba",
+              "name": "Washington Mystics",
+              "shortName": "Mystics",
+              "abbreviation": "WSH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/wsh.png"
+              },
+              "color": "#e03a3e"
+            },
+            "value": 9.452381134033203,
+            "displayValue": "9.5"
+          },
+          {
+            "rank": 5,
+            "playerId": "3149391",
+            "name": "A'ja Wilson",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3149391.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 9.350000381469727,
+            "displayValue": "9.4"
+          },
+          {
+            "rank": 6,
+            "playerId": "2999101",
+            "name": "Jonquel Jones",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2999101.png",
+            "team": {
+              "id": "9",
+              "league": "wnba",
+              "name": "New York Liberty",
+              "shortName": "Liberty",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+              },
+              "color": "#86cebc"
+            },
+            "value": 8.952381134033203,
+            "displayValue": "9.0"
+          },
+          {
+            "rank": 7,
+            "playerId": "1068",
+            "name": "Nneka Ogwumike",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/1068.png",
+            "team": {
+              "id": "6",
+              "league": "wnba",
+              "name": "Los Angeles Sparks",
+              "shortName": "Sparks",
+              "abbreviation": "LA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+              },
+              "color": "#552583"
+            },
+            "value": 8.904762268066406,
+            "displayValue": "8.9"
+          },
+          {
+            "rank": 8,
+            "playerId": "5220150",
+            "name": "Dominique Malonga",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/5220150.png",
+            "team": {
+              "id": "14",
+              "league": "wnba",
+              "name": "Seattle Storm",
+              "shortName": "Storm",
+              "abbreviation": "SEA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/sea.png"
+              },
+              "color": "#2c5235"
+            },
+            "value": 8.79411792755127,
+            "displayValue": "8.8"
+          },
+          {
+            "rank": 9,
+            "playerId": "4433405",
+            "name": "Kamilla Cardoso",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433405.png",
+            "team": {
+              "id": "19",
+              "league": "wnba",
+              "name": "Chicago Sky",
+              "shortName": "Sky",
+              "abbreviation": "CHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/chi.png"
+              },
+              "color": "#5091cd"
+            },
+            "value": 8.595237731933594,
+            "displayValue": "8.6"
+          },
+          {
+            "rank": 10,
+            "playerId": "2998928",
+            "name": "Breanna Stewart",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2998928.png",
+            "team": {
+              "id": "9",
+              "league": "wnba",
+              "name": "New York Liberty",
+              "shortName": "Liberty",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+              },
+              "color": "#86cebc"
+            },
+            "value": 8.285714149475098,
+            "displayValue": "8.3"
+          }
+        ]
+      },
+      {
+        "category": "assists",
+        "label": "Passes décisives",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "2529140",
+            "name": "Alyssa Thomas",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2529140.png",
+            "team": {
+              "id": "11",
+              "league": "wnba",
+              "name": "Phoenix Mercury",
+              "shortName": "Mercury",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+              },
+              "color": "#3c286e"
+            },
+            "value": 8.512195587158203,
+            "displayValue": "8.5"
+          },
+          {
+            "rank": 2,
+            "playerId": "4433403",
+            "name": "Caitlin Clark",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433403.png",
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "color": "#002d62"
+            },
+            "value": 8.461538314819336,
+            "displayValue": "8.5"
+          },
+          {
+            "rank": 3,
+            "playerId": "3142250",
+            "name": "Jordin Canada",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3142250.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 7.333333492279053,
+            "displayValue": "7.3"
+          },
+          {
+            "rank": 4,
+            "playerId": "4065870",
+            "name": "Jackie Young",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4065870.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 6.714285850524902,
+            "displayValue": "6.7"
+          },
+          {
+            "rank": 5,
+            "playerId": "2529122",
+            "name": "Chelsea Gray",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2529122.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 6.5714287757873535,
+            "displayValue": "6.6"
+          },
+          {
+            "rank": 6,
+            "playerId": "5208982",
+            "name": "Carla Leite",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/5208982.png",
+            "team": {
+              "id": "132052",
+              "league": "wnba",
+              "name": "Portland Fire",
+              "shortName": "Fire",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/por.png"
+              },
+              "color": "#cee5eb"
+            },
+            "value": 6.282051086425781,
+            "displayValue": "6.3"
+          },
+          {
+            "rank": 7,
+            "playerId": "4433791",
+            "name": "Olivia Miles",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433791.png",
+            "team": {
+              "id": "8",
+              "league": "wnba",
+              "name": "Minnesota Lynx",
+              "shortName": "Lynx",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 5.974999904632568,
+            "displayValue": "6.0"
+          },
+          {
+            "rank": 8,
+            "playerId": "4433730",
+            "name": "Paige Bueckers",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png",
+            "team": {
+              "id": "3",
+              "league": "wnba",
+              "name": "Dallas Wings",
+              "shortName": "Wings",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+              },
+              "color": "#002b5c"
+            },
+            "value": 5.853658676147461,
+            "displayValue": "5.9"
+          },
+          {
+            "rank": 9,
+            "playerId": "4398935",
+            "name": "Veronica Burton",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398935.png",
+            "team": {
+              "id": "129689",
+              "league": "wnba",
+              "name": "Golden State Valkyries",
+              "shortName": "Valkyries",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+              },
+              "color": "#b38fcf"
+            },
+            "value": 5.744185924530029,
+            "displayValue": "5.7"
+          },
+          {
+            "rank": 10,
+            "playerId": "4001679",
+            "name": "Julie Allemand",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4001679.png",
+            "team": {
+              "id": "131935",
+              "league": "wnba",
+              "name": "Toronto Tempo",
+              "shortName": "Tempo",
+              "abbreviation": "TOR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/tor.png"
+              },
+              "color": "#33476D"
+            },
+            "value": 5.46875,
+            "displayValue": "5.5"
+          }
+        ]
+      },
+      {
+        "category": "steals",
+        "label": "Interceptions",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "4398674",
+            "name": "Rhyne Howard",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398674.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 2.309523820877075,
+            "displayValue": "2.3"
+          },
+          {
+            "rank": 2,
+            "playerId": "3142250",
+            "name": "Jordin Canada",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3142250.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 1.9285714626312256,
+            "displayValue": "1.9"
+          },
+          {
+            "rank": 3,
+            "playerId": "4433402",
+            "name": "Angel Reese",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433402.png",
+            "team": {
+              "id": "20",
+              "league": "wnba",
+              "name": "Atlanta Dream",
+              "shortName": "Dream",
+              "abbreviation": "ATL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+              },
+              "color": "#e31837"
+            },
+            "value": 1.7619047164916992,
+            "displayValue": "1.8"
+          },
+          {
+            "rank": 4,
+            "playerId": "2529205",
+            "name": "Kayla McBride",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2529205.png",
+            "team": {
+              "id": "8",
+              "league": "wnba",
+              "name": "Minnesota Lynx",
+              "shortName": "Lynx",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 1.674418568611145,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 5,
+            "playerId": "3142328",
+            "name": "Gabby Williams",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3142328.png",
+            "team": {
+              "id": "129689",
+              "league": "wnba",
+              "name": "Golden State Valkyries",
+              "shortName": "Valkyries",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+              },
+              "color": "#b38fcf"
+            },
+            "value": 1.6578947305679321,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 6,
+            "playerId": "3146151",
+            "name": "Ariel Atkins",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3146151.png",
+            "team": {
+              "id": "6",
+              "league": "wnba",
+              "name": "Los Angeles Sparks",
+              "shortName": "Sparks",
+              "abbreviation": "LA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+              },
+              "color": "#552583"
+            },
+            "value": 1.6341463327407837,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 7,
+            "playerId": "2529130",
+            "name": "Natasha Howard",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2529130.png",
+            "team": {
+              "id": "8",
+              "league": "wnba",
+              "name": "Minnesota Lynx",
+              "shortName": "Lynx",
+              "abbreviation": "MIN",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+              },
+              "color": "#266092"
+            },
+            "value": 1.6279069185256958,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 8,
+            "playerId": "4398935",
+            "name": "Veronica Burton",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398935.png",
+            "team": {
+              "id": "129689",
+              "league": "wnba",
+              "name": "Golden State Valkyries",
+              "shortName": "Valkyries",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+              },
+              "color": "#b38fcf"
+            },
+            "value": 1.5813953876495361,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 9,
+            "playerId": "3906972",
+            "name": "Bridget Carleton",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906972.png",
+            "team": {
+              "id": "132052",
+              "league": "wnba",
+              "name": "Portland Fire",
+              "shortName": "Fire",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/por.png"
+              },
+              "color": "#cee5eb"
+            },
+            "value": 1.5750000476837158,
+            "displayValue": "1.6"
+          },
+          {
+            "rank": 10,
+            "playerId": "4432831",
+            "name": "Aliyah Boston",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4432831.png",
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "color": "#002d62"
+            },
+            "value": 1.5128204822540283,
+            "displayValue": "1.5"
+          }
+        ]
+      },
+      {
+        "category": "blocks",
+        "label": "Contres",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "3149391",
+            "name": "A'ja Wilson",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3149391.png",
+            "team": {
+              "id": "17",
+              "league": "wnba",
+              "name": "Las Vegas Aces",
+              "shortName": "Aces",
+              "abbreviation": "LV",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+              },
+              "color": "#a7a8aa"
+            },
+            "value": 1.975000023841858,
+            "displayValue": "2.0"
+          },
+          {
+            "rank": 2,
+            "playerId": "4433404",
+            "name": "Cameron Brink",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433404.png",
+            "team": {
+              "id": "6",
+              "league": "wnba",
+              "name": "Los Angeles Sparks",
+              "shortName": "Sparks",
+              "abbreviation": "LA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+              },
+              "color": "#552583"
+            },
+            "value": 1.774193525314331,
+            "displayValue": "1.8"
+          },
+          {
+            "rank": 3,
+            "playerId": "2590093",
+            "name": "Kiah Stokes",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2590093.png",
+            "team": {
+              "id": "129689",
+              "league": "wnba",
+              "name": "Golden State Valkyries",
+              "shortName": "Valkyries",
+              "abbreviation": "GS",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/gs.png"
+              },
+              "color": "#b38fcf"
+            },
+            "value": 1.7380952835083008,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 4,
+            "playerId": "4790266",
+            "name": "Awak Kuier",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4790266.png",
+            "team": {
+              "id": "3",
+              "league": "wnba",
+              "name": "Dallas Wings",
+              "shortName": "Wings",
+              "abbreviation": "DAL",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+              },
+              "color": "#002b5c"
+            },
+            "value": 1.725000023841858,
+            "displayValue": "1.7"
+          },
+          {
+            "rank": 5,
+            "playerId": "4433405",
+            "name": "Kamilla Cardoso",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433405.png",
+            "team": {
+              "id": "19",
+              "league": "wnba",
+              "name": "Chicago Sky",
+              "shortName": "Sky",
+              "abbreviation": "CHI",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/chi.png"
+              },
+              "color": "#5091cd"
+            },
+            "value": 1.5,
+            "displayValue": "1.5"
+          },
+          {
+            "rank": 6,
+            "playerId": "4398729",
+            "name": "Emily Engstler",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398729.png",
+            "team": {
+              "id": "132052",
+              "league": "wnba",
+              "name": "Portland Fire",
+              "shortName": "Fire",
+              "abbreviation": "POR",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/por.png"
+              },
+              "color": "#cee5eb"
+            },
+            "value": 1.4318181276321411,
+            "displayValue": "1.4"
+          },
+          {
+            "rank": 7,
+            "playerId": "5220150",
+            "name": "Dominique Malonga",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/5220150.png",
+            "team": {
+              "id": "14",
+              "league": "wnba",
+              "name": "Seattle Storm",
+              "shortName": "Storm",
+              "abbreviation": "SEA",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/sea.png"
+              },
+              "color": "#2c5235"
+            },
+            "value": 1.3823529481887817,
+            "displayValue": "1.4"
+          },
+          {
+            "rank": 8,
+            "playerId": "2998928",
+            "name": "Breanna Stewart",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/2998928.png",
+            "team": {
+              "id": "9",
+              "league": "wnba",
+              "name": "New York Liberty",
+              "shortName": "Liberty",
+              "abbreviation": "NY",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+              },
+              "color": "#86cebc"
+            },
+            "value": 1.2857142686843872,
+            "displayValue": "1.3"
+          },
+          {
+            "rank": 9,
+            "playerId": "4398911",
+            "name": "Shakira Austin",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4398911.png",
+            "team": {
+              "id": "16",
+              "league": "wnba",
+              "name": "Washington Mystics",
+              "shortName": "Mystics",
+              "abbreviation": "WSH",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/wsh.png"
+              },
+              "color": "#e03a3e"
+            },
+            "value": 1.2619047164916992,
+            "displayValue": "1.3"
+          },
+          {
+            "rank": 10,
+            "playerId": "4068042",
+            "name": "Natasha Mack",
+            "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4068042.png",
+            "team": {
+              "id": "11",
+              "league": "wnba",
+              "name": "Phoenix Mercury",
+              "shortName": "Mercury",
+              "abbreviation": "PHX",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+              },
+              "color": "#3c286e"
+            },
+            "value": 1.2571429014205933,
+            "displayValue": "1.3"
+          }
+        ]
+      }
+    ]
+  },
+  "euroleague": {
+    "league": "euroleague",
+    "season": "2025-26",
+    "leaders": [
+      {
+        "category": "points",
+        "label": "Points",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "003469",
+            "name": "Sasha Vezenkov",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/f65c52c5-542f-4796-8dc6-b46cc9a6f3d5.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 18.974358974358974,
+            "displayValue": "19.0",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 2,
+            "playerId": "012640",
+            "name": "Nadir Hifi",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/c4dc8064-fc52-451a-b27c-0aa9ec164948.png",
+            "team": {
+              "id": "PRS",
+              "league": "euroleague",
+              "name": "Paris Basketball",
+              "shortName": "Paris",
+              "abbreviation": "PBB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+              },
+              "location": "Paris, France"
+            },
+            "value": 18.89189189189189,
+            "displayValue": "18.9",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 3,
+            "playerId": "012774",
+            "name": "Kendrick Nunn",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnOS1/d913fc4c-1568-43ac-a589-7087cf2f068c.png",
+            "team": {
+              "id": "PAN",
+              "league": "euroleague",
+              "name": "Panathinaikos AKTOR Athens",
+              "shortName": "Panathinaikos",
+              "abbreviation": "PAO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+              },
+              "location": "Athens, Greece"
+            },
+            "value": 18.27027027027027,
+            "displayValue": "18.3",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 4,
+            "playerId": "012080",
+            "name": "Timothe Luwawu-Cabarrot",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/894b61b0-9ef5-4796-889d-6cf29eaede45.png",
+            "team": {
+              "id": "BAS",
+              "league": "euroleague",
+              "name": "Kosner Baskonia Vitoria-Gasteiz",
+              "shortName": "Baskonia",
+              "abbreviation": "KBA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
+                "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+              },
+              "location": "Vitoria-Gasteiz, Spain"
+            },
+            "value": 18.25,
+            "displayValue": "18.3",
+            "gamesPlayed": 36
+          },
+          {
+            "rank": 5,
+            "playerId": "011987",
+            "name": "Carsen Edwards",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/bbb31a52-7c6a-4536-9039-9899b5c0f4f8.png",
+            "team": {
+              "id": "VIR",
+              "league": "euroleague",
+              "name": "Virtus Bologna",
+              "shortName": "Virtus",
+              "abbreviation": "VIR",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png"
+              },
+              "location": "Bologna, Italy"
+            },
+            "value": 17.305555555555557,
+            "displayValue": "17.3",
+            "gamesPlayed": 36
+          },
+          {
+            "rank": 6,
+            "playerId": "013363",
+            "name": "Jordan Nwora",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/9398d5d9-12c5-4b31-8cd6-5a8ab6e253fb.png",
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              },
+              "location": "Belgrade, Serbia"
+            },
+            "value": 16.941176470588236,
+            "displayValue": "16.9",
+            "gamesPlayed": 34
+          },
+          {
+            "rank": 7,
+            "playerId": "007975",
+            "name": "Sylvain Francisco",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnOS1/e5467e2c-9009-4189-8e8b-35d8347f5b54.png",
+            "team": {
+              "id": "ZAL",
+              "league": "euroleague",
+              "name": "Zalgiris Kaunas",
+              "shortName": "Zalgiris",
+              "abbreviation": "ZAL",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+                "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+              },
+              "location": "Kaunas, Lithuania"
+            },
+            "value": 16.523809523809526,
+            "displayValue": "16.5",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 8,
+            "playerId": "005985",
+            "name": "Mike James",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/286b3dbb-72aa-4f86-aa59-d254a86448c5.png",
+            "team": {
+              "id": "MCO",
+              "league": "euroleague",
+              "name": "AS Monaco",
+              "shortName": "AS Monaco",
+              "abbreviation": "MCO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
+                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
+              }
+            },
+            "value": 16.41025641025641,
+            "displayValue": "16.4",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 9,
+            "playerId": "011286",
+            "name": "Dwayne Bacon",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/849bf907-264a-4094-b7ea-00d3f048eecb.png",
+            "team": {
+              "id": "DUB",
+              "league": "euroleague",
+              "name": "Dubai Basketball",
+              "shortName": "Dubai",
+              "abbreviation": "DUB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+              },
+              "location": "Dubai, United Arab Emirates"
+            },
+            "value": 16.17241379310345,
+            "displayValue": "16.2",
+            "gamesPlayed": 29
+          },
+          {
+            "rank": 10,
+            "playerId": "009849",
+            "name": "Tyler Dorsey",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/6faa6ab7-bfe2-4651-b381-c61e9da117fb.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 15.86046511627907,
+            "displayValue": "15.9",
+            "gamesPlayed": 43
+          }
+        ]
+      },
+      {
+        "category": "rebounds",
+        "label": "Rebonds",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "003941",
+            "name": "Nikola Milutinov",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/8a5ab349-9cac-4572-b214-a99e48788920.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 7.175,
+            "displayValue": "7.2",
+            "gamesPlayed": 40
+          },
+          {
+            "rank": 2,
+            "playerId": "006835",
+            "name": "Jaylen Hoard",
+            "headshot": "https://media-cdn.cortextech.io/3fb1a66a-a679-4665-94d2-60192fcd7e16.png",
+            "team": {
+              "id": "TEL",
+              "league": "euroleague",
+              "name": "Maccabi Rapyd Tel Aviv",
+              "shortName": "Maccabi",
+              "abbreviation": "MTA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+              },
+              "location": "Tel Aviv, Israel"
+            },
+            "value": 7.057142857142857,
+            "displayValue": "7.1",
+            "gamesPlayed": 35
+          },
+          {
+            "rank": 3,
+            "playerId": "005791",
+            "name": "Walter Tavares",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/741a7c56-5df6-4b34-a1b5-7dc4c49cc98d.png",
+            "team": {
+              "id": "MAD",
+              "league": "euroleague",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+              },
+              "location": "Madrid, Spain"
+            },
+            "value": 6.615384615384615,
+            "displayValue": "6.6",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 4,
+            "playerId": "012201",
+            "name": "Chima Moneke",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/08270e7f-2a17-43ae-a234-5b83ebc80a63.png",
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              },
+              "location": "Belgrade, Serbia"
+            },
+            "value": 6.485714285714286,
+            "displayValue": "6.5",
+            "gamesPlayed": 35
+          },
+          {
+            "rank": 5,
+            "playerId": "012712",
+            "name": "Juancho Hernangomez",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/9eb6f2b2-d265-4965-88bb-8ce2269e00ff.png",
+            "team": {
+              "id": "PAN",
+              "league": "euroleague",
+              "name": "Panathinaikos AKTOR Athens",
+              "shortName": "Panathinaikos",
+              "abbreviation": "PAO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+              },
+              "location": "Athens, Greece"
+            },
+            "value": 6.4772727272727275,
+            "displayValue": "6.5",
+            "gamesPlayed": 44
+          },
+          {
+            "rank": 6,
+            "playerId": "012878",
+            "name": "Moses Wright",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/44aa0f82-0341-41b1-97e4-e1ff901f8578.png",
+            "team": {
+              "id": "ZAL",
+              "league": "euroleague",
+              "name": "Zalgiris Kaunas",
+              "shortName": "Zalgiris",
+              "abbreviation": "ZAL",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+                "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+              },
+              "location": "Kaunas, Lithuania"
+            },
+            "value": 6.476190476190476,
+            "displayValue": "6.5",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 7,
+            "playerId": "003469",
+            "name": "Sasha Vezenkov",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/f65c52c5-542f-4796-8dc6-b46cc9a6f3d5.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 6.410256410256411,
+            "displayValue": "6.4",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 8,
+            "playerId": "012796",
+            "name": "Mfiondu Kabengele",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/c758af2a-bc8d-4e9a-ac62-362597904633.png",
+            "team": {
+              "id": "DUB",
+              "league": "euroleague",
+              "name": "Dubai Basketball",
+              "shortName": "Dubai",
+              "abbreviation": "DUB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+              },
+              "location": "Dubai, United Arab Emirates"
+            },
+            "value": 6.055555555555555,
+            "displayValue": "6.1",
+            "gamesPlayed": 36
+          },
+          {
+            "rank": 9,
+            "playerId": "012788",
+            "name": "Dan Oturu",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnOO0/4f6f71f3-8978-49e7-9c3f-313c81ae0339.png",
+            "team": {
+              "id": "HTA",
+              "league": "euroleague",
+              "name": "Hapoel IBI Tel Aviv",
+              "shortName": "Hapoel",
+              "abbreviation": "HTA",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
+                "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
+              },
+              "location": "Tel Aviv, Israel"
+            },
+            "value": 5.666666666666667,
+            "displayValue": "5.7",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 10,
+            "playerId": "002849",
+            "name": "Nicolo Melli",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/fbee5e3e-f8f5-4393-827b-4a3ddefeaa88.png",
+            "team": {
+              "id": "ULK",
+              "league": "euroleague",
+              "name": "Fenerbahce Tarfin Istanbul",
+              "shortName": "Fenerbahce",
+              "abbreviation": "FBT",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+              },
+              "location": "Istanbul, Turkiye"
+            },
+            "value": 5.628571428571429,
+            "displayValue": "5.6",
+            "gamesPlayed": 35
+          }
+        ]
+      },
+      {
+        "category": "assists",
+        "label": "Passes décisives",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "009048",
+            "name": "Codi Miller-Mcintyre",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/b98b2f04-52a1-4c10-8f29-396df546162b.png",
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              },
+              "location": "Belgrade, Serbia"
+            },
+            "value": 7.410256410256411,
+            "displayValue": "7.4",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 2,
+            "playerId": "007975",
+            "name": "Sylvain Francisco",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnOS1/e5467e2c-9009-4189-8e8b-35d8347f5b54.png",
+            "team": {
+              "id": "ZAL",
+              "league": "euroleague",
+              "name": "Zalgiris Kaunas",
+              "shortName": "Zalgiris",
+              "abbreviation": "ZAL",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+                "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+              },
+              "location": "Kaunas, Lithuania"
+            },
+            "value": 6.5476190476190474,
+            "displayValue": "6.5",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 3,
+            "playerId": "005985",
+            "name": "Mike James",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/286b3dbb-72aa-4f86-aa59-d254a86448c5.png",
+            "team": {
+              "id": "MCO",
+              "league": "euroleague",
+              "name": "AS Monaco",
+              "shortName": "AS Monaco",
+              "abbreviation": "MCO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
+                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
+              }
+            },
+            "value": 6.461538461538462,
+            "displayValue": "6.5",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 4,
+            "playerId": "012606",
+            "name": "Mckinley Wright Iv",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/ed6dcc8c-2978-4685-aaf8-de47979d3440.png",
+            "team": {
+              "id": "DUB",
+              "league": "euroleague",
+              "name": "Dubai Basketball",
+              "shortName": "Dubai",
+              "abbreviation": "DUB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+              },
+              "location": "Dubai, United Arab Emirates"
+            },
+            "value": 6.105263157894737,
+            "displayValue": "6.1",
+            "gamesPlayed": 38
+          },
+          {
+            "rank": 5,
+            "playerId": "008855",
+            "name": "Thomas Walkup",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/6b597c1d-5917-47f4-84ea-e4a857dc4555.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 5.72972972972973,
+            "displayValue": "5.7",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 6,
+            "playerId": "009863",
+            "name": "Wade Baldwin Iv",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/43d87c83-f7d6-4748-bb4b-cb59f5875ee4.png",
+            "team": {
+              "id": "ULK",
+              "league": "euroleague",
+              "name": "Fenerbahce Tarfin Istanbul",
+              "shortName": "Fenerbahce",
+              "abbreviation": "FBT",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+              },
+              "location": "Istanbul, Turkiye"
+            },
+            "value": 5.476190476190476,
+            "displayValue": "5.5",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 7,
+            "playerId": "KLT",
+            "name": "Thomas Heurtel",
+            "headshot": "https://media-cdn.cortextech.io/738f1c5e-08d0-477c-9c7c-1a304fef6319.png",
+            "team": {
+              "id": "ASV",
+              "league": "euroleague",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+              },
+              "location": "Lyon, France"
+            },
+            "value": 5.36,
+            "displayValue": "5.4",
+            "gamesPlayed": 25
+          },
+          {
+            "rank": 8,
+            "playerId": "011193",
+            "name": "Tamir Blatt",
+            "headshot": "https://media-cdn.cortextech.io/780f9309-2c9f-4a43-be7f-9f7a7182d133.png",
+            "team": {
+              "id": "TEL",
+              "league": "euroleague",
+              "name": "Maccabi Rapyd Tel Aviv",
+              "shortName": "Maccabi",
+              "abbreviation": "MTA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+              },
+              "location": "Tel Aviv, Israel"
+            },
+            "value": 5.184210526315789,
+            "displayValue": "5.2",
+            "gamesPlayed": 38
+          },
+          {
+            "rank": 9,
+            "playerId": "001926",
+            "name": "Kostas Sloukas",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/f366b944-dbc4-4b06-984d-c6cad9800321.png",
+            "team": {
+              "id": "PAN",
+              "league": "euroleague",
+              "name": "Panathinaikos AKTOR Athens",
+              "shortName": "Panathinaikos",
+              "abbreviation": "PAO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+              },
+              "location": "Athens, Greece"
+            },
+            "value": 5.131578947368421,
+            "displayValue": "5.1",
+            "gamesPlayed": 38
+          },
+          {
+            "rank": 10,
+            "playerId": "005928",
+            "name": "Facundo Campazzo",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/76403e82-85ef-455e-a8d9-1ed4d2858efe.png",
+            "team": {
+              "id": "MAD",
+              "league": "euroleague",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+              },
+              "location": "Madrid, Spain"
+            },
+            "value": 5.090909090909091,
+            "displayValue": "5.1",
+            "gamesPlayed": 44
+          }
+        ]
+      },
+      {
+        "category": "steals",
+        "label": "Interceptions",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "007947",
+            "name": "Luca Vildoza",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/8cabc4e6-be71-4962-9876-f7beda50343f.png",
+            "team": {
+              "id": "VIR",
+              "league": "euroleague",
+              "name": "Virtus Bologna",
+              "shortName": "Virtus",
+              "abbreviation": "VIR",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png"
+              },
+              "location": "Bologna, Italy"
+            },
+            "value": 1.3870967741935485,
+            "displayValue": "1.4",
+            "gamesPlayed": 31
+          },
+          {
+            "rank": 2,
+            "playerId": "011226",
+            "name": "Alpha Diallo",
+            "headshot": "https://media-cdn.cortextech.io/62623d1f-4407-49ac-a0a8-5924cc103e8a.png",
+            "team": {
+              "id": "MCO",
+              "league": "euroleague",
+              "name": "AS Monaco",
+              "shortName": "AS Monaco",
+              "abbreviation": "MCO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
+                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
+              }
+            },
+            "value": 1.3571428571428572,
+            "displayValue": "1.4",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 3,
+            "playerId": "013371",
+            "name": "Shaquille Harrison",
+            "headshot": "https://media-cdn.cortextech.io/3b994fa6-5da8-4559-ac9a-6c6400e3fd99.png",
+            "team": {
+              "id": "ASV",
+              "league": "euroleague",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+              },
+              "location": "Lyon, France"
+            },
+            "value": 1.3103448275862069,
+            "displayValue": "1.3",
+            "gamesPlayed": 29
+          },
+          {
+            "rank": 4,
+            "playerId": "013699",
+            "name": "Jimmy Clark Iii",
+            "headshot": "https://media-cdn.cortextech.io/fc0e527c-4d5c-479e-a067-3701084cf554.png",
+            "team": {
+              "id": "TEL",
+              "league": "euroleague",
+              "name": "Maccabi Rapyd Tel Aviv",
+              "shortName": "Maccabi",
+              "abbreviation": "MTA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+              },
+              "location": "Tel Aviv, Israel"
+            },
+            "value": 1.2972972972972974,
+            "displayValue": "1.3",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 5,
+            "playerId": "014010",
+            "name": "Allan Dokossi",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/33d6b1bb-2e42-42de-98e3-c02c475d36d1.png",
+            "team": {
+              "id": "PRS",
+              "league": "euroleague",
+              "name": "Paris Basketball",
+              "shortName": "Paris",
+              "abbreviation": "PBB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+              },
+              "location": "Paris, France"
+            },
+            "value": 1.2352941176470589,
+            "displayValue": "1.2",
+            "gamesPlayed": 34
+          },
+          {
+            "rank": 6,
+            "playerId": "010391",
+            "name": "Nick Weiler-Babb",
+            "headshot": "https://media-cdn.cortextech.io/e23682a9-5374-4706-b343-36f49f61236d.png",
+            "team": {
+              "id": "IST",
+              "league": "euroleague",
+              "name": "Anadolu Efes Istanbul",
+              "shortName": "Efes",
+              "abbreviation": "EFS",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png"
+              },
+              "location": "Istanbul, Turkiye"
+            },
+            "value": 1.2162162162162162,
+            "displayValue": "1.2",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 7,
+            "playerId": "012731",
+            "name": "Mbaye Ndiaye",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/df9f4f8d-6000-4fe4-a5fe-b463326723c4.png",
+            "team": {
+              "id": "ASV",
+              "league": "euroleague",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+              },
+              "location": "Lyon, France"
+            },
+            "value": 1.15625,
+            "displayValue": "1.2",
+            "gamesPlayed": 32
+          },
+          {
+            "rank": 8,
+            "playerId": "005928",
+            "name": "Facundo Campazzo",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/76403e82-85ef-455e-a8d9-1ed4d2858efe.png",
+            "team": {
+              "id": "MAD",
+              "league": "euroleague",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+              },
+              "location": "Madrid, Spain"
+            },
+            "value": 1.1363636363636365,
+            "displayValue": "1.1",
+            "gamesPlayed": 44
+          },
+          {
+            "rank": 9,
+            "playerId": "011981",
+            "name": "Tyrique Jones",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/d4eeb2e8-2276-4d18-8ba5-1c4a7cbd6bc7.png",
+            "team": {
+              "id": "OLY;PAR",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus;Partizan Mozzart Bet Belgrade",
+              "shortName": "Olympiacos Piraeus;Partizan Mozzart Bet Belgrade",
+              "abbreviation": "OLY;PAR",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png;https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png;https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png"
+              }
+            },
+            "value": 1.121212121212121,
+            "displayValue": "1.1",
+            "gamesPlayed": 33
+          },
+          {
+            "rank": 10,
+            "playerId": "013363",
+            "name": "Jordan Nwora",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/9398d5d9-12c5-4b31-8cd6-5a8ab6e253fb.png",
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              },
+              "location": "Belgrade, Serbia"
+            },
+            "value": 1.1176470588235294,
+            "displayValue": "1.1",
+            "gamesPlayed": 34
+          }
+        ]
+      },
+      {
+        "category": "blocks",
+        "label": "Contres",
+        "entries": [
+          {
+            "rank": 1,
+            "playerId": "005791",
+            "name": "Walter Tavares",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/741a7c56-5df6-4b34-a1b5-7dc4c49cc98d.png",
+            "team": {
+              "id": "MAD",
+              "league": "euroleague",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+              },
+              "location": "Madrid, Spain"
+            },
+            "value": 1.8461538461538463,
+            "displayValue": "1.8",
+            "gamesPlayed": 39
+          },
+          {
+            "rank": 2,
+            "playerId": "012731",
+            "name": "Mbaye Ndiaye",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/df9f4f8d-6000-4fe4-a5fe-b463326723c4.png",
+            "team": {
+              "id": "ASV",
+              "league": "euroleague",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+              },
+              "location": "Lyon, France"
+            },
+            "value": 1.40625,
+            "displayValue": "1.4",
+            "gamesPlayed": 32
+          },
+          {
+            "rank": 3,
+            "playerId": "012788",
+            "name": "Dan Oturu",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnOO0/4f6f71f3-8978-49e7-9c3f-313c81ae0339.png",
+            "team": {
+              "id": "HTA",
+              "league": "euroleague",
+              "name": "Hapoel IBI Tel Aviv",
+              "shortName": "Hapoel",
+              "abbreviation": "HTA",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
+                "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
+              },
+              "location": "Tel Aviv, Israel"
+            },
+            "value": 1.3571428571428572,
+            "displayValue": "1.4",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 4,
+            "playerId": "014102",
+            "name": "Kai Jones",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/f6863e93-e184-46e1-bae5-00166020bd7f.png",
+            "team": {
+              "id": "IST",
+              "league": "euroleague",
+              "name": "Anadolu Efes Istanbul",
+              "shortName": "Efes",
+              "abbreviation": "EFS",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png"
+              },
+              "location": "Istanbul, Turkiye"
+            },
+            "value": 1.25,
+            "displayValue": "1.3",
+            "gamesPlayed": 36
+          },
+          {
+            "rank": 5,
+            "playerId": "014027",
+            "name": "Mamadi Diakite",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/56f6929b-4dc8-4b27-8241-52186ffe2f52.png",
+            "team": {
+              "id": "BAS",
+              "league": "euroleague",
+              "name": "Kosner Baskonia Vitoria-Gasteiz",
+              "shortName": "Baskonia",
+              "abbreviation": "KBA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
+                "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+              },
+              "location": "Vitoria-Gasteiz, Spain"
+            },
+            "value": 1.2432432432432432,
+            "displayValue": "1.2",
+            "gamesPlayed": 37
+          },
+          {
+            "rank": 6,
+            "playerId": "012403",
+            "name": "Mouhamed Faye",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/2a94cfc5-db7e-4018-9c6f-b9ee436dd7b4.png",
+            "team": {
+              "id": "PRS",
+              "league": "euroleague",
+              "name": "Paris Basketball",
+              "shortName": "Paris",
+              "abbreviation": "PBB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+              },
+              "location": "Paris, France"
+            },
+            "value": 1,
+            "displayValue": "1.0",
+            "gamesPlayed": 38
+          },
+          {
+            "rank": 7,
+            "playerId": "012878",
+            "name": "Moses Wright",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/44aa0f82-0341-41b1-97e4-e1ff901f8578.png",
+            "team": {
+              "id": "ZAL",
+              "league": "euroleague",
+              "name": "Zalgiris Kaunas",
+              "shortName": "Zalgiris",
+              "abbreviation": "ZAL",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png",
+                "dark": "https://media-cdn.incrowdsports.com/0aa09358-3847-4c4e-b228-3582ee4e536d.png"
+              },
+              "location": "Kaunas, Lithuania"
+            },
+            "value": 0.8809523809523809,
+            "displayValue": "0.9",
+            "gamesPlayed": 42
+          },
+          {
+            "rank": 8,
+            "playerId": "011196",
+            "name": "Donta Hall",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONy/ad2ae42b-2dcc-45ef-8b68-58484364d4af.png",
+            "team": {
+              "id": "OLY",
+              "league": "euroleague",
+              "name": "Olympiacos Piraeus",
+              "shortName": "Olympiacos",
+              "abbreviation": "OLY",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png",
+                "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
+              },
+              "location": "Piraeus, Greece"
+            },
+            "value": 0.868421052631579,
+            "displayValue": "0.9",
+            "gamesPlayed": 38
+          },
+          {
+            "rank": 9,
+            "playerId": "010390",
+            "name": "Kevarrius Hayes",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/0cd451e5-94a5-46fd-9b80-cb636427977a.png",
+            "team": {
+              "id": "MCO",
+              "league": "euroleague",
+              "name": "AS Monaco",
+              "shortName": "AS Monaco",
+              "abbreviation": "MCO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
+                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
+              }
+            },
+            "value": 0.85,
+            "displayValue": "0.8",
+            "gamesPlayed": 40
+          },
+          {
+            "rank": 10,
+            "playerId": "011199",
+            "name": "Josh Nebo",
+            "headshot": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCjnONz/be29a3c4-23df-47f2-9600-a69b977d1492.png",
+            "team": {
+              "id": "MIL",
+              "league": "euroleague",
+              "name": "Armani Olimpia Milan",
+              "shortName": "Milan",
+              "abbreviation": "MIL",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png"
+              },
+              "location": "Milan, Italy"
+            },
+            "value": 0.8461538461538461,
+            "displayValue": "0.8",
+            "gamesPlayed": 26
+          }
+        ]
+      }
+    ]
+  }
+}
