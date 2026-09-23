@@ -17,6 +17,7 @@ export class ValidationError extends Error {
 const TEAM_ID_FORMAT: Record<LeagueId, RegExp> = {
   nba: /^\d{1,7}$/,
   wnba: /^\d{1,7}$/,
+  euroleague: /^[A-Z]{2,4}$/,
 };
 
 export function parseLeague(value: unknown): LeagueId {
