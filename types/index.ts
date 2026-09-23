@@ -74,6 +74,12 @@ export interface StandingRow {
   streak?: string;
   /** Rang utilisé pour les zones de qualification (ligue entière pour la WNBA). */
   seed: number;
+  /**
+   * Bilans détaillés fournis par ESPN (domicile, extérieur, conférence,
+   * division, 10 derniers matchs, moyennes de points…). Absent pour
+   * l'EuroLeague, dont l'API ne les expose pas.
+   */
+  detail?: TeamStat[];
 }
 
 export interface StandingGroup {
@@ -125,6 +131,17 @@ export interface Player {
   age?: number;
   country?: string;
   headshot?: string;
+  /** Lieu de naissance complet (« Toronto, Canada »). */
+  birthPlace?: string;
+  /** Années d'expérience professionnelle. */
+  experience?: number;
+  college?: string;
+  /** Statut sportif (« Actif », « Blessé »…). */
+  status?: string;
+  /** Description de la blessure en cours, le cas échéant. */
+  injury?: string;
+  /** Salaire annuel en dollars (NBA uniquement). */
+  salary?: number;
 }
 
 export interface TeamStat {
@@ -132,15 +149,25 @@ export interface TeamStat {
   value: string;
 }
 
+/** Statistiques regroupées par thème (Général, Attaque, Défense, Totaux). */
+export interface TeamStatGroup {
+  label: string;
+  stats: TeamStat[];
+}
+
 export interface TeamDetail {
   team: Team;
   season: string;
   standingSummary?: string;
   coach?: string;
+  /** Salle du club, quand l'API la fournit. */
+  venue?: string;
+  /** Bilans détaillés : général, domicile, extérieur, conférence, 10 derniers… */
+  records: TeamStat[];
   roster: Player[];
   recent: Game[];
   upcoming: Game[];
-  stats: TeamStat[];
+  stats: TeamStatGroup[];
 }
 
 export interface NewsItem {
