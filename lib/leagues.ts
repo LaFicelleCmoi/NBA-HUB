@@ -1,6 +1,6 @@
 import type { League, LeagueId } from "@/types";
 
-export const LEAGUE_IDS = ["nba", "wnba", "euroleague"] as const satisfies readonly LeagueId[];
+export const LEAGUE_IDS = ["nba", "wnba"] as const satisfies readonly LeagueId[];
 
 export const LEAGUES: Record<LeagueId, League> = {
   nba: {
@@ -27,15 +27,6 @@ export const LEAGUES: Record<LeagueId, League> = {
     },
     accent: "wnba",
   },
-  euroleague: {
-    id: "euroleague",
-    name: "EuroLeague",
-    shortName: "EL",
-    region: "Europe",
-    conferences: [],
-    logo: { light: "/leagues/euroleague.svg", dark: "/leagues/euroleague-dark.svg" },
-    accent: "euroleague",
-  },
 };
 
 export function isLeagueId(value: unknown): value is LeagueId {
@@ -49,10 +40,6 @@ export const ZONES: Record<LeagueId, { label: string; from: number; to: number; 
     { label: "Play-in", from: 7, to: 10, tone: "playin" },
   ],
   wnba: [{ label: "Playoffs (top 8 de la ligue)", from: 1, to: 8, tone: "direct" }],
-  euroleague: [
-    { label: "Qualifié playoffs", from: 1, to: 6, tone: "direct" },
-    { label: "Play-in", from: 7, to: 10, tone: "playin" },
-  ],
 };
 
 export function zoneFor(league: LeagueId, seed: number) {
