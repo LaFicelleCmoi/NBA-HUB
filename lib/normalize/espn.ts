@@ -229,7 +229,10 @@ export function normalizeStandings(root: RawStandingsNode, league: LeagueId) {
   // WNBA : les zones de playoffs se calculent sur la ligue entière.
   if (league === "wnba") {
     const all = groups.flatMap((g) => g.rows);
-    const hasSeeds = all.every((r) => r.seed > 0);
+    // ESPN renvoie souvent un « playoffSeed » par conférence (1..n dans chacune) :
+    // il se répète d'une conférence à l'autre et ne peut pas servir de rang de ligue.
+    // On ne le garde que s'il forme bien une numérotation unique sur toute la ligue.
+    const hasSeeds = all.every((r) => r.seed > 0) && new Set(all.map((r) => r.seed)).size === all.length;
     if (!hasSeeds) {
       [...all]
         .sort((a, b) => b.winPct - a.winPct || b.diff - a.diff)
