@@ -7,7 +7,7 @@ import type { NewsItem } from "@/types";
  * Hôtes d'images autorisés : ils doivent correspondre aux `remotePatterns`
  * de next.config.ts, sinon next/image refuse l'image. Toute autre image est ignorée.
  */
-const IMAGE_HOSTS = new Set(["www.basketusa.com", "a.espncdn.com"]);
+const IMAGE_HOSTS = new Set(["storage.ghost.io", "www.basketusa.com", "a.espncdn.com"]);
 
 const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
 
