@@ -180,6 +180,26 @@ L'actualité passe par des flux RSS publics, lus côté serveur par un petit par
 - Chaque source est indépendante : si l'une tombe, les autres restent affichées.
 - Chaque carte indique la source et la langue, et l'attribut `lang` est posé pour les lecteurs d'écran.
 
+### Ossature versionnée dans le dépôt
+
+`lib/data/*.json` contient un relevé des données qui ne bougent pas d'un jour à
+l'autre : les 65 équipes, les classements, les leaders et la fiche de chaque
+équipe (effectif, bilans, statistiques). Ces fichiers ne remplacent jamais une
+réponse amont réussie — ils prennent le relais quand l'amont se tait, pour que
+le site affiche des données réelles plutôt qu'une page d'erreur.
+
+Les matchs (résultats et calendrier) en sont volontairement absents : ils se
+périment en quelques heures, et une affiche fausse vaut moins qu'une section
+vide qui le dit.
+
+Pour rafraîchir le relevé, lancer le site puis :
+
+```bash
+node scripts/snapshot.mjs http://localhost:3000
+```
+
+À refaire au début de chaque saison, ou après un changement d'effectif notable.
+
 ### Gestion de l'inter-saison
 
 - **Classement** : si la saison courante n'a aucun match joué, on affiche le classement final de la saison précédente, avec un bandeau « Inter-saison ».
