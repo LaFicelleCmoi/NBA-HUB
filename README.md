@@ -2,7 +2,8 @@
 
 **NBA, WNBA et EuroLeague au même endroit** : scores en direct avec quart-temps et prolongations, classements avec zones de qualification, résultats, calendrier, leaders statistiques, actualités et pages équipe. Le concept reprend [LeagueHub](https://league-hub-teal.vercel.app/), adapté au basket. Tout le site est en français et affiche les horaires à l'heure de Paris.
 
-- **Stack** : Next.js 15 (App Router) · TypeScript · Tailwind CSS 4 · Framer Motion (animations uniquement)
+- **Stack** : Next.js 16 (App Router) · React 19 · TypeScript 6 · Tailwind CSS 4.3 · Framer Motion 13 (animations uniquement)
+- **Node.js** : 26.10.0 en local (dernière version, fichier `.nvmrc`), ≥ 20.9 requis
 - **Déploiement** : Vercel
 - **Aucune clé d'API requise.**
 
@@ -26,7 +27,17 @@ Scripts :
 | `npm run lint`      | ESLint (`next/core-web-vitals` + TypeScript) |
 | `npm run typecheck` | vérification TypeScript                     |
 
-> **Version de Node** : ≥ 18.18. Tailwind est figé en **4.1.18**, car les versions 4.2 et suivantes de son moteur natif (`@tailwindcss/oxide`) exigent Node ≥ 20. Sur Vercel (Node 20 ou 22), vous pouvez monter Tailwind et Next.js sans risque.
+> **Version de Node** : le projet est développé sous **Node 26.10.0** (dernière version, voir `.nvmrc`) :
+>
+> ```bash
+> nvm install && nvm use
+> ```
+>
+> `package.json` déclare `"engines": { "node": ">=20.9.0" }` (le minimum de Next.js 16) pour rester déployable sur Vercel, qui propose Node 20, 22 et 24.
+>
+> Deux dépendances ne sont volontairement pas à leur toute dernière version majeure :
+> - **TypeScript 6** et non 7 : typescript-eslint ne supporte pas encore TypeScript 7.
+> - **ESLint 9** et non 10 : eslint-plugin-react, embarqué par `eslint-config-next`, plante sous ESLint 10.
 
 ### Déploiement Vercel
 
@@ -50,6 +61,9 @@ Toutes sont optionnelles (voir `.env.example`).
 | `EUROLEAGUE_COMPETITION` | serveur | `E` | code de compétition (`U` = EuroCup) |
 | `UPSTREAM_TIMEOUT_MS` | serveur | `8000` | timeout des appels amont |
 | `RATE_LIMIT_MAX` / `RATE_LIMIT_WINDOW_MS` | serveur | `60` / `60000` | limite de requêtes sur `/api` |
+| `NEWS_BASKETUSA_RSS` | serveur | `https://www.basketusa.com/feed/` | actualités NBA et WNBA en français |
+| `NEWS_EUROLEAGUE_FR_RSS` | serveur | `https://www.basketeurope.com/category/euroleague/feed/` | actualités EuroLeague en français |
+| `NEWS_EUROLEAGUE_EN_RSS` | serveur | `https://www.eurohoops.net/en/category/euroleague/feed/` | actualités EuroLeague en anglais |
 | `NEXT_PUBLIC_SITE_URL` | public | `http://localhost:3000` | URL canonique (Open Graph) |
 | `NEXT_PUBLIC_TRACKER_URL` / `NEXT_PUBLIC_TRACKER_LABEL` | public | `https://www.nba.com/stats` / `Stats` | lien externe du header |
 
@@ -62,7 +76,7 @@ Seules les variables préfixées `NEXT_PUBLIC_` arrivent dans le bundle client. 
 ```
 app/
   layout.tsx                 # polices, script de thème (avec nonce CSP), header, footer
-  page.tsx                   # accueil
+  (home)/page.tsx            # accueil (+ loading.tsx)
   [league]/page.tsx          # /nba, /wnba, /euroleague (onglets)
   [league]/equipe/[teamId]/  # page équipe
   api/                       # Route Handlers = proxy serveur
@@ -76,13 +90,13 @@ app/
     [league]/news/                         GET  actualités
 components/                  # UI (home/, league/, team/, games/, standings/, layout/, ui/)
 lib/
-  api/        # clients amont (espn.ts, euroleague.ts), fetch + cache (http.ts), réponse d'API (respond.ts)
+  api/        # clients amont (espn.ts, euroleague.ts, rss.ts), fetch + cache (http.ts), réponse d'API (respond.ts)
   normalize/  # conversion des réponses amont vers le modèle commun
   data/       # service unique utilisé par les Route Handlers ET les Server Components
   client/     # hooks navigateur : useApi (appelle /api uniquement), favori, thème
   validation.ts, leagues.ts, time.ts, env.ts
 types/        # modèle commun : League, Team, Game, Standing, Leader, Player, NewsItem…
-middleware.ts # CSP avec nonce + rate limiting /api
+proxy.ts      # CSP avec nonce + rate limiting /api (ex-middleware, renommé en « proxy » par Next.js 16)
 ```
 
 ### Flux de données
@@ -124,7 +138,7 @@ Chaque endpoint a été vérifié avec `curl` le 23/09/2026. Voici ce qui foncti
 | `…/teams`, `…/teams/{id}`, `…/teams/{id}/roster` | ✅ | |
 | `…/teams/{id}/schedule[?season=Y&seasontype=2\|3]` | ✅ | Sans paramètre, renvoie la présaison. On fusionne saison régulière (2) et playoffs (3). Pas de scores par quart-temps. |
 | `…/teams/{id}/statistics` | ✅ | Moyennes d'équipe. |
-| `…/news` | ✅ | Articles en anglais. |
+| `…/news` | ✅ | Articles en anglais, complétés par des flux francophones (voir « Actualités »). |
 | `…/{nba\|wnba}/standings` (`/apis/site/v2`) | ⚠️ | Répond, mais sans données (86 octets). |
 | `site.api.espn.com/apis/v2/sports/basketball/{nba\|wnba}/standings[?season=Y]` | ✅ | Le vrai endpoint des classements, par conférence. |
 | `site.web.api.espn.com/apis/site/v3/sports/basketball/{nba\|wnba}/leaders?limit=10` | ✅ | Renvoie par défaut la dernière saison régulière disponible. `?season=Y` renvoie 500. |
@@ -144,19 +158,35 @@ L'API officielle **`api-live.euroleague.net` est accessible** sans clé. ESPN **
 | `/v3/competitions/E/seasons/E{année}/rounds/{n}/basicstandings` | ✅ | Classement après la journée n. |
 | `/v3/competitions/E/statistics/players/leaders?seasonMode=Single&seasonCode=…&statisticMode=PerGame` | ✅ | Leaders. |
 | `live.euroleague.net/api/Header?gamecode=…&seasoncode=…` | ✅ | Score en direct, quart-temps en cours et temps restant. |
-| Actualités / flux RSS (`euroleaguebasketball.net`) | ❌ | Protégé par un « Vercel Security Checkpoint » (429). |
+| Actualités / flux RSS (`euroleaguebasketball.net`) | ❌ | Protégé par un « Vercel Security Checkpoint » (429). Remplacé par BasketEurope et Eurohoops (voir ci-dessous). |
 
 **Limites de l'EuroLeague :**
-- **Pas d'actualités** : l'onglet affiche un état vide avec un lien vers le site officiel.
 - Le statut « en direct » est déduit de la fenêtre horaire du match (jusqu'à 3 h après le début). Pendant cette fenêtre, on interroge le flux `Header`, qui donne des scores cumulés par quart-temps, convertis ensuite en scores par période.
 - Les statistiques d'équipe sont **calculées** à partir des matchs joués (bilan, points pour et contre, bilans domicile et extérieur). Il n'existe pas d'endpoint dédié accessible.
 - L'API n'est pas documentée publiquement et peut évoluer sans préavis.
+
+### Actualités (flux RSS)
+
+L'actualité passe par des flux RSS publics, lus côté serveur par un petit parseur sans dépendance (`lib/api/rss.ts`). Les médias francophones sont affichés en premier :
+
+| Ligue | Français | Anglais |
+| --- | --- | --- |
+| NBA | BasketUSA (rubrique « NBA – ») | ESPN |
+| WNBA | BasketUSA (rubrique « WNBA – ») | ESPN |
+| EuroLeague | BasketEurope (catégorie EuroLeague) | Eurohoops |
+
+- BasketUSA publie un fil unique : ses URL de catégorie renvoient le même contenu. Les articles sont donc classés d'après leur rubrique, qui ouvre chaque description.
+- Seuls les liens `https` sont conservés. Les images ne sont gardées que si leur hôte figure dans la liste blanche, identique aux `remotePatterns` de `next.config.ts`. Le texte est réduit à du texte brut, jamais injecté comme HTML.
+- Chaque source est indépendante : si l'une tombe, les autres restent affichées.
+- Chaque carte indique la source et la langue, et l'attribut `lang` est posé pour les lecteurs d'écran.
 
 ### Gestion de l'inter-saison
 
 - **Classement** : si la saison courante n'a aucun match joué, on affiche le classement final de la saison précédente, avec un bandeau « Inter-saison ».
 - **Résultats** : on remonte mois par mois (jusqu'à 8 mois) pour retrouver les derniers résultats.
-- **Calendrier** et **matchs du jour** : quand aucun match n'est prévu aujourd'hui, on affiche le *prochain match* de chaque ligue. Sans calendrier publié, un état vide dédié s'affiche.
+- **Matchs du jour** : une ligue sans match aujourd'hui affiche quand même ses **6 derniers résultats** (avec quarts-temps) et sa **prochaine journée**. La section n'est donc jamais vide.
+- **Calendrier** : sans calendrier publié, un état vide dédié s'affiche.
+- **Pages équipe** : un club sans match officiel (nouveau venu, par exemple) ou dont la saison est finie reçoit un message explicite plutôt qu'un bloc vide.
 - **Pages équipe** : les derniers résultats et l'effectif basculent sur la saison précédente si nécessaire.
 
 ### « Aujourd'hui » à l'heure de Paris
@@ -181,10 +211,10 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
   - identifiants d'équipe vérifiés **par format** (`^\d{1,7}$` pour ESPN, `^[A-Z]{2,4}$` pour l'EuroLeague) **puis par appartenance** à la liste des équipes de la ligue ;
   - paramètres de requête non prévus refusés (400) ;
   - seul `GET` est accepté sur `/api` (405 sinon).
-- **Rate limiting** sur `/api` (middleware) : 60 requêtes par minute et par IP par défaut, avec réponse 429 et `Retry-After`.
+- **Rate limiting** sur `/api` (`proxy.ts`) : 60 requêtes par minute et par IP par défaut, avec réponse 429 et `Retry-After`.
 - **Erreurs sans fuite** : les réponses d'erreur sont génériques (« Données momentanément indisponibles »), sans pile, sans URL amont et sans message brut. Le détail ne va que dans les logs serveur.
 - **En-têtes** (`next.config.ts`) : `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` restrictive, `Strict-Transport-Security` (2 ans, preload), `Cross-Origin-Opener-Policy: same-origin`, et `poweredByHeader: false`.
-- **CSP stricte** : pour les pages, elle est générée **par requête dans `middleware.ts` avec un nonce**, ce qu'un en-tête statique de `next.config` ne permet pas. On y trouve `script-src 'self' 'nonce-…' 'strict-dynamic'`, `object-src 'none'`, `frame-ancestors 'none'`, `base-uri 'self'`, `connect-src 'self'` et `img-src 'self' data: blob:` (les images passent par l'optimiseur `/_next/image`). Pour `/api`, `next.config` pose `default-src 'none'`.
+- **CSP stricte** : pour les pages, elle est générée **par requête dans `proxy.ts` avec un nonce**, ce qu'un en-tête statique de `next.config` ne permet pas. On y trouve `script-src 'self' 'nonce-…' 'strict-dynamic'`, `object-src 'none'`, `frame-ancestors 'none'`, `base-uri 'self'`, `connect-src 'self'` et `img-src 'self' data: blob:` (les images passent par l'optimiseur `/_next/image`). Pour `/api`, `next.config` pose `default-src 'none'`.
   - `style-src` autorise `'unsafe-inline'` : Framer Motion anime via l'attribut `style`. Ce choix n'ouvre aucune exécution de script.
   - Le script anti-flash du thème est inline, mais porte le nonce.
   - Contrepartie du nonce : les pages sont rendues dynamiquement. Les données, elles, restent en cache (Data Cache).
@@ -193,7 +223,7 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
 
 > ⚠️ **L'obfuscation du code client ne protège rien.** Tout ce qui est envoyé au navigateur peut être lu, dé-minifié et rejoué. La vraie protection repose sur deux choses : le **proxy serveur**, qui ne livre au client ni URL amont, ni secret, ni logique sensible, et la **CSP**, qui empêche l'exécution de scripts injectés. Il n'y a donc aucune obfuscation dans ce projet, seulement la minification standard du build.
 
-**Limites connues côté sécurité :** le rate limiting est en mémoire, donc propre à chaque instance serverless. Pour une limite globale, brancher un store partagé (Upstash Redis, Vercel KV) dans `middleware.ts`. L'IP est lue dans `x-forwarded-for`, ce qui n'est fiable que derrière un proxy de confiance comme Vercel.
+**Limites connues côté sécurité :** le rate limiting est en mémoire, donc propre à chaque instance serverless. Pour une limite globale, brancher un store partagé (Upstash Redis, Vercel KV) dans `proxy.ts`. L'IP est lue dans `x-forwarded-for`, ce qui n'est fiable que derrière un proxy de confiance comme Vercel.
 
 ---
 
@@ -212,7 +242,8 @@ Un match NBA à 19 h 30 (heure de New York) se joue à 1 h 30 à Paris. Pour la 
 ## Limites
 
 - Les données ESPN et EuroLeague proviennent d'API **non officiellement documentées**. Leur format peut changer, et la normalisation est défensive (champs optionnels, replis).
-- Les actualités NBA et WNBA sont en anglais (source ESPN). L'EuroLeague n'a pas d'actualités.
+- Les actualités dépendent de flux RSS tiers (BasketUSA, BasketEurope, Eurohoops) qui peuvent changer de format. Le français est prioritaire, mais une partie des articles reste en anglais.
+- La WNBA a moins d'articles en français, car BasketUSA la couvre moins que la NBA.
 - Les calendriers de team schedule ESPN ne contiennent pas les quarts-temps. Les cartes des pages équipe NBA et WNBA n'ont donc pas de détail par période ; les onglets Résultats et Matchs du jour l'affichent.
 - Le logo EuroLeague est un pictogramme générique (`public/leagues/`), pas le logo officiel.
 - Les noms de pays des effectifs EuroLeague sont fournis en anglais par l'API.
