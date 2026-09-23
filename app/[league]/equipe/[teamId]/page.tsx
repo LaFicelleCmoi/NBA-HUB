@@ -132,6 +132,12 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
                   <dd className="font-semibold">{team.location}</dd>
                 </div>
               )}
+              {detail.venue && (
+                <div className="flex gap-1">
+                  <dt className="text-muted">Salle :</dt>
+                  <dd className="font-semibold">{detail.venue}</dd>
+                </div>
+              )}
             </dl>
           </div>
           <FavoriteButton team={team} />
@@ -182,17 +188,48 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
         </Reveal>
       </div>
 
-      <Reveal from="left" as="section" className="mt-16">
-        <SectionHeading id="stats" kicker={`Saison ${detail.season}`} title="Statistiques" />
-        {detail.stats.length ? (
+      {detail.records.length > 0 && (
+        <Reveal from="left" as="section" className="mt-16">
+          <SectionHeading id="records" kicker={`Saison ${detail.season}`} title="Bilans" />
           <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {detail.stats.map((s) => (
-              <div key={s.label} className="glass flex flex-col-reverse rounded-2xl p-4">
-                <dt className="text-sm text-muted">{s.label}</dt>
-                <dd className="tabular font-display text-3xl font-extrabold">{s.value}</dd>
+            {detail.records.map((r) => (
+              <div key={r.label} className="glass flex flex-col-reverse rounded-2xl p-4">
+                <dt className="text-sm text-muted">{r.label}</dt>
+                <dd className="tabular font-display text-2xl font-extrabold sm:text-3xl">{r.value}</dd>
               </div>
             ))}
           </dl>
+        </Reveal>
+      )}
+
+      <Reveal from="right" as="section" className="mt-16">
+        <SectionHeading
+          id="stats"
+          kicker={`Saison ${detail.season}`}
+          title="Statistiques"
+        >
+          <p className="text-sm text-muted">
+            {detail.stats.reduce((n, g) => n + g.stats.length, 0)} statistiques publiées par la ligue.
+          </p>
+        </SectionHeading>
+        {detail.stats.length ? (
+          <div className="space-y-8">
+            {detail.stats.map((g) => (
+              <div key={g.label}>
+                <h3 className="mb-3 border-b border-line pb-2 font-display text-xl font-bold uppercase tracking-wide text-muted">
+                  {g.label}
+                </h3>
+                <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                  {g.stats.map((s) => (
+                    <div key={s.label} className="glass flex flex-col-reverse rounded-2xl p-4">
+                      <dt className="text-sm text-muted">{s.label}</dt>
+                      <dd className="tabular font-display text-2xl font-extrabold sm:text-3xl">{s.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
         ) : (
           <EmptyState title="Statistiques à venir" icon="📊">
             <p>Les statistiques de l’équipe apparaîtront après son premier match de la saison.</p>
