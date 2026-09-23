@@ -69,7 +69,7 @@ function buildCsp(nonce: string): string {
   ].join("; ");
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/api/")) {
     if (req.method !== "GET" && req.method !== "HEAD") {
       return NextResponse.json({ error: "Méthode non autorisée" }, { status: 405, headers: { Allow: "GET" } });
