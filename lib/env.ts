@@ -27,7 +27,9 @@ export const env = {
   euroleagueApi: str("EUROLEAGUE_API", "https://api-live.euroleague.net"),
   euroleagueLiveApi: str("EUROLEAGUE_LIVE_API", "https://live.euroleague.net/api"),
   euroleagueCompetition: str("EUROLEAGUE_COMPETITION", "E"),
-  upstreamTimeoutMs: int("UPSTREAM_TIMEOUT_MS", 8000),
+  // 12 s : le premier appel à ESPN après un démarrage à froid dépasse
+  // régulièrement 8 s, et tout le monde n'a pas une liaison rapide.
+  upstreamTimeoutMs: int("UPSTREAM_TIMEOUT_MS", 12000),
   // Flux RSS d'actualités (français en priorité, anglais en complément)
   // BasketUSA publie un fil unique : les articles sont triés NBA / WNBA par leur rubrique.
   newsBasketUsa: exact("NEWS_BASKETUSA_RSS", "https://www.basketusa.com/feed/"),
