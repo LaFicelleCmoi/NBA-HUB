@@ -23,8 +23,6 @@
   --nba-2: #c8102e;
   --wnba: #c2410c;
   --wnba-2: #fb923c;
-  --euroleague: #c2410c;
-  --euroleague-2: #0b1f4a;
 
   --direct: #047857;
   --direct-bg: rgb(16 185 129 / 0.12);
@@ -53,8 +51,6 @@
   --nba-2: #ff4d5e;
   --wnba: #ff7a1a;
   --wnba-2: #ffb36b;
-  --euroleague: #ff8a3d;
-  --euroleague-2: #7aa2ff;
 
   --direct: #34d399;
   --direct-bg: rgb(52 211 153 / 0.12);
@@ -81,8 +77,6 @@
   --color-nba-2: var(--nba-2);
   --color-wnba: var(--wnba);
   --color-wnba-2: var(--wnba-2);
-  --color-euroleague: var(--euroleague);
-  --color-euroleague-2: var(--euroleague-2);
   --color-direct: var(--direct);
   --color-direct-bg: var(--direct-bg);
   --color-playin: var(--playin);
@@ -119,7 +113,7 @@ body::before {
   background:
     radial-gradient(40% 50% at 15% 30%, color-mix(in srgb, var(--nba) 18%, transparent), transparent 70%),
     radial-gradient(35% 45% at 85% 20%, color-mix(in srgb, var(--wnba) 16%, transparent), transparent 70%),
-    radial-gradient(30% 40% at 55% 60%, color-mix(in srgb, var(--euroleague-2) 14%, transparent), transparent 70%);
+    radial-gradient(30% 40% at 55% 60%, color-mix(in srgb, var(--nba-2) 14%, transparent), transparent 70%);
   filter: blur(20px);
 }
 
