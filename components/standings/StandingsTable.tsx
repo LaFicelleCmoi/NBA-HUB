@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useFavorite } from "@/lib/client/favorite";
+import { isFavoriteTeam, useFavoriteTeam } from "@/lib/client/favorite";
 import { ZONES, zoneFor } from "@/lib/leagues";
 import { Logo } from "@/components/ui/Logo";
 import type { LeagueId, StandingGroup, Standings } from "@/types";
@@ -42,7 +42,7 @@ function GroupTable({
   showStreak: boolean;
   caption: string;
 }) {
-  const { isFavorite } = useFavorite();
+  const favorite = useFavoriteTeam();
   const th = "px-2 py-2 text-right font-semibold";
   return (
     <div className="glass overflow-hidden rounded-2xl">
@@ -81,7 +81,7 @@ function GroupTable({
           <tbody>
             {group.rows.map((r) => {
               const zone = zoneFor(league, r.seed);
-              const fav = isFavorite(league, r.team.id);
+              const fav = isFavoriteTeam(favorite, league, r.team.id);
               return (
                 <tr
                   key={r.team.id}
