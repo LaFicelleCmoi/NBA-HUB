@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { useApi } from "@/lib/client/useApi";
-import { useFavorite } from "@/lib/client/favorite";
+import { isFavoriteTeam, setFavoriteTeam, useFavoriteTeam } from "@/lib/client/favorite";
 import { formatShortDay } from "@/lib/time";
 import { Logo } from "@/components/ui/Logo";
 import { SkeletonList } from "@/components/ui/Skeleton";
@@ -45,7 +45,7 @@ function ResultRow({ game, teamId }: { game: Game; teamId: string }) {
 export function TeamPanel({ team, onClose }: { team: Team | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const { data, error, loading } = useApi<Game[]>(team ? `/api/${team.league}/teams/${team.id}/recent` : null);
-  const { isFavorite, setFavorite } = useFavorite();
+  const favorite = useFavoriteTeam();
 
   useEffect(() => {
     const d = ref.current;
@@ -54,7 +54,7 @@ export function TeamPanel({ team, onClose }: { team: Team | null; onClose: () =>
     if (!team && d.open) d.close();
   }, [team]);
 
-  const fav = team ? isFavorite(team.league, team.id) : false;
+  const fav = team ? isFavoriteTeam(favorite, team.league, team.id) : false;
 
   return (
     <dialog
@@ -113,7 +113,7 @@ export function TeamPanel({ team, onClose }: { team: Team | null; onClose: () =>
               type="button"
               aria-pressed={fav}
               onClick={() =>
-                setFavorite(fav ? null : { league: team.league, id: team.id, name: team.name, logo: team.logo })
+                setFavoriteTeam(fav ? null : { league: team.league, id: team.id, name: team.name, logo: team.logo })
               }
               className="flex-1 rounded-xl border border-line-strong px-4 py-3 text-sm font-semibold hover:bg-line/50"
             >
