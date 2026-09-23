@@ -24,10 +24,15 @@ export const env = {
   espnSiteApi: str("ESPN_SITE_API", "https://site.api.espn.com/apis/site/v2/sports/basketball"),
   espnStandingsApi: str("ESPN_STANDINGS_API", "https://site.api.espn.com/apis/v2/sports/basketball"),
   espnWebApi: str("ESPN_WEB_API", "https://site.web.api.espn.com/apis/site/v3/sports/basketball"),
+  euroleagueApi: str("EUROLEAGUE_API", "https://api-live.euroleague.net"),
+  euroleagueLiveApi: str("EUROLEAGUE_LIVE_API", "https://live.euroleague.net/api"),
+  euroleagueCompetition: str("EUROLEAGUE_COMPETITION", "E"),
   upstreamTimeoutMs: int("UPSTREAM_TIMEOUT_MS", 8000),
-  // Flux RSS d'actualités. BasketUSA publie un fil unique : les articles sont
-  // triés NBA / WNBA par leur rubrique.
+  // Flux RSS d'actualités (français en priorité, anglais en complément)
+  // BasketUSA publie un fil unique : les articles sont triés NBA / WNBA par leur rubrique.
   newsBasketUsa: exact("NEWS_BASKETUSA_RSS", "https://www.basketusa.com/feed/"),
+  newsEuroleagueFr: exact("NEWS_EUROLEAGUE_FR_RSS", "https://www.basketeurope.com/category/euroleague/feed/"),
+  newsEuroleagueEn: exact("NEWS_EUROLEAGUE_EN_RSS", "https://www.eurohoops.net/en/category/euroleague/feed/"),
 } as const;
 
 /** Durées de cache (secondes). */
