@@ -19,6 +19,7 @@ import {
   getElToday,
 } from "@/lib/api/euroleague";
 import { withFallback } from "@/lib/api/fallback";
+import bundledTeams from "@/lib/data/teams.json";
 import { fetchRss } from "@/lib/api/rss";
 import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
@@ -42,8 +43,29 @@ import type {
  * d'API tierce : le navigateur ne voit que /api/*.
  */
 
+/**
+ * Liste des équipes : c'est l'ossature du site (grille de l'accueil, sélecteur
+ * d'équipe favorite, liste blanche de validation des identifiants). Elle ne
+ * change qu'une fois par an, alors qu'une API muette la faisait disparaître
+ * entièrement — le visiteur se retrouvait sans aucune équipe NBA ni WNBA.
+ *
+ * Elle est donc versionnée dans le dépôt (`teams.json`, relevée chez les
+ * fournisseurs) et sert de repli : l'amont ne fait que la rafraîchir.
+ */
 export const getTeams = (league: LeagueId): Promise<Team[]> =>
-  withFallback(`teams:${league}`, () => (league === "euroleague" ? getElTeams() : getEspnTeams(league)));
+  withFallback(`teams:${league}`, async () => {
+    try {
+      const live = league === "euroleague" ? await getElTeams() : await getEspnTeams(league);
+      if (live.length > 0) return live;
+      console.warn(`[equipes] ${league} : l'amont a répondu une liste vide, repli sur la liste du dépôt.`);
+    } catch (err) {
+      console.warn(
+        `[equipes] ${league} : amont indisponible (${err instanceof Error ? err.message : "erreur inconnue"}), ` +
+          "repli sur la liste du dépôt.",
+      );
+    }
+    return bundledTeams[league] as Team[];
+  });
 
 export const getStandings = (league: LeagueId): Promise<Standings> =>
   withFallback(`standings:${league}`, () => (league === "euroleague" ? getElStandings() : getEspnStandings(league)));
