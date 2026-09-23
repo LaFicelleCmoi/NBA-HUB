@@ -311,9 +311,11 @@ export function normalizeNews(raw: RawEspnNews): NewsItem[] {
       id: String(a.id ?? i),
       title: a.headline!,
       description: a.description,
-      published: a.published ?? "",
+      published: a.published ? new Date(a.published).toISOString() : "",
       image: a.images?.[0]?.url,
       url: a.links!.web!.href!,
+      source: "ESPN",
+      lang: "en" as const,
     }));
 }
 
