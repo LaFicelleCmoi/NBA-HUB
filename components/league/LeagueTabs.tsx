@@ -68,7 +68,7 @@ function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standi
  * pas besoin d'être redemandée toutes les 30 secondes.
  */
 function cadenceMatchs(data: GamesResponse | null, view: "results" | "upcoming"): number {
-  if (data?.games.some((g) => g.status === "live")) return 20_000;
+  if (data?.games.some((g) => g.status === "live")) return 10_000;
   return view === "upcoming" ? 120_000 : 600_000;
 }
 
