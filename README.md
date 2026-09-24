@@ -200,6 +200,19 @@ node scripts/snapshot.mjs http://localhost:3000
 
 À refaire au début de chaque saison, ou après un changement d'effectif notable.
 
+Le palmarès des Finales NBA vit dans `lib/data/titles.json`, relevé à part :
+
+```bash
+node scripts/titles.mjs
+```
+
+Il croise Wikidata (1947 à sa dernière saison renseignée) et ESPN (saisons
+récentes, le champion étant le vainqueur du dernier match marqué « NBA
+Finals »). Les titres sont rattachés à la **franchise**, comme le fait la
+ligue : les Lakers de Minneapolis comptent pour Los Angeles, les SuperSonics
+de Seattle pour Oklahoma City. Le titre 1948 des Baltimore Bullets reste non
+attribué : cette franchise a été dissoute en 1954 sans successeur.
+
 ### Gestion de l'inter-saison
 
 - **Classement** : si la saison courante n'a aucun match joué, on affiche le classement final de la saison précédente, avec un bandeau « Inter-saison ».
