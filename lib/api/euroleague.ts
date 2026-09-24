@@ -209,6 +209,15 @@ export async function getElRecent(code: string): Promise<Game[]> {
   return recent.slice(0, 5).map((g) => normalizeElGame(g));
 }
 
+/** Forme et prochaine affiche seules : inutile de charger l'effectif. */
+export async function getElTeamForm(code: string) {
+  const { recent, upcoming } = await clubSchedule(code);
+  return {
+    recent: recent.slice(0, 5).map((g) => normalizeElGame(g)),
+    next: upcoming[0] ? normalizeElGame(upcoming[0]) : undefined,
+  };
+}
+
 /**
  * L'API EuroLeague n'expose pas de statistiques d'équipe : on les recalcule
  * à partir des matchs joués. Les bilans (général, domicile, extérieur) sont
