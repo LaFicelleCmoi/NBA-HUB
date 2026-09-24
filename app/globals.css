@@ -166,6 +166,17 @@ body::before {
   50% { opacity: 0.35; transform: scale(0.8); }
 }
 
+/* Score qui vient de changer : un bref halo, le temps de le remarquer. */
+.score-flash {
+  animation: score-flash 2.2s ease-out;
+}
+
+@keyframes score-flash {
+  0% { color: var(--live); text-shadow: 0 0 12px color-mix(in srgb, var(--live) 70%, transparent); }
+  70% { color: var(--live); text-shadow: 0 0 6px color-mix(in srgb, var(--live) 35%, transparent); }
+  100% { text-shadow: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
