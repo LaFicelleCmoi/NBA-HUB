@@ -67,6 +67,40 @@ export async function fetchJson<T>(url: string, revalidate: number | "no-store")
   }
 }
 
+/* ------------------------------ Direct ------------------------------ */
+
+/**
+ * Cache mémoire de quelques secondes, réservé aux données du direct.
+ *
+ * Le Data Cache de Next ne convient pas ici : une fois sa durée écoulée, il
+ * sert encore l'ancienne réponse le temps de se rafraîchir en arrière-plan.
+ * Le score affiché a donc systématiquement un cycle de retard — jusqu'à une
+ * minute sur un match en cours. On interroge donc l'amont sans cache, et on
+ * borne la charge avec ce cache très court : quel que soit le nombre de
+ * visiteurs, l'amont n'est appelé qu'une fois par fenêtre.
+ *
+ * La promesse elle-même est mise en cache, pas son résultat : deux requêtes
+ * simultanées partagent ainsi le même appel amont.
+ */
+const liveMemo = new Map<string, { at: number; value: Promise<unknown> }>();
+const LIVE_TTL_MS = 5_000;
+
+export function fetchLive<T>(url: string): Promise<T> {
+  const now = Date.now();
+  const hit = liveMemo.get(url);
+  if (hit && now - hit.at < LIVE_TTL_MS) return hit.value as Promise<T>;
+
+  const value = fetchJson<T>(url, "no-store");
+  liveMemo.set(url, { at: now, value });
+  // Un échec ne doit pas être resservi pendant toute la fenêtre.
+  value.catch(() => liveMemo.delete(url));
+
+  if (liveMemo.size > 64) {
+    for (const [k, v] of liveMemo) if (now - v.at >= LIVE_TTL_MS) liveMemo.delete(k);
+  }
+  return value;
+}
+
 /**
  * Pour les réponses volumineuses (> 2 Mo, limite du Data Cache) : on ne
  * met pas la réponse brute en cache mais le résultat normalisé, beaucoup
