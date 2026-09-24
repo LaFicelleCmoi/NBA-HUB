@@ -1,6 +1,6 @@
 import "server-only";
 import { env, REVALIDATE } from "@/lib/env";
-import { fetchJson, fetchJsonSafe, fetchLive } from "@/lib/api/http";
+import { fetchJson, fetchJsonSafe, fetchLive, memoLive } from "@/lib/api/http";
 import {
   LIVE_WINDOW_MS,
   normalizeClub,
@@ -50,6 +50,19 @@ async function rawGames(season: string, revalidate: number): Promise<RawElGame[]
   return res.data ?? [];
 }
 
+/**
+ * Même liste, mais sans péremption tolérée : le Data Cache rendrait l'ancienne
+ * version le temps de se rafraîchir, et les scores des matchs du jour
+ * arriveraient avec un cycle de retard. La liste est lourde, on la mémorise
+ * donc quinze secondes plutôt que de la redemander à chaque appel.
+ */
+const rawGamesLive = (season: string) =>
+  memoLive(
+    `el-games-live:${season}`,
+    async () => (await fetchJson<{ data?: RawElGame[] }>(`${comp()}/seasons/${season}/games`, "no-store")).data ?? [],
+    15_000,
+  );
+
 async function rawClubs(season: string): Promise<RawElClub[]> {
   const res = await fetchJson<{ data?: RawElClub[] }>(`${comp()}/seasons/${season}/clubs`, REVALIDATE.teams);
   return res.data ?? [];
@@ -94,7 +107,7 @@ async function clubMap(): Promise<Map<string, Team>> {
 
 export async function getElToday(): Promise<TodayLeague> {
   const today = parisDayKey();
-  const games = await rawGames(currentSeasonCode(), REVALIDATE.live);
+  const games = await rawGamesLive(currentSeasonCode());
   const todays = games.filter((g) => parisDayKey(g.utcDate) === today).sort(byDateAsc);
   const next = games
     .filter((g) => !g.played && parisDayKey(g.utcDate) > today)
@@ -110,7 +123,7 @@ export async function getElToday(): Promise<TodayLeague> {
 
 export async function getElGames(view: "results" | "upcoming"): Promise<GamesResponse> {
   const season = currentSeasonCode();
-  const games = await rawGames(season, REVALIDATE.live);
+  const games = await rawGamesLive(season);
   if (view === "upcoming") {
     const list = games.filter((g) => !g.played).sort(byDateAsc).slice(0, 40);
     return {
@@ -191,7 +204,7 @@ function teamGames(games: RawElGame[], code: string) {
 
 async function clubSchedule(code: string) {
   const season = currentSeasonCode();
-  const games = teamGames(await rawGames(season, REVALIDATE.live), code);
+  const games = teamGames(await rawGamesLive(season), code);
   const upcoming = games.filter((g) => !g.played).sort(byDateAsc);
   let recent = games.filter((g) => g.played).sort(byDateDesc);
   let recentSeason = season;
