@@ -3,6 +3,7 @@ import { LEAGUE_IDS } from "@/lib/leagues";
 import { HomeLive } from "@/components/home/HomeLive";
 import { LiveHero, LiveToday, TodayLabel } from "@/components/home/LiveSections";
 import { FavoritePicker } from "@/components/home/FavoritePicker";
+import { MyTeam } from "@/components/home/MyTeam";
 import { LeagueCards } from "@/components/home/LeagueCards";
 import { TeamGrid } from "@/components/home/TeamGrid";
 import { StandingsOverview } from "@/components/home/StandingsOverview";
@@ -32,6 +33,8 @@ export default async function HomePage() {
   return (
     <HomeLive initial={today}>
       <LiveHero />
+
+      <MyTeam />
 
       <Reveal className="mt-4">
         <FavoritePicker teams={teams} />
