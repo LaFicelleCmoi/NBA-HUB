@@ -215,6 +215,12 @@ export async function getEspnRecent(league: EspnLeague, id: string): Promise<Gam
   return recent.slice(0, 5);
 }
 
+/** Forme et prochaine affiche seules : inutile de charger effectif et statistiques. */
+export async function getEspnTeamForm(league: EspnLeague, id: string) {
+  const { recent, upcoming } = await teamSchedule(league, id);
+  return { recent: recent.slice(0, 5), next: upcoming[0] };
+}
+
 /** Salle du club : « State Farm Arena — Atlanta, GA ». Absente en WNBA. */
 function venueOf(team: RawEspnTeam): string | undefined {
   const v = team.franchise?.venue;
