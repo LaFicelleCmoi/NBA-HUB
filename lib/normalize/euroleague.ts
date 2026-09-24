@@ -44,6 +44,7 @@ export interface RawElGame {
 
 export interface RawElHeader {
   Live?: boolean;
+  GameTime?: string;
   ScoreA?: string;
   ScoreB?: string;
   Quarter?: string;
@@ -142,12 +143,36 @@ function livePeriods(h: RawElHeader, s: "A" | "B"): number[] {
     out.push(Math.max(0, cum - prev));
     prev = Math.max(prev, cum);
   }
+  // Le quart-temps courant est vide sur un match terminé : on se fie au score
+  // de prolongation, qui ne dépasse celui du temps réglementaire que s'il y en
+  // a eu une.
   const ot = Number(h[`ScoreExtraTime${s}` as keyof RawElHeader] ?? 0);
-  if (current > 4 && ot > 0) out.push(Math.max(0, ot - prev));
+  if (ot > prev) out.push(ot - prev);
   return out;
 }
 
 export const LIVE_WINDOW_MS = 3 * 60 * 60 * 1000;
+
+/** Durée réglementaire, prolongations exclues. */
+const TEMPS_REGLEMENTAIRE_MIN = 40;
+
+/**
+ * Le match est-il terminé, d'après le flux en direct ?
+ *
+ * `Live` reste à `true` longtemps après le coup de sifflet final, et le flux
+ * officiel met des heures à basculer `played`. Sans autre critère, un match
+ * fini restait affiché « en direct · 00:00 ». Le couple temps joué / temps
+ * restant, lui, est sans ambiguïté : 40:00 joué et 00:00 restant.
+ *
+ * Si une prolongation démarre, le flux repasse à un temps restant non nul au
+ * relevé suivant et le match redevient « en cours » : la décision se corrige
+ * d'elle-même.
+ */
+function headerTermine(h: RawElHeader): boolean {
+  const [min] = (h.GameTime ?? "").split(":");
+  const joue = Number(min);
+  return Number.isFinite(joue) && joue >= TEMPS_REGLEMENTAIRE_MIN && h.RemainingPartialTime?.trim() === "00:00";
+}
 
 export function normalizeElGame(g: RawElGame, header?: RawElHeader | null): Game {
   const start = new Date(g.utcDate).getTime();
@@ -155,13 +180,17 @@ export function normalizeElGame(g: RawElGame, header?: RawElHeader | null): Game
   let status: GameStatus = "scheduled";
   if (/postpon|cancel/i.test(g.gameStatus ?? "")) status = "postponed";
   else if (g.played) status = "final";
+  else if (header && headerTermine(header)) status = "final";
   else if (header?.Live || (now >= start && now < start + LIVE_WINDOW_MS && header)) status = "live";
 
+  // Tant que le flux officiel n'a pas basculé, c'est le flux en direct qui
+  // porte le score — y compris pour un match qu'il vient de déclarer fini.
+  const duDirect = Boolean(header) && !g.played && status !== "scheduled" && status !== "postponed";
   const hasPartials = status !== "scheduled";
-  const homePeriods = status === "live" && header ? livePeriods(header, "A") : hasPartials ? periodsOf(g.local) : [];
-  const awayPeriods = status === "live" && header ? livePeriods(header, "B") : hasPartials ? periodsOf(g.road) : [];
-  const homeScore = status === "live" && header ? Number(header.ScoreA ?? 0) : g.local.score;
-  const awayScore = status === "live" && header ? Number(header.ScoreB ?? 0) : g.road.score;
+  const homePeriods = duDirect ? livePeriods(header!, "A") : hasPartials ? periodsOf(g.local) : [];
+  const awayPeriods = duDirect ? livePeriods(header!, "B") : hasPartials ? periodsOf(g.road) : [];
+  const homeScore = duDirect ? Number(header!.ScoreA ?? 0) : g.local.score;
+  const awayScore = duDirect ? Number(header!.ScoreB ?? 0) : g.road.score;
 
   const side = (s: RawElSide, score: number, periods: number[], other: number, isHome: boolean): GameTeam => ({
     team: normalizeClub(s.club),
