@@ -8,5 +8,5 @@ export async function GET(req: NextRequest) {
   return respond(async () => {
     assertOnlyParams(req.nextUrl.searchParams, []);
     return getToday();
-  }, REVALIDATE.live);
+  }, REVALIDATE.liveCdn, true);
 }
