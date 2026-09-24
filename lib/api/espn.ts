@@ -1,6 +1,6 @@
 import "server-only";
 import { env, REVALIDATE } from "@/lib/env";
-import { cachedNormalized, fetchJson, fetchJsonSafe, fetchLive } from "@/lib/api/http";
+import { cachedNormalized, fetchJson, fetchJsonSafe, fetchLive, memoLive } from "@/lib/api/http";
 import {
   normalizeEvent,
   normalizeLeaders,
@@ -66,13 +66,18 @@ async function scoreboard(league: EspnLeague, dates: string | null, mode: number
   return mode === "live" ? fetchLive<RawScoreboard>(url) : fetchJson<RawScoreboard>(url, mode);
 }
 
-/** Tous les matchs d'un mois (réponse brute trop lourde pour le Data Cache). */
-const monthGamesLive = cachedNormalized(
-  async (league: EspnLeague, month: string) =>
-    ((await scoreboard(league, month, "no-store")).events ?? []).map((e) => normalizeEvent(e, league)),
-  "espn-month-live",
-  REVALIDATE.live,
-);
+/**
+ * Mois en cours : c'est lui qui contient les matchs en direct. La réponse brute
+ * est trop lourde pour le Data Cache, et `unstable_cache` servirait de toute
+ * façon une version périmée le temps de se rafraîchir. On mémorise donc le
+ * résultat normalisé quelques secondes, sans péremption tolérée.
+ */
+const monthGamesLive = (league: EspnLeague, month: string) =>
+  memoLive(
+    `espn-month-live:${league}:${month}`,
+    async () => ((await scoreboard(league, month, "live")).events ?? []).map((e) => normalizeEvent(e, league)),
+    15_000,
+  );
 const monthGames = cachedNormalized(
   async (league: EspnLeague, month: string) =>
     ((await scoreboard(league, month, "no-store")).events ?? []).map((e) => normalizeEvent(e, league)),
