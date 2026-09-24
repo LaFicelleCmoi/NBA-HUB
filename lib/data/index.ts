@@ -6,6 +6,7 @@ import {
   getEspnRecent,
   getEspnStandings,
   getEspnTeamDetail,
+  getEspnTeamForm,
   getEspnTeams,
   getEspnToday,
 } from "@/lib/api/espn";
@@ -15,6 +16,7 @@ import {
   getElRecent,
   getElStandings,
   getElTeamDetail,
+  getElTeamForm,
   getElTeams,
   getElToday,
 } from "@/lib/api/euroleague";
@@ -36,6 +38,7 @@ import type {
   Standings,
   Team,
   TeamDetail,
+  TeamSummary,
   TodayLeague,
   TodayResponse,
 } from "@/types";
@@ -185,6 +188,43 @@ async function fetchTeamDetail(league: LeagueId, id: string): Promise<TeamDetail
   }
   return detail;
 }
+
+/**
+ * Résumé d'une équipe pour la carte « Mon équipe » : rang, bilan, forme et
+ * prochaine affiche. Volontairement séparé de getTeamDetail, qui charge en
+ * plus l'effectif et les statistiques — inutiles ici, et bien plus lourds.
+ */
+export const getTeamSummary = (league: LeagueId, id: string): Promise<TeamSummary> =>
+  withFallback(`summary:${league}:${id}`, async () => {
+    const [form, standings, teams] = await Promise.all([
+      league === "euroleague" ? getElTeamForm(id) : getEspnTeamForm(league, id),
+      getStandings(league).catch(() => null),
+      getTeams(league).catch(() => [] as Team[]),
+    ]);
+
+    const group = standings?.groups.find((g) => g.rows.some((r) => r.team.id === id));
+    const row = group?.rows.find((r) => r.team.id === id);
+    const team =
+      row?.team ??
+      teams.find((t) => t.id === id) ??
+      form.recent[0]?.home.team ??
+      form.next?.home.team;
+    if (!team) throw new Error("unknown team");
+
+    return {
+      team,
+      rank: row?.rank,
+      groupSize: group?.rows.length,
+      groupName: group?.name,
+      wins: row?.wins,
+      losses: row?.losses,
+      played: row?.played,
+      season: standings?.season,
+      isPreviousSeason: standings?.isPreviousSeason,
+      recent: form.recent,
+      next: form.next,
+    };
+  });
 
 /** Prochaine journée complète (8 matchs max), complétée jusqu'à 6 matchs si elle est courte. */
 function nextSlate(games: Game[]): Game[] {
