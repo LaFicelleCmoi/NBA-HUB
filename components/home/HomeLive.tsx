@@ -7,7 +7,9 @@ import type { TodayResponse } from "@/types";
 const TodayContext = createContext<TodayResponse | null>(null);
 
 /** Cadences d'actualisation, de la plus soutenue à la plus économe. */
-const EN_DIRECT = 15_000;
+// 10 s : ESPN n'autorise pas mieux (ses réponses portent « max-age=10 »),
+// demander plus souvent ne rendrait que la même donnée.
+const EN_DIRECT = 10_000;
 const IMMINENT = 30_000;
 const JOURNEE = 120_000;
 const REPOS = 600_000;
