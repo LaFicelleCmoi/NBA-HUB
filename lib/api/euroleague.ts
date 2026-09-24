@@ -1,6 +1,6 @@
 import "server-only";
 import { env, REVALIDATE } from "@/lib/env";
-import { fetchJson, fetchJsonSafe } from "@/lib/api/http";
+import { fetchJson, fetchJsonSafe, fetchLive } from "@/lib/api/http";
 import {
   LIVE_WINDOW_MS,
   normalizeClub,
@@ -64,10 +64,10 @@ async function withLive(games: RawElGame[]): Promise<Game[]> {
   return Promise.all(
     games.map(async (g) => {
       if (!isLiveWindow(g)) return normalizeElGame(g);
-      const header = await fetchJsonSafe<RawElHeader>(
+      // Score en cours : sans Data Cache, sinon il retarde d'un cycle.
+      const header = await fetchLive<RawElHeader>(
         `${env.euroleagueLiveApi}/Header?gamecode=${g.gameCode}&seasoncode=${g.season.code}`,
-        REVALIDATE.live,
-      );
+      ).catch(() => null);
       return normalizeElGame(g, header);
     }),
   );
