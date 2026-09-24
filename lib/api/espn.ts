@@ -1,6 +1,6 @@
 import "server-only";
 import { env, REVALIDATE } from "@/lib/env";
-import { cachedNormalized, fetchJson, fetchJsonSafe } from "@/lib/api/http";
+import { cachedNormalized, fetchJson, fetchJsonSafe, fetchLive } from "@/lib/api/http";
 import {
   normalizeEvent,
   normalizeLeaders,
@@ -59,9 +59,11 @@ export async function getEspnTeams(league: EspnLeague): Promise<Team[]> {
 
 /* -------------------------------- Scoreboard -------------------------------- */
 
-async function scoreboard(league: EspnLeague, dates: string | null, revalidate: number | "no-store") {
+/** `"live"` : sans le Data Cache, pour que le score ne traîne pas d'un cycle. */
+async function scoreboard(league: EspnLeague, dates: string | null, mode: number | "no-store" | "live") {
   const qs = dates ? `?dates=${dates}${dates.length === 6 ? "&limit=1000" : ""}` : "";
-  return fetchJson<RawScoreboard>(`${site(league)}/scoreboard${qs}`, revalidate);
+  const url = `${site(league)}/scoreboard${qs}`;
+  return mode === "live" ? fetchLive<RawScoreboard>(url) : fetchJson<RawScoreboard>(url, mode);
 }
 
 /** Tous les matchs d'un mois (réponse brute trop lourde pour le Data Cache). */
@@ -90,9 +92,9 @@ export async function getEspnToday(league: EspnLeague): Promise<TodayLeague> {
   const now = new Date();
   const today = parisDayKey(now);
   const [prev, cur, next] = await Promise.all([
-    scoreboard(league, espnDay(addDays(now, -1)), REVALIDATE.live),
-    scoreboard(league, espnDay(now), REVALIDATE.live),
-    scoreboard(league, null, REVALIDATE.live),
+    scoreboard(league, espnDay(addDays(now, -1)), "live"),
+    scoreboard(league, espnDay(now), "live"),
+    scoreboard(league, null, "live"),
   ]);
 
   const seen = new Set<string>();
