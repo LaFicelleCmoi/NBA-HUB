@@ -7,6 +7,26 @@ import { Logo } from "@/components/ui/Logo";
 import type { LeagueId, StandingGroup, Standings } from "@/types";
 
 const pct = (v: number) => (v >= 1 ? "1.000" : v.toFixed(3).replace(/^0/, ""));
+
+/** Flèche de mouvement par rapport au classement officiel. */
+function Movement({ places }: { places?: number }) {
+  if (!places) return null;
+  const monte = places > 0;
+  return (
+    <span
+      className={`text-[0.65rem] font-bold ${monte ? "text-direct" : "text-live"}`}
+      title={`${Math.abs(places)} place${Math.abs(places) > 1 ? "s" : ""} ${monte ? "gagnée" : "perdue"}${Math.abs(places) > 1 ? "s" : ""} grâce au match en cours`}
+    >
+      <span aria-hidden>{monte ? "▲" : "▼"}</span>
+      {Math.abs(places)}
+      <span className="sr-only">
+        {" "}
+        place{Math.abs(places) > 1 ? "s" : ""} {monte ? "gagnée" : "perdue"}
+        {Math.abs(places) > 1 ? "s" : ""}
+      </span>
+    </span>
+  );
+}
 const signed = (v: number) => (v > 0 ? `+${v}` : String(v));
 
 export function ZoneLegend({ league }: { league: LeagueId }) {
@@ -85,7 +105,9 @@ function GroupTable({
               return (
                 <tr
                   key={r.team.id}
-                  className={`border-b border-line last:border-0 ${fav ? "bg-fav-bg" : "hover:bg-line/40"}`}
+                  className={`border-b border-line last:border-0 ${
+                    fav ? "bg-fav-bg" : r.liveGame ? "bg-live/[0.07]" : "hover:bg-line/40"
+                  }`}
                 >
                   <th
                     scope="row"
@@ -120,6 +142,20 @@ function GroupTable({
                       {fav && (
                         <span className="text-fav" aria-label="Équipe favorite">
                           ★
+                        </span>
+                      )}
+                      <Movement places={r.movement} />
+                      {r.liveGame && (
+                        <span
+                          className="inline-flex shrink-0 items-center gap-1 rounded-full bg-live/15 px-2 py-0.5 text-[0.65rem] font-bold text-live"
+                          title={`${r.liveGame.detail} contre ${r.liveGame.opponent}`}
+                        >
+                          <span aria-hidden className="live-dot h-1.5 w-1.5 rounded-full bg-live" />
+                          {r.liveGame.score}
+                          <span className="sr-only">
+                            {" "}
+                            en cours contre {r.liveGame.opponent}, {r.liveGame.detail}
+                          </span>
                         </span>
                       )}
                     </div>
