@@ -163,6 +163,22 @@ async function fetchNews(league: LeagueId): Promise<NewsItem[]> {
     .slice(0, 24);
 }
 
+/**
+ * Matchs en cours d'une ligue, pour le classement provisoire.
+ *
+ * Pas de repli sur le dépôt ici : un match « en direct » vieux de plusieurs
+ * heures serait pire que pas de match du tout. En cas de panne, le classement
+ * officiel s'affiche seul.
+ */
+export async function getLiveGames(league: LeagueId): Promise<Game[]> {
+  try {
+    const today = league === "euroleague" ? await getElToday() : await getEspnToday(league);
+    return today.games.filter((g) => g.status === "live");
+  } catch {
+    return [];
+  }
+}
+
 export const getRecent = (league: LeagueId, id: string): Promise<Game[]> =>
   withFallback(`recent:${league}:${id}`, () =>
     league === "euroleague" ? getElRecent(id) : getEspnRecent(league, id),
