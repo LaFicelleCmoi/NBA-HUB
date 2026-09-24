@@ -10,5 +10,5 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ leag
     const sp = req.nextUrl.searchParams;
     assertOnlyParams(sp, ["view"]);
     return getGames(parseLeague(league), parseView(sp.get("view")));
-  }, REVALIDATE.live);
+  }, REVALIDATE.liveCdn, true);
 }
