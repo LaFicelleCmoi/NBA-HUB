@@ -80,6 +80,13 @@ export interface StandingRow {
    * l'EuroLeague, dont l'API ne les expose pas.
    */
   detail?: TeamStat[];
+  /**
+   * Match en cours de cette équipe, intégré au classement provisoire :
+   * score actuel, adversaire, minute, et si elle mène.
+   */
+  liveGame?: { score: string; opponent: string; detail: string; winning: boolean };
+  /** Places gagnées (+) ou perdues (−) par rapport au classement officiel. */
+  movement?: number;
 }
 
 export interface StandingGroup {
