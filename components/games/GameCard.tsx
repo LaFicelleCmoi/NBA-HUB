@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { useIsFavorite } from "@/lib/client/favorite";
 import { LEAGUES } from "@/lib/leagues";
 import { formatShortDay, formatTime } from "@/lib/time";
@@ -33,7 +34,31 @@ export function StatusPill({ game }: { game: Game }) {
   );
 }
 
-function TeamLine({ side, game, fav }: { side: GameTeam; game: Game; fav: boolean }) {
+/**
+ * Signale brièvement un score qui vient de changer.
+ *
+ * Ne se déclenche que sur un match en cours : un score qui apparaît au premier
+ * affichage, ou qui se fige au coup de sifflet, n'est pas un événement à
+ * souligner. Le premier passage sert donc seulement de référence.
+ */
+function useScoreChange(game: Game): boolean {
+  const key = `${game.home.score ?? ""}-${game.away.score ?? ""}`;
+  const previous = useRef<string | null>(null);
+  const [changed, setChanged] = useState(false);
+
+  useEffect(() => {
+    const before = previous.current;
+    previous.current = key;
+    if (before === null || before === key || game.status !== "live") return;
+    setChanged(true);
+    const t = setTimeout(() => setChanged(false), 2200);
+    return () => clearTimeout(t);
+  }, [key, game.status]);
+
+  return changed;
+}
+
+function TeamLine({ side, game, fav, flash }: { side: GameTeam; game: Game; fav: boolean; flash?: boolean }) {
   const lost = game.status === "final" && !side.winner;
   const linkable = side.team.id !== "0";
   const name = (
@@ -61,7 +86,9 @@ function TeamLine({ side, game, fav }: { side: GameTeam; game: Game; fav: boolea
         {side.record && <span className="hidden text-xs text-faint sm:inline">({side.record})</span>}
       </div>
       <span
-        className={`tabular font-display text-2xl font-bold ${side.winner ? "" : game.status === "final" ? "text-muted" : ""}`}
+        className={`tabular font-display text-2xl font-bold ${
+          side.winner ? "" : game.status === "final" ? "text-muted" : ""
+        } ${flash ? "score-flash" : ""}`}
       >
         {side.score ?? "–"}
       </span>
@@ -133,6 +160,7 @@ export function GameCard({
 }) {
   const favHome = useIsFavorite(game.league, game.home.team.id);
   const favAway = useIsFavorite(game.league, game.away.team.id);
+  const scored = useScoreChange(game);
   const fav = favHome || favAway;
   const league = LEAGUES[game.league];
 
@@ -158,9 +186,17 @@ export function GameCard({
       </div>
 
       <div className="space-y-2">
-        <TeamLine side={game.away} game={game} fav={favAway} />
-        <TeamLine side={game.home} game={game} fav={favHome} />
+        <TeamLine side={game.away} game={game} fav={favAway} flash={scored} />
+        <TeamLine side={game.home} game={game} fav={favHome} flash={scored} />
       </div>
+
+      {/* Le score change sans rechargement : sans cette annonce, un lecteur
+          d'écran ne verrait jamais passer le panier. */}
+      <p className="sr-only" aria-live="polite">
+        {scored
+          ? `${game.away.team.name} ${game.away.score}, ${game.home.team.name} ${game.home.score}`
+          : ""}
+      </p>
 
       {detailed && game.status !== "scheduled" && <PeriodTable game={game} />}
 
