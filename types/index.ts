@@ -170,6 +170,28 @@ export interface TeamDetail {
   stats: TeamStatGroup[];
 }
 
+/**
+ * Vue condensée d'une équipe pour la carte « Mon équipe » de l'accueil :
+ * juste de quoi la situer, sans charger la fiche complète.
+ */
+export interface TeamSummary {
+  team: Team;
+  /** Rang dans sa conférence (ou au classement pour l'EuroLeague). */
+  rank?: number;
+  /** Nombre d'équipes du même groupe, pour lire le rang (« 2e sur 15 »). */
+  groupSize?: number;
+  groupName?: string;
+  wins?: number;
+  losses?: number;
+  played?: number;
+  /** Saison du classement, et si c'est celle d'avant. */
+  season?: string;
+  isPreviousSeason?: boolean;
+  /** Cinq derniers matchs joués, du plus récent au plus ancien. */
+  recent: Game[];
+  next?: Game;
+}
+
 export interface NewsItem {
   id: string;
   title: string;
