@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getTeamDetail, getTeams } from "@/lib/data";
+import { getTeamDetail, getTeams, getTitles } from "@/lib/data";
 import { isLeagueId, LEAGUES } from "@/lib/leagues";
 import { parseTeamId, ValidationError } from "@/lib/validation";
 import { GameCard } from "@/components/games/GameCard";
@@ -70,6 +70,7 @@ export default async function TeamPage({ params }: Props) {
 async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
   const detail: TeamDetail | null = await getTeamDetail(l, id).catch(() => null);
   const leagueInfo = LEAGUES[l];
+  const titles = getTitles(l, id);
 
   if (!detail) return <ErrorState message="Impossible de charger cette équipe" />;
   const { team } = detail;
@@ -143,6 +144,47 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
           <FavoriteButton team={team} />
         </div>
       </section>
+
+      {titles.length > 0 && (
+        <Reveal as="section" className="mt-12">
+          <SectionHeading id="palmares" kicker={`Finales ${leagueInfo.name}`} title="Palmarès" />
+          <div className="glass flex flex-wrap items-center gap-x-6 gap-y-4 rounded-2xl p-5">
+            <p className="flex items-baseline gap-2">
+              {/* Trophée en SVG plutôt qu'en emoji : le rendu ne dépend alors
+                  d'aucune police système. */}
+              <svg
+                aria-hidden
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--fav)"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="self-center"
+              >
+                <path d="M7 4h10v5a5 5 0 0 1-10 0z" />
+                <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4" />
+                <path d="M12 14v3M9 20h6M10 17h4l.5 3h-5z" />
+              </svg>
+              <span className="font-display text-5xl font-extrabold leading-none">{titles.length}</span>
+              <span className="text-sm text-muted">
+                titre{titles.length > 1 ? "s" : ""} de champion
+              </span>
+            </p>
+            <ul className="flex flex-wrap gap-1.5" aria-label="Années de titre">
+              {titles.map((year) => (
+                <li key={year}>
+                  <span className="tabular rounded-lg bg-fav-bg px-2.5 py-1 text-sm font-semibold text-fav">
+                    {year}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      )}
 
       <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-8">
         <Reveal from="left" as="section">
