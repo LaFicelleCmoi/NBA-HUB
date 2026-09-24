@@ -146,8 +146,28 @@ function GroupTable({
   );
 }
 
+/**
+ * Ordre d'affichage des conférences : Ouest à gauche, Est à droite.
+ *
+ * C'est un choix de présentation, pas de données : il est appliqué ici plutôt
+ * que dans la normalisation, pour valoir aussi bien sur la page d'un
+ * championnat que sur l'accueil, et sans dépendre de l'ordre renvoyé par
+ * l'amont ni de celui du relevé versionné.
+ */
+const CONFERENCE_ORDER = ["Ouest", "Est"];
+
+const byConference = (a: StandingGroup, b: StandingGroup) => {
+  const rank = (name: string) => {
+    const i = CONFERENCE_ORDER.indexOf(name);
+    // Un groupe non listé (tableau unique de l'EuroLeague) garde sa place.
+    return i === -1 ? CONFERENCE_ORDER.length : i;
+  };
+  return rank(a.name) - rank(b.name);
+};
+
 export function StandingsTables({ standings, showStreak = false }: { standings: Standings; showStreak?: boolean }) {
-  const { league, groups } = standings;
+  const { league } = standings;
+  const groups = [...standings.groups].sort(byConference);
   return (
     <div className={`grid gap-4 ${groups.length > 1 ? "lg:grid-cols-2" : ""}`}>
       {groups.map((g) => (
