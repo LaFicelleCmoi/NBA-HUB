@@ -82,24 +82,31 @@ export async function fetchJson<T>(url: string, revalidate: number | "no-store")
  * La promesse elle-même est mise en cache, pas son résultat : deux requêtes
  * simultanées partagent ainsi le même appel amont.
  */
-const liveMemo = new Map<string, { at: number; value: Promise<unknown> }>();
+const liveMemo = new Map<string, { at: number; ttl: number; value: Promise<unknown> }>();
 const LIVE_TTL_MS = 5_000;
 
-export function fetchLive<T>(url: string): Promise<T> {
+/**
+ * Mémorise un calcul quelques secondes, sans jamais servir de valeur périmée :
+ * passé le délai, l'appelant attend le résultat frais. C'est la différence
+ * avec `unstable_cache`, qui rend l'ancienne valeur le temps de se rafraîchir.
+ */
+export function memoLive<T>(key: string, compute: () => Promise<T>, ttlMs = LIVE_TTL_MS): Promise<T> {
   const now = Date.now();
-  const hit = liveMemo.get(url);
-  if (hit && now - hit.at < LIVE_TTL_MS) return hit.value as Promise<T>;
+  const hit = liveMemo.get(key);
+  if (hit && now - hit.at < hit.ttl) return hit.value as Promise<T>;
 
-  const value = fetchJson<T>(url, "no-store");
-  liveMemo.set(url, { at: now, value });
+  const value = compute();
+  liveMemo.set(key, { at: now, ttl: ttlMs, value });
   // Un échec ne doit pas être resservi pendant toute la fenêtre.
-  value.catch(() => liveMemo.delete(url));
+  value.catch(() => liveMemo.delete(key));
 
   if (liveMemo.size > 64) {
-    for (const [k, v] of liveMemo) if (now - v.at >= LIVE_TTL_MS) liveMemo.delete(k);
+    for (const [k, v] of liveMemo) if (now - v.at >= v.ttl) liveMemo.delete(k);
   }
   return value;
 }
+
+export const fetchLive = <T,>(url: string): Promise<T> => memoLive(url, () => fetchJson<T>(url, "no-store"));
 
 /**
  * Pour les réponses volumineuses (> 2 Mo, limite du Data Cache) : on ne
