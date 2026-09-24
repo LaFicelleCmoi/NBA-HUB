@@ -56,6 +56,11 @@ console.info(
 /** Durées de cache (secondes). */
 export const REVALIDATE = {
   live: 30,
+  /**
+   * Fraîcheur annoncée au CDN pour les scores. Court exprès : ESPN lui-même
+   * n'autorise que 10 s, tout ce qu'on ajoute ici devient du retard visible.
+   */
+  liveCdn: 5,
   standings: 600,
   news: 600,
   schedule: 600,
