@@ -10,7 +10,8 @@ import { NewsGrid } from "@/components/league/NewsGrid";
 import { EmptyState, ErrorState } from "@/components/ui/EmptyState";
 import { Skeleton, SkeletonList } from "@/components/ui/Skeleton";
 import { Tabs } from "@/components/ui/Tabs";
-import type { GamesResponse, LeadersResponse, LeagueId, NewsItem, Standings } from "@/types";
+import { liveCount, withLiveGames } from "@/lib/live-standings";
+import type { Game, GamesResponse, LeadersResponse, LeagueId, NewsItem, Standings } from "@/types";
 
 const TABS = [
   { key: "classement", label: "Classement" },
@@ -49,15 +50,31 @@ function Note({ children }: { children: React.ReactNode }) {
 
 function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standings | null }) {
   const { data, error, loading } = useApi<Standings>(`/api/${league}/standings`, { initial });
+  // Charge utile minime, interrogée à la cadence du direct : le classement
+  // bouge avec les matchs sans recharger le classement officiel lui-même.
+  const { data: live } = useApi<Game[]>(`/api/${league}/live`, { refreshMs: 10_000 });
+
   if (loading) return <SkeletonList rows={8} className="h-10" />;
   if (!data) return <ErrorState message={error ?? "Classement indisponible"} />;
+
+  const games = live ?? [];
+  const provisoire = withLiveGames(data, games);
+  const enCours = liveCount(data, games);
+
   return (
     <div className="space-y-4">
       {data.isPreviousSeason && (
         <Note>Inter-saison : la nouvelle saison n’a pas commencé. Classement final de la saison {data.season}.</Note>
       )}
+      {enCours > 0 && (
+        <p className="flex items-center gap-2 text-sm text-live">
+          <span aria-hidden className="live-dot h-2 w-2 rounded-full bg-live" />
+          Classement provisoire : {enCours} match{enCours > 1 ? "s" : ""} en cours pris en compte, victoire et
+          différence comprises.
+        </p>
+      )}
       <ZoneLegend league={league} />
-      <StandingsTables standings={data} showStreak />
+      <StandingsTables standings={provisoire} showStreak />
     </div>
   );
 }
