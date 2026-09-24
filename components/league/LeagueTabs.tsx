@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useApi } from "@/lib/client/useApi";
 import { GameList } from "@/components/games/GameList";
 import { StandingsTables, ZoneLegend } from "@/components/standings/StandingsTable";
@@ -62,10 +62,24 @@ function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standi
   );
 }
 
+/**
+ * Cadence d'actualisation d'une liste de matchs. Un match en cours mérite
+ * 20 secondes ; une liste figée — calendrier à venir, résultats acquis — n'a
+ * pas besoin d'être redemandée toutes les 30 secondes.
+ */
+function cadenceMatchs(data: GamesResponse | null, view: "results" | "upcoming"): number {
+  if (data?.games.some((g) => g.status === "live")) return 20_000;
+  return view === "upcoming" ? 120_000 : 600_000;
+}
+
 function GamesPanel({ league, view }: { league: LeagueId; view: "results" | "upcoming" }) {
-  const { data, error, loading } = useApi<GamesResponse>(`/api/${league}/games?view=${view}`, {
-    refreshMs: view === "upcoming" ? 30_000 : 120_000,
-  });
+  const [refreshMs, setRefreshMs] = useState(() => cadenceMatchs(null, view));
+  const { data, error, loading } = useApi<GamesResponse>(`/api/${league}/games?view=${view}`, { refreshMs });
+
+  // Ajustement pendant le rendu : la cadence dépend des matchs qui viennent
+  // d'arriver.
+  const voulue = cadenceMatchs(data, view);
+  if (voulue !== refreshMs) setRefreshMs(voulue);
   if (loading)
     return (
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
