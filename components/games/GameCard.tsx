@@ -152,11 +152,14 @@ export function GameCard({
   detailed = true,
   showLeague = false,
   showDate = false,
+  matchLink = true,
 }: {
   game: Game;
   detailed?: boolean;
   showLeague?: boolean;
   showDate?: boolean;
+  /** Lien vers la page du match ; masqué sur cette page elle-même. */
+  matchLink?: boolean;
 }) {
   const favHome = useIsFavorite(game.league, game.home.team.id);
   const favAway = useIsFavorite(game.league, game.away.team.id);
@@ -199,6 +202,15 @@ export function GameCard({
       </p>
 
       {detailed && game.status !== "scheduled" && <PeriodTable game={game} />}
+
+      {matchLink && (game.status === "live" || game.status === "final") && (
+        <Link
+          href={`/${game.league}/match/${game.id}`}
+          className={`text-sm font-semibold hover:underline ${game.status === "live" ? "text-live" : "text-muted"}`}
+        >
+          {game.status === "live" ? "Suivre le play-by-play en direct" : "Play-by-play du match"} →
+        </Link>
+      )}
 
       {(showDate || game.venue) && (
         <p className="mt-auto flex flex-wrap gap-x-2 border-t border-line pt-2 text-xs text-faint">
