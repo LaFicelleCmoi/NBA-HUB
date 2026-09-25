@@ -17,9 +17,11 @@ import {
   type RawEspnTeamStats,
   type RawStandingsNode,
 } from "@/lib/normalize/espn";
+import { normalizeEspnPlays, type RawEspnPlay } from "@/lib/normalize/espn-pbp";
 import { addDays, addMonths, espnDay, espnMonth, parisDayKey } from "@/lib/time";
 import type {
   Game,
+  GameDetail,
   GamesResponse,
   LeadersResponse,
   NewsItem,
@@ -256,4 +258,39 @@ export async function getEspnTeamDetail(league: EspnLeague, id: string): Promise
     upcoming: schedule.upcoming.slice(0, 10),
     stats: stats ? normalizeTeamStats(stats) : [],
   };
+}
+
+/* ------------------------------- Match -------------------------------- */
+
+interface RawSummary {
+  header?: { id?: string; competitions?: (NonNullable<RawEspnEvent["competitions"]>[number] & { date?: string })[] };
+  gameInfo?: { venue?: { fullName?: string } };
+  plays?: RawEspnPlay[];
+}
+
+/**
+ * En-tête et play-by-play d'un match.
+ *
+ * Toujours sans cache de données : le même appel sert un match en cours, où
+ * chaque seconde compte, et un match terminé. `fetchLive` mémorise quelques
+ * secondes, ce qui borne la charge quel que soit le nombre de visiteurs.
+ */
+export async function getEspnGameDetail(league: EspnLeague, id: string): Promise<GameDetail> {
+  const raw = await fetchLive<RawSummary>(`${site(league)}/summary?event=${id}`);
+  const comp = raw.header?.competitions?.[0];
+  if (!comp) throw new Error("match introuvable");
+
+  // L'en-tête du résumé ne porte pas de numéro de période : on le déduit du
+  // nombre de quarts-temps joués, sans quoi une prolongation passerait inaperçue.
+  const joues = Math.max(0, ...comp.competitors.map((c) => c.linescores?.length ?? 0));
+  const status = { ...comp.status, period: comp.status?.period ?? joues };
+  const game = normalizeEvent(
+    {
+      id: String(raw.header?.id ?? id),
+      date: comp.date ?? "",
+      competitions: [{ ...comp, status, venue: comp.venue ?? raw.gameInfo?.venue }],
+    },
+    league,
+  );
+  return { game, plays: normalizeEspnPlays(raw.plays ?? []) };
 }
