@@ -83,7 +83,7 @@ export const seasonLabel = (season: number): string => `${season}-${String((seas
  * l'applicatif manipule des types stricts.
  */
 const asGames = (rows: unknown[]): ElGame[] => rows as ElGame[];
-const asMetas = (rows: unknown[]): ElMeta[] => rows as ElMeta[];
+const asMeta = (row: unknown): ElMeta => row as ElMeta;
 
 const schedule = async (season: number, revalidate: number): Promise<ElGame[]> =>
   asGames(await client(revalidate).schedule.getSeason({ season }));
@@ -98,24 +98,19 @@ const scheduleLive = (season: number): Promise<ElGame[]> =>
   memoLive(`el-schedule:${season}`, async () => asGames(await client("live").schedule.getSeason({ season })), 15_000);
 
 /**
- * Flux en direct de toute la saison, en un seul appel : il ne contient que les
- * rencontres déjà commencées. Auparavant il fallait interroger le flux match
- * par match ; ici une requête suffit, quel que soit le nombre de matchs.
+ * Flux en direct d'une rencontre.
  *
- * Il ne porte pas d'identifiant de match : l'appariement se fait sur la journée
- * et les codes des deux clubs, un couple qui ne se répète pas dans une journée.
+ * Il faut l'interroger match par match : la variante « toute la saison » ne
+ * contient que les rencontres **terminées**, jamais celles en cours — un match
+ * commencé depuis une heure y est absent et s'affichait donc « à venir », sans
+ * score. Seule la version par match rend le direct.
  */
-const metadataLive = (season: number): Promise<ElMeta[]> =>
-  memoLive(`el-metadata:${season}`, async () => asMetas(await client("live").gameMetadata.getSeason({ season })), 5_000);
-
-const metaKey = (round: number | null | undefined, home: string, away: string) => `${round ?? 0}|${home}|${away}`;
-
-async function liveIndex(season: number): Promise<Map<string, ElMeta>> {
-  const index = new Map<string, ElMeta>();
-  const metas = await metadataLive(season).catch(() => [] as ElMeta[]);
-  for (const m of metas) index.set(metaKey(m.round, String(m.codeTeamA ?? ""), String(m.codeTeamB ?? "")), m);
-  return index;
-}
+const liveMeta = (season: number, gameCode: number): Promise<ElMeta> =>
+  memoLive(
+    `el-meta:${season}:${gameCode}`,
+    async () => asMeta(await client("live").gameMetadata.getGame({ season, gameCode })),
+    5_000,
+  );
 
 /** Une rencontre mérite-t-elle qu'on lui cherche un score en direct ? */
 function isLiveWindow(g: ElGame, now = Date.now()) {
@@ -125,10 +120,10 @@ function isLiveWindow(g: ElGame, now = Date.now()) {
 
 /** Complète les rencontres concernées avec le flux en direct. */
 async function withLive(season: number, games: ElGame[]): Promise<Game[]> {
-  if (!games.some((g) => isLiveWindow(g))) return games.map((g) => normalizeElGame(g));
-  const index = await liveIndex(season);
-  return games.map((g) =>
-    normalizeElGame(g, index.get(metaKey(g.round, g.local.club.code, g.road.club.code)) ?? null),
+  return Promise.all(
+    games.map(async (g) =>
+      isLiveWindow(g) ? normalizeElGame(g, await liveMeta(season, g.gameCode).catch(() => null)) : normalizeElGame(g),
+    ),
   );
 }
 
