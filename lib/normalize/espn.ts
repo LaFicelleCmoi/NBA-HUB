@@ -54,7 +54,8 @@ interface RawCompetitor {
   winner?: boolean;
   score?: string | { value?: number; displayValue?: string };
   team: RawEspnTeam;
-  linescores?: { value?: number }[];
+  // Le scoreboard donne `value`, le résumé d'un match seulement `displayValue`.
+  linescores?: { value?: number; displayValue?: string }[];
   records?: { type?: string; summary?: string }[];
   record?: { type?: string; displayValue?: string }[];
 }
@@ -162,7 +163,7 @@ function sideOf(c: RawCompetitor | undefined, league: LeagueId, status: GameStat
   return {
     team,
     score: status === "scheduled" ? null : scoreOf(c?.score),
-    periods: (c?.linescores ?? []).map((l) => Number(l.value ?? 0)),
+    periods: (c?.linescores ?? []).map((l) => Number(l.value ?? l.displayValue ?? 0)),
     winner: Boolean(c?.winner),
     record,
     isHome: c?.homeAway === "home",
