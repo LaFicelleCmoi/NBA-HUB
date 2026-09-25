@@ -24,9 +24,6 @@ export const env = {
   espnSiteApi: str("ESPN_SITE_API", "https://site.api.espn.com/apis/site/v2/sports/basketball"),
   espnStandingsApi: str("ESPN_STANDINGS_API", "https://site.api.espn.com/apis/v2/sports/basketball"),
   espnWebApi: str("ESPN_WEB_API", "https://site.web.api.espn.com/apis/site/v3/sports/basketball"),
-  euroleagueApi: str("EUROLEAGUE_API", "https://api-live.euroleague.net"),
-  euroleagueLiveApi: str("EUROLEAGUE_LIVE_API", "https://live.euroleague.net/api"),
-  euroleagueCompetition: str("EUROLEAGUE_COMPETITION", "E"),
   // 12 s : le premier appel à ESPN après un démarrage à froid dépasse
   // régulièrement 8 s, et tout le monde n'a pas une liaison rapide.
   upstreamTimeoutMs: int("UPSTREAM_TIMEOUT_MS", 12000),
@@ -45,11 +42,10 @@ export const env = {
  * Rien de sensible ici — ce sont des API publiques, et ce journal reste côté
  * serveur.
  */
-const OVERRIDDEN = ["ESPN_SITE_API", "ESPN_STANDINGS_API", "ESPN_WEB_API", "EUROLEAGUE_API", "EUROLEAGUE_LIVE_API"]
-  .filter((n) => process.env[n]?.trim());
+const OVERRIDDEN = ["ESPN_SITE_API", "ESPN_STANDINGS_API", "ESPN_WEB_API"].filter((n) => process.env[n]?.trim());
 console.info(
   "[config] bases amont :",
-  { espn: env.espnSiteApi, classements: env.espnStandingsApi, leaders: env.espnWebApi, euroleague: env.euroleagueApi },
+  { espn: env.espnSiteApi, classements: env.espnStandingsApi, leaders: env.espnWebApi, euroleague: "SDK euroleague-api" },
   OVERRIDDEN.length ? `— redéfinies par l'environnement : ${OVERRIDDEN.join(", ")}` : "— valeurs par défaut",
 );
 
