@@ -232,6 +232,8 @@ export function normalizeElStandings(rows: Standing[]): StandingRow[] {
       losses: Number(r.gamesLost ?? 0),
       winPct: played ? wins / played : 0,
       diff: Number.isFinite(diff) ? diff : 0,
+      pointsFor: Number(r.pointsFor ?? 0),
+      pointsAgainst: Number(r.pointsAgainst ?? 0),
       // `last5Form` arrive en chaîne JSON, comme le club.
       streak: parseNested<string[]>(r.last5Form)
         ?.map((f) => (f === "W" ? "V" : f === "L" ? "D" : String(f)))
