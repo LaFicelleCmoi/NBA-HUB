@@ -10,12 +10,15 @@ import {
   normalizeElLeaders,
   normalizeElPeople,
   normalizeElStandings,
+  normalizeElPlays,
   type ElGame,
   type ElMeta,
+  type ElPlay,
 } from "@/lib/normalize/euroleague";
 import { parisDayKey } from "@/lib/time";
 import type {
   Game,
+  GameDetail,
   GamesResponse,
   LeaderCategory,
   LeadersResponse,
@@ -356,4 +359,36 @@ export async function getElTeamDetail(code: string): Promise<TeamDetail> {
     upcoming: await withLive(season, sched.upcoming.slice(0, 10)),
     stats: computed.stats,
   };
+}
+
+/* ------------------------------- Match -------------------------------- */
+
+/** « E2026_6 » → saison 2026, match n° 6. */
+export function parseElGameId(id: string): { season: number; gameCode: number } | null {
+  const m = id.match(/^[A-Z](\d{4})_(\d{1,4})$/);
+  return m ? { season: Number(m[1]), gameCode: Number(m[2]) } : null;
+}
+
+/**
+ * En-tête et play-by-play d'un match.
+ *
+ * Le déroulé est interrogé sans cache et mémorisé cinq secondes : il sert
+ * aussi bien un match en cours qu'un match terminé. L'en-tête vient du
+ * calendrier, complété par le flux en direct comme partout ailleurs.
+ */
+export async function getElGameDetail(id: string): Promise<GameDetail> {
+  const ref = parseElGameId(id);
+  if (!ref) throw new Error("identifiant de match invalide");
+  const [games, plays] = await Promise.all([
+    ref.season === currentSeason() ? scheduleLive(ref.season) : schedule(ref.season, REVALIDATE.standings),
+    memoLive(
+      `el-pbp:${ref.season}:${ref.gameCode}`,
+      async () => (await client("live").playByPlay.getGame(ref)) as unknown as ElPlay[],
+      5_000,
+    ),
+  ]);
+  const raw = games.find((g) => g.gameCode === ref.gameCode);
+  if (!raw) throw new Error("match introuvable");
+  const [game] = await withLive(ref.season, [raw]);
+  return { game, plays: normalizeElPlays(plays) };
 }
