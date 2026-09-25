@@ -26,6 +26,8 @@
             "losses": 22,
             "winPct": 0.73170733,
             "diff": 669,
+            "pointsFor": 9657,
+            "pointsAgainst": 8988,
             "streak": "V3",
             "seed": 1,
             "detail": [
@@ -115,6 +117,8 @@
             "losses": 26,
             "winPct": 0.68292683,
             "diff": 631,
+            "pointsFor": 9418,
+            "pointsAgainst": 8787,
             "streak": "V2",
             "seed": 2,
             "detail": [
@@ -208,6 +212,8 @@
             "losses": 29,
             "winPct": 0.64634144,
             "diff": 519,
+            "pointsFor": 9549,
+            "pointsAgainst": 9030,
             "streak": "D1",
             "seed": 3,
             "detail": [
@@ -301,6 +307,8 @@
             "losses": 30,
             "winPct": 0.63414633,
             "diff": 336,
+            "pointsFor": 9800,
+            "pointsAgainst": 9464,
             "streak": "V1",
             "seed": 4,
             "detail": [
@@ -394,6 +402,8 @@
             "losses": 36,
             "winPct": 0.5609756,
             "diff": 232,
+            "pointsFor": 9400,
+            "pointsAgainst": 9168,
             "streak": "V1",
             "seed": 5,
             "detail": [
@@ -487,6 +497,8 @@
             "losses": 36,
             "winPct": 0.5609756,
             "diff": 198,
+            "pointsFor": 9714,
+            "pointsAgainst": 9516,
             "streak": "D1",
             "seed": 6,
             "detail": [
@@ -580,6 +592,8 @@
             "losses": 37,
             "winPct": 0.5487805,
             "diff": -15,
+            "pointsFor": 9502,
+            "pointsAgainst": 9517,
             "streak": "V2",
             "seed": 7,
             "detail": [
@@ -673,6 +687,8 @@
             "losses": 37,
             "winPct": 0.5487805,
             "diff": 52,
+            "pointsFor": 9491,
+            "pointsAgainst": 9439,
             "streak": "D1",
             "seed": 8,
             "detail": [
@@ -766,6 +782,8 @@
             "losses": 38,
             "winPct": 0.5365854,
             "diff": 396,
+            "pointsFor": 9513,
+            "pointsAgainst": 9117,
             "streak": "V1",
             "seed": 9,
             "detail": [
@@ -859,6 +877,8 @@
             "losses": 39,
             "winPct": 0.5243902,
             "diff": 191,
+            "pointsFor": 9911,
+            "pointsAgainst": 9720,
             "streak": "V2",
             "seed": 10,
             "detail": [
@@ -952,6 +972,8 @@
             "losses": 50,
             "winPct": 0.3902439,
             "diff": -509,
+            "pointsFor": 9072,
+            "pointsAgainst": 9581,
             "streak": "D1",
             "seed": 11,
             "detail": [
@@ -1045,6 +1067,8 @@
             "losses": 51,
             "winPct": 0.37804878,
             "diff": -427,
+            "pointsFor": 9537,
+            "pointsAgainst": 9964,
             "streak": "D2",
             "seed": 12,
             "detail": [
@@ -1138,6 +1162,8 @@
             "losses": 62,
             "winPct": 0.24390244,
             "diff": -819,
+            "pointsFor": 8686,
+            "pointsAgainst": 9505,
             "streak": "D3",
             "seed": 13,
             "detail": [
@@ -1231,6 +1257,8 @@
             "losses": 63,
             "winPct": 0.23170732,
             "diff": -655,
+            "pointsFor": 9219,
+            "pointsAgainst": 9874,
             "streak": "D2",
             "seed": 14,
             "detail": [
@@ -1324,6 +1352,8 @@
             "losses": 65,
             "winPct": 0.20731707,
             "diff": -982,
+            "pointsFor": 9258,
+            "pointsAgainst": 10240,
             "streak": "D10",
             "seed": 15,
             "detail": [
@@ -1422,6 +1452,8 @@
             "losses": 18,
             "winPct": 0.7804878,
             "diff": 914,
+            "pointsFor": 9760,
+            "pointsAgainst": 8846,
             "streak": "D2",
             "seed": 1,
             "detail": [
@@ -1511,6 +1543,8 @@
             "losses": 20,
             "winPct": 0.75609756,
             "diff": 681,
+            "pointsFor": 9826,
+            "pointsAgainst": 9145,
             "streak": "D1",
             "seed": 2,
             "detail": [
@@ -1604,6 +1638,8 @@
             "losses": 28,
             "winPct": 0.6585366,
             "diff": 423,
+            "pointsFor": 10010,
+            "pointsAgainst": 9587,
             "streak": "V12",
             "seed": 3,
             "detail": [
@@ -1697,6 +1733,8 @@
             "losses": 29,
             "winPct": 0.64634144,
             "diff": 145,
+            "pointsFor": 9540,
+            "pointsAgainst": 9395,
             "streak": "V3",
             "seed": 4,
             "detail": [
@@ -1790,6 +1828,8 @@
             "losses": 30,
             "winPct": 0.63414633,
             "diff": 428,
+            "pointsFor": 9449,
+            "pointsAgainst": 9021,
             "streak": "V1",
             "seed": 5,
             "detail": [
@@ -1883,6 +1923,8 @@
             "losses": 33,
             "winPct": 0.597561,
             "diff": 275,
+            "pointsFor": 9676,
+            "pointsAgainst": 9401,
             "streak": "V2",
             "seed": 6,
             "detail": [
@@ -1976,6 +2018,8 @@
             "losses": 40,
             "winPct": 0.5121951,
             "diff": -24,
+            "pointsFor": 9469,
+            "pointsAgainst": 9493,
             "streak": "V2",
             "seed": 7,
             "detail": [
@@ -2069,6 +2113,8 @@
             "losses": 37,
             "winPct": 0.5487805,
             "diff": 120,
+            "pointsFor": 9232,
+            "pointsAgainst": 9112,
             "streak": "V1",
             "seed": 8,
             "detail": [
@@ -2162,6 +2208,8 @@
             "losses": 40,
             "winPct": 0.5121951,
             "diff": 93,
+            "pointsFor": 9329,
+            "pointsAgainst": 9236,
             "streak": "V1",
             "seed": 9,
             "detail": [
@@ -2255,6 +2303,8 @@
             "losses": 45,
             "winPct": 0.4512195,
             "diff": -46,
+            "pointsFor": 9398,
+            "pointsAgainst": 9444,
             "streak": "D3",
             "seed": 10,
             "detail": [
@@ -2348,6 +2398,8 @@
             "losses": 56,
             "winPct": 0.31707317,
             "diff": -369,
+            "pointsFor": 9473,
+            "pointsAgainst": 9842,
             "streak": "D2",
             "seed": 11,
             "detail": [
@@ -2441,6 +2493,8 @@
             "losses": 56,
             "winPct": 0.31707317,
             "diff": -452,
+            "pointsFor": 9358,
+            "pointsAgainst": 9810,
             "streak": "V1",
             "seed": 12,
             "detail": [
@@ -2534,6 +2588,8 @@
             "losses": 57,
             "winPct": 0.30487806,
             "diff": -493,
+            "pointsFor": 9403,
+            "pointsAgainst": 9896,
             "streak": "D8",
             "seed": 13,
             "detail": [
@@ -2627,6 +2683,8 @@
             "losses": 60,
             "winPct": 0.2682927,
             "diff": -820,
+            "pointsFor": 9102,
+            "pointsAgainst": 9922,
             "streak": "D1",
             "seed": 14,
             "detail": [
@@ -2720,6 +2778,8 @@
             "losses": 60,
             "winPct": 0.2682927,
             "diff": -692,
+            "pointsFor": 9641,
+            "pointsAgainst": 10333,
             "streak": "D1",
             "seed": 15,
             "detail": [
@@ -2824,17 +2884,19 @@
               "conference": "Est"
             },
             "rank": 1,
-            "played": 43,
-            "wins": 29,
+            "played": 44,
+            "wins": 30,
             "losses": 14,
-            "winPct": 0.6744186,
-            "diff": 284,
-            "streak": "V4",
+            "winPct": 0.6818182,
+            "diff": 302,
+            "pointsFor": 4019,
+            "pointsAgainst": 3717,
+            "streak": "V5",
             "seed": 4,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "29-14"
+                "value": "30-14"
               },
               {
                 "label": "À domicile",
@@ -2842,100 +2904,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "14-7"
-              },
-              {
-                "label": "Dans la conférence",
-                "value": "14-5"
-              },
-              {
-                "label": "Dans la division",
-                "value": "0-0"
-              },
-              {
-                "label": "10 derniers matchs",
-                "value": "8-2"
-              },
-              {
-                "label": "Série en cours",
-                "value": "4 victoires"
-              },
-              {
-                "label": "Points marqués / match",
-                "value": "91.5"
-              },
-              {
-                "label": "Points encaissés / match",
-                "value": "84.9"
-              },
-              {
-                "label": "Différence / match",
-                "value": "+6.6"
-              },
-              {
-                "label": "Différence totale",
-                "value": "+284"
-              },
-              {
-                "label": "Points marqués",
-                "value": "3936"
-              },
-              {
-                "label": "Points encaissés",
-                "value": "3652"
-              },
-              {
-                "label": "% de victoires",
-                "value": "67.4 %"
-              },
-              {
-                "label": "% de victoires (ligue)",
-                "value": "73.7 %"
-              },
-              {
-                "label": "% de victoires (division)",
-                "value": "0.0 %"
-              }
-            ]
-          },
-          {
-            "team": {
-              "id": "5",
-              "league": "wnba",
-              "name": "Indiana Fever",
-              "shortName": "Fever",
-              "abbreviation": "IND",
-              "logo": {
-                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
-                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
-              },
-              "location": "Indiana",
-              "conference": "Est"
-            },
-            "rank": 2,
-            "played": 43,
-            "wins": 28,
-            "losses": 15,
-            "winPct": 0.6511628,
-            "diff": 263,
-            "streak": "V1",
-            "seed": 5,
-            "detail": [
-              {
-                "label": "Bilan général",
-                "value": "28-15"
-              },
-              {
-                "label": "À domicile",
                 "value": "15-7"
               },
               {
-                "label": "À l'extérieur",
-                "value": "13-8"
-              },
-              {
                 "label": "Dans la conférence",
-                "value": "14-6"
+                "value": "15-5"
               },
               {
                 "label": "Dans la division",
@@ -2943,47 +2916,43 @@
               },
               {
                 "label": "10 derniers matchs",
-                "value": "7-3"
+                "value": "9-1"
               },
               {
                 "label": "Série en cours",
-                "value": "1 victoire"
+                "value": "5 victoires"
               },
               {
                 "label": "Points marqués / match",
-                "value": "96.7"
+                "value": "91.3"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "90.5"
+                "value": "84.5"
               },
               {
                 "label": "Différence / match",
-                "value": "+6.2"
+                "value": "+6.8"
               },
               {
                 "label": "Différence totale",
-                "value": "+263"
+                "value": "+302"
               },
               {
                 "label": "Points marqués",
-                "value": "4156"
+                "value": "4019"
               },
               {
                 "label": "Points encaissés",
-                "value": "3893"
-              },
-              {
-                "label": "Matchs de retard",
-                "value": "1"
+                "value": "3717"
               },
               {
                 "label": "% de victoires",
-                "value": "65.1 %"
+                "value": "68.2 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "70.0 %"
+                "value": "75.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3005,22 +2974,24 @@
               "location": "Washington",
               "conference": "Est"
             },
-            "rank": 3,
-            "played": 43,
-            "wins": 27,
+            "rank": 2,
+            "played": 44,
+            "wins": 28,
             "losses": 16,
-            "winPct": 0.627907,
-            "diff": 48,
-            "streak": "V3",
+            "winPct": 0.6363636,
+            "diff": 56,
+            "pointsFor": 3696,
+            "pointsAgainst": 3640,
+            "streak": "V4",
             "seed": 6,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "27-16"
+                "value": "28-16"
               },
               {
                 "label": "À domicile",
-                "value": "14-7"
+                "value": "15-7"
               },
               {
                 "label": "À l'extérieur",
@@ -3028,7 +2999,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "14-5"
+                "value": "15-5"
               },
               {
                 "label": "Dans la division",
@@ -3040,31 +3011,31 @@
               },
               {
                 "label": "Série en cours",
-                "value": "3 victoires"
+                "value": "4 victoires"
               },
               {
                 "label": "Points marqués / match",
-                "value": "83.6"
+                "value": "84.0"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "82.5"
+                "value": "82.7"
               },
               {
                 "label": "Différence / match",
-                "value": "+1.1"
+                "value": "+1.3"
               },
               {
                 "label": "Différence totale",
-                "value": "+48"
+                "value": "+56"
               },
               {
                 "label": "Points marqués",
-                "value": "3595"
+                "value": "3696"
               },
               {
                 "label": "Points encaissés",
-                "value": "3547"
+                "value": "3640"
               },
               {
                 "label": "Matchs de retard",
@@ -3072,11 +3043,106 @@
               },
               {
                 "label": "% de victoires",
-                "value": "62.8 %"
+                "value": "63.6 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "73.7 %"
+                "value": "75.0 %"
+              },
+              {
+                "label": "% de victoires (division)",
+                "value": "0.0 %"
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "5",
+              "league": "wnba",
+              "name": "Indiana Fever",
+              "shortName": "Fever",
+              "abbreviation": "IND",
+              "logo": {
+                "light": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                "dark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+              },
+              "location": "Indiana",
+              "conference": "Est"
+            },
+            "rank": 3,
+            "played": 44,
+            "wins": 28,
+            "losses": 16,
+            "winPct": 0.6363636,
+            "diff": 243,
+            "pointsFor": 4222,
+            "pointsAgainst": 3979,
+            "streak": "D1",
+            "seed": 5,
+            "detail": [
+              {
+                "label": "Bilan général",
+                "value": "28-16"
+              },
+              {
+                "label": "À domicile",
+                "value": "15-7"
+              },
+              {
+                "label": "À l'extérieur",
+                "value": "13-9"
+              },
+              {
+                "label": "Dans la conférence",
+                "value": "14-6"
+              },
+              {
+                "label": "Dans la division",
+                "value": "0-0"
+              },
+              {
+                "label": "10 derniers matchs",
+                "value": "6-4"
+              },
+              {
+                "label": "Série en cours",
+                "value": "1 défaite"
+              },
+              {
+                "label": "Points marqués / match",
+                "value": "96.0"
+              },
+              {
+                "label": "Points encaissés / match",
+                "value": "90.4"
+              },
+              {
+                "label": "Différence / match",
+                "value": "+5.6"
+              },
+              {
+                "label": "Différence totale",
+                "value": "+243"
+              },
+              {
+                "label": "Points marqués",
+                "value": "4222"
+              },
+              {
+                "label": "Points encaissés",
+                "value": "3979"
+              },
+              {
+                "label": "Matchs de retard",
+                "value": "2"
+              },
+              {
+                "label": "% de victoires",
+                "value": "63.6 %"
+              },
+              {
+                "label": "% de victoires (ligue)",
+                "value": "70.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3099,21 +3165,23 @@
               "conference": "Est"
             },
             "rank": 4,
-            "played": 43,
+            "played": 44,
             "wins": 26,
-            "losses": 17,
-            "winPct": 0.60465115,
-            "diff": 157,
-            "streak": "D1",
+            "losses": 18,
+            "winPct": 0.59090906,
+            "diff": 139,
+            "pointsFor": 3941,
+            "pointsAgainst": 3802,
+            "streak": "D2",
             "seed": 8,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "26-17"
+                "value": "26-18"
               },
               {
                 "label": "À domicile",
-                "value": "14-7"
+                "value": "14-8"
               },
               {
                 "label": "À l'extérieur",
@@ -3121,7 +3189,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "13-6"
+                "value": "13-7"
               },
               {
                 "label": "Dans la division",
@@ -3133,43 +3201,43 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 défaite"
+                "value": "2 défaites"
               },
               {
                 "label": "Points marqués / match",
-                "value": "90.1"
+                "value": "89.6"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "86.5"
+                "value": "86.4"
               },
               {
                 "label": "Différence / match",
-                "value": "+3.6"
+                "value": "+3.2"
               },
               {
                 "label": "Différence totale",
-                "value": "+157"
+                "value": "+139"
               },
               {
                 "label": "Points marqués",
-                "value": "3876"
+                "value": "3941"
               },
               {
                 "label": "Points encaissés",
-                "value": "3719"
+                "value": "3802"
               },
               {
                 "label": "Matchs de retard",
-                "value": "3"
+                "value": "4"
               },
               {
                 "label": "% de victoires",
-                "value": "60.5 %"
+                "value": "59.1 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "68.4 %"
+                "value": "65.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3192,17 +3260,19 @@
               "conference": "Est"
             },
             "rank": 5,
-            "played": 43,
+            "played": 44,
             "wins": 16,
-            "losses": 27,
-            "winPct": 0.37209302,
-            "diff": -163,
-            "streak": "V1",
+            "losses": 28,
+            "winPct": 0.36363637,
+            "diff": -171,
+            "pointsFor": 3818,
+            "pointsAgainst": 3989,
+            "streak": "D1",
             "seed": 11,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "16-27"
+                "value": "16-28"
               },
               {
                 "label": "À domicile",
@@ -3210,11 +3280,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "5-16"
+                "value": "5-17"
               },
               {
                 "label": "Dans la conférence",
-                "value": "4-15"
+                "value": "4-16"
               },
               {
                 "label": "Dans la division",
@@ -3226,43 +3296,43 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 victoire"
+                "value": "1 défaite"
               },
               {
                 "label": "Points marqués / match",
-                "value": "86.6"
+                "value": "86.8"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "90.4"
+                "value": "90.7"
               },
               {
                 "label": "Différence / match",
-                "value": "-3.8"
+                "value": "-3.9"
               },
               {
                 "label": "Différence totale",
-                "value": "-163"
+                "value": "-171"
               },
               {
                 "label": "Points marqués",
-                "value": "3725"
+                "value": "3818"
               },
               {
                 "label": "Points encaissés",
-                "value": "3888"
+                "value": "3989"
               },
               {
                 "label": "Matchs de retard",
-                "value": "13"
+                "value": "14"
               },
               {
                 "label": "% de victoires",
-                "value": "37.2 %"
+                "value": "36.4 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "21.1 %"
+                "value": "20.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3285,17 +3355,19 @@
               "conference": "Est"
             },
             "rank": 6,
-            "played": 43,
+            "played": 44,
             "wins": 11,
-            "losses": 32,
-            "winPct": 0.25581396,
-            "diff": -369,
-            "streak": "D7",
+            "losses": 33,
+            "winPct": 0.25,
+            "diff": -383,
+            "pointsFor": 3769,
+            "pointsAgainst": 4152,
+            "streak": "D8",
             "seed": 13,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "11-32"
+                "value": "11-33"
               },
               {
                 "label": "À domicile",
@@ -3303,11 +3375,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "4-17"
+                "value": "4-18"
               },
               {
                 "label": "Dans la conférence",
-                "value": "5-14"
+                "value": "5-15"
               },
               {
                 "label": "Dans la division",
@@ -3319,43 +3391,43 @@
               },
               {
                 "label": "Série en cours",
-                "value": "7 défaites"
+                "value": "8 défaites"
               },
               {
                 "label": "Points marqués / match",
-                "value": "85.8"
+                "value": "85.7"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "94.3"
+                "value": "94.4"
               },
               {
                 "label": "Différence / match",
-                "value": "-8.5"
+                "value": "-8.7"
               },
               {
                 "label": "Différence totale",
-                "value": "-369"
+                "value": "-383"
               },
               {
                 "label": "Points marqués",
-                "value": "3688"
+                "value": "3769"
               },
               {
                 "label": "Points encaissés",
-                "value": "4057"
+                "value": "4152"
               },
               {
                 "label": "Matchs de retard",
-                "value": "18"
+                "value": "19"
               },
               {
                 "label": "% de victoires",
-                "value": "25.6 %"
+                "value": "25.0 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "26.3 %"
+                "value": "25.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3378,21 +3450,23 @@
               "conference": "Est"
             },
             "rank": 7,
-            "played": 43,
-            "wins": 10,
+            "played": 44,
+            "wins": 11,
             "losses": 33,
-            "winPct": 0.23255815,
-            "diff": -419,
-            "streak": "D6",
+            "winPct": 0.25,
+            "diff": -405,
+            "pointsFor": 3470,
+            "pointsAgainst": 3875,
+            "streak": "V1",
             "seed": 14,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "10-33"
+                "value": "11-33"
               },
               {
                 "label": "À domicile",
-                "value": "7-14"
+                "value": "8-14"
               },
               {
                 "label": "À l'extérieur",
@@ -3400,7 +3474,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "3-16"
+                "value": "4-16"
               },
               {
                 "label": "Dans la division",
@@ -3412,31 +3486,31 @@
               },
               {
                 "label": "Série en cours",
-                "value": "6 défaites"
+                "value": "1 victoire"
               },
               {
                 "label": "Points marqués / match",
-                "value": "78.5"
+                "value": "78.9"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "88.2"
+                "value": "88.1"
               },
               {
                 "label": "Différence / match",
-                "value": "-9.7"
+                "value": "-9.2"
               },
               {
                 "label": "Différence totale",
-                "value": "-419"
+                "value": "-405"
               },
               {
                 "label": "Points marqués",
-                "value": "3375"
+                "value": "3470"
               },
               {
                 "label": "Points encaissés",
-                "value": "3794"
+                "value": "3875"
               },
               {
                 "label": "Matchs de retard",
@@ -3444,11 +3518,11 @@
               },
               {
                 "label": "% de victoires",
-                "value": "23.3 %"
+                "value": "25.0 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "15.8 %"
+                "value": "20.0 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3476,21 +3550,23 @@
               "conference": "Ouest"
             },
             "rank": 1,
-            "played": 43,
-            "wins": 32,
+            "played": 44,
+            "wins": 33,
             "losses": 11,
-            "winPct": 0.74418604,
-            "diff": 296,
-            "streak": "D1",
+            "winPct": 0.75,
+            "diff": 316,
+            "pointsFor": 3997,
+            "pointsAgainst": 3681,
+            "streak": "V1",
             "seed": 1,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "32-11"
+                "value": "33-11"
               },
               {
                 "label": "À domicile",
-                "value": "14-7"
+                "value": "15-7"
               },
               {
                 "label": "À l'extérieur",
@@ -3510,35 +3586,35 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 défaite"
+                "value": "1 victoire"
               },
               {
                 "label": "Points marqués / match",
-                "value": "91.0"
+                "value": "90.8"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "84.1"
+                "value": "83.7"
               },
               {
                 "label": "Différence / match",
-                "value": "+6.9"
+                "value": "+7.1"
               },
               {
                 "label": "Différence totale",
-                "value": "+296"
+                "value": "+316"
               },
               {
                 "label": "Points marqués",
-                "value": "3911"
+                "value": "3997"
               },
               {
                 "label": "Points encaissés",
-                "value": "3615"
+                "value": "3681"
               },
               {
                 "label": "% de victoires",
-                "value": "74.4 %"
+                "value": "75.0 %"
               },
               {
                 "label": "% de victoires (ligue)",
@@ -3565,17 +3641,19 @@
               "conference": "Ouest"
             },
             "rank": 2,
-            "played": 43,
-            "wins": 31,
+            "played": 44,
+            "wins": 32,
             "losses": 12,
-            "winPct": 0.7209302,
-            "diff": 309,
-            "streak": "D1",
+            "winPct": 0.72727275,
+            "diff": 310,
+            "pointsFor": 3615,
+            "pointsAgainst": 3305,
+            "streak": "V1",
             "seed": 2,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "31-12"
+                "value": "32-12"
               },
               {
                 "label": "À domicile",
@@ -3583,11 +3661,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "14-7"
+                "value": "15-7"
               },
               {
                 "label": "Dans la conférence",
-                "value": "14-8"
+                "value": "15-8"
               },
               {
                 "label": "Dans la division",
@@ -3599,11 +3677,11 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 défaite"
+                "value": "1 victoire"
               },
               {
                 "label": "Points marqués / match",
-                "value": "82.3"
+                "value": "82.2"
               },
               {
                 "label": "Points encaissés / match",
@@ -3611,19 +3689,19 @@
               },
               {
                 "label": "Différence / match",
-                "value": "+7.2"
+                "value": "+7.1"
               },
               {
                 "label": "Différence totale",
-                "value": "+309"
+                "value": "+310"
               },
               {
                 "label": "Points marqués",
-                "value": "3539"
+                "value": "3615"
               },
               {
                 "label": "Points encaissés",
-                "value": "3230"
+                "value": "3305"
               },
               {
                 "label": "Matchs de retard",
@@ -3631,11 +3709,11 @@
               },
               {
                 "label": "% de victoires",
-                "value": "72.1 %"
+                "value": "72.7 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "63.6 %"
+                "value": "65.2 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3658,17 +3736,19 @@
               "conference": "Ouest"
             },
             "rank": 3,
-            "played": 43,
-            "wins": 30,
+            "played": 44,
+            "wins": 31,
             "losses": 13,
-            "winPct": 0.6976744,
-            "diff": 231,
-            "streak": "V6",
+            "winPct": 0.70454544,
+            "diff": 249,
+            "pointsFor": 4025,
+            "pointsAgainst": 3776,
+            "streak": "V7",
             "seed": 3,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "30-13"
+                "value": "31-13"
               },
               {
                 "label": "À domicile",
@@ -3676,11 +3756,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "15-6"
+                "value": "16-6"
               },
               {
                 "label": "Dans la conférence",
-                "value": "16-6"
+                "value": "17-6"
               },
               {
                 "label": "Dans la division",
@@ -3692,31 +3772,31 @@
               },
               {
                 "label": "Série en cours",
-                "value": "6 victoires"
+                "value": "7 victoires"
               },
               {
                 "label": "Points marqués / match",
-                "value": "91.3"
+                "value": "91.5"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "85.9"
+                "value": "85.8"
               },
               {
                 "label": "Différence / match",
-                "value": "+5.4"
+                "value": "+5.7"
               },
               {
                 "label": "Différence totale",
-                "value": "+231"
+                "value": "+249"
               },
               {
                 "label": "Points marqués",
-                "value": "3925"
+                "value": "4025"
               },
               {
                 "label": "Points encaissés",
-                "value": "3694"
+                "value": "3776"
               },
               {
                 "label": "Matchs de retard",
@@ -3724,11 +3804,11 @@
               },
               {
                 "label": "% de victoires",
-                "value": "69.8 %"
+                "value": "70.5 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "72.7 %"
+                "value": "73.9 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3751,17 +3831,19 @@
               "conference": "Ouest"
             },
             "rank": 4,
-            "played": 43,
-            "wins": 26,
+            "played": 44,
+            "wins": 27,
             "losses": 17,
-            "winPct": 0.60465115,
-            "diff": 170,
-            "streak": "D1",
+            "winPct": 0.6136364,
+            "diff": 182,
+            "pointsFor": 3933,
+            "pointsAgainst": 3751,
+            "streak": "V1",
             "seed": 7,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "26-17"
+                "value": "27-17"
               },
               {
                 "label": "À domicile",
@@ -3769,11 +3851,11 @@
               },
               {
                 "label": "À l'extérieur",
-                "value": "10-11"
+                "value": "11-11"
               },
               {
                 "label": "Dans la conférence",
-                "value": "12-10"
+                "value": "13-10"
               },
               {
                 "label": "Dans la division",
@@ -3785,31 +3867,31 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 défaite"
+                "value": "1 victoire"
               },
               {
                 "label": "Points marqués / match",
-                "value": "89.1"
+                "value": "89.4"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "85.1"
+                "value": "85.3"
               },
               {
                 "label": "Différence / match",
-                "value": "+4.0"
+                "value": "+4.1"
               },
               {
                 "label": "Différence totale",
-                "value": "+170"
+                "value": "+182"
               },
               {
                 "label": "Points marqués",
-                "value": "3830"
+                "value": "3933"
               },
               {
                 "label": "Points encaissés",
-                "value": "3660"
+                "value": "3751"
               },
               {
                 "label": "Matchs de retard",
@@ -3817,11 +3899,11 @@
               },
               {
                 "label": "% de victoires",
-                "value": "60.5 %"
+                "value": "61.4 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "54.5 %"
+                "value": "56.5 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -3849,6 +3931,8 @@
             "losses": 27,
             "winPct": 0.38636363,
             "diff": -211,
+            "pointsFor": 3794,
+            "pointsAgainst": 4005,
             "streak": "V1",
             "seed": 9,
             "detail": [
@@ -3906,7 +3990,7 @@
               },
               {
                 "label": "Matchs de retard",
-                "value": "15.5"
+                "value": "16"
               },
               {
                 "label": "% de victoires",
@@ -3937,21 +4021,23 @@
               "conference": "Ouest"
             },
             "rank": 6,
-            "played": 43,
+            "played": 44,
             "wins": 16,
-            "losses": 27,
-            "winPct": 0.37209302,
-            "diff": -187,
-            "streak": "D1",
+            "losses": 28,
+            "winPct": 0.36363637,
+            "diff": -188,
+            "pointsFor": 3830,
+            "pointsAgainst": 4018,
+            "streak": "D2",
             "seed": 12,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "16-27"
+                "value": "16-28"
               },
               {
                 "label": "À domicile",
-                "value": "8-13"
+                "value": "8-14"
               },
               {
                 "label": "À l'extérieur",
@@ -3959,7 +4045,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "9-13"
+                "value": "9-14"
               },
               {
                 "label": "Dans la division",
@@ -3971,43 +4057,43 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 défaite"
+                "value": "2 défaites"
               },
               {
                 "label": "Points marqués / match",
-                "value": "87.3"
+                "value": "87.0"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "91.7"
+                "value": "91.3"
               },
               {
                 "label": "Différence / match",
-                "value": "-4.4"
+                "value": "-4.3"
               },
               {
                 "label": "Différence totale",
-                "value": "-187"
+                "value": "-188"
               },
               {
                 "label": "Points marqués",
-                "value": "3755"
+                "value": "3830"
               },
               {
                 "label": "Points encaissés",
-                "value": "3942"
+                "value": "4018"
               },
               {
                 "label": "Matchs de retard",
-                "value": "16"
+                "value": "17"
               },
               {
                 "label": "% de victoires",
-                "value": "37.2 %"
+                "value": "36.4 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "40.9 %"
+                "value": "39.1 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -4030,21 +4116,23 @@
               "conference": "Ouest"
             },
             "rank": 7,
-            "played": 43,
+            "played": 44,
             "wins": 16,
-            "losses": 27,
-            "winPct": 0.37209302,
-            "diff": -124,
-            "streak": "V1",
+            "losses": 28,
+            "winPct": 0.36363637,
+            "diff": -142,
+            "pointsFor": 3712,
+            "pointsAgainst": 3854,
+            "streak": "D1",
             "seed": 10,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "16-27"
+                "value": "16-28"
               },
               {
                 "label": "À domicile",
-                "value": "7-14"
+                "value": "7-15"
               },
               {
                 "label": "À l'extérieur",
@@ -4052,7 +4140,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "10-12"
+                "value": "10-13"
               },
               {
                 "label": "Dans la division",
@@ -4064,7 +4152,7 @@
               },
               {
                 "label": "Série en cours",
-                "value": "1 victoire"
+                "value": "1 défaite"
               },
               {
                 "label": "Points marqués / match",
@@ -4072,35 +4160,35 @@
               },
               {
                 "label": "Points encaissés / match",
-                "value": "87.3"
+                "value": "87.6"
               },
               {
                 "label": "Différence / match",
-                "value": "-2.9"
+                "value": "-3.2"
               },
               {
                 "label": "Différence totale",
-                "value": "-124"
+                "value": "-142"
               },
               {
                 "label": "Points marqués",
-                "value": "3630"
+                "value": "3712"
               },
               {
                 "label": "Points encaissés",
-                "value": "3754"
+                "value": "3854"
               },
               {
                 "label": "Matchs de retard",
-                "value": "16"
+                "value": "17"
               },
               {
                 "label": "% de victoires",
-                "value": "37.2 %"
+                "value": "36.4 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "45.5 %"
+                "value": "43.5 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -4123,21 +4211,23 @@
               "conference": "Ouest"
             },
             "rank": 8,
-            "played": 43,
+            "played": 44,
             "wins": 8,
-            "losses": 35,
-            "winPct": 0.18604651,
-            "diff": -285,
-            "streak": "D4",
+            "losses": 36,
+            "winPct": 0.18181819,
+            "diff": -297,
+            "pointsFor": 3616,
+            "pointsAgainst": 3913,
+            "streak": "D5",
             "seed": 15,
             "detail": [
               {
                 "label": "Bilan général",
-                "value": "8-35"
+                "value": "8-36"
               },
               {
                 "label": "À domicile",
-                "value": "6-15"
+                "value": "6-16"
               },
               {
                 "label": "À l'extérieur",
@@ -4145,7 +4235,7 @@
               },
               {
                 "label": "Dans la conférence",
-                "value": "1-21"
+                "value": "1-22"
               },
               {
                 "label": "Dans la division",
@@ -4157,43 +4247,43 @@
               },
               {
                 "label": "Série en cours",
-                "value": "4 défaites"
+                "value": "5 défaites"
               },
               {
                 "label": "Points marqués / match",
-                "value": "82.0"
+                "value": "82.2"
               },
               {
                 "label": "Points encaissés / match",
-                "value": "88.6"
+                "value": "88.9"
               },
               {
                 "label": "Différence / match",
-                "value": "-6.6"
+                "value": "-6.7"
               },
               {
                 "label": "Différence totale",
-                "value": "-285"
+                "value": "-297"
               },
               {
                 "label": "Points marqués",
-                "value": "3525"
+                "value": "3616"
               },
               {
                 "label": "Points encaissés",
-                "value": "3810"
+                "value": "3913"
               },
               {
                 "label": "Matchs de retard",
-                "value": "24"
+                "value": "25"
               },
               {
                 "label": "% de victoires",
-                "value": "18.6 %"
+                "value": "18.2 %"
               },
               {
                 "label": "% de victoires (ligue)",
-                "value": "4.5 %"
+                "value": "4.3 %"
               },
               {
                 "label": "% de victoires (division)",
@@ -4206,18 +4296,41 @@
     ],
     "season": "2026",
     "totals": {
-      "games": 323,
-      "points": 56260
+      "games": 330,
+      "points": 57457
     }
   },
   "euroleague": {
     "league": "euroleague",
-    "season": "2025-26",
-    "isPreviousSeason": true,
+    "season": "2026-27",
+    "isPreviousSeason": false,
     "groups": [
       {
         "name": "Saison régulière",
         "rows": [
+          {
+            "team": {
+              "id": "PAN",
+              "league": "euroleague",
+              "name": "Panathinaikos AKTOR Athens",
+              "shortName": "Panathinaikos",
+              "abbreviation": "PAO",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
+                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
+              }
+            },
+            "rank": 1,
+            "seed": 1,
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 19,
+            "pointsFor": 91,
+            "pointsAgainst": 72,
+            "streak": "V"
+          },
           {
             "team": {
               "id": "OLY",
@@ -4230,77 +4343,62 @@
                 "dark": "https://media-cdn.incrowdsports.com/789423ac-3cdf-4b89-b11c-b458aa5f59a6.png"
               }
             },
-            "rank": 1,
-            "seed": 1,
-            "played": 38,
-            "wins": 26,
-            "losses": 12,
-            "winPct": 0.6842105263157895,
-            "diff": 262,
-            "streak": "DVVVV"
-          },
-          {
-            "team": {
-              "id": "PAM",
-              "league": "euroleague",
-              "name": "Valencia Basket",
-              "shortName": "Valencia",
-              "abbreviation": "VBC",
-              "logo": {
-                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png",
-                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png"
-              }
-            },
             "rank": 2,
             "seed": 2,
-            "played": 38,
-            "wins": 25,
-            "losses": 13,
-            "winPct": 0.6578947368421053,
-            "diff": 175,
-            "streak": "DVVVV"
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 17,
+            "pointsFor": 106,
+            "pointsAgainst": 89,
+            "streak": "V"
           },
           {
             "team": {
-              "id": "MAD",
+              "id": "ASV",
               "league": "euroleague",
-              "name": "Real Madrid",
-              "shortName": "Real",
-              "abbreviation": "RMB",
+              "name": "LDLC ASVEL Villeurbanne",
+              "shortName": "ASVEL",
+              "abbreviation": "ASV",
               "logo": {
-                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
-                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
+                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
+                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
               }
             },
             "rank": 3,
             "seed": 3,
-            "played": 38,
-            "wins": 24,
-            "losses": 14,
-            "winPct": 0.631578947368421,
-            "diff": 186,
-            "streak": "VDDVV"
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 10,
+            "pointsFor": 84,
+            "pointsAgainst": 74,
+            "streak": "V"
           },
           {
             "team": {
-              "id": "ULK",
+              "id": "BAR",
               "league": "euroleague",
-              "name": "Fenerbahce Beko Istanbul",
-              "shortName": "Fenerbahce",
-              "abbreviation": "FBB",
+              "name": "FC Barcelona",
+              "shortName": "Barca",
+              "abbreviation": "BAR",
               "logo": {
-                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
-                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+                "light": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png",
+                "dark": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png"
               }
             },
             "rank": 4,
             "seed": 4,
-            "played": 38,
-            "wins": 24,
-            "losses": 14,
-            "winPct": 0.631578947368421,
-            "diff": 53,
-            "streak": "DDDDV"
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 7,
+            "pointsFor": 89,
+            "pointsAgainst": 82,
+            "streak": "V"
           },
           {
             "team": {
@@ -4316,159 +4414,14 @@
             },
             "rank": 5,
             "seed": 5,
-            "played": 38,
-            "wins": 23,
-            "losses": 15,
-            "winPct": 0.6052631578947368,
-            "diff": 179,
-            "streak": "VVDVV"
-          },
-          {
-            "team": {
-              "id": "HTA",
-              "league": "euroleague",
-              "name": "Hapoel IBI Tel Aviv",
-              "shortName": "Hapoel Tel Aviv",
-              "abbreviation": "HTA",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
-                "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
-              }
-            },
-            "rank": 6,
-            "seed": 6,
-            "played": 38,
-            "wins": 23,
-            "losses": 15,
-            "winPct": 0.6052631578947368,
-            "diff": 118,
-            "streak": "VVDVD"
-          },
-          {
-            "team": {
-              "id": "PAN",
-              "league": "euroleague",
-              "name": "Panathinaikos AKTOR Athens",
-              "shortName": "Panathinaikos",
-              "abbreviation": "PAO",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png",
-                "dark": "https://media-cdn.incrowdsports.com/e3dff28a-9ec6-4faf-9d96-ecbc68f75780.png"
-              }
-            },
-            "rank": 7,
-            "seed": 7,
-            "played": 38,
-            "wins": 22,
-            "losses": 16,
-            "winPct": 0.5789473684210527,
-            "diff": 86,
-            "streak": "VDVDV"
-          },
-          {
-            "team": {
-              "id": "MCO",
-              "league": "euroleague",
-              "name": "AS Monaco",
-              "shortName": "Monaco",
-              "abbreviation": "ASM",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png",
-                "dark": "https://media-cdn.incrowdsports.com/89ed276a-2ba3-413f-8ea2-b3be209ca129.png"
-              }
-            },
-            "rank": 8,
-            "seed": 8,
-            "played": 38,
-            "wins": 22,
-            "losses": 16,
-            "winPct": 0.5789473684210527,
-            "diff": 135,
-            "streak": "DDVVV"
-          },
-          {
-            "team": {
-              "id": "BAR",
-              "league": "euroleague",
-              "name": "FC Barcelona",
-              "shortName": "Barcelona",
-              "abbreviation": "BAR",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png",
-                "dark": "https://media-cdn.incrowdsports.com/35dfa503-e417-481f-963a-bdf6f013763e.png"
-              }
-            },
-            "rank": 9,
-            "seed": 9,
-            "played": 38,
-            "wins": 21,
-            "losses": 17,
-            "winPct": 0.5526315789473685,
-            "diff": 20,
-            "streak": "VDDDV"
-          },
-          {
-            "team": {
-              "id": "RED",
-              "league": "euroleague",
-              "name": "Crvena Zvezda Meridianbet Belgrade",
-              "shortName": "Crvena Zvezda",
-              "abbreviation": "CZV",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
-                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
-              }
-            },
-            "rank": 10,
-            "seed": 10,
-            "played": 38,
-            "wins": 21,
-            "losses": 17,
-            "winPct": 0.5526315789473685,
-            "diff": 42,
-            "streak": "DDVVD"
-          },
-          {
-            "team": {
-              "id": "DUB",
-              "league": "euroleague",
-              "name": "Dubai Basketball",
-              "shortName": "Dubai",
-              "abbreviation": "DUB",
-              "logo": {
-                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
-                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
-              }
-            },
-            "rank": 11,
-            "seed": 11,
-            "played": 38,
-            "wins": 19,
-            "losses": 19,
-            "winPct": 0.5,
-            "diff": -1,
-            "streak": "DVVDD"
-          },
-          {
-            "team": {
-              "id": "TEL",
-              "league": "euroleague",
-              "name": "Maccabi Rapyd Tel Aviv",
-              "shortName": "Maccabi",
-              "abbreviation": "MTA",
-              "logo": {
-                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
-                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
-              }
-            },
-            "rank": 12,
-            "seed": 12,
-            "played": 38,
-            "wins": 18,
-            "losses": 20,
-            "winPct": 0.47368421052631576,
-            "diff": -100,
-            "streak": "VDDDD"
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 6,
+            "pointsFor": 83,
+            "pointsAgainst": 77,
+            "streak": "V"
           },
           {
             "team": {
@@ -4482,35 +4435,108 @@
                 "dark": "https://media-cdn.incrowdsports.com/817b0e58-d595-4b09-ab0b-1e7cc26249ff.png"
               }
             },
-            "rank": 13,
-            "seed": 13,
-            "played": 38,
-            "wins": 17,
-            "losses": 21,
-            "winPct": 0.4473684210526316,
-            "diff": -105,
-            "streak": "VVVVD"
+            "rank": 6,
+            "seed": 6,
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 2,
+            "pointsFor": 86,
+            "pointsAgainst": 84,
+            "streak": "V"
+          },
+          {
+            "team": {
+              "id": "DUB",
+              "league": "euroleague",
+              "name": "Dubai Basketball",
+              "shortName": "Dubai",
+              "abbreviation": "DUB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png",
+                "dark": "https://media-cdn.incrowdsports.com/1efae090-16e2-4963-ae47-4b94f249c244.png"
+              }
+            },
+            "rank": 7,
+            "seed": 7,
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "winPct": 1,
+            "diff": 1,
+            "pointsFor": 78,
+            "pointsAgainst": 77,
+            "streak": "V"
           },
           {
             "team": {
               "id": "MIL",
               "league": "euroleague",
-              "name": "EA7 Emporio Armani Milan",
+              "name": "Armani Olimpia Milan",
               "shortName": "Milan",
-              "abbreviation": "EA7",
+              "abbreviation": "MIL",
               "logo": {
                 "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png",
                 "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/5c2f0ab6-f86a-4df0-b2f3-f9ab92f7267b.png"
               }
             },
-            "rank": 14,
-            "seed": 14,
-            "played": 38,
-            "wins": 17,
-            "losses": 21,
-            "winPct": 0.4473684210526316,
-            "diff": -48,
-            "streak": "VDDDD"
+            "rank": 8,
+            "seed": 8,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
+          },
+          {
+            "team": {
+              "id": "BES",
+              "league": "euroleague",
+              "name": "Besiktas Istanbul",
+              "shortName": "Besiktas",
+              "abbreviation": "BJK",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/b05e3c54-e672-4b31-9f86-c91e9de7715c.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHH/b05e3c54-e672-4b31-9f86-c91e9de7715c.png"
+              }
+            },
+            "rank": 9,
+            "seed": 9,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
+          },
+          {
+            "team": {
+              "id": "ULK",
+              "league": "euroleague",
+              "name": "Fenerbahce Tarfin Istanbul",
+              "shortName": "Fenerbahce",
+              "abbreviation": "FBT",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezrk/aa39750a-6203-49ee-a87d-edd0c6f0397d.png"
+              }
+            },
+            "rank": 10,
+            "seed": 10,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
           },
           {
             "team": {
@@ -4524,35 +4550,39 @@
                 "dark": "https://media-cdn.incrowdsports.com/2681304e-77dd-4331-88b1-683078c0fb49.png"
               }
             },
-            "rank": 15,
-            "seed": 15,
-            "played": 38,
-            "wins": 16,
-            "losses": 22,
-            "winPct": 0.42105263157894735,
-            "diff": -190,
-            "streak": "VVDDV"
+            "rank": 11,
+            "seed": 11,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
           },
           {
             "team": {
-              "id": "PRS",
+              "id": "PAM",
               "league": "euroleague",
-              "name": "Paris Basketball",
-              "shortName": "Paris",
-              "abbreviation": "PBB",
+              "name": "Valencia Basket",
+              "shortName": "Valencia",
+              "abbreviation": "VBC",
               "logo": {
-                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
-                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
+                "light": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png",
+                "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjChWbHL/bc3e00b2-fea4-40be-a7ec-1e633129bde3.png"
               }
             },
-            "rank": 16,
-            "seed": 16,
-            "played": 38,
-            "wins": 15,
-            "losses": 23,
-            "winPct": 0.39473684210526316,
-            "diff": -34,
-            "streak": "VVDVD"
+            "rank": 12,
+            "seed": 12,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
           },
           {
             "team": {
@@ -4566,35 +4596,85 @@
                 "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCiezvk/a92d4c3b-9f9c-4163-8a10-bcf8fc15893e.png"
               }
             },
-            "rank": 17,
-            "seed": 17,
-            "played": 38,
-            "wins": 14,
-            "losses": 24,
-            "winPct": 0.3684210526315789,
-            "diff": -175,
-            "streak": "DDDDV"
+            "rank": 13,
+            "seed": 13,
+            "played": 0,
+            "wins": 0,
+            "losses": 0,
+            "winPct": 0,
+            "diff": 0,
+            "pointsFor": 0,
+            "pointsAgainst": 0,
+            "streak": ""
           },
           {
             "team": {
-              "id": "BAS",
+              "id": "MAD",
               "league": "euroleague",
-              "name": "Kosner Baskonia Vitoria-Gasteiz",
-              "shortName": "Baskonia",
-              "abbreviation": "KBA",
+              "name": "Real Madrid",
+              "shortName": "Real",
+              "abbreviation": "RMB",
               "logo": {
-                "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
-                "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+                "light": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png",
+                "dark": "https://media-cdn.incrowdsports.com/371b0d9b-9250-4c09-bda7-0686cf024657.png"
               }
             },
-            "rank": 18,
-            "seed": 18,
-            "played": 38,
-            "wins": 13,
-            "losses": 25,
-            "winPct": 0.34210526315789475,
-            "diff": -162,
-            "streak": "VVVVD"
+            "rank": 14,
+            "seed": 14,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -1,
+            "pointsFor": 77,
+            "pointsAgainst": 78,
+            "streak": "D"
+          },
+          {
+            "team": {
+              "id": "HTA",
+              "league": "euroleague",
+              "name": "Hapoel IBI Tel Aviv",
+              "shortName": "Hapoel",
+              "abbreviation": "HTA",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png",
+                "dark": "https://media-cdn.incrowdsports.com/cbb1c3ad-03d5-426a-b5ef-2832a4eee484.png"
+              }
+            },
+            "rank": 15,
+            "seed": 15,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -2,
+            "pointsFor": 84,
+            "pointsAgainst": 86,
+            "streak": "D"
+          },
+          {
+            "team": {
+              "id": "RED",
+              "league": "euroleague",
+              "name": "Crvena Zvezda Meridianbet Belgrade",
+              "shortName": "Crvena",
+              "abbreviation": "CZV",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png",
+                "dark": "https://media-cdn.incrowdsports.com/d2eef4a8-62df-4fdd-9076-276004268515.png"
+              }
+            },
+            "rank": 16,
+            "seed": 16,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -6,
+            "pointsFor": 77,
+            "pointsAgainst": 83,
+            "streak": "D"
           },
           {
             "team": {
@@ -4608,42 +4688,92 @@
                 "dark": "https://media-cdn.cortextech.io/1dU3kpCqReRp93/1BSdBWIjCgOCxM/a844756c-a58d-4666-93b8-48f7337bc79d.png"
               }
             },
-            "rank": 19,
-            "seed": 19,
-            "played": 38,
-            "wins": 12,
-            "losses": 26,
-            "winPct": 0.3157894736842105,
-            "diff": -160,
-            "streak": "DDVVD"
+            "rank": 17,
+            "seed": 17,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -7,
+            "pointsFor": 82,
+            "pointsAgainst": 89,
+            "streak": "D"
           },
           {
             "team": {
-              "id": "ASV",
+              "id": "TEL",
               "league": "euroleague",
-              "name": "LDLC ASVEL Villeurbanne",
-              "shortName": "ASVEL",
-              "abbreviation": "ASV",
+              "name": "Maccabi Rapyd Tel Aviv",
+              "shortName": "Maccabi",
+              "abbreviation": "MTA",
               "logo": {
-                "light": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png",
-                "dark": "https://media-cdn.incrowdsports.com/e33c6d1a-95ca-4dbc-b8cb-0201812104cc.png"
+                "light": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png",
+                "dark": "https://media-cdn.cortextech.io/1b533342-78f5-4932-b714-a7d80b5826b5.png"
+              }
+            },
+            "rank": 18,
+            "seed": 18,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -10,
+            "pointsFor": 74,
+            "pointsAgainst": 84,
+            "streak": "D"
+          },
+          {
+            "team": {
+              "id": "BAS",
+              "league": "euroleague",
+              "name": "Kosner Baskonia Vitoria-Gasteiz",
+              "shortName": "Baskonia",
+              "abbreviation": "KBA",
+              "logo": {
+                "light": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png",
+                "dark": "https://media-cdn.cortextech.io/cbc49cb0-99ce-4462-bdb7-56983ee03cf4.png"
+              }
+            },
+            "rank": 19,
+            "seed": 19,
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -17,
+            "pointsFor": 89,
+            "pointsAgainst": 106,
+            "streak": "D"
+          },
+          {
+            "team": {
+              "id": "PRS",
+              "league": "euroleague",
+              "name": "Paris Basketball",
+              "shortName": "Paris",
+              "abbreviation": "PBB",
+              "logo": {
+                "light": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png",
+                "dark": "https://media-cdn.incrowdsports.com/a033e5b3-0de7-48a3-98d9-d9a4b9df1f39.png"
               }
             },
             "rank": 20,
             "seed": 20,
-            "played": 38,
-            "wins": 8,
-            "losses": 30,
-            "winPct": 0.21052631578947367,
-            "diff": -281,
-            "streak": "DDDDD"
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "winPct": 0,
+            "diff": -19,
+            "pointsFor": 72,
+            "pointsAgainst": 91,
+            "streak": "D"
           }
         ]
       }
     ],
     "totals": {
-      "games": 380,
-      "points": 65002
+      "games": 7,
+      "points": 1172
     }
   }
 }
