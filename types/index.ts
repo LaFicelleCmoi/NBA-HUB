@@ -180,6 +180,30 @@ export interface TeamDetail {
   stats: TeamStatGroup[];
 }
 
+/** Une action du play-by-play, déjà traduite. */
+export interface Play {
+  id: string;
+  /** 1 à 4, puis 5 et au-delà pour les prolongations. */
+  period: number;
+  /** Temps restant dans la période, « 08:21 ». */
+  clock: string;
+  text: string;
+  /** Équipe à l'origine de l'action, quand elle est connue. */
+  teamId?: string;
+  /** Score après l'action. */
+  home: number;
+  away: number;
+  /** Panier marqué : mis en évidence et filtrable. */
+  scoring: boolean;
+  points?: number;
+}
+
+/** Page d'un match : l'en-tête et le déroulé complet, dans l'ordre chronologique. */
+export interface GameDetail {
+  game: Game;
+  plays: Play[];
+}
+
 /**
  * Vue condensée d'une équipe pour la carte « Mon équipe » de l'accueil :
  * juste de quoi la situer, sans charger la fiche complète.
