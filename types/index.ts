@@ -71,6 +71,9 @@ export interface StandingRow {
   losses: number;
   winPct: number;
   diff: number;
+  /** Points marqués et encaissés sur la saison. */
+  pointsFor?: number;
+  pointsAgainst?: number;
   streak?: string;
   /** Rang utilisé pour les zones de qualification (ligue entière pour la WNBA). */
   seed: number;
@@ -84,7 +87,7 @@ export interface StandingRow {
    * Match en cours de cette équipe, intégré au classement provisoire :
    * score actuel, adversaire, minute, et si elle mène.
    */
-  liveGame?: { score: string; opponent: string; detail: string; winning: boolean };
+  liveGame?: { score: string; opponent: string; opponentLogo: Logo; detail: string; winning: boolean };
   /** Places gagnées (+) ou perdues (−) par rapport au classement officiel. */
   movement?: number;
 }
