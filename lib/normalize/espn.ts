@@ -267,6 +267,8 @@ export function normalizeStandings(root: RawStandingsNode, league: LeagueId) {
         losses,
         winPct: Number(s.get("winPercent")?.value ?? (wins + losses ? wins / (wins + losses) : 0)),
         diff: Number(s.get("pointDifferential")?.value ?? 0),
+        pointsFor: Number(s.get("pointsFor")?.value ?? 0),
+        pointsAgainst: Number(s.get("pointsAgainst")?.value ?? 0),
         streak: s.get("streak")?.displayValue?.replace(/^W/, "V").replace(/^L/, "D"),
         seed: Number(s.get("playoffSeed")?.value ?? 0),
         detail: rowDetail(s),
