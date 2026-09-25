@@ -74,7 +74,7 @@ function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standi
         </p>
       )}
       <ZoneLegend league={league} />
-      <StandingsTables standings={provisoire} showStreak />
+      <StandingsTables standings={provisoire} />
     </div>
   );
 }
