@@ -1,4 +1,4 @@
-import type { Game, StandingGroup, StandingRow, Standings } from "@/types";
+import type { Game, StandingGroup, StandingRow, Standings, Team } from "@/types";
 
 /**
  * Classement recalculé avec les matchs en cours.
@@ -19,12 +19,12 @@ export function withLiveGames(standings: Standings, games: Game[]): Standings {
   if (live.length === 0) return standings;
 
   // Une équipe ne dispute qu'un match à la fois : une entrée par identifiant.
-  const parEquipe = new Map<string, { game: Game; pour: number; contre: number; adversaire: string }>();
+  const parEquipe = new Map<string, { game: Game; pour: number; contre: number; adversaire: Team }>();
   for (const g of live) {
     const h = g.home.score ?? 0;
     const a = g.away.score ?? 0;
-    parEquipe.set(g.home.team.id, { game: g, pour: h, contre: a, adversaire: g.away.team.shortName });
-    parEquipe.set(g.away.team.id, { game: g, pour: a, contre: h, adversaire: g.home.team.shortName });
+    parEquipe.set(g.home.team.id, { game: g, pour: h, contre: a, adversaire: g.away.team });
+    parEquipe.set(g.away.team.id, { game: g, pour: a, contre: h, adversaire: g.home.team });
   }
 
   const rangOfficiel = new Map<string, number>();
@@ -36,15 +36,38 @@ export function withLiveGames(standings: Standings, games: Game[]): Standings {
     }
 
   /**
-   * À pourcentage de victoires égal, on conserve l'ordre officiel.
+   * Replace les équipes qui jouent parmi celles qui ne jouent pas.
    *
-   * Départager soi-même à la différence de points réordonnerait des équipes
-   * qui ne jouent même pas : les ligues appliquent leurs propres règles
-   * (confrontations directes d'abord), que le classement officiel encode
-   * déjà. Seul un match en cours doit pouvoir faire bouger une ligne.
+   * Deux écueils, rencontrés tour à tour :
+   *
+   * - Tout re-trier à la différence de points réordonnait des équipes qui ne
+   *   jouaient même pas : les ligues départagent d'abord aux confrontations
+   *   directes, ce que le classement officiel encode déjà. Monaco passait
+   *   ainsi devant Panathinaikos sans qu'aucun des deux n'ait joué.
+   * - Départager à l'ordre officiel ne vaut pas non plus pour une équipe qui
+   *   joue : son rang officiel date d'avant le match. Valencia, qui menait de
+   *   dix points pour son premier match, restait derrière des équipes à +1
+   *   parce qu'elle était classée parmi les 0-0.
+   *
+   * D'où une insertion : les équipes au repos gardent entre elles l'ordre
+   * officiel, intact ; chaque équipe en train de jouer est glissée devant la
+   * première qu'elle devance au pourcentage de victoires, puis à la
+   * différence de points.
    */
-  const ordre = (rang: Map<string, number>) => (a: StandingRow, b: StandingRow) =>
-    b.winPct - a.winPct || (rang.get(a.team.id) ?? 0) - (rang.get(b.team.id) ?? 0);
+  const devance = (a: StandingRow, b: StandingRow) => a.winPct > b.winPct || (a.winPct === b.winPct && a.diff > b.diff);
+
+  const inserer = (rows: StandingRow[], rang: Map<string, number>): StandingRow[] => {
+    const officiel = (r: StandingRow) => rang.get(r.team.id) ?? Number.MAX_SAFE_INTEGER;
+    const auRepos = rows.filter((r) => !r.liveGame).sort((a, b) => officiel(a) - officiel(b));
+    const enJeu = rows.filter((r) => r.liveGame).sort((a, b) => b.winPct - a.winPct || b.diff - a.diff);
+    const out = [...auRepos];
+    for (const r of enJeu) {
+      const i = out.findIndex((autre) => devance(r, autre));
+      if (i === -1) out.push(r);
+      else out.splice(i, 0, r);
+    }
+    return out;
+  };
 
   const groups: StandingGroup[] = standings.groups.map((groupe) => {
     const rows: StandingRow[] = groupe.rows.map((r) => {
@@ -65,29 +88,40 @@ export function withLiveGames(standings: Standings, games: Game[]): Standings {
         played,
         winPct: played ? wins / played : 0,
         diff: r.diff + ecart,
+        // Les points du match en cours s'ajoutent aussi : Pts+ et Pts- restent
+        // cohérents avec la différence affichée.
+        pointsFor: r.pointsFor === undefined ? undefined : r.pointsFor + encours.pour,
+        pointsAgainst: r.pointsAgainst === undefined ? undefined : r.pointsAgainst + encours.contre,
         liveGame: {
           score: `${encours.pour}-${encours.contre}`,
-          opponent: encours.adversaire,
+          opponent: encours.adversaire.shortName,
+          opponentLogo: encours.adversaire.logo,
           detail: encours.game.statusDetail,
           winning: gagne,
         },
       };
     });
 
-    rows.sort(ordre(rangOfficiel));
-    rows.forEach((r, i) => {
+    const ordonnees = inserer(rows, rangOfficiel);
+    ordonnees.forEach((r, i) => {
       r.rank = i + 1;
       const avant = rangOfficiel.get(r.team.id);
-      r.movement = avant === undefined ? 0 : avant - r.rank;
+      // Flèche réservée aux équipes qui jouent : une équipe au repos peut
+      // reculer d'une place, mais ce n'est pas son match qui l'explique, et la
+      // signaler sur dix-sept lignes noierait l'information utile.
+      r.movement = r.liveGame && avant !== undefined ? avant - r.rank : 0;
     });
-    return { ...groupe, rows };
+    return { ...groupe, rows: ordonnees };
   });
 
   // Le « seed » suit la même règle que le classement officiel : rang de
   // conférence partout, sauf en WNBA où les playoffs se jouent sur la ligue
   // entière.
   if (standings.league === "wnba") {
-    [...groups.flatMap((g) => g.rows)].sort(ordre(seedOfficiel)).forEach((r, i) => {
+    inserer(
+      groups.flatMap((g) => g.rows),
+      seedOfficiel,
+    ).forEach((r, i) => {
       r.seed = i + 1;
     });
   } else {
