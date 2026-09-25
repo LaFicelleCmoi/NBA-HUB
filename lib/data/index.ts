@@ -1,5 +1,6 @@
 import "server-only";
 import {
+  getEspnGameDetail,
   getEspnGames,
   getEspnLeaders,
   getEspnNews,
@@ -11,6 +12,7 @@ import {
   getEspnToday,
 } from "@/lib/api/espn";
 import {
+  getElGameDetail,
   getElGames,
   getElLeaders,
   getElRecent,
@@ -32,6 +34,7 @@ import { LEAGUE_IDS } from "@/lib/leagues";
 import { parisDayKey } from "@/lib/time";
 import type {
   Game,
+  GameDetail,
   GamesResponse,
   LeadersResponse,
   LeagueId,
@@ -162,6 +165,15 @@ async function fetchNews(league: LeagueId): Promise<NewsItem[]> {
     .sort((a, b) => (a.lang === b.lang ? b.published.localeCompare(a.published) : a.lang === "fr" ? -1 : 1))
     .slice(0, 24);
 }
+
+/**
+ * Page d'un match : en-tête et play-by-play.
+ *
+ * Sans repli sur la dernière valeur connue : un déroulé figé présenté comme
+ * « en direct » tromperait plus qu'une erreur franche.
+ */
+export const getGameDetail = (league: LeagueId, id: string): Promise<GameDetail> =>
+  league === "euroleague" ? getElGameDetail(id) : getEspnGameDetail(league, id);
 
 /**
  * Matchs en cours d'une ligue, pour le classement provisoire.
