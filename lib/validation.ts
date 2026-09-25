@@ -39,6 +39,23 @@ export async function parseTeamId(league: LeagueId, value: unknown): Promise<str
   return value;
 }
 
+/**
+ * Format attendu des identifiants de match. Vérifié avant tout appel amont :
+ * l'identifiant finit dans une URL de fournisseur.
+ */
+const GAME_ID_FORMAT: Record<LeagueId, RegExp> = {
+  nba: /^\d{6,12}$/,
+  wnba: /^\d{6,12}$/,
+  euroleague: /^E\d{4}_\d{1,4}$/,
+};
+
+export function parseGameId(league: LeagueId, value: unknown): string {
+  if (typeof value !== "string" || !GAME_ID_FORMAT[league].test(value)) {
+    throw new ValidationError(400, "Identifiant de match invalide");
+  }
+  return value;
+}
+
 export function parseView(value: string | null): "results" | "upcoming" {
   if (value === "results" || value === "upcoming") return value;
   throw new ValidationError(400, "Paramètre « view » invalide");
