@@ -1,5 +1,5 @@
 import type { Club, ClubRosterMember, PlayerLeader, Standing } from "euroleague-api";
-import type { Game, GameStatus, GameTeam, Leader, LeaderCategory, Player, StandingRow, Team } from "@/types";
+import type { Game, GameStatus, GameTeam, Leader, LeaderCategory, Play, Player, StandingRow, Team } from "@/types";
 
 /**
  * Conversion des réponses du SDK `euroleague-api` vers le modèle commun.
@@ -195,9 +195,14 @@ export function normalizeElGame(g: ElGame, meta?: ElMeta | null): Game {
   else if (status === "postponed") statusDetail = "Reporté";
   else if (status === "live") {
     const q = String(meta?.quarter ?? "").trim();
-    statusDetail = [q ? `Q${q}` : "En cours", String(meta?.remainingPartialTime ?? "").trim()]
-      .filter(Boolean)
-      .join(" · ");
+    const restant = String(meta?.remainingPartialTime ?? "").trim();
+    const joue = Number(String(meta?.gameTime ?? "").split(":")[0]);
+    // Entre deux quarts-temps, le flux vide le numéro de période et affiche
+    // 00:00 : sans cela on lisait « En cours · 00:00 » à la mi-temps. Le temps
+    // de jeu écoulé dit de quelle pause il s'agit (relevé : 20:00 à la mi-temps).
+    const pause: Record<number, string> = { 10: "Fin Q1", 20: "Mi-temps", 30: "Fin Q3" };
+    if (!q && restant === "00:00" && pause[joue]) statusDetail = pause[joue];
+    else statusDetail = [q ? `Q${q}` : "En cours", restant].filter(Boolean).join(" · ");
   }
 
   const phase = typeof g.phaseType === "string" ? g.phaseType : (g.phaseType as { code?: string } | null)?.code;
@@ -341,4 +346,149 @@ export function normalizeElPeople(people: ClubRosterMember[]): { roster: Player[
     .sort((a, b) => Number(a.jersey ?? 999) - Number(b.jersey ?? 999));
   const coach = people.find((p) => p.type === "E");
   return { roster, coach: coach ? prettyName(coach.person.name) : undefined };
+}
+
+/* --------------------------- Play-by-play --------------------------- */
+
+/** Vue typée d'une action du play-by-play EuroLeague. */
+export interface ElPlay {
+  numberofplay?: number | null;
+  playtype?: string | null;
+  player?: string | null;
+  codeteam?: string | null;
+  team?: string | null;
+  markertime?: string | null;
+  period?: number | null;
+  pointsA?: number | null;
+  pointsB?: number | null;
+  playinfo?: string | null;
+}
+
+const ordinalFr = (n: number) => (n === 1 ? "1er" : `${n}e`);
+
+/**
+ * Chaque action porte un code stable (« 3FGM », « TO », « D »…) : on traduit
+ * le code, pas la phrase anglaise qui l'accompagne. Un code inconnu garde sa
+ * description d'origine plutôt que de disparaître.
+ */
+function frenchElPlay(p: ElPlay): string {
+  const code = String(p.playtype ?? "").trim();
+  const qui = p.player ? prettyName(p.player) : "";
+  const equipe = p.team ?? "";
+  // Rebonds et pertes de balle peuvent être collectifs : pas de joueur, seulement
+  // une équipe. Sans ce cas, on affichait « Rebond offensif de » suivi de rien.
+  const de = (action: string, collectif: string) => (qui ? `${action} de ${qui}` : `${collectif} ${equipe}`.trim());
+  const periode = Number(p.period ?? 0);
+  const periodeFr = periode > 4 ? (periode === 5 ? "de la prolongation" : `de la ${periode - 4}e prolongation`) : `du ${ordinalFr(periode)} quart-temps`;
+  switch (code) {
+    case "2FGM": return `${qui} marque à 2 points`;
+    case "2FGA": return `${qui} manque un tir à 2 points`;
+    case "3FGM": return `${qui} marque à 3 points`;
+    case "3FGA": return `${qui} manque un tir à 3 points`;
+    case "FTM": return `${qui} réussit un lancer franc`;
+    case "FTA": return `${qui} manque un lancer franc`;
+    case "D": return de("Rebond défensif", "Rebond défensif collectif");
+    case "O": return de("Rebond offensif", "Rebond offensif collectif");
+    case "AS": return `Passe décisive de ${qui}`;
+    case "ST": return `Interception de ${qui}`;
+    case "TO": return de("Balle perdue", "Balle perdue");
+    case "FV": return `Contre de ${qui}`;
+    case "AG": return `${qui} se fait contrer`;
+    case "CM": return `Faute de ${qui}`;
+    case "CMT": return `Faute technique de ${qui || equipe}`;
+    case "CMU": return `Faute antisportive de ${qui}`;
+    case "CMD": return `Faute disqualifiante de ${qui}`;
+    case "OF": return `Faute offensive de ${qui}`;
+    case "RV": return `Faute provoquée par ${qui}`;
+    case "IN": return `${qui} entre en jeu`;
+    case "OUT": return `${qui} sort`;
+    case "TOUT": return `Temps mort ${equipe}`;
+    case "TOUT_TV": return "Temps mort télévisé";
+    case "JB": return "Entre-deux";
+    case "BP": return `Début ${periodeFr}`;
+    case "EP": return `Fin ${periodeFr}`;
+    case "EG": return "Fin du match";
+    default: return [qui, p.playinfo].filter(Boolean).join(" — ") || code;
+  }
+}
+
+const POINTS_EL: Record<string, number> = { "2FGM": 2, "3FGM": 3, FTM: 1 };
+
+/** « 05:47 » → 347 secondes restantes dans la période. */
+function secondesRestantes(p: ElPlay): number {
+  const code = String(p.playtype ?? "").trim();
+  if (code === "BP") return Number.POSITIVE_INFINITY;
+  if (code === "EP" || code === "EG") return Number.NEGATIVE_INFINITY;
+  const m = String(p.markertime ?? "").trim().match(/^(\d+):(\d+)$/);
+  return m ? Number(m[1]) * 60 + Number(m[2]) : Number.POSITIVE_INFINITY;
+}
+
+export function normalizeElPlays(raw: ElPlay[]): Play[] {
+  // Deux sources d'ordre, aucune parfaite :
+  //
+  // - l'ordre de saisie (`numberofplay`) : certaines actions sont enregistrées
+  //   après coup, et le chrono se lit alors 05:24, 05:57, 05:47, 05:57… ;
+  // - le chrono : certaines horloges sont mal saisies, et trier dessus a fait
+  //   passer un panier avant un autre — le score affiché reculait (15-19 puis
+  //   12-19), une erreur factuelle.
+  //
+  // Le score cumulé, lui, ne ment pas : on ne saisit pas 19 avant 16. Les
+  // paniers gardent donc leur ordre de saisie, et on ne trie au chrono que les
+  // actions situées entre deux paniers, là où le score ne bouge pas et où un
+  // déplacement ne peut rien fausser.
+  //
+  // Le score n'est renseigné que sur les paniers, et parfois d'un seul côté
+  // (« 3 - null » au premier panier) : on reporte la dernière valeur connue.
+  // A désigne l'équipe à domicile, B celle à l'extérieur — vérifié sur le
+  // score final d'un match terminé.
+  const saisie = [...raw].sort(
+    (a, b) =>
+      Number(a.period ?? 0) - Number(b.period ?? 0) || Number(a.numberofplay ?? 0) - Number(b.numberofplay ?? 0),
+  );
+
+  let home = 0;
+  let away = 0;
+  const actions = saisie.map((p, i) => {
+    if (p.pointsA != null) home = Number(p.pointsA);
+    if (p.pointsB != null) away = Number(p.pointsB);
+    const code = String(p.playtype ?? "").trim();
+    const points = POINTS_EL[code];
+    const play: Play = {
+      id: `el-${p.numberofplay ?? i}`,
+      period: Number(p.period ?? 0),
+      clock: String(p.markertime ?? "").trim(),
+      text: frenchElPlay(p),
+      teamId: p.codeteam?.trim() || undefined,
+      home,
+      away,
+      scoring: points !== undefined,
+      points,
+    };
+    return { play, raw: p };
+  });
+
+  // Découpage en séquences : chacune s'ouvre sur un panier (ou un changement de
+  // période), qui reste en tête ; les actions qui suivent sont triées au chrono.
+  const out: Play[] = [];
+  let sequence: typeof actions = [];
+  const vider = () => {
+    const [tete, ...reste] = sequence;
+    if (!tete) return;
+    const ordonne = tete.play.scoring ? [tete, ...trier(reste)] : trier(sequence);
+    out.push(...ordonne.map((a) => a.play));
+    sequence = [];
+  };
+  const trier = (xs: typeof actions) =>
+    [...xs].sort(
+      (a, b) =>
+        secondesRestantes(b.raw) - secondesRestantes(a.raw) ||
+        Number(a.raw.numberofplay ?? 0) - Number(b.raw.numberofplay ?? 0),
+    );
+  for (const a of actions) {
+    const precedente = sequence[sequence.length - 1];
+    if (precedente && (a.play.scoring || a.play.period !== precedente.play.period)) vider();
+    sequence.push(a);
+  }
+  vider();
+  return out;
 }
