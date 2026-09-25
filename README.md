@@ -56,9 +56,6 @@ Toutes sont optionnelles (voir `.env.example`).
 | `ESPN_SITE_API` | serveur | `https://site.api.espn.com/apis/site/v2/sports/basketball` | scoreboard, équipes, effectifs, calendriers, actualités |
 | `ESPN_STANDINGS_API` | serveur | `https://site.api.espn.com/apis/v2/sports/basketball` | classements |
 | `ESPN_WEB_API` | serveur | `https://site.web.api.espn.com/apis/site/v3/sports/basketball` | leaders |
-| `EUROLEAGUE_API` | serveur | `https://api-live.euroleague.net` | API officielle EuroLeague |
-| `EUROLEAGUE_LIVE_API` | serveur | `https://live.euroleague.net/api` | score en direct EuroLeague |
-| `EUROLEAGUE_COMPETITION` | serveur | `E` | code de compétition (`U` = EuroCup) |
 | `UPSTREAM_TIMEOUT_MS` | serveur | `8000` | timeout des appels amont |
 | `RATE_LIMIT_MAX` / `RATE_LIMIT_WINDOW_MS` | serveur | `60` / `60000` | limite de requêtes sur `/api` |
 | `NEWS_BASKETUSA_RSS` | serveur | `https://www.basketusa.com/feed/` | actualités NBA et WNBA en français |
@@ -146,24 +143,42 @@ Chaque endpoint a été vérifié avec `curl` le 23/09/2026. Voici ce qui foncti
 
 Logos : `a.espncdn.com/i/teamlogos/{ligue}/500/{abbr}.png` pour la variante claire et `…/500-dark/…` pour la sombre. Le composant `Logo` affiche les deux, et la variante est choisie en CSS selon le thème.
 
-### EuroLeague : API officielle (choix retenu)
+### EuroLeague : le SDK `euroleague-api`
 
-L'API officielle **`api-live.euroleague.net` est accessible** sans clé. ESPN **ne couvre pas** l'EuroLeague : `mens-euroleague/scoreboard` renvoie 400, `teams` renvoie 404 et `standings` est vide. Le choix s'impose donc.
+ESPN **ne couvre pas** l'EuroLeague : `mens-euroleague/scoreboard` renvoie 400, `teams` renvoie 404 et `standings` est
+vide. L'accès passe donc par [`euroleague-api`](https://www.npmjs.com/package/euroleague-api), un SDK TypeScript non
+officiel des API publiques EuroLeague, qui valide les réponses avec Zod.
 
-| Endpoint | Statut | Usage |
-| --- | --- | --- |
-| `/v2/competitions/E/seasons/E{année}/games` | ✅ | Tous les matchs de la saison, avec les `partials` (quarts-temps et `extraPeriods` pour les prolongations). |
-| `/v2/competitions/E/seasons/E{année}/clubs` | ✅ | Clubs (liste blanche des IDs). |
-| `/v2/competitions/E/seasons/E{année}/clubs/{code}/people` | ✅ | Effectif et staff. |
-| `/v3/competitions/E/seasons/E{année}/rounds/{n}/basicstandings` | ✅ | Classement après la journée n. |
-| `/v3/competitions/E/statistics/players/leaders?seasonMode=Single&seasonCode=…&statisticMode=PerGame` | ✅ | Leaders. |
-| `live.euroleague.net/api/Header?gamecode=…&seasoncode=…` | ✅ | Score en direct, quart-temps en cours et temps restant. |
-| Actualités / flux RSS (`euroleaguebasketball.net`) | ❌ | Protégé par un « Vercel Security Checkpoint » (429). Remplacé par BasketEurope et Eurohoops (voir ci-dessous). |
+| Méthode | Usage |
+| --- | --- |
+| `schedule.getSeason` | Tous les matchs de la saison, avec les `partials` (quarts-temps et prolongations). |
+| `clubs.list` | Clubs (liste blanche des identifiants). |
+| `clubs.getRoster` | Effectif et staff. |
+| `standings.getRound` | Classement après la journée n. |
+| `players.getLeaders` | Leaders, une requête par catégorie. |
+| `gameMetadata.getSeason` | **Flux en direct de toute la saison en un seul appel** : score, quart-temps, temps restant. |
+| Actualités | ❌ Aucun flux exploitable côté EuroLeague : BasketEurope et Eurohoops prennent le relais (voir ci-dessous). |
+
+Le SDK ne gère pas le cache : on lui injecte notre propre `fetch` (option `fetch`), ce qui permet de garder deux
+politiques — cache de données pour les effectifs et classements, aucun cache pour les scores.
+
+**Pièges rencontrés :**
+- `gameMetadata` ne porte **pas** d'identifiant de match. L'appariement avec le calendrier se fait sur la journée et
+  les codes des deux clubs, un couple qui ne se répète pas dans une journée (vérifié : 7 appariements sur 7).
+- `playerRanking` classe **du plus faible au plus fort** : trier sur cette valeur donnerait le fond du classement en
+  guise de « top 10 ». Le tri se fait sur la statistique elle-même.
+- Plusieurs champs imbriqués arrivent en **chaîne JSON** plutôt qu'en objet : le club d'une ligne de classement, le
+  joueur d'une ligne de leaders, `last5Form`.
+- Les réponses sont validées à l'exécution mais typées comme des enregistrements génériques : l'application définit
+  ses propres vues (`ElGame`, `ElMeta`) et convertit en un point unique, à la frontière du client.
 
 **Limites de l'EuroLeague :**
-- Le statut « en direct » est déduit de la fenêtre horaire du match (jusqu'à 3 h après le début). Pendant cette fenêtre, on interroge le flux `Header`, qui donne des scores cumulés par quart-temps, convertis ensuite en scores par période.
-- Les statistiques d'équipe sont **calculées** à partir des matchs joués (bilan, points pour et contre, bilans domicile et extérieur). Il n'existe pas d'endpoint dédié accessible.
-- L'API n'est pas documentée publiquement et peut évoluer sans préavis.
+- Le statut « en direct » est déduit de la fenêtre horaire du match (jusqu'à 3 h après le début), puis affiné par le
+  flux en direct. Un match fini garde `live: true` pendant des heures : c'est le couple temps joué / temps restant
+  (40:00 et 00:00) qui tranche.
+- Les statistiques d'équipe sont **calculées** à partir des matchs joués (bilan, points pour et contre, bilans
+  domicile et extérieur). Il n'existe pas d'endpoint dédié accessible.
+- Les API ne sont pas documentées publiquement et peuvent évoluer sans préavis.
 
 ### Actualités (flux RSS)
 
