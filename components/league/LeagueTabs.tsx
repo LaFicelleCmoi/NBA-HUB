@@ -7,14 +7,16 @@ import { GameList } from "@/components/games/GameList";
 import { StandingsTables, ZoneLegend } from "@/components/standings/StandingsTable";
 import { LeadersView } from "@/components/league/LeadersView";
 import { NewsGrid } from "@/components/league/NewsGrid";
+import { PlayoffsView } from "@/components/league/PlayoffsView";
 import { EmptyState, ErrorState } from "@/components/ui/EmptyState";
 import { Skeleton, SkeletonList } from "@/components/ui/Skeleton";
 import { Tabs } from "@/components/ui/Tabs";
 import { liveCount, withLiveGames } from "@/lib/live-standings";
-import type { Game, GamesResponse, LeadersResponse, LeagueId, NewsItem, Standings } from "@/types";
+import type { Game, GamesResponse, LeadersResponse, LeagueId, NewsItem, Playoffs, Standings } from "@/types";
 
 const TABS = [
   { key: "classement", label: "Classement" },
+  { key: "playoffs", label: "Playoffs" },
   { key: "resultats", label: "Résultats" },
   { key: "calendrier", label: "Calendrier" },
   { key: "leaders", label: "Leaders" },
@@ -120,6 +122,30 @@ function GamesPanel({ league, view }: { league: LeagueId; view: "results" | "upc
   );
 }
 
+/**
+ * Tableau de phase finale. Redemandé toutes les deux minutes tant qu'une série
+ * est commencée : une série ne bouge qu'à la fin d'un match.
+ */
+function PlayoffsPanel({ league }: { league: LeagueId }) {
+  const [refreshMs, setRefreshMs] = useState(0);
+  const { data, error, loading } = useApi<Playoffs>(`/api/${league}/playoffs`, { refreshMs });
+  const voulue = data?.rounds.some((r) => r.series.some((s) => s.status === "live" || s.status === "ongoing"))
+    ? 120_000
+    : 0;
+  if (voulue !== refreshMs) setRefreshMs(voulue);
+
+  if (loading)
+    return (
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {Array.from({ length: 8 }, (_, i) => (
+          <Skeleton key={i} className="h-40" />
+        ))}
+      </div>
+    );
+  if (!data) return <ErrorState message={error ?? "Phase finale indisponible"} />;
+  return <PlayoffsView data={data} />;
+}
+
 function LeadersPanel({ league }: { league: LeagueId }) {
   const { data, error, loading } = useApi<LeadersResponse>(`/api/${league}/leaders`);
   if (loading)
@@ -190,6 +216,7 @@ export function LeagueTabs({ league, initialStandings }: { league: LeagueId; ini
           className="mt-6 outline-none"
         >
           {tab === "classement" && <StandingsPanel league={league} initial={initialStandings} />}
+          {tab === "playoffs" && <PlayoffsPanel league={league} />}
           {tab === "resultats" && <GamesPanel league={league} view="results" />}
           {tab === "calendrier" && <GamesPanel league={league} view="upcoming" />}
           {tab === "leaders" && <LeadersPanel league={league} />}
