@@ -20,7 +20,13 @@ async function attemptJson<T>(url: string, revalidate: number | "no-store", sour
     res = await fetch(url, {
       ...(revalidate === "no-store" ? { cache: "no-store" as const } : { next: { revalidate } }),
       signal: AbortSignal.timeout(env.upstreamTimeoutMs),
-      headers: { accept: "application/json", "user-agent": "HoopsHub/1.0 (+server proxy)" },
+      // Aucun User-Agent maison. « HoopsHub/1.0 (+server proxy) » passait
+      // depuis une connexion domestique mais échouait depuis Vercel : un
+      // en-tête qui s'annonce comme un robot, émis depuis les adresses d'un
+      // hébergeur cloud, est précisément ce que filtrent les protections des
+      // CDN. Tous les appels ESPN tombaient en 0,3 s en production, pendant
+      // que le SDK EuroLeague et les flux RSS, sans cet en-tête, répondaient.
+      headers: { accept: "application/json" },
     });
   } catch {
     // Délai dépassé, DNS ou réseau : échec transitoire, donc réessayable.
