@@ -2,6 +2,7 @@ import "server-only";
 import { EuroleagueClient, type Club, type PlayerLeader } from "euroleague-api";
 import { env, REVALIDATE } from "@/lib/env";
 import { memoLive } from "@/lib/api/http";
+import { buildPlayoffs, type PlayoffGame } from "@/lib/normalize/playoffs";
 import {
   EL_LEADER_STATS,
   LIVE_WINDOW_MS,
@@ -11,6 +12,7 @@ import {
   normalizeElPeople,
   normalizeElStandings,
   normalizeElPlays,
+  phaseCode,
   type ElGame,
   type ElMeta,
   type ElPlay,
@@ -21,6 +23,7 @@ import type {
   GameDetail,
   GamesResponse,
   LeaderCategory,
+  Playoffs,
   LeadersResponse,
   Standings,
   Team,
@@ -188,7 +191,7 @@ export async function getElGames(view: "results" | "upcoming"): Promise<GamesRes
 
 function lastPlayedRound(games: ElGame[]): number {
   return games
-    .filter((g) => g.played && (typeof g.phaseType === "string" ? g.phaseType : "RS") === "RS")
+    .filter((g) => g.played && phaseCode(g) === "RS")
     .reduce((m, g) => Math.max(m, g.round ?? 0), 0);
 }
 
@@ -391,4 +394,45 @@ export async function getElGameDetail(id: string): Promise<GameDetail> {
   if (!raw) throw new Error("match introuvable");
   const [game] = await withLive(ref.season, [raw]);
   return { game, plays: normalizeElPlays(plays) };
+}
+
+/* ----------------------------- Phase finale ----------------------------- */
+
+/**
+ * Tour d'un match de phase finale, d'après sa phase et le nom de son groupe
+ * (« PLAYOFF A », « SEMIFINAL B », « CHAMPIONSHIP GAME »).
+ */
+function tourEl(g: ElGame): Omit<PlayoffGame, "game" | "bestOf"> | null {
+  const code = phaseCode(g);
+  const groupe = (g.group?.rawName ?? "").toUpperCase();
+  if (code === "PI") return { round: "Play-in", order: 0 };
+  if (code === "PO") return { round: "Playoffs", order: 1 };
+  if (code === "FF") {
+    if (groupe.includes("SEMIFINAL")) return { round: "Final Four · demi-finales", order: 2 };
+    if (groupe.includes("THIRD")) return { round: "Match pour la 3e place", order: 3 };
+    return { round: "Finale", order: 4 };
+  }
+  return null;
+}
+
+/**
+ * Phase finale la plus récente : celle de la saison en cours dès que ses
+ * matchs sont programmés, la précédente sinon. Les playoffs se jouent au
+ * meilleur des cinq matchs ; play-in et Final Four en matchs secs.
+ */
+export async function getElPlayoffs(): Promise<Playoffs> {
+  const courante = currentSeason();
+  for (const season of [courante, previousSeason(courante)]) {
+    const games = season === courante ? await scheduleLive(season) : await schedule(season, REVALIDATE.standings);
+    const finale = games.filter((g) => phaseCode(g) !== "RS");
+    if (finale.length === 0) continue;
+    const normalises = await withLive(season, finale);
+    const items: PlayoffGame[] = [];
+    finale.forEach((g, i) => {
+      const tour = tourEl(g);
+      if (tour) items.push({ ...tour, game: normalises[i] });
+    });
+    return buildPlayoffs("euroleague", seasonLabel(season), items, (round) => (round === "Playoffs" ? 5 : 1));
+  }
+  return buildPlayoffs("euroleague", seasonLabel(courante), [], () => 1);
 }
