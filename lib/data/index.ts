@@ -4,6 +4,7 @@ import {
   getEspnGames,
   getEspnLeaders,
   getEspnNews,
+  getEspnPlayoffs,
   getEspnRecent,
   getEspnStandings,
   getEspnTeamDetail,
@@ -15,6 +16,7 @@ import {
   getElGameDetail,
   getElGames,
   getElLeaders,
+  getElPlayoffs,
   getElRecent,
   getElStandings,
   getElTeamDetail,
@@ -39,6 +41,7 @@ import type {
   LeadersResponse,
   LeagueId,
   NewsItem,
+  Playoffs,
   Standings,
   Team,
   TeamDetail,
@@ -165,6 +168,15 @@ async function fetchNews(league: LeagueId): Promise<NewsItem[]> {
     .sort((a, b) => (a.lang === b.lang ? b.published.localeCompare(a.published) : a.lang === "fr" ? -1 : 1))
     .slice(0, 24);
 }
+
+/**
+ * Tableau de phase finale : séries, vainqueurs, champion.
+ *
+ * Repli sur la dernière valeur connue : un tableau vieux de quelques minutes
+ * reste juste entre deux fins de match, et vaut mieux qu'une erreur.
+ */
+export const getPlayoffs = (league: LeagueId): Promise<Playoffs> =>
+  withFallback(`playoffs:${league}`, () => (league === "euroleague" ? getElPlayoffs() : getEspnPlayoffs(league)));
 
 /**
  * Page d'un match : en-tête et play-by-play.
