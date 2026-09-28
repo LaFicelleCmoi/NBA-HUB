@@ -111,6 +111,19 @@ export interface ElMeta {
   [key: string]: unknown;
 }
 
+/**
+ * Code de phase d'un match : « RS » (saison régulière), « PI » (play-in),
+ * « PO » (playoffs), « FF » (Final Four).
+ *
+ * Le SDK le livre sous forme d'objet (`{ code: "RS", name: … }`), pas de
+ * chaîne. Un test `typeof === "string"` ne passait donc jamais, et les matchs
+ * de phase finale étaient comptés comme de la saison régulière.
+ */
+export function phaseCode(g: Pick<ElGame, "phaseType">): string {
+  const p = g.phaseType;
+  return (typeof p === "string" ? p : p?.code) ?? "RS";
+}
+
 function periodsOf(side: ElSide): number[] {
   const p = side.partials ?? {};
   const base = [p.partials1, p.partials2, p.partials3, p.partials4].map((v) => Number(v ?? 0));
@@ -205,7 +218,7 @@ export function normalizeElGame(g: ElGame, meta?: ElMeta | null): Game {
     else statusDetail = [q ? `Q${q}` : "En cours", restant].filter(Boolean).join(" · ");
   }
 
-  const phase = typeof g.phaseType === "string" ? g.phaseType : (g.phaseType as { code?: string } | null)?.code;
+  const phase = phaseCode(g);
   return {
     id: g.identifier,
     league: "euroleague",
