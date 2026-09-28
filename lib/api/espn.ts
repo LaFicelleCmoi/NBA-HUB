@@ -18,11 +18,13 @@ import {
   type RawStandingsNode,
 } from "@/lib/normalize/espn";
 import { normalizeEspnPlays, type RawEspnPlay } from "@/lib/normalize/espn-pbp";
+import { buildPlayoffs, type PlayoffGame } from "@/lib/normalize/playoffs";
 import { addDays, addMonths, espnDay, espnMonth, parisDayKey } from "@/lib/time";
 import type {
   Game,
   GameDetail,
   GamesResponse,
+  Playoffs,
   LeadersResponse,
   NewsItem,
   Standings,
@@ -294,3 +296,110 @@ export async function getEspnGameDetail(league: EspnLeague, id: string): Promise
   );
   return { game, plays: normalizeEspnPlays(raw.plays ?? []) };
 }
+
+/* ----------------------------- Phase finale ----------------------------- */
+
+const conference = (c: string) => (c.toLowerCase() === "east" ? "Est" : "Ouest");
+
+/**
+ * Tour d'un match de phase finale, d'après la mention qu'ESPN lui attache
+ * (« East 1st Round - Game 6 », « WNBA Finals - Game 5 If Necessary »…).
+ * Une mention non reconnue écarte le match plutôt que de l'inventer.
+ */
+function tourEspn(headline: string): Omit<PlayoffGame, "game" | "bestOf"> | null {
+  const h = headline.replace(/ - Game \d+(?: If Necessary)?$/i, "").trim();
+  let m: RegExpMatchArray | null;
+  if ((m = h.match(/Play-In - (East|West) - (.+)$/i))) {
+    const affiche = m[2]
+      .replace(/(\d+)(?:st|nd|rd|th) Place vs (\d+)(?:st|nd|rd|th) Place/i, "$1e contre $2e")
+      .replace(/(\d+)(?:st|nd|rd|th) Seed Game/i, "match pour la $1e place");
+    return { round: "Play-in", order: 0, label: `${conference(m[1])} · ${affiche}` };
+  }
+  if ((m = h.match(/^(East|West) 1st Round$/i))) return { round: "1er tour", order: 1, label: conference(m[1]) };
+  if ((m = h.match(/^(East|West) Semifinals$/i)))
+    return { round: "Demi-finales de conférence", order: 2, label: conference(m[1]) };
+  if ((m = h.match(/^(East|West) Finals$/i))) return { round: "Finales de conférence", order: 3, label: conference(m[1]) };
+  if (/^NBA Finals$/i.test(h)) return { round: "Finale NBA", order: 4 };
+  if (/^First Round$/i.test(h)) return { round: "1er tour", order: 1 };
+  if (/^Semifinals$/i.test(h)) return { round: "Demi-finales", order: 2 };
+  if (/^WNBA Finals$/i.test(h)) return { round: "Finale WNBA", order: 4 };
+  return null;
+}
+
+/** Mois où se joue la phase finale, et mois de début. */
+const PHASE_FINALE: Record<EspnLeague, { mois: number[] }> = {
+  nba: { mois: [4, 5, 6] },
+  wnba: { mois: [9, 10] },
+};
+
+async function playoffGames(league: EspnLeague, annee: number): Promise<PlayoffGame[]> {
+  const listes = await Promise.all(
+    PHASE_FINALE[league].mois.map((m) => scoreboard(league, `${annee}${String(m).padStart(2, "0")}`, "no-store")),
+  );
+  const out: (PlayoffGame & { numero: number })[] = [];
+  const vus = new Set<string>();
+  for (const ev of listes.flatMap((l) => l.events ?? [])) {
+    // 3 : phase finale ; 5 : play-in. Le reste est de la saison régulière.
+    if (vus.has(ev.id) || (ev.season?.type !== 3 && ev.season?.type !== 5)) continue;
+    const headline = ev.competitions?.[0]?.notes?.[0]?.headline ?? "";
+    const tour = tourEspn(headline);
+    if (!tour) continue;
+    vus.add(ev.id);
+    out.push({
+      ...tour,
+      game: normalizeEvent(ev, league),
+      bestOf: ev.competitions?.[0]?.series?.totalCompetitions,
+      numero: Number(headline.match(/Game (\d+)/i)?.[1] ?? 0),
+    });
+  }
+
+  // Affiches inconnues : ESPN donne à toutes les séries d'un même tour les
+  // mêmes équipes provisoires (-1 et -2, « TBD »), sans rien qui les
+  // distingue. Chaque « Game N » y apparaît en revanche une fois par série :
+  // on répartit donc les matchs d'un même numéro entre les séries, dans un
+  // ordre stable.
+  const inconnue = (g: PlayoffGame) => [g.game.home.team.id, g.game.away.team.id].every((id) => id.startsWith("-"));
+  const parNumero = new Map<string, typeof out>();
+  for (const g of out.filter(inconnue)) {
+    const k = `${g.order}|${g.label ?? ""}|${g.numero}`;
+    parNumero.set(k, [...(parNumero.get(k) ?? []), g]);
+  }
+  for (const groupe of parNumero.values()) {
+    groupe
+      .sort((a, b) => a.game.date.localeCompare(b.game.date) || a.game.id.localeCompare(b.game.id))
+      .forEach((g, i) => {
+        g.slot = i;
+      });
+  }
+  return out;
+}
+
+/**
+ * Phase finale la plus récente : celle de l'année en cours dès qu'elle a
+ * commencé, la précédente sinon.
+ *
+ * Le calcul lit plusieurs mois de matchs, trop lourds pour le cache de données :
+ * on mémorise le tableau calculé. Cinq minutes suffisent — une série ne bouge
+ * qu'à la fin d'un match, et le score en direct, lui, vit ailleurs.
+ */
+export const getEspnPlayoffs = cachedNormalized(
+  async (league: EspnLeague): Promise<Playoffs> => {
+    const now = new Date();
+    const annee = now.getUTCFullYear();
+    const debut = PHASE_FINALE[league].mois[0];
+    const candidates = now.getUTCMonth() + 1 >= debut ? [annee, annee - 1] : [annee - 1, annee - 2];
+    const libelle = (a: number) => (league === "nba" ? `${a - 1}-${String(a % 100).padStart(2, "0")}` : String(a));
+
+    for (const a of candidates) {
+      const games = await playoffGames(league, a);
+      if (games.length > 0) {
+        return buildPlayoffs(league, libelle(a), games, (round) =>
+          round === "Play-in" ? 1 : league === "nba" ? 7 : round === "1er tour" ? 3 : round === "Demi-finales" ? 5 : 7,
+        );
+      }
+    }
+    return buildPlayoffs(league, libelle(candidates[0]), [], () => 1);
+  },
+  "espn-playoffs",
+  REVALIDATE.schedule / 2,
+);
