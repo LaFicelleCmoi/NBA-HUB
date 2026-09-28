@@ -65,12 +65,15 @@ export interface RawEspnEvent {
   date: string;
   status?: RawStatus;
   seasonType?: { name?: string };
-  season?: { slug?: string };
+  /** `type` : 2 saison régulière, 3 phase finale, 5 play-in. */
+  season?: { slug?: string; type?: number };
   competitions?: {
     status?: RawStatus;
     venue?: { fullName?: string };
     notes?: { headline?: string }[];
     competitors: RawCompetitor[];
+    /** Série de phase finale : format au meilleur des N. */
+    series?: { totalCompetitions?: number };
   }[];
 }
 
