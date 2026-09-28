@@ -180,6 +180,37 @@ export interface TeamDetail {
   stats: TeamStatGroup[];
 }
 
+/** Une série de phase finale : deux équipes, un vainqueur au meilleur des N. */
+export interface PlayoffSeries {
+  id: string;
+  /** Tableau ou affiche : « Est », « Ouest », « 7e contre 8e »… */
+  label?: string;
+  /** Équipes, ou `null` quand l'affiche n'est pas encore connue. */
+  teams: [Team | null, Team | null];
+  wins: [number, number];
+  /** Au meilleur des N matchs ; 1 pour un match sec. */
+  bestOf: number;
+  /** Identifiant du vainqueur, une fois la série décidée. */
+  winner?: string;
+  /** À venir, commencée entre deux matchs, match en cours, ou décidée. */
+  status: "scheduled" | "ongoing" | "live" | "final";
+  games: Game[];
+}
+
+export interface PlayoffRound {
+  name: string;
+  series: PlayoffSeries[];
+}
+
+export interface Playoffs {
+  league: LeagueId;
+  season: string;
+  rounds: PlayoffRound[];
+  champion?: Team;
+  /** Précision affichée au-dessus du tableau (phase finale en cours, à venir…). */
+  note?: string;
+}
+
 /** Une action du play-by-play, déjà traduite. */
 export interface Play {
   id: string;
