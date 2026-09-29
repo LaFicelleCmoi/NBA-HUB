@@ -87,8 +87,10 @@ function Card({ favorite, data }: { favorite: FavoriteTeam; data: TeamSummary | 
       aria-labelledby="my-team-title"
       className="glass relative overflow-hidden rounded-3xl p-5 ring-2 ring-fav/60 sm:p-6"
     >
-      {/* Filigrane : le logo en grand, très effacé, comme fond de carte. */}
-      <span aria-hidden className="pointer-events-none absolute -right-6 -top-6 opacity-[0.06]">
+      {/* Filigrane : le logo en grand, très effacé, comme fond de carte.
+          Décalé vers la gauche à partir de sm : collé au bord droit, il
+          disparaissait derrière le bouton « Voir la fiche ». */}
+      <span aria-hidden className="pointer-events-none absolute -right-6 -top-6 opacity-[0.06] sm:right-48">
         <Logo logo={team.logo} alt="" size={240} className="h-56 w-56" />
       </span>
 
