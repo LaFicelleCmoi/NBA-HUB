@@ -7,6 +7,7 @@ import { isLeagueId, LEAGUES } from "@/lib/leagues";
 import { parseTeamId, ValidationError } from "@/lib/validation";
 import { GameCard } from "@/components/games/GameCard";
 import { FavoriteButton } from "@/components/team/FavoriteButton";
+import { Records } from "@/components/team/Records";
 import { RosterTable } from "@/components/team/RosterTable";
 import { EmptyState, ErrorState } from "@/components/ui/EmptyState";
 import { Logo } from "@/components/ui/Logo";
@@ -289,14 +290,7 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
       {detail.records.length > 0 && (
         <Reveal from="left" as="section" className="mt-16">
           <SectionHeading id="records" kicker={`Saison ${detail.season}`} title="Bilans" />
-          <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {detail.records.map((r) => (
-              <div key={r.label} className="glass flex flex-col-reverse rounded-2xl p-4">
-                <dt className="text-sm text-muted">{r.label}</dt>
-                <dd className="tabular font-display text-2xl font-extrabold sm:text-3xl">{r.value}</dd>
-              </div>
-            ))}
-          </dl>
+          <Records records={detail.records} />
         </Reveal>
       )}
 
