@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import { getTeamDetail, getTeams, getTitles } from "@/lib/data";
+import { Suspense, type ReactNode } from "react";
+import { getConferenceTitles, getTeamDetail, getTeams, getTitles } from "@/lib/data";
 import { isLeagueId, LEAGUES } from "@/lib/leagues";
 import { parseTeamId, ValidationError } from "@/lib/validation";
 import { GameCard } from "@/components/games/GameCard";
@@ -43,6 +43,65 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : {};
 }
 
+/**
+ * Une ligne du palmarès : le nombre, puis les années. Le titre de champion
+ * garde la couleur dorée ; les titres de conférence restent plus discrets.
+ */
+function Distinction({
+  years,
+  label,
+  listLabel,
+  icon,
+  note,
+  accent = false,
+}: {
+  years: number[];
+  label: string;
+  listLabel: string;
+  icon: ReactNode;
+  note?: string;
+  accent?: boolean;
+}) {
+  return (
+    <div className="glass flex flex-col gap-4 rounded-2xl p-5">
+      <p className="flex items-baseline gap-2">
+        {/* Icônes en SVG plutôt qu'en emoji : le rendu ne dépend alors
+            d'aucune police système. */}
+        <svg
+          aria-hidden
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={accent ? "var(--fav)" : "currentColor"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`self-center ${accent ? "" : "text-muted"}`}
+        >
+          {icon}
+        </svg>
+        <span className="font-display text-5xl font-extrabold leading-none">{years.length}</span>
+        <span className="text-sm text-muted">{label}</span>
+        {note && <span className="ml-auto self-center text-xs text-faint">{note}</span>}
+      </p>
+      <ul className="flex flex-wrap gap-1.5" aria-label={listLabel}>
+        {years.map((year) => (
+          <li key={year}>
+            <span
+              className={`tabular rounded-lg px-2.5 py-1 text-sm font-semibold ${
+                accent ? "bg-fav-bg text-fav" : "bg-line text-muted"
+              }`}
+            >
+              {year}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function TeamSkeleton() {
   return (
     <div role="status" aria-live="polite" className="space-y-8">
@@ -71,6 +130,7 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
   const detail: TeamDetail | null = await getTeamDetail(l, id).catch(() => null);
   const leagueInfo = LEAGUES[l];
   const titles = getTitles(l, id);
+  const conferenceTitles = getConferenceTitles(l, id);
 
   if (!detail) return <ErrorState message="Impossible de charger cette équipe" />;
   const { team } = detail;
@@ -145,43 +205,39 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
         </div>
       </section>
 
-      {titles.length > 0 && (
+      {(titles.length > 0 || conferenceTitles.length > 0) && (
         <Reveal as="section" className="mt-12">
           <SectionHeading id="palmares" kicker={`Finales ${leagueInfo.name}`} title="Palmarès" />
-          <div className="glass flex flex-wrap items-center gap-x-6 gap-y-4 rounded-2xl p-5">
-            <p className="flex items-baseline gap-2">
-              {/* Trophée en SVG plutôt qu'en emoji : le rendu ne dépend alors
-                  d'aucune police système. */}
-              <svg
-                aria-hidden
-                width="30"
-                height="30"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--fav)"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="self-center"
-              >
-                <path d="M7 4h10v5a5 5 0 0 1-10 0z" />
-                <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4" />
-                <path d="M12 14v3M9 20h6M10 17h4l.5 3h-5z" />
-              </svg>
-              <span className="font-display text-5xl font-extrabold leading-none">{titles.length}</span>
-              <span className="text-sm text-muted">
-                titre{titles.length > 1 ? "s" : ""} de champion
-              </span>
-            </p>
-            <ul className="flex flex-wrap gap-1.5" aria-label="Années de titre">
-              {titles.map((year) => (
-                <li key={year}>
-                  <span className="tabular rounded-lg bg-fav-bg px-2.5 py-1 text-sm font-semibold text-fav">
-                    {year}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="grid gap-4 md:grid-cols-2">
+            {titles.length > 0 && (
+              <Distinction
+                years={titles}
+                label={`titre${titles.length > 1 ? "s" : ""} de champion`}
+                listLabel="Années de titre"
+                icon={
+                  <>
+                    <path d="M7 4h10v5a5 5 0 0 1-10 0z" />
+                    <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4" />
+                    <path d="M12 14v3M9 20h6M10 17h4l.5 3h-5z" />
+                  </>
+                }
+                accent
+              />
+            )}
+            {conferenceTitles.length > 0 && (
+              <Distinction
+                years={conferenceTitles}
+                label={`titre${conferenceTitles.length > 1 ? "s" : ""} de conférence`}
+                listLabel="Années de titre de conférence"
+                icon={
+                  <>
+                    <path d="M6 21V4" />
+                    <path d="M6 4h12l-3 4.5 3 4.5H6" />
+                  </>
+                }
+                note={l === "wnba" ? "Décernés de 1999 à 2015" : "Décernés depuis 1971"}
+              />
+            )}
           </div>
         </Reveal>
       )}
