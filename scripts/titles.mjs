@@ -1,19 +1,26 @@
 /**
- * Relève le palmarès des Finales NBA et l'enregistre dans `lib/data/titles.json`.
+ * Relève le palmarès NBA et WNBA — titres de champion et titres de conférence —
+ * et l'enregistre dans `lib/data/titles.json` et `lib/data/conference-titles.json`.
  *
- * Deux sources, parce qu'aucune ne couvre tout :
+ * Source : Wikipédia (anglais), pages « List of NBA champions » et
+ * « WNBA Finals ». Chacune tient un tableau *par franchise* des finales
+ * gagnées et perdues. C'est le point décisif : la filiation des franchises y
+ * est déjà résolue — les Lakers de Minneapolis comptent pour Los Angeles, les
+ * SuperSonics pour Oklahoma City, le Shock de Detroit pour Dallas —, selon la
+ * convention des ligues. Wikidata, utilisé auparavant, n'a presque rien sur la
+ * WNBA et se trompait de finaliste en 1951.
  *
- * - **Wikidata** pour l'histoire (1947 à sa dernière saison renseignée). Chaque
- *   saison y désigne son vainqueur (P1346), et Wikidata rattache le titre à la
- *   *franchise actuelle* : les Lakers de Minneapolis comptent pour Los Angeles,
- *   les Royals de Rochester pour Sacramento. C'est la convention de la ligue.
- * - **ESPN** pour les saisons récentes, que Wikidata met du temps à renseigner :
- *   le champion est le vainqueur du dernier match portant la mention
- *   « NBA Finals ». Rien n'est deviné, tout vient d'un résultat réel.
+ * Titre de conférence = place en finale, mais seulement quand la finale
+ * opposait bel et bien les champions des deux conférences :
  *
- * Les titres BAA (1947-1949) sont inclus : la NBA les comptabilise. Celui de
- * 1948 revient aux Baltimore Bullets, franchise disparue sans héritier — il
- * n'est donc attribué à personne et c'est volontaire.
+ * - NBA : depuis 1971, année de création des conférences. Avant, les
+ *   finalistes étaient champions de *division*, un autre titre.
+ * - WNBA : de 1999 à 2015, seules saisons à finales de conférence. En 1997 et
+ *   1998, les deux finalistes venaient parfois de la même conférence ; depuis
+ *   2016, les huit qualifiées sont classées sans tenir compte des conférences.
+ *
+ * Les franchises disparues (Baltimore Bullets 1948, Comets de Houston…) n'ont
+ * pas d'héritier : leurs titres ne sont attribués à personne, volontairement.
  *
  * Usage : node scripts/titles.mjs
  */
@@ -22,140 +29,80 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const DATA = join(dirname(fileURLToPath(import.meta.url)), "..", "lib", "data");
-const ESPN = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba";
-const UA = "HoopsHub/1.0 (palmares)";
 
-/* ------------------------------ Wikidata ------------------------------ */
-
-/**
- * Deux requêtes plutôt qu'une : filtrer sur le libellé des saisons oblige
- * Wikidata à les parcourir toutes et dépasse son délai (504). Partir de la
- * ligue, elle, est immédiat.
- */
-const QUERIES = [
-  // NBA (1949-50 et après)
-  `SELECT DISTINCT ?seasonLabel ?winnerLabel WHERE {
-     ?season wdt:P3450 wd:Q155223 ; wdt:P1346 ?winner .
-     SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-   }`,
-  // BAA (1946-47 à 1948-49) : la NBA comptabilise officiellement ces titres.
-  `SELECT DISTINCT ?seasonLabel ?winnerLabel WHERE {
-     ?season wdt:P3450 wd:Q810343 ; wdt:P1346 ?winner .
-     SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-   }`,
-];
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-/** Le point d'accès public est régulièrement saturé (502, 504) : on insiste. */
-async function sparql(query, attempts = 4) {
-  for (let i = 1; ; i++) {
-    const res = await fetch("https://query.wikidata.org/sparql", {
-      method: "POST",
-      headers: {
-        accept: "application/sparql-results+json",
-        "content-type": "application/x-www-form-urlencoded",
-        "user-agent": UA,
-      },
-      body: new URLSearchParams({ query }),
-    });
-    if (res.ok) return res.json();
-    if (i >= attempts) throw new Error(`Wikidata → HTTP ${res.status} après ${attempts} tentatives`);
-    // Le service annonce lui-même combien de temps attendre quand il limite.
-    const wait = Number(res.headers.get("retry-after")) * 1000 || 5000 * i;
-    console.warn(`  Wikidata ${res.status}, nouvelle tentative dans ${Math.round(wait / 1000)} s (${i}/${attempts - 1})…`);
-    await sleep(wait);
-  }
-}
-
-async function fromWikidata() {
-  const titles = new Map();
-  for (const query of QUERIES) {
-    const { results } = await sparql(query);
-    for (const row of results.bindings) {
-      // « 1949–50 NBA season » : le titre se joue l'année de fin de saison.
-      const start = Number(row.seasonLabel.value.slice(0, 4));
-      if (Number.isFinite(start)) titles.set(start + 1, row.winnerLabel.value);
-    }
-  }
-  return titles;
-}
-
-/* -------------------------------- ESPN -------------------------------- */
-
-/** Champion d'une saison : vainqueur du dernier match marqué « NBA Finals ». */
-async function championFromEspn(year) {
-  let latest = null;
-  for (const month of ["06", "07"]) {
-    const res = await fetch(`${ESPN}/scoreboard?dates=${year}${month}&limit=1000`, {
-      headers: { accept: "application/json", "user-agent": UA },
-    });
-    if (!res.ok) continue;
-    const { events = [] } = await res.json();
-    for (const ev of events) {
-      const comp = ev.competitions?.[0];
-      if (!/NBA Finals/i.test(comp?.notes?.[0]?.headline ?? "")) continue;
-      if (comp.status?.type?.state !== "post") continue;
-      if (!latest || ev.date > latest.date) {
-        latest = { date: ev.date, team: comp.competitors.find((c) => c.winner)?.team?.displayName };
-      }
-    }
-  }
-  return latest?.team;
-}
-
-/* ------------------------------ Assemblage ---------------------------- */
-
-/**
- * Wikidata rattache presque tous les titres à la franchise actuelle, mais garde
- * ici le nom d'époque. La NBA, elle, crédite la franchise : le titre 1979 figure
- * au palmarès du Thunder, héritier direct des SuperSonics.
- *
- * Le titre 1948 des Baltimore Bullets n'a pas sa place ici : cette franchise a
- * été dissoute en 1954 sans successeur — les Wizards actuels descendent des
- * Chicago Packers, créés en 1961. Il reste donc non attribué, volontairement.
- */
-const FRANCHISE_ALIASES = {
-  "Seattle SuperSonics": "Oklahoma City Thunder",
+const SOURCES = {
+  nba: { page: "List_of_NBA_champions", conference: (y) => y >= 1971 },
+  wnba: { page: "WNBA_Finals", conference: (y) => y >= 1999 && y <= 2015 },
 };
 
-const teams = JSON.parse(await readFile(join(DATA, "teams.json"), "utf8")).nba;
-const byName = new Map(teams.map((t) => [t.name, t.id]));
+/**
+ * Noms de franchise qui diffèrent entre Wikipédia et ESPN. La ligne du Shock
+ * garde son ancien nom sur Wikipédia, mais la franchise est l'actuelle Dallas.
+ */
+const ALIASES = {
+  "Detroit Shock": "Dallas Wings",
+  "Los Angeles Clippers": "LA Clippers",
+};
 
-const titles = await fromWikidata();
-const lastKnown = Math.max(...titles.keys());
-console.log(`Wikidata : ${titles.size} titres, jusqu'à ${lastKnown}`);
-
-// Saisons terminées depuis : la finale se joue en juin, donc l'année en cours
-// ne compte que si l'on est après.
-const now = new Date();
-const lastFinished = now.getMonth() >= 6 ? now.getFullYear() : now.getFullYear() - 1;
-for (let year = lastKnown + 1; year <= lastFinished; year++) {
-  const champion = await championFromEspn(year);
-  if (!champion) {
-    console.warn(`  ${year} : aucun champion trouvé chez ESPN`);
-    continue;
-  }
-  titles.set(year, champion);
-  console.log(`  ESPN ${year} : ${champion}`);
+async function wikitext(page) {
+  const url = `https://en.wikipedia.org/w/api.php?action=parse&page=${page}&prop=wikitext&format=json&formatversion=2`;
+  const res = await fetch(url, { headers: { accept: "application/json" } });
+  if (!res.ok) throw new Error(`Wikipédia ${page} → HTTP ${res.status}`);
+  return (await res.json()).parse.wikitext;
 }
 
-const byTeam = {};
-const orphans = [];
-for (const [year, name] of [...titles.entries()].sort((a, b) => a[0] - b[0])) {
-  const id = byName.get(FRANCHISE_ALIASES[name] ?? name);
-  if (!id) {
-    orphans.push(`${year} ${name}`);
-    continue;
+/** Années citées dans une cellule (`{{nbafy|1957}}`, `[[2011 WNBA Finals|2011]]`…). */
+const years = (cell) => [...new Set((cell.match(/\b(?:19[4-9]\d|20\d\d)\b/g) ?? []).map(Number))];
+
+/**
+ * Le tableau par franchise est le seul à porter la colonne « Year(s) won ».
+ * Chaque ligne : le nom de la franchise, puis une ligne de cellules dont les
+ * deux dernières sont les années gagnées et perdues.
+ */
+function franchiseTable(text) {
+  const start = text.lastIndexOf("{|", text.indexOf("Year(s) won"));
+  const table = text.slice(start, text.indexOf("\n|}", start));
+  const rows = [];
+  for (const chunk of table.split(/\n\|-[^\n]*/).slice(1)) {
+    const name = chunk.match(/\[\[([^\]|]+)(?:\|[^\]]*)?\]\]/)?.[1];
+    const cells = chunk.split("\n").filter(Boolean).at(-1)?.split("||") ?? [];
+    if (!name || cells.length < 2) continue;
+    rows.push({ name: name.trim(), won: years(cells.at(-2)), lost: years(cells.at(-1)) });
   }
-  (byTeam[id] ??= []).push(year);
+  if (rows.length < 10) throw new Error("tableau des franchises introuvable ou incomplet");
+  return rows;
 }
-for (const years of Object.values(byTeam)) years.sort((a, b) => b - a);
 
-if (orphans.length) console.warn(`Franchises disparues, titre non attribué : ${orphans.join(", ")}`);
+const teams = JSON.parse(await readFile(join(DATA, "teams.json"), "utf8"));
+const titles = {};
+const conferences = {};
 
-const total = Object.values(byTeam).reduce((n, y) => n + y.length, 0);
-console.log(`${total} titres attribués à ${Object.keys(byTeam).length} franchises`);
+for (const [league, { page, conference }] of Object.entries(SOURCES)) {
+  const byName = new Map(teams[league].map((t) => [t.name, t.id]));
+  const rows = franchiseTable(await wikitext(page));
+  const orphans = [];
+  titles[league] = {};
+  conferences[league] = {};
 
-await writeFile(join(DATA, "titles.json"), `${JSON.stringify({ nba: byTeam }, null, 2)}\n`);
-console.log("titles.json écrit");
+  for (const { name, won, lost } of rows) {
+    const id = byName.get(ALIASES[name] ?? name);
+    if (!id) {
+      orphans.push(name);
+      continue;
+    }
+    const desc = (list) => list.sort((a, b) => b - a);
+    if (won.length) titles[league][id] = desc(won);
+    const conf = [...won, ...lost].filter(conference);
+    if (conf.length) conferences[league][id] = desc(conf);
+  }
+
+  const count = (o) => Object.values(o).reduce((n, y) => n + y.length, 0);
+  console.log(
+    `${league} : ${count(titles[league])} titres, ${count(conferences[league])} titres de conférence` +
+      (orphans.length ? ` — franchises disparues, non attribuées : ${orphans.join(", ")}` : ""),
+  );
+}
+
+await writeFile(join(DATA, "titles.json"), `${JSON.stringify(titles, null, 2)}\n`);
+await writeFile(join(DATA, "conference-titles.json"), `${JSON.stringify(conferences, null, 2)}\n`);
+console.log("titles.json et conference-titles.json écrits");
