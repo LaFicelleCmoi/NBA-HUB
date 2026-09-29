@@ -30,6 +30,7 @@ import bundledStandings from "@/lib/data/standings.json";
 import bundledLeaders from "@/lib/data/leaders.json";
 import bundledDetails from "@/lib/data/team-details.json";
 import bundledTitles from "@/lib/data/titles.json";
+import bundledConferenceTitles from "@/lib/data/conference-titles.json";
 import { fetchRss } from "@/lib/api/rss";
 import { env, REVALIDATE } from "@/lib/env";
 import { LEAGUE_IDS } from "@/lib/leagues";
@@ -69,15 +70,25 @@ const bundled = {
   details: bundledDetails as unknown as Record<LeagueId, Record<string, Omit<TeamDetail, "recent" | "upcoming">>>,
 };
 
+type Palmares = Partial<Record<LeagueId, Record<string, number[]>>>;
+
 /**
  * Palmarès d'une équipe, du plus récent au plus ancien. Aucune de nos API ne
- * publie cette donnée : elle est relevée sur Wikidata et chez ESPN par
+ * publie cette donnée : elle est relevée sur Wikipédia par
  * `scripts/titles.mjs`, puis versionnée. Une ligue sans palmarès relevé rend
  * un tableau vide, et la section correspondante disparaît.
  */
 export function getTitles(league: LeagueId, id: string): number[] {
-  const byLeague = bundledTitles as Partial<Record<LeagueId, Record<string, number[]>>>;
-  return byLeague[league]?.[id] ?? [];
+  return (bundledTitles as Palmares)[league]?.[id] ?? [];
+}
+
+/**
+ * Titres de conférence, relevés par le même script : NBA depuis 1971, WNBA
+ * de 1999 à 2015 — les seules saisons où la finale opposait les champions des
+ * deux conférences.
+ */
+export function getConferenceTitles(league: LeagueId, id: string): number[] {
+  return (bundledConferenceTitles as Palmares)[league]?.[id] ?? [];
 }
 
 /** Journalise pourquoi on bascule sur le dépôt, sans masquer la cause. */
