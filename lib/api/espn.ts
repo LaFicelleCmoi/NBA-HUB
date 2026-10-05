@@ -18,6 +18,18 @@ import {
   type RawStandingsNode,
 } from "@/lib/normalize/espn";
 import { normalizeEspnPlays, type RawEspnPlay } from "@/lib/normalize/espn-pbp";
+import {
+  normalizeBoxscore,
+  normalizeComparison,
+  normalizeGameInfo,
+  normalizeGameInjuries,
+  normalizeGameLeaders,
+  normalizeHeadToHead,
+  normalizeVideos,
+  normalizeWinProbability,
+  regulationSeconds,
+  type RawSummaryExtras,
+} from "@/lib/normalize/espn-summary";
 import { buildPlayoffs, type PlayoffGame } from "@/lib/normalize/playoffs";
 import { addDays, addMonths, espnDay, espnMonth, parisDayKey } from "@/lib/time";
 import type {
@@ -264,14 +276,16 @@ export async function getEspnTeamDetail(league: EspnLeague, id: string): Promise
 
 /* ------------------------------- Match -------------------------------- */
 
-interface RawSummary {
+interface RawSummary extends RawSummaryExtras {
   header?: { id?: string; competitions?: (NonNullable<RawEspnEvent["competitions"]>[number] & { date?: string })[] };
-  gameInfo?: { venue?: { fullName?: string } };
   plays?: RawEspnPlay[];
 }
 
 /**
- * En-tête et play-by-play d'un match.
+ * Un match au complet : en-tête, play-by-play, et tout ce qu'ESPN publie
+ * autour — feuille de match, comparatif, meilleurs joueurs, probabilité de
+ * victoire, infos, blessés, confrontations, vidéos. Un seul appel les porte
+ * tous : les afficher ne coûte aucune requête de plus.
  *
  * Toujours sans cache de données : le même appel sert un match en cours, où
  * chaque seconde compte, et un match terminé. `fetchLive` mémorise quelques
@@ -294,7 +308,21 @@ export async function getEspnGameDetail(league: EspnLeague, id: string): Promise
     },
     league,
   );
-  return { game, plays: normalizeEspnPlays(raw.plays ?? []) };
+  const plays = raw.plays ?? [];
+  const final = game.status === "final" ? { homeWon: game.home.winner } : undefined;
+  return {
+    game,
+    plays: normalizeEspnPlays(plays),
+    boxscore: normalizeBoxscore(raw.boxscore),
+    comparison: normalizeComparison(raw.boxscore),
+    leaders: normalizeGameLeaders(raw.leaders),
+    winProbability: normalizeWinProbability(raw.winprobability, plays, raw.format, final),
+    regulationSeconds: regulationSeconds(raw.format),
+    info: normalizeGameInfo(raw.gameInfo, raw.broadcasts),
+    injuries: normalizeGameInjuries(raw.injuries),
+    headToHead: normalizeHeadToHead(raw.seasonseries),
+    videos: normalizeVideos(raw.videos),
+  };
 }
 
 /* ----------------------------- Phase finale ----------------------------- */
