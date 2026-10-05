@@ -426,7 +426,7 @@ const INJURY_FR: Record<string, string> = {
   suspension: "Suspendu",
 };
 
-const frInjury = (v?: string) => (v ? (INJURY_FR[v.toLowerCase()] ?? v) : undefined);
+export const frInjury = (v?: string) => (v ? (INJURY_FR[v.toLowerCase()] ?? v) : undefined);
 
 export function normalizeRoster(raw: RawEspnRoster): { roster: Player[]; coach?: string } {
   const roster: Player[] = (raw.athletes ?? []).map((a) => {
