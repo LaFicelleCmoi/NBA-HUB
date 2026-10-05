@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "a.espncdn.com", pathname: "/i/**" },
       { protocol: "https", hostname: "a.espncdn.com", pathname: "/photo/**" },
       { protocol: "https", hostname: "a.espncdn.com", pathname: "/combiner/**" },
+      // Miniatures des vidéos de match publiées dans le résumé ESPN
+      { protocol: "https", hostname: "espnmedia-cdn.akamaized.net", pathname: "/espn/media/**" },
       { protocol: "https", hostname: "media-cdn.incrowdsports.com", pathname: "/**" },
       { protocol: "https", hostname: "media-cdn.cortextech.io", pathname: "/**" },
       // Images des actualités (liste identique à IMAGE_HOSTS dans lib/api/rss.ts)
