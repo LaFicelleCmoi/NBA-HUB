@@ -229,10 +229,122 @@ export interface Play {
   points?: number;
 }
 
-/** Page d'un match : l'en-tête et le déroulé complet, dans l'ordre chronologique. */
+/** Une ligne de la feuille de match : un joueur et ses statistiques. */
+export interface BoxPlayer {
+  id: string;
+  name: string;
+  shortName: string;
+  jersey?: string;
+  position?: string;
+  headshot?: string;
+  /** Dans le cinq de départ. */
+  starter: boolean;
+  /** Motif d'absence du match (« Choix de l'entraîneur »…), s'il n'a pas joué. */
+  dnp?: string;
+  ejected?: boolean;
+  /** Valeurs dans l'ordre des colonnes de la feuille. */
+  stats: string[];
+}
+
+/** Feuille de match d'une équipe : titulaires, remplaçants, totaux. */
+export interface BoxTeam {
+  teamId: string;
+  players: BoxPlayer[];
+  totals: string[];
+}
+
+export interface Boxscore {
+  /** Colonnes communes aux deux équipes : abréviation et intitulé complet. */
+  columns: { abbr: string; title: string }[];
+  teams: BoxTeam[];
+}
+
+/** Une ligne du comparatif des deux équipes. */
+export interface TeamComparison {
+  label: string;
+  away: string;
+  home: string;
+  /** Valeurs numériques, pour la barre de comparaison. */
+  awayValue?: number;
+  homeValue?: number;
+  /** Faux quand la plus petite valeur est la meilleure (balles perdues…). */
+  higherIsBetter: boolean;
+}
+
+/** Meilleur joueur d'une équipe dans une catégorie (points, rebonds, passes). */
+export interface GameLeader {
+  category: string;
+  teamId: string;
+  player: { id: string; name: string; headshot?: string; position?: string; jersey?: string };
+  value: string;
+  /** Ligne complète du joueur (« 9/20 tirs, 3/7 à 3 pts »), quand ESPN la donne. */
+  line?: string;
+}
+
+export interface GameInjury {
+  teamId: string;
+  player: string;
+  headshot?: string;
+  status: string;
+  detail?: string;
+  /** Date de retour estimée (ISO). */
+  returnDate?: string;
+}
+
+/** Série de confrontations entre les deux équipes (saison régulière ou playoffs). */
+export interface HeadToHead {
+  title: string;
+  /** Victoires de chaque équipe, par identifiant. */
+  wins: Record<string, number>;
+  games: { id: string; date: string; status: GameStatus; scores: Record<string, number | null> }[];
+}
+
+export interface GameVideo {
+  id: string;
+  title: string;
+  thumbnail?: string;
+  url: string;
+  /** Durée en secondes. */
+  duration?: number;
+}
+
+/** Un point de la courbe de probabilité de victoire. */
+export interface WinProbabilityPoint {
+  /** Secondes de jeu écoulées depuis l'entre-deux initial. */
+  elapsed: number;
+  /** Probabilité de victoire de l'équipe à domicile, de 0 à 1. */
+  home: number;
+  period: number;
+  clock: string;
+}
+
+export interface GameInfo {
+  venue?: string;
+  city?: string;
+  attendance?: number;
+  officials: string[];
+  broadcasts: string[];
+}
+
+/**
+ * Page d'un match : l'en-tête, le déroulé complet dans l'ordre chronologique,
+ * et tout ce que le fournisseur publie autour — feuille de match, comparatif,
+ * meilleurs joueurs, probabilité de victoire, infos, blessés, confrontations,
+ * vidéos. Ces compléments sont optionnels : l'EuroLeague n'en fournit pas.
+ */
 export interface GameDetail {
   game: Game;
   plays: Play[];
+  boxscore?: Boxscore;
+  comparison?: TeamComparison[];
+  leaders?: GameLeader[];
+  winProbability?: WinProbabilityPoint[];
+  /** Durée réglementaire d'un match en secondes, pour l'axe de la courbe. */
+  regulationSeconds?: number;
+  info?: GameInfo;
+  injuries?: GameInjury[];
+  headToHead?: HeadToHead[];
+  videos?: GameVideo[];
 }
 
 /**
