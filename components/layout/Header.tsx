@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { LEAGUE_IDS, LEAGUES } from "@/lib/leagues";
 import { Logo } from "@/components/ui/Logo";
+import { SiteSearch } from "@/components/layout/SiteSearch";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const TRACKER_URL = process.env.NEXT_PUBLIC_TRACKER_URL || "https://www.nba.com/stats";
@@ -76,6 +77,7 @@ export function Header() {
           </ul>
         </nav>
 
+        <SiteSearch />
         <ThemeToggle />
       </div>
     </header>
