@@ -6,6 +6,7 @@ import {
   getEspnLeaders,
   getEspnNews,
   getEspnPlayoffs,
+  getEspnPreseasonStandings,
   getEspnRecent,
   getEspnStandings,
   getEspnTeamDetail,
@@ -135,6 +136,15 @@ export const getStandings = (league: LeagueId): Promise<Standings> =>
     }
     return bundled.standings[league];
   });
+
+/**
+ * Classement de présaison (NBA, WNBA). L'EuroLeague n'a pas de présaison
+ * officielle : `null`, comme tant qu'aucun match de présaison n'est terminé.
+ */
+export const getPreseasonStandings = (league: LeagueId): Promise<Standings | null> =>
+  league === "euroleague"
+    ? Promise.resolve(null)
+    : withFallback(`preseason:${league}`, () => getEspnPreseasonStandings(league));
 
 export const getGames = (league: LeagueId, view: "results" | "upcoming"): Promise<GamesResponse> =>
   withFallback(`games:${league}:${view}`, () =>
