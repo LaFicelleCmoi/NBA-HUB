@@ -102,6 +102,11 @@ export interface Standings {
   season: string;
   /** true si la saison en cours n'a pas commencé et que l'on affiche la précédente. */
   isPreviousSeason: boolean;
+  /**
+   * Classement de présaison, recalculé à partir des résultats : sans enjeu,
+   * il n'a ni zones de qualification ni tête de série.
+   */
+  preseason?: boolean;
   groups: StandingGroup[];
   totals: { games: number; points: number };
 }
