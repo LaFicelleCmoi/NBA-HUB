@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "@/components/ui/Logo";
-import type { Boxscore, BoxPlayer, Team } from "@/types";
+import type { Boxscore, BoxPlayer, LeagueId, Team } from "@/types";
 
-function Ligne({ p, colonnes }: { p: BoxPlayer; colonnes: number }) {
+function Ligne({ p, colonnes, league }: { p: BoxPlayer; colonnes: number; league: LeagueId }) {
   return (
     <tr className="border-b border-line last:border-0 hover:bg-line/40">
       <th scope="row" className="sticky left-0 z-10 bg-[var(--sticky)] px-3 py-2 text-left font-semibold">
@@ -22,7 +23,9 @@ function Ligne({ p, colonnes }: { p: BoxPlayer; colonnes: number }) {
             <span aria-hidden className="h-8 w-8 shrink-0 rounded-full bg-line" />
           )}
           <span className="min-w-0">
-            <span className="block max-w-[9rem] truncate sm:max-w-none">{p.name}</span>
+            <Link href={`/${league}/joueur/${p.id}`} className="block max-w-[9rem] truncate hover:underline sm:max-w-none">
+              {p.name}
+            </Link>
             <span className="block text-xs font-normal text-faint">
               {[p.jersey && `#${p.jersey}`, p.position].filter(Boolean).join(" · ")}
               {p.ejected && <span className="ml-1 font-semibold text-live">· Expulsé</span>}
@@ -102,7 +105,7 @@ export function BoxScore({ box, away, home }: { box: Boxscore; away: Team; home:
           <thead>{enTete("Cinq de départ")}</thead>
           <tbody>
             {titulaires.map((p) => (
-              <Ligne key={p.id} p={p} colonnes={n} />
+              <Ligne key={p.id} p={p} colonnes={n} league={team.league} />
             ))}
           </tbody>
           {banc.length > 0 && (
@@ -110,7 +113,7 @@ export function BoxScore({ box, away, home }: { box: Boxscore; away: Team; home:
               <thead>{enTete("Banc")}</thead>
               <tbody>
                 {banc.map((p) => (
-                  <Ligne key={p.id} p={p} colonnes={n} />
+                  <Ligne key={p.id} p={p} colonnes={n} league={team.league} />
                 ))}
               </tbody>
             </>
