@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useApi } from "@/lib/client/useApi";
 import { GameCard } from "@/components/games/GameCard";
+import { Countdown } from "@/components/ui/Countdown";
 import { BoxScore } from "@/components/match/BoxScore";
 import { Comparison, HeadToHeadView, Info, Injuries, Leaders, Videos } from "@/components/match/GameExtras";
 import { WinProbability } from "@/components/match/WinProbability";
@@ -188,6 +189,11 @@ export function MatchView({ league, id, initial }: { league: LeagueId; id: strin
     <div className="space-y-8">
       <div className="mx-auto max-w-2xl">
         <GameCard game={detail.game} showDate matchLink={false} />
+        {detail.game.status === "scheduled" && (
+          <div className="mt-4 flex justify-center">
+            <Countdown date={detail.game.date} />
+          </div>
+        )}
       </div>
 
       {onglets.length > 1 && (
