@@ -1,5 +1,6 @@
 import Image from "next/image";
-import type { Player } from "@/types";
+import Link from "next/link";
+import type { LeagueId, Player } from "@/types";
 
 const money = new Intl.NumberFormat("fr-FR", {
   style: "currency",
@@ -18,7 +19,7 @@ function usedColumns(roster: Player[]) {
   };
 }
 
-export function RosterTable({ roster, teamName }: { roster: Player[]; teamName: string }) {
+export function RosterTable({ roster, teamName, league }: { roster: Player[]; teamName: string; league: LeagueId }) {
   const th = "px-3 py-2 text-left font-semibold";
   const cols = usedColumns(roster);
 
@@ -72,7 +73,17 @@ export function RosterTable({ roster, teamName }: { roster: Player[]; teamName: 
                     ) : (
                       <span aria-hidden className="h-8 w-8 shrink-0 rounded-full bg-line" />
                     )}
-                    <span className="max-w-[10rem] truncate sm:max-w-none">{p.name}</span>
+                    {/* Fiche joueur : NBA et WNBA seulement, l'EuroLeague n'en publie pas. */}
+                    {league === "euroleague" ? (
+                      <span className="max-w-[10rem] truncate sm:max-w-none">{p.name}</span>
+                    ) : (
+                      <Link
+                        href={`/${league}/joueur/${p.id}`}
+                        className="max-w-[10rem] truncate hover:underline sm:max-w-none"
+                      >
+                        {p.name}
+                      </Link>
+                    )}
                   </div>
                 </th>
                 <td className="px-3 py-2 text-muted">{p.jersey ?? "–"}</td>
