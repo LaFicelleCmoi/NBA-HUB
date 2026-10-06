@@ -50,23 +50,81 @@ function Note({ children }: { children: React.ReactNode }) {
   );
 }
 
+type VueClassement = "saison" | "presaison";
+
+/**
+ * Classement officiel et, pendant l'avant-saison, classement de présaison.
+ *
+ * Le sélecteur n'apparaît que si la présaison a déjà des résultats. Tant que
+ * la saison régulière n'a pas commencé, c'est la présaison qui s'ouvre : le
+ * classement final de la saison passée reste à un clic.
+ */
 function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standings | null }) {
   const { data, error, loading } = useApi<Standings>(`/api/${league}/standings`, { initial });
+  const { data: presaison } = useApi<Standings | null>(
+    league === "euroleague" ? null : `/api/${league}/standings?phase=preseason`,
+    { refreshMs: 120_000 },
+  );
   // Charge utile minime, interrogée à la cadence du direct : le classement
   // bouge avec les matchs sans recharger le classement officiel lui-même.
   const { data: live } = useApi<Game[]>(`/api/${league}/live`, { refreshMs: 10_000 });
+  const [choix, setChoix] = useState<VueClassement | null>(null);
 
   if (loading) return <SkeletonList rows={8} className="h-10" />;
   if (!data) return <ErrorState message={error ?? "Classement indisponible"} />;
 
-  const games = live ?? [];
-  const provisoire = withLiveGames(data, games);
-  const enCours = liveCount(data, games);
+  const avecPresaison = Boolean(presaison && presaison.totals.games > 0);
+  const vue: VueClassement = !avecPresaison
+    ? "saison"
+    : (choix ?? (data.isPreviousSeason ? "presaison" : "saison"));
+  const affiche = vue === "presaison" && presaison ? presaison : data;
+
+  // Les matchs en cours ne comptent que pour le classement de leur phase :
+  // un match de présaison n'a rien à faire dans le classement final de la
+  // saison passée.
+  const enPhase = vue === "presaison" || !data.isPreviousSeason;
+  const games = enPhase ? (live ?? []) : [];
+  const provisoire = withLiveGames(affiche, games);
+  const enCours = liveCount(affiche, games);
+
+  const bouton = (actif: boolean) =>
+    `rounded-xl px-3 py-2 text-sm font-semibold transition-colors ${
+      actif ? "bg-surface-strong text-fg shadow-sm" : "text-muted hover:text-fg"
+    }`;
 
   return (
     <div className="space-y-4">
-      {data.isPreviousSeason && (
-        <Note>Inter-saison : la nouvelle saison n’a pas commencé. Classement final de la saison {data.season}.</Note>
+      {avecPresaison && (
+        <div role="tablist" aria-label="Phase du classement" className="glass inline-flex rounded-2xl p-1">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={vue === "presaison"}
+            className={bouton(vue === "presaison")}
+            onClick={() => setChoix("presaison")}
+          >
+            Présaison
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={vue === "saison"}
+            className={bouton(vue === "saison")}
+            onClick={() => setChoix("saison")}
+          >
+            {data.isPreviousSeason ? `Saison ${data.season} (finale)` : "Saison régulière"}
+          </button>
+        </div>
+      )}
+      {vue === "presaison" ? (
+        <Note>
+          Présaison {affiche.season} : {affiche.totals.games} match{affiche.totals.games > 1 ? "s" : ""} joué
+          {affiche.totals.games > 1 ? "s" : ""}. Matchs amicaux sans enjeu, aucune place n’y qualifie.
+        </Note>
+      ) : (
+        data.isPreviousSeason && (
+          <Note>Inter-saison : la nouvelle saison n’a pas commencé. Classement final de la saison {data.season}.</Note>
+        )
       )}
       {enCours > 0 && (
         <p className="flex items-center gap-2 text-sm text-live">
@@ -75,7 +133,7 @@ function StandingsPanel({ league, initial }: { league: LeagueId; initial: Standi
           différence comprises.
         </p>
       )}
-      <ZoneLegend league={league} />
+      {vue === "saison" && <ZoneLegend league={league} />}
       <StandingsTables standings={provisoire} />
     </div>
   );
