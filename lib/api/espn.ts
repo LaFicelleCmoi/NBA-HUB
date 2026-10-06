@@ -19,6 +19,13 @@ import {
 } from "@/lib/normalize/espn";
 import { normalizeEspnPlays, type RawEspnPlay } from "@/lib/normalize/espn-pbp";
 import {
+  normalizePlayer,
+  type RawAthleteBio,
+  type RawAthleteGamelog,
+  type RawAthleteOverview,
+  type RawAthleteStats,
+} from "@/lib/normalize/espn-player";
+import {
   normalizeBoxscore,
   normalizeComparison,
   normalizeGameInfo,
@@ -39,6 +46,7 @@ import type {
   Playoffs,
   LeadersResponse,
   NewsItem,
+  PlayerProfile,
   Standings,
   Team,
   TeamDetail,
@@ -431,3 +439,32 @@ export const getEspnPlayoffs = cachedNormalized(
   "espn-playoffs",
   REVALIDATE.schedule / 2,
 );
+
+/* -------------------------------- Joueur -------------------------------- */
+
+/**
+ * Les fiches joueur sont servies par l'API « common » d'ESPN, voisine de celle
+ * des leaders (« site ») : même hôte, autre préfixe. On la déduit de la base
+ * configurée pour qu'une surcharge d'ESPN_WEB_API s'applique aux deux.
+ */
+const athletes = (l: EspnLeague) => `${env.espnWebApi.replace("/apis/site/", "/apis/common/")}/${l}/athletes`;
+
+/**
+ * Fiche complète d'un joueur : cinq appels en parallèle (identité, carrière en
+ * saison régulière, carrière en playoffs, vue d'ensemble, matchs de la
+ * saison). Seule l'identité est indispensable ; sans les autres, la fiche
+ * s'affiche avec ce qu'elle a. Une heure de cache : ces chiffres ne bougent
+ * qu'une fois par match.
+ */
+export async function getEspnPlayer(league: EspnLeague, id: string): Promise<PlayerProfile> {
+  const base = `${athletes(league)}/${id}`;
+  const [bio, regular, playoffs, overview, gamelog] = await Promise.all([
+    fetchJson<RawAthleteBio>(base, REVALIDATE.roster),
+    fetchJsonSafe<RawAthleteStats>(`${base}/stats`, REVALIDATE.roster),
+    fetchJsonSafe<RawAthleteStats>(`${base}/stats?seasontype=3`, REVALIDATE.roster),
+    fetchJsonSafe<RawAthleteOverview>(`${base}/overview`, REVALIDATE.roster),
+    fetchJsonSafe<RawAthleteGamelog>(`${base}/gamelog`, REVALIDATE.roster),
+  ]);
+  if (!bio.athlete?.id) throw new Error("joueur introuvable");
+  return normalizePlayer(league, id, bio, regular, playoffs, overview, gamelog);
+}
