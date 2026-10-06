@@ -371,10 +371,35 @@ export async function getEspnRecent(league: EspnLeague, id: string): Promise<Gam
   return recent.slice(0, 5);
 }
 
-/** Forme et prochaine affiche seules : inutile de charger effectif et statistiques. */
+/**
+ * Forme et prochaine affiche seules : inutile de charger effectif et statistiques.
+ *
+ * Le calendrier de l'équipe est en cache dix minutes : un match qui vient de
+ * se terminer y restait « à venir », et la carte « Mon équipe » l'annonçait
+ * encore comme prochain match. On le recoupe avec les matchs du jour, frais à
+ * quelques secondes près : un match du jour terminé rejoint la forme, et le
+ * prochain match est le premier qui n'est pas encore joué.
+ */
 export async function getEspnTeamForm(league: EspnLeague, id: string) {
-  const { recent, upcoming } = await teamSchedule(league, id);
-  return { recent: recent.slice(0, 5), next: upcoming[0] };
+  const [{ recent, upcoming }, today] = await Promise.all([
+    teamSchedule(league, id),
+    getEspnToday(league).catch(() => null),
+  ]);
+  const duJour = new Map(
+    (today?.games ?? []).filter((g) => g.home.team.id === id || g.away.team.id === id).map((g) => [g.id, g]),
+  );
+  const frais = (g: Game) => duJour.get(g.id) ?? g;
+
+  const termines = [...duJour.values()].filter((g) => g.status === "final");
+  const vus = new Set(termines.map((g) => g.id));
+  const joues = [...termines, ...recent.filter((g) => !vus.has(g.id))].sort(byDateDesc);
+  // Une forme ne traverse pas l'intersaison : le premier match de présaison
+  // ne se mêle pas aux derniers matchs de la saison passée, trois mois plus tôt.
+  const dernier = joues[0] ? Date.parse(joues[0].date) : 0;
+  const forme = joues.filter((g) => dernier - Date.parse(g.date) < 90 * 24 * 3600 * 1000);
+  const aVenir = upcoming.map(frais).filter((g) => g.status === "scheduled" || g.status === "live");
+
+  return { recent: forme.slice(0, 5), next: aVenir[0] };
 }
 
 /** Salle du club : « State Farm Arena — Atlanta, GA ». Absente en WNBA. */
