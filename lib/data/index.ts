@@ -12,11 +12,13 @@ import {
   getEspnTeamForm,
   getEspnTeams,
   getEspnToday,
+  searchEspnPlayers,
 } from "@/lib/api/espn";
 import {
   getElGameDetail,
   getElGames,
   getElLeaders,
+  getElPlayers,
   getElPlayoffs,
   getElRecent,
   getElStandings,
@@ -44,6 +46,8 @@ import type {
   LeagueId,
   NewsItem,
   PlayerProfile,
+  SearchPlayer,
+  SearchResponse,
   Playoffs,
   Standings,
   Team,
@@ -359,4 +363,60 @@ async function fetchToday(): Promise<TodayResponse> {
       avgPerGame: seasonGames ? Math.round((seasonPoints / seasonGames) * 10) / 10 : 0,
     },
   };
+}
+
+/* ------------------------------- Recherche ------------------------------- */
+
+/** Comparaison sans accents ni casse : « nimes » trouve « Nîmes », « doncic » trouve « Dončić ». */
+const plat = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase();
+
+/** 0 : le nom commence par la requête, 1 : un mot du nom, 2 : ailleurs, 3 : pas dans le nom (surnom). */
+function proximite(nom: string, q: string): number {
+  const n = plat(nom);
+  if (n.startsWith(q)) return 0;
+  if (n.split(/[\s.'-]+/).some((m) => m.startsWith(q))) return 1;
+  return n.includes(q) ? 2 : 3;
+}
+
+/**
+ * Recherche dans tout le site : clubs des trois ligues et joueurs.
+ *
+ * Les clubs sont cherchés dans nos propres listes (nom, ville, abréviation).
+ * Les joueurs NBA et WNBA viennent de la recherche ESPN, qui connaît aussi
+ * les retraités et les surnoms ; ceux de l'EuroLeague, des effectifs des
+ * clubs. Chaque source peut manquer sans priver des autres.
+ */
+export async function search(query: string): Promise<SearchResponse> {
+  const q = plat(query.trim());
+  const [listes, espn, el] = await Promise.all([
+    Promise.all(LEAGUE_IDS.map((l) => getTeams(l).catch(() => [] as Team[]))),
+    searchEspnPlayers(query.trim()).catch(() => [] as SearchPlayer[]),
+    getElPlayers().catch(() => [] as SearchPlayer[]),
+  ]);
+
+  const teams = listes
+    .flat()
+    .filter((t) =>
+      [t.name, t.shortName, t.abbreviation, t.location ?? ""].some(
+        (v) => plat(v).includes(q) || (v.length <= 4 && plat(v) === q),
+      ),
+    )
+    .sort((a, b) => proximite(a.name, q) - proximite(b.name, q) || a.name.localeCompare(b.name, "fr"))
+    .slice(0, 8);
+
+  const joueursEl = el.filter((p) => plat(p.name).includes(q));
+  // Tri stable : prénom ou nom, c'est pareil (« jordan » doit trouver Michael
+  // Jordan avant Jordan Poole, comme le classe ESPN) ; à proximité égale,
+  // l'ordre de pertinence d'ESPN est conservé.
+  const players = [...espn, ...joueursEl]
+    .map((p, i) => ({ p, i, d: Math.max(1, proximite(p.name, q)) }))
+    .sort((a, b) => a.d - b.d || a.i - b.i)
+    .map((x) => x.p)
+    .slice(0, 20);
+
+  return { query: query.trim(), teams, players };
 }
