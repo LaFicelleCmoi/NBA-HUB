@@ -65,7 +65,12 @@ export function Leaders({ leaders, away, home }: { leaders: GameLeader[]; away: 
                       />
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-semibold">{l.player.name}</span>
+                      <Link
+                        href={`/${team.league}/joueur/${l.player.id}`}
+                        className="block truncate text-sm font-semibold hover:underline"
+                      >
+                        {l.player.name}
+                      </Link>
                       <span className="block truncate text-xs text-faint">
                         {[l.player.position, l.line].filter(Boolean).join(" · ")}
                       </span>
