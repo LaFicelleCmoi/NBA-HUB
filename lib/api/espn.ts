@@ -47,6 +47,7 @@ import type {
   LeadersResponse,
   NewsItem,
   PlayerProfile,
+  SearchPlayer,
   Standings,
   Team,
   TeamDetail,
@@ -467,4 +468,87 @@ export async function getEspnPlayer(league: EspnLeague, id: string): Promise<Pla
   ]);
   if (!bio.athlete?.id) throw new Error("joueur introuvable");
   return normalizePlayer(league, id, bio, regular, playoffs, overview, gamelog);
+}
+
+/* ------------------------------- Recherche ------------------------------- */
+
+interface RawSearchV2 {
+  results?: {
+    type?: string;
+    contents?: { uid?: string; displayName?: string; subtitle?: string; image?: { default?: string } }[];
+  }[];
+}
+
+interface RawSearchCommon {
+  items?: {
+    id?: string;
+    displayName?: string;
+    league?: string;
+    headshot?: { href?: string };
+    position?: { abbreviation?: string };
+    teamRelationships?: { displayName?: string }[];
+  }[];
+}
+
+/** Ligues ESPN d'après l'identifiant interne porté par l'uid (« s:40~l:46~a:1966 »). */
+const LIGUE_UID: Record<string, EspnLeague> = { "46": "nba", "59": "wnba" };
+
+/**
+ * Joueurs NBA et WNBA dont le nom correspond. Deux recherches ESPN, chacune
+ * avec son angle mort, d'où leur combinaison :
+ *
+ * - la recherche générale connaît les retraités (Kobe Bryant, Diana Taurasi)
+ *   et les surnoms (« wemby »), mais mêle tous les sports : sur un nom
+ *   courant, les basketteurs y sont noyés ;
+ * - la recherche par ligue ne connaît que les joueurs en activité, mais
+ *   seulement ceux de la ligue demandée.
+ *
+ * La première passe en tête (pertinence), la seconde complète. Une heure de
+ * cache par requête.
+ */
+export async function searchEspnPlayers(query: string): Promise<SearchPlayer[]> {
+  const origine = new URL(env.espnWebApi).origin;
+  const q = encodeURIComponent(query);
+  const [general, nba, wnba] = await Promise.all([
+    fetchJsonSafe<RawSearchV2>(`${origine}/apis/search/v2?query=${q}&limit=50&type=player`, REVALIDATE.roster),
+    ...(["nba", "wnba"] as const).map((l) =>
+      fetchJsonSafe<RawSearchCommon>(
+        `${origine}/apis/common/v3/search?query=${q}&limit=10&type=player&league=${l}`,
+        REVALIDATE.roster,
+      ),
+    ),
+  ]);
+
+  const out = new Map<string, SearchPlayer>();
+  const ajouter = (p: SearchPlayer) => {
+    if (p.id && !out.has(`${p.league}:${p.id}`)) out.set(`${p.league}:${p.id}`, p);
+  };
+
+  for (const c of general?.results?.find((r) => r.type === "player")?.contents ?? []) {
+    const m = c.uid?.match(/~l:(\d+)~a:(\d+)/);
+    const league = m ? LIGUE_UID[m[1]] : undefined;
+    if (!m || !league) continue;
+    ajouter({
+      id: m[2],
+      league,
+      name: c.displayName ?? "",
+      team: c.subtitle || undefined,
+      headshot: c.image?.default || undefined,
+      href: `/${league}/joueur/${m[2]}`,
+    });
+  }
+  for (const [league, res] of [["nba", nba], ["wnba", wnba]] as const) {
+    for (const i of res?.items ?? []) {
+      ajouter({
+        id: String(i.id ?? ""),
+        league,
+        name: i.displayName ?? "",
+        team: i.teamRelationships?.[0]?.displayName,
+        position: i.position?.abbreviation,
+        headshot: i.headshot?.href,
+        href: `/${league}/joueur/${i.id}`,
+      });
+    }
+  }
+  return [...out.values()];
 }
