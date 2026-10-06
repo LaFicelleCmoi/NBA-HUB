@@ -332,7 +332,7 @@ async function TeamContent({ l, id }: { l: LeagueId; id: string }) {
       <Reveal from="right" as="section" className="mt-16">
         <SectionHeading id="roster" kicker={`${detail.roster.length} joueurs`} title="Effectif" />
         {detail.roster.length ? (
-          <RosterTable roster={detail.roster} teamName={team.name} />
+          <RosterTable roster={detail.roster} teamName={team.name} league={l} />
         ) : (
           <EmptyState title="Effectif non disponible" icon="👥" />
         )}
