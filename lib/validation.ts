@@ -56,6 +56,18 @@ export function parseGameId(league: LeagueId, value: unknown): string {
   return value;
 }
 
+/**
+ * Identifiant de joueur ESPN : des chiffres seulement. Les fiches joueur
+ * n'existent qu'en NBA et WNBA ; l'EuroLeague est refusée d'emblée.
+ */
+export function parsePlayerId(league: LeagueId, value: unknown): string {
+  if (league === "euroleague") throw new ValidationError(404, "Fiche joueur indisponible");
+  if (typeof value !== "string" || !/^\d{1,10}$/.test(value)) {
+    throw new ValidationError(400, "Identifiant de joueur invalide");
+  }
+  return value;
+}
+
 export function parseView(value: string | null): "results" | "upcoming" {
   if (value === "results" || value === "upcoming") return value;
   throw new ValidationError(400, "Paramètre « view » invalide");
