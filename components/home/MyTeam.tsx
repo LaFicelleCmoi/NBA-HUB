@@ -207,7 +207,7 @@ const CADENCE = { direct: 15_000, approche: 30_000, repos: 5 * 60_000 };
  * y passerait inaperçu. La cadence s'accélère dix minutes avant l'heure
  * prévue du prochain match et pendant le match.
  */
-function useLiveGame(favorite: FavoriteTeam | null, next?: Game): Game | undefined {
+function useLiveGame(favorite: FavoriteTeam | null, next?: Game): { live?: Game; proche: boolean } {
   const [proche, setProche] = useState(false);
   const debut = next ? Date.parse(next.date) : NaN;
 
@@ -230,7 +230,7 @@ function useLiveGame(favorite: FavoriteTeam | null, next?: Game): Game | undefin
   // Ajustement pendant le rendu, comme ailleurs : la cadence suit l'état du match.
   const voulue = live ? CADENCE.direct : proche ? CADENCE.approche : CADENCE.repos;
   if (voulue !== cadence) setCadence(voulue);
-  return live;
+  return { live, proche };
 }
 
 /**
@@ -241,10 +241,17 @@ function useLiveGame(favorite: FavoriteTeam | null, next?: Game): Game | undefin
  */
 export function MyTeam() {
   const favorite = useFavoriteTeam();
-  const { data } = useApi<TeamSummary>(
-    favorite ? `/api/${favorite.league}/teams/${favorite.id}/summary` : null,
-  );
-  const live = useLiveGame(favorite, data?.next);
+  // Le résumé (forme, prochain match) se recharge chaque minute autour d'un
+  // match — de l'approche du coup d'envoi jusqu'à la fin — et plus du tout
+  // le reste du temps. Sans cela, un match terminé restait affiché comme
+  // « prochain match » et n'entrait pas dans la forme.
+  const [cadenceResume, setCadenceResume] = useState(0);
+  const { data } = useApi<TeamSummary>(favorite ? `/api/${favorite.league}/teams/${favorite.id}/summary` : null, {
+    refreshMs: cadenceResume,
+  });
+  const { live, proche } = useLiveGame(favorite, data?.next);
+  const voulue = live || proche ? 60_000 : 0;
+  if (voulue !== cadenceResume) setCadenceResume(voulue);
   // L'animation d'apparition est portée ici, pas par l'accueil : sans favori,
   // aucun conteneur vide ne doit laisser de marge dans la page.
   if (!favorite) return null;
