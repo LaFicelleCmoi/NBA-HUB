@@ -87,7 +87,18 @@ export function ZoneLegend({ league }: { league: LeagueId }) {
   );
 }
 
-function GroupTable({ league, group, caption }: { league: LeagueId; group: StandingGroup; caption: string }) {
+function GroupTable({
+  league,
+  group,
+  caption,
+  zones = true,
+}: {
+  league: LeagueId;
+  group: StandingGroup;
+  caption: string;
+  /** Faux en présaison : sans enjeu, aucune place n'y qualifie. */
+  zones?: boolean;
+}) {
   const favorite = useFavoriteTeam();
   const th = "px-2 py-2 text-right font-semibold";
   const ranks = sharedRanks(group.rows);
@@ -127,7 +138,7 @@ function GroupTable({ league, group, caption }: { league: LeagueId; group: Stand
             {group.rows.map((r, i) => {
               // Une équipe qui n'a pas encore joué n'est ni qualifiée ni en
               // play-in : lui colorer une zone serait trompeur.
-              const zone = r.played > 0 ? zoneFor(league, r.seed) : undefined;
+              const zone = zones && r.played > 0 ? zoneFor(league, r.seed) : undefined;
               const fav = isFavoriteTeam(favorite, league, r.team.id);
               return (
                 <tr
@@ -231,7 +242,10 @@ export function StandingsTables({ standings }: { standings: Standings }) {
           <GroupTable
             league={league}
             group={g}
-            caption={`Classement ${groups.length > 1 ? `conférence ${g.name}` : g.name}, saison ${standings.season}`}
+            zones={!standings.preseason}
+            caption={`Classement ${groups.length > 1 ? `conférence ${g.name}` : g.name}, ${
+              standings.preseason ? "présaison" : "saison"
+            } ${standings.season}`}
           />
         </div>
       ))}
