@@ -179,9 +179,27 @@ export async function getEspnGames(league: EspnLeague, view: "results" | "upcomi
 
 /* -------------------------------- Classements ------------------------------- */
 
-export async function getEspnStandings(league: EspnLeague): Promise<Standings> {
+/**
+ * Classement de la saison régulière en cours.
+ *
+ * Sans précision, ESPN renvoie le classement de la phase en cours — en
+ * octobre, celui de la présaison, qu'il tient mal (presque tout le monde à
+ * 0-0 après plusieurs matchs). Il passait pour la saison commencée et
+ * masquait le classement final de la précédente. On lit donc l'année en
+ * cours, puis on demande explicitement la saison régulière (`seasontype=2`).
+ */
+async function regularSeasonStandings(league: EspnLeague): Promise<{ raw: RawStandingsNode; year?: number }> {
   const base = `${env.espnStandingsApi}/${league}/standings`;
   const current = await fetchJson<RawStandingsNode>(base, REVALIDATE.standings);
+  const year = current.season?.year;
+  if (!year) return { raw: current };
+  const regular = await fetchJsonSafe<RawStandingsNode>(`${base}?season=${year}&seasontype=2`, REVALIDATE.standings);
+  return { raw: regular ?? current, year };
+}
+
+export async function getEspnStandings(league: EspnLeague): Promise<Standings> {
+  const base = `${env.espnStandingsApi}/${league}/standings`;
+  const { raw: current } = await regularSeasonStandings(league);
   const norm = normalizeStandings(current, league);
   if (norm.totals.games > 0 || !current.season?.year) return { league, isPreviousSeason: false, ...norm };
 
@@ -191,6 +209,112 @@ export async function getEspnStandings(league: EspnLeague): Promise<Standings> {
   if (!prev) return { league, isPreviousSeason: false, ...norm };
   return { league, isPreviousSeason: true, ...normalizeStandings(prev, league) };
 }
+
+/** Mois où se joue la présaison, d'après l'année de fin de saison ESPN (2027 pour 2026-27). */
+const MOIS_PRESAISON: Record<EspnLeague, (annee: number) => string[]> = {
+  nba: (a) => [`${a - 1}09`, `${a - 1}10`],
+  wnba: (a) => [`${a}04`, `${a}05`],
+};
+
+/**
+ * Classement de présaison, recalculé à partir des résultats.
+ *
+ * ESPN en publie un, mais faux : après plusieurs soirées de matchs, presque
+ * toutes les équipes y sont encore à 0-0. On compte donc nous-mêmes les
+ * matchs terminés marqués « présaison » (`season.type === 1`). Les équipes
+ * et leurs conférences viennent du classement de saison régulière ; un
+ * adversaire hors ligue (club européen en tournée) compte pour l'équipe de
+ * la ligue qui l'affronte. Rend `null` tant qu'aucun match n'est terminé.
+ */
+export const getEspnPreseasonStandings = cachedNormalized(
+  async (league: EspnLeague): Promise<Standings | null> => {
+    const { raw, year } = await regularSeasonStandings(league);
+    if (!year) return null;
+    const base = normalizeStandings(raw, league);
+
+    const mois = await Promise.all(
+      MOIS_PRESAISON[league](year).map((m) => scoreboard(league, m, "no-store").catch(() => ({ events: [] }))),
+    );
+    const matchs = mois
+      .flatMap((sb) => sb.events ?? [])
+      .filter((e) => e.season?.type === 1)
+      .map((e) => normalizeEvent(e, league))
+      .filter((g) => g.status === "final")
+      .sort(byDateAsc);
+    if (matchs.length === 0) return null;
+
+    type Bilan = { v: number; d: number; pour: number; contre: number; serie: string[] };
+    const bilans = new Map<string, Bilan>();
+    for (const g of matchs) {
+      for (const [nous, eux] of [
+        [g.home, g.away],
+        [g.away, g.home],
+      ] as const) {
+        const b = bilans.get(nous.team.id) ?? { v: 0, d: 0, pour: 0, contre: 0, serie: [] };
+        const gagne = (nous.score ?? 0) > (eux.score ?? 0);
+        b.v += gagne ? 1 : 0;
+        b.d += gagne ? 0 : 1;
+        b.pour += nous.score ?? 0;
+        b.contre += eux.score ?? 0;
+        b.serie.push(gagne ? "V" : "D");
+        bilans.set(nous.team.id, b);
+      }
+    }
+
+    /** Série en cours : « V3 », « D1 ». */
+    const serie = (resultats: string[]) => {
+      const dernier = resultats.at(-1);
+      if (!dernier) return undefined;
+      let n = 0;
+      for (let i = resultats.length - 1; i >= 0 && resultats[i] === dernier; i--) n++;
+      return `${dernier}${n}`;
+    };
+
+    let points = 0;
+    const groups = base.groups.map((g) => {
+      const rows = g.rows.map((r) => {
+        const b = bilans.get(r.team.id);
+        const joues = b ? b.v + b.d : 0;
+        points += b?.pour ?? 0;
+        return {
+          team: r.team,
+          rank: 0,
+          played: joues,
+          wins: b?.v ?? 0,
+          losses: b?.d ?? 0,
+          winPct: joues ? b!.v / joues : 0,
+          diff: b ? b.pour - b.contre : 0,
+          pointsFor: b?.pour ?? 0,
+          pointsAgainst: b?.contre ?? 0,
+          streak: b ? serie(b.serie) : undefined,
+          seed: 0,
+        };
+      });
+      // Pourcentage d'abord, puis le nombre de victoires (3-0 devant 1-0),
+      // puis la différence ; les équipes qui n'ont pas joué ferment la marche.
+      rows.sort(
+        (a, b) =>
+          Number(b.played > 0) - Number(a.played > 0) || b.winPct - a.winPct || b.wins - a.wins || b.diff - a.diff,
+      );
+      rows.forEach((r, i) => {
+        r.rank = i + 1;
+        r.seed = i + 1;
+      });
+      return { name: g.name, rows };
+    });
+
+    return {
+      league,
+      season: base.season,
+      isPreviousSeason: false,
+      preseason: true,
+      groups,
+      totals: { games: matchs.length, points },
+    };
+  },
+  "espn-preseason-standings",
+  REVALIDATE.standings,
+);
 
 /* ---------------------------------- Leaders --------------------------------- */
 
