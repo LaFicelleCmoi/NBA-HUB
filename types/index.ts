@@ -474,3 +474,22 @@ export interface FavoriteTeam {
   name: string;
   logo: Logo;
 }
+
+/** Un joueur trouvé par la recherche, toutes ligues confondues. */
+export interface SearchPlayer {
+  id: string;
+  league: LeagueId;
+  name: string;
+  /** Équipe actuelle (ou dernière connue pour un joueur retraité). */
+  team?: string;
+  position?: string;
+  headshot?: string;
+  /** Fiche joueur en NBA/WNBA, fiche du club en EuroLeague (qui n'a pas de fiche joueur). */
+  href: string;
+}
+
+export interface SearchResponse {
+  query: string;
+  teams: Team[];
+  players: SearchPlayer[];
+}
