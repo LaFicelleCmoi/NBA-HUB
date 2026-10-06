@@ -68,6 +68,19 @@ export function parsePlayerId(league: LeagueId, value: unknown): string {
   return value;
 }
 
+/**
+ * Texte de recherche : de 2 à 50 caractères, lettres (tous alphabets),
+ * chiffres, espaces et ponctuation des noms (apostrophe, point, tiret).
+ * Il finit dans une URL d'ESPN : rien d'autre ne passe.
+ */
+export function parseSearchQuery(value: string | null): string {
+  const q = (value ?? "").trim().replace(/\s+/g, " ");
+  if (q.length < 2 || q.length > 50 || !/^[\p{L}\p{N} .'’-]+$/u.test(q)) {
+    throw new ValidationError(400, "Recherche invalide");
+  }
+  return q;
+}
+
 export function parseView(value: string | null): "results" | "upcoming" {
   if (value === "results" || value === "upcoming") return value;
   throw new ValidationError(400, "Paramètre « view » invalide");
