@@ -6,6 +6,7 @@ import { useFavoriteTeam } from "@/lib/client/favorite";
 import { useApi } from "@/lib/client/useApi";
 import { LEAGUES } from "@/lib/leagues";
 import { formatShortDay, formatTime } from "@/lib/time";
+import { Countdown } from "@/components/ui/Countdown";
 import { Logo } from "@/components/ui/Logo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -103,6 +104,11 @@ function NextGame({ game, teamId }: { game?: Game; teamId: string }) {
         </time>
         {game.phase && ` · ${game.phase}`}
       </p>
+      {game.status === "scheduled" && (
+        <div className="mt-2.5">
+          <Countdown date={game.date} />
+        </div>
+      )}
     </>
   );
 }
