@@ -229,6 +229,61 @@ export interface Play {
   points?: number;
 }
 
+/** Colonne d'un tableau de statistiques : abréviation affichée et intitulé complet. */
+export interface StatColumn {
+  abbr: string;
+  title: string;
+}
+
+/** Un tableau de carrière (moyennes, totaux ou divers), une ligne par saison. */
+export interface CareerTable {
+  title: string;
+  columns: StatColumn[];
+  rows: { season: string; team?: { id: string; abbreviation: string; logo: Logo }; stats: string[] }[];
+  /** Ligne « Carrière ». */
+  totals: string[];
+}
+
+/** Un match du joueur dans la saison en cours. */
+export interface PlayerGame {
+  id: string;
+  date: string;
+  home: boolean;
+  opponent: { id: string; abbreviation: string; name: string; logo: Logo };
+  result?: "V" | "D";
+  /** Score du match, équipe du joueur en premier (« 119-111 »). */
+  score: string;
+  stats: string[];
+  /** Tour de playoffs, quand le match en est un. */
+  round?: string;
+}
+
+/**
+ * Fiche d'un joueur : identité, palmarès individuel, statistiques de la
+ * saison, de toute la carrière (saison régulière et playoffs) et match par
+ * match pour la saison en cours.
+ */
+export interface PlayerProfile {
+  league: LeagueId;
+  id: string;
+  name: string;
+  jersey?: string;
+  position?: string;
+  headshot?: string;
+  active: boolean;
+  team?: { id: string; name: string; logo: Logo; color?: string };
+  bio: { label: string; value: string }[];
+  /** Intitulé des chiffres clés (« Saison régulière 2025-26 »). */
+  highlightsLabel?: string;
+  highlights: { label: string; value: string; rank?: string }[];
+  /** Saison, playoffs et carrière côte à côte. */
+  splits?: { columns: StatColumn[]; rows: { label: string; stats: string[] }[] };
+  awards: { name: string; count: number; seasons: string[] }[];
+  career: CareerTable[];
+  playoffs: CareerTable[];
+  gameLog: { title: string; columns: StatColumn[]; games: PlayerGame[] }[];
+}
+
 /** Une ligne de la feuille de match : un joueur et ses statistiques. */
 export interface BoxPlayer {
   id: string;
