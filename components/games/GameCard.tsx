@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useIsFavorite } from "@/lib/client/favorite";
 import { LEAGUES } from "@/lib/leagues";
 import { formatShortDay, formatTime } from "@/lib/time";
+import { Countdown } from "@/components/ui/Countdown";
 import { Logo } from "@/components/ui/Logo";
 import type { Game, GameTeam } from "@/types";
 
@@ -185,7 +186,11 @@ export function GameCard({
           )}
           {(game.phase || game.round) && <span className="truncate">{game.phase ?? game.round}</span>}
         </span>
-        <StatusPill game={game} />
+        <span className="flex items-center gap-2.5">
+          {/* Compte à rebours à moins de trois jours du match, pour toutes les équipes. */}
+          {game.status === "scheduled" && <Countdown date={game.date} variant="compact" />}
+          <StatusPill game={game} />
+        </span>
       </div>
 
       <div className="space-y-2">
