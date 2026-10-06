@@ -61,7 +61,17 @@ export function LeadersView({ data }: { data: LeadersResponse }) {
                         <span className="tabular w-5 text-right text-sm font-bold text-faint">{e.rank}</span>
                         <Headshot src={e.headshot} name={e.name} />
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold">{e.name}</p>
+                          {/* Fiche joueur : NBA et WNBA seulement, l'EuroLeague n'en publie pas. */}
+                          {data.league === "euroleague" ? (
+                            <p className="truncate text-sm font-semibold">{e.name}</p>
+                          ) : (
+                            <Link
+                              href={`/${data.league}/joueur/${e.playerId}`}
+                              className="block truncate text-sm font-semibold hover:underline"
+                            >
+                              {e.name}
+                            </Link>
+                          )}
                           {e.team && (
                             <Link
                               href={`/${e.team.league}/equipe/${e.team.id}`}
