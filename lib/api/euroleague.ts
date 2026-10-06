@@ -24,6 +24,7 @@ import type {
   GamesResponse,
   LeaderCategory,
   Playoffs,
+  SearchPlayer,
   LeadersResponse,
   Standings,
   Team,
@@ -435,4 +436,45 @@ export async function getElPlayoffs(): Promise<Playoffs> {
     return buildPlayoffs("euroleague", seasonLabel(season), items, (round) => (round === "Playoffs" ? 5 : 1));
   }
   return buildPlayoffs("euroleague", seasonLabel(courante), [], () => 1);
+}
+
+/* ------------------------------- Recherche ------------------------------- */
+
+/**
+ * Tous les joueurs des effectifs EuroLeague, pour la recherche. L'API n'a pas
+ * de recherche par nom : on réunit les effectifs des clubs (un appel chacun,
+ * déjà en cache une heure) et la liste assemblée est gardée en mémoire une
+ * heure. L'EuroLeague n'ayant pas de fiche joueur, chaque résultat mène à
+ * l'effectif de son club.
+ */
+export function getElPlayers(): Promise<SearchPlayer[]> {
+  return memoLive(
+    "el-players",
+    async () => {
+      const teams = await getElTeams();
+      const c = client(REVALIDATE.roster);
+      const season = currentSeason();
+      const effectifs = await Promise.all(
+        teams.map(async (t) => {
+          let people = await c.clubs.getRoster({ season, clubCode: t.id }).catch(() => []);
+          if (!people.some((p) => p.type === "J")) {
+            people = await c.clubs.getRoster({ season: previousSeason(season), clubCode: t.id }).catch(() => []);
+          }
+          return normalizeElPeople(people).roster.map(
+            (p): SearchPlayer => ({
+              id: p.id,
+              league: "euroleague",
+              name: p.name,
+              team: t.name,
+              position: p.position,
+              headshot: p.headshot,
+              href: `/euroleague/equipe/${t.id}#roster`,
+            }),
+          );
+        }),
+      );
+      return effectifs.flat();
+    },
+    60 * 60 * 1000,
+  );
 }
