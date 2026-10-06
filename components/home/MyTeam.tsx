@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useFavoriteTeam } from "@/lib/client/favorite";
 import { useApi } from "@/lib/client/useApi";
 import { LEAGUES } from "@/lib/leagues";
@@ -11,7 +12,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import type { FavoriteTeam, Game, TeamSummary } from "@/types";
 
 /** Un bloc de la rangée du bas, pour garder les trois encarts identiques. */
-function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+function Panel({ title, children }: { title: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-line bg-surface-strong/60 p-4">
       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">{title}</p>
@@ -57,6 +58,34 @@ function Form({ games, teamId }: { games: Game[]; teamId: string }) {
   );
 }
 
+/** Match en cours : score, temps de jeu, et lien vers la page du match. */
+function LiveGame({ game, teamId }: { game: Game; teamId: string }) {
+  const home = game.home.team.id === teamId;
+  const nous = home ? game.home : game.away;
+  const eux = home ? game.away : game.home;
+  const mene = (nous.score ?? 0) > (eux.score ?? 0);
+  return (
+    <Link href={`/${game.league}/match/${game.id}`} className="group block" aria-live="polite">
+      <p className="flex items-center gap-2 font-semibold">
+        <span className="text-muted">{home ? "contre" : "chez"}</span>
+        <Logo logo={eux.team.logo} alt="" size={24} className="h-6 w-6 shrink-0" />
+        <span className="truncate group-hover:underline">{eux.team.name}</span>
+      </p>
+      <p className="mt-1 flex items-baseline gap-3">
+        {/* Abréviations de part et d'autre : le score de l'équipe favorite, à gauche, se lit sans hésiter. */}
+        <span className="tabular flex items-baseline gap-1.5 font-display text-3xl font-extrabold leading-none">
+          <span className="font-sans text-xs font-semibold text-faint">{nous.team.abbreviation}</span>
+          <span className={mene ? "" : "text-muted"}>{nous.score ?? 0}</span>
+          <span className="text-faint">–</span>
+          <span className={mene ? "text-muted" : ""}>{eux.score ?? 0}</span>
+          <span className="font-sans text-xs font-semibold text-faint">{eux.team.abbreviation}</span>
+        </span>
+        <span className="text-sm font-semibold text-live">{game.statusDetail}</span>
+      </p>
+    </Link>
+  );
+}
+
 function NextGame({ game, teamId }: { game?: Game; teamId: string }) {
   if (!game) return <p className="text-sm text-muted">Aucun match programmé pour le moment.</p>;
   const home = game.home.team.id === teamId;
@@ -78,7 +107,7 @@ function NextGame({ game, teamId }: { game?: Game; teamId: string }) {
   );
 }
 
-function Card({ favorite, data }: { favorite: FavoriteTeam; data: TeamSummary | null }) {
+function Card({ favorite, data, live }: { favorite: FavoriteTeam; data: TeamSummary | null; live?: Game }) {
   const league = LEAGUES[favorite.league];
   const team = data?.team ?? { ...favorite, shortName: favorite.name, abbreviation: "", league: favorite.league };
 
@@ -141,12 +170,67 @@ function Card({ favorite, data }: { favorite: FavoriteTeam; data: TeamSummary | 
           {data ? <Form games={data.recent} teamId={favorite.id} /> : <Skeleton className="h-9 w-48" />}
         </Panel>
 
-        <Panel title="Prochain match">
-          {data ? <NextGame game={data.next} teamId={favorite.id} /> : <Skeleton className="h-9 w-48" />}
+        <Panel
+          title={
+            live ? (
+              <span className="flex items-center gap-2 text-live">
+                <span aria-hidden className="h-2 w-2 animate-pulse rounded-full bg-live" />
+                En direct
+              </span>
+            ) : (
+              "Prochain match"
+            )
+          }
+        >
+          {live ? (
+            <LiveGame game={live} teamId={favorite.id} />
+          ) : data ? (
+            <NextGame game={data.next} teamId={favorite.id} />
+          ) : (
+            <Skeleton className="h-9 w-48" />
+          )}
         </Panel>
       </div>
     </section>
   );
+}
+
+/** Pendant un match, au plus près du direct ; à l'approche du coup d'envoi, souvent ; sinon, de loin en loin. */
+const CADENCE = { direct: 15_000, approche: 30_000, repos: 5 * 60_000 };
+
+/**
+ * Match en cours de l'équipe favorite, suivi en direct.
+ *
+ * On interroge la liste des matchs en cours de la ligue — réponse minime,
+ * déjà servie toutes les 5 s au CDN pour l'accueil — plutôt que le résumé de
+ * l'équipe, dont le calendrier est mis en cache dix minutes : un coup d'envoi
+ * y passerait inaperçu. La cadence s'accélère dix minutes avant l'heure
+ * prévue du prochain match et pendant le match.
+ */
+function useLiveGame(favorite: FavoriteTeam | null, next?: Game): Game | undefined {
+  const [proche, setProche] = useState(false);
+  const debut = next ? Date.parse(next.date) : NaN;
+
+  useEffect(() => {
+    if (!Number.isFinite(debut)) return;
+    const dans = debut - 10 * 60_000 - Date.now();
+    const t = setTimeout(() => setProche(true), Math.max(0, dans));
+    return () => {
+      clearTimeout(t);
+      setProche(false);
+    };
+  }, [debut]);
+
+  const [cadence, setCadence] = useState(CADENCE.repos);
+  const { data } = useApi<Game[]>(favorite ? `/api/${favorite.league}/live` : null, { refreshMs: cadence });
+  const live = favorite
+    ? data?.find((g) => g.home.team.id === favorite.id || g.away.team.id === favorite.id)
+    : undefined;
+
+  // Ajustement pendant le rendu, comme ailleurs : la cadence suit l'état du match.
+  const voulue = live ? CADENCE.direct : proche ? CADENCE.approche : CADENCE.repos;
+  if (voulue !== cadence) setCadence(voulue);
+  return live;
 }
 
 /**
@@ -160,12 +244,13 @@ export function MyTeam() {
   const { data } = useApi<TeamSummary>(
     favorite ? `/api/${favorite.league}/teams/${favorite.id}/summary` : null,
   );
+  const live = useLiveGame(favorite, data?.next);
   // L'animation d'apparition est portée ici, pas par l'accueil : sans favori,
   // aucun conteneur vide ne doit laisser de marge dans la page.
   if (!favorite) return null;
   return (
     <Reveal className="mt-4">
-      <Card favorite={favorite} data={data} />
+      <Card favorite={favorite} data={data} live={live} />
     </Reveal>
   );
 }
