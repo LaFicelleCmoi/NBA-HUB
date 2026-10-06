@@ -1,6 +1,7 @@
 import "server-only";
 import {
   getEspnGameDetail,
+  getEspnPlayer,
   getEspnGames,
   getEspnLeaders,
   getEspnNews,
@@ -42,6 +43,7 @@ import type {
   LeadersResponse,
   LeagueId,
   NewsItem,
+  PlayerProfile,
   Playoffs,
   Standings,
   Team,
@@ -197,6 +199,14 @@ export const getPlayoffs = (league: LeagueId): Promise<Playoffs> =>
  */
 export const getGameDetail = (league: LeagueId, id: string): Promise<GameDetail> =>
   league === "euroleague" ? getElGameDetail(id) : getEspnGameDetail(league, id);
+
+/**
+ * Fiche d'un joueur NBA ou WNBA. L'EuroLeague n'a pas d'équivalent (ni bio
+ * détaillée ni carrière saison par saison) : la fonction rend `null`, et la
+ * page répond 404. En cas de panne, la dernière fiche obtenue est resservie.
+ */
+export const getPlayer = (league: LeagueId, id: string): Promise<PlayerProfile | null> =>
+  league === "euroleague" ? Promise.resolve(null) : withFallback(`player:${league}:${id}`, () => getEspnPlayer(league, id));
 
 /**
  * Matchs en cours d'une ligue, pour le classement provisoire.
