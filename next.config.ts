@@ -21,22 +21,11 @@ const nextConfig: NextConfig = {
   // Pas de source maps navigateur en production (valeur par défaut, rendue explicite).
   productionBrowserSourceMaps: false,
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
-    remotePatterns: [
-      { protocol: "https", hostname: "a.espncdn.com", pathname: "/i/**" },
-      { protocol: "https", hostname: "a.espncdn.com", pathname: "/photo/**" },
-      { protocol: "https", hostname: "a.espncdn.com", pathname: "/combiner/**" },
-      // Logos des franchises récentes (Portland Fire, Toronto Tempo…), servis par identifiant
-      { protocol: "https", hostname: "a.espncdn.com", pathname: "/guid/**" },
-      // Miniatures des vidéos de match publiées dans le résumé ESPN
-      { protocol: "https", hostname: "espnmedia-cdn.akamaized.net", pathname: "/espn/media/**" },
-      { protocol: "https", hostname: "media-cdn.incrowdsports.com", pathname: "/**" },
-      { protocol: "https", hostname: "media-cdn.cortextech.io", pathname: "/**" },
-      // Images des actualités (liste identique à IMAGE_HOSTS dans lib/api/rss.ts)
-      { protocol: "https", hostname: "storage.ghost.io", pathname: "/**" },
-      { protocol: "https", hostname: "www.basketusa.com", pathname: "/**" },
-    ],
+    // Plus d'optimiseur Vercel (quota épuisé) : chaque image est servie par son
+    // CDN, redimensionnée par ESPN quand elle vient de chez lui. Les origines
+    // autorisées sont listées dans lib/image-hosts.ts (reprises par la CSP).
+    loader: "custom",
+    loaderFile: "./lib/image-loader.ts",
   },
   async headers() {
     return [
