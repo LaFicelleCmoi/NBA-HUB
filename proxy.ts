@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { IMAGE_ORIGINS } from "@/lib/image-hosts";
 
 /* ------------------------------------------------------------------ */
 /* Rate limiting basique (fenêtre fixe, en mémoire, par instance).     */
@@ -53,8 +54,8 @@ function buildCsp(nonce: string): string {
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${dev ? " 'unsafe-eval'" : ""}`,
     // Framer Motion anime via l'attribut style : 'unsafe-inline' est requis pour les styles uniquement.
     "style-src 'self' 'unsafe-inline'",
-    // Toutes les images passent par /_next/image (optimiseur Next) : aucune origine tierce n'est nécessaire.
-    "img-src 'self' data: blob:",
+    // Les images sont servies directement par leurs CDN (voir lib/image-hosts.ts).
+    `img-src 'self' data: blob: ${IMAGE_ORIGINS.join(" ")}`,
     "font-src 'self'",
     `connect-src 'self'${dev ? " ws:" : ""}`,
     "media-src 'none'",
